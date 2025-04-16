@@ -46,9 +46,10 @@
                 "group": "Apps",
                 "icon": "rocket",
                 "pages": [
-                  "docs/platform-docs/3b45c6789d012-developer-apps-overview",
+                  "docs/platform-docs/3b45c6789d012-apps-overview",
                   "docs/platform-docs/4f56d789e123f-creating-an-app",
-                  "docs/platform-docs/5g67h890f234g-launching-your-app",
+                  "docs/platform-docs/867hiv3k5bt1u-build-your-app",
+                  "docs/platform-docs/5g67h890f234g-publishing-your-app",
                   "docs/platform-docs/7i89j012h456i-sharing-your-app",
                   "docs/platform-docs/6h78i901g345h-security"
                 ]

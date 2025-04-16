@@ -2,63 +2,83 @@
 title: "Creating an app"
 ---
 
-This guide will walk you through the process of creating your first app on our platform.
+This guide will walk you through the key considerations and requirements for developing a Smokeball App.
 
-## Prerequisites
+To begin creating your App, first navigate to the Developer Console and select your target region. Then click the "New App" button to start the app creation process. This will guide you through setting up the basic configuration for your application.
 
-Before you begin, make sure you have:
-- A developer account
-- Basic understanding of programming
-- Required development tools installed
+<Frame>
+  <img src="/images/apps/creating-an-app.png"/>
+</Frame>
 
-## Step 1: Initialize Your Project
+<Info>
+ Partners are currently limited to creating a single app. Please contact our Partnerships team if you need to create additional apps or delete your existing app.
+</Info>
 
-```bash
-# Initialize a new app project
-platform init my-app
-cd my-app
-```
+## App Parameters
 
-## Step 2: Configure Your App
+When creating an App, you will need to specify several parameters.
 
-Edit the `app.config.json` file to set up your app's basic configuration:
+<Frame>
+  <img src="/images/apps/create-app-modal.png"/>
+</Frame>
 
-```json
-{
-  "name": "My App",
-  "version": "1.0.0",
-  "description": "A sample app",
-  "permissions": ["read", "write"]
-}
-```
+### App Name and Description
 
-## Step 3: Develop Your App
+The App name and description help identify your app within the Developer Console and internal systems. While these are important for development and administration purposes, they are separate from your marketplace listing details which are managed through our Partnerships team. 
 
-1. Create your main app file
-2. Implement core functionality
-3. Add necessary dependencies
-4. Write tests
+Choose a clear, descriptive name and provide a concise description that accurately represents your app's functionality.
 
-## Step 4: Test Your App
 
-```bash
-# Run tests
-platform test
+### App Type
 
-# Start development server
-platform dev
-```
+**Public Apps** are intended to be listed in the Smokeball marketplace. These are only available to Partners.
 
-## Step 5: Build Your App
+**Private Apps** are intended for private usage, typically developed by firms for their own internal use.
 
-```bash
-# Build the app
-platform build
-```
+### Public Client
+
+The Public Client option relates to how your application authenticates with Smokeball using OAuth 2.0. OAuth 2.0 is an industry-standard protocol for authorization that enables applications to obtain limited access to user accounts without handling their credentials directly.
+
+For applications that run in less secure environments, such as:
+
+- Mobile applications 
+- Single-page applications (SPAs)
+- Browser-based applications
+
+These types of applications cannot securely store client secrets because their code is exposed to the end user. Instead of using client secrets for authentication, public clients use PKCE (Proof Key for Code Exchange) - an extension to the OAuth 2.0 protocol that provides additional security for these scenarios.
+
+PKCE works by having the client generate a unique code verifier for each authorization request, making the flow more secure even without a client secret. This enhances the standard OAuth 2.0 Authorization Code flow by preventing certain types of attacks. This is particularly important for:
+
+- Applications where the source code is publicly accessible
+- Environments where secure storage of secrets is challenging
+- Situations where the client code could be intercepted or examined
+
+If your application falls into any of these categories, you should enable the Public Client option. Private applications that run in secure server environments typically don't need this option as they can safely store and use client secrets.
+
+<Warning>
+This setting cannot be updated later. Please contact our Partnerships team if you are unsure.
+</Warning>
+
+## Security
+
+The security of our customers' data is paramount. Your App must:
+
+- Meet industry security standards
+- Implement recommended security best practices
+- Complete a security risk assessment before launch
+
+## User Experience
+
+While we maintain flexibility in design, your App should:
+
+- Complement Smokeball's existing functionality
+- Provide clear value to users
+- Maintain a consistent and intuitive interface
+- Follow platform UI/UX best practices
+
 
 ## Next Steps
 
-After creating your app, you can:
-- Deploy it to the platform
-- Add more features
-- Integrate with other services 
+After creating your app, it's time to build it!
+- Use our API to start integrating with your application. See [API documentation](/api-reference/overview) here.
+- If you integrating to Smokeball with our Plugin architecture (coming soon), you can use the Smokeball SDK to integrate. See [SDK documentation](/sdk-reference/overview) here.
