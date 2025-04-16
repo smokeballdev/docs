@@ -1,75 +1,92 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "SmokeBall",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#f2600c",
+    "light": "#f2600c",
+    "dark": "#f2600c"
   },
-  "favicon": "/favicon.svg",
+  "fonts": {
+    "heading": {
+      "family": "Poppins"
+    },
+    "body": {
+      "family": "Inter"
+    }
+  },
+  "appearance": {
+    "default": "light"
+  },
+  "styling": {
+    "codeblocks": "dark"
+  },
+  "favicon": "/favicon.png",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Home",
+        "pages": ["home"]
+      },
+      {
+        "tab": "API",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Documentation",
             "pages": [
-              "introduction",
-              "quickstart",
-              "development"
+              "docs/api-docs/1e13a13124aee-introduction",
+              "docs/api-docs/0d3adba1494ce-layouts",
+              "docs/api-docs/272770a37d359-searching"
             ]
           },
           {
-            "group": "Essentials",
+            "group": "APIs",
+            "openapi": "openapi.json"
+          }
+        ]
+      },
+      {
+        "tab": "SDK",
+        "groups": [
+          {
+            "group": "Documentation",
+            "pages": ["docs/sdk-docs/675c9816cdaf6-getting-started"]
+          },
+          {
+            "group": "APIs",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
+              {
+                "group": "Client SDK",
+                "pages": [
+                  "docs/sdk-docs/482a092a949be-smokeball-client-sdk-package",
+                  "docs/sdk-docs/a3b10391954fa-auth-api-interface",
+                  "docs/sdk-docs/01776c41f5064-firm-api-interface"
+                ]
+              }
             ]
           }
         ]
       },
       {
-        "tab": "API Reference",
-        "groups": [
-          {
-            "group": "API Documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint Examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
-          }
-        ]
+        "tab": "Changelog",
+        "pages": ["docs/api-docs/98439555e1d41-changelog"]
       }
     ],
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Status",
+          "href": "https://status.smokeball.com/",
+          "icon": "signal"
         },
         {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
+          "anchor": "Contact Us",
+          "href": "https://www.smokeball.com/contact-us",
+          "icon": "headphones"
         },
         {
           "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
+          "href": "https://www.smokeball.com/blog",
           "icon": "newspaper"
         }
       ]
@@ -77,26 +94,27 @@
   },
   "logo": {
     "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "dark": "/logo/dark.svg",
+    "href": "https://www.smokeball.com"
   },
   "navbar": {
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "https://support.smokeball.com"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Book a Demo",
+      "href": "https://www.smokeball.com/book-demo"
     }
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "linkedin": "https://www.linkedin.com/company/smokeball-com",
+      "facebook": "https://www.facebook.com/SmokeballUS/",
+      "youtube": "https://www.youtube.com/c/SmokeballNews"
     }
   }
 }

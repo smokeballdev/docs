@@ -1,0 +1,19 @@
+---
+title: "firm.Api interface"
+description: "Entry point for firm to Smokeball."
+sidebarTitle : "Firm"
+---
+
+
+**Signature:**
+```typescript
+interface Api
+```
+
+## Methods
+
+| Method | Description |
+| --- | --- |
+| [get()](/docs/sdk-docs/2014d709a6693-firm-api-get-method) | Gets the firm associated with the current context. |
+| [observe(callback)](/docs/sdk-docs/2693553b37631-firm-api-observe-method) | Creates a subscription for the firm associated with the current context.Only one subscription will be made per session. Regardless of how many times this function is called, the last registered callback will be used. |
+| [update(request)](/docs/sdk-docs/bee37a8566f40-firm-api-update-method) | Updates the firm associated with the current context. |

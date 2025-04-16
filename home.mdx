@@ -1,0 +1,154 @@
+---
+mode: "custom"
+---
+
+export function openSearch() {
+  document.getElementById('search-bar-entry').click();
+}
+
+export function openSearch() {
+  document.getElementById('search-bar-entry').click();
+}
+
+<div className="relative w-full flex items-center justify-center" style={{ height: '24rem', overflow: 'hidden'}}>
+  <div className="absolute inset-0 bg-primary dark:bg-primary-light" style={{opacity: 0.05 }}></div>
+  <div style={{ position: 'absolute', textAlign: 'center', padding: '0 1rem' }}>
+    <div
+      className="text-gray-900 dark:text-gray-200"
+      style={{
+       fontWeight: '800',
+       fontSize: '50px',
+       margin: '0',
+       fontFamily: 'Poppins'
+      }}
+    >
+      Welcome to the Smokeball Developer page!
+    </div>
+    <p
+      className="prose prose-gray dark:prose-invert text-center justify-center"
+      style={{
+        marginTop: '1rem',
+        fontWeight: '400',
+        fontSize: '16px',
+        maxWidth: '42rem',
+        textAlign: 'center',
+        margin: '1rem auto',
+        fontFamily: 'Poppins'
+      }}
+    >
+    Explore our comprehensive documentation to get started with Smokeball's APIs, webhooks, and the Smokeball Client SDK.
+    </p>
+    <div className="flex items-center justify-center">
+    <button
+      type="button"
+      className="hidden w-full lg:flex items-center text-sm leading-6 rounded-full py-3 px-6 text-white bg-[#FF6B3D] hover:bg-[#ff825c] transition-colors duration-200 relative"
+      id="home-search-entry"
+      style={{
+        marginTop: '2rem',
+        maxWidth: '28rem',
+        fontFamily: 'Poppins',
+        fontWeight: '800',
+        fontSize: '1rem',
+        letterSpacing: '0.01em',
+        border: 'none',
+        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        outline: '4px solid #1e293b',
+      }}
+      onClick={openSearch}
+    >
+      <svg
+        className="h-5 w-5 flex-none text-white"
+        style={{
+          marginRight: '0.75rem',
+          maskImage:
+            'url("https://mintlify.b-cdn.net/v6.5.1/solid/magnifying-glass.svg")',
+          maskRepeat: 'no-repeat',
+          maskPosition: 'center center',
+          backgroundColor: 'currentColor'
+        }}    
+      />
+      SEARCH OR ASK
+    </button>
+    </div>
+  </div>
+</div>
+<div
+  style={{marginTop: '2rem', marginBottom: '8rem', maxWidth: '70rem', marginLeft: 'auto',
+  marginRight: 'auto', paddingLeft: '1.25rem',
+  paddingRight: '1.25rem' }}
+>
+
+
+<div className="flex flex-col w-full " style={{ marginTop: '2rem', marginBottom: '2rem' }}>
+  <h2
+    className="text-gray-900 dark:text-gray-200"
+    style={{
+      fontSize: '2rem',
+      fontWeight: '800',
+      fontFamily: 'Poppins'
+    }}
+  >
+  Documentation
+  </h2>
+
+</div>
+
+
+<CardGroup cols={2}>
+  <Card
+  title="API Documentation"
+  icon="code"
+  href="/docs/api-docs/1e13a13124aee-introduction"
+  iconType="solid"
+  horizontal
+>
+  Everything you need to know about Smokeball's APIs, including endpoints, parameters, and best practices.
+</Card>
+
+<Card
+  title="Client SDK Documentation"
+  icon="book"
+  href="/docs/sdk-docs/675c9816cdaf6-getting-started"
+  iconType="solid"
+  horizontal
+>
+  Learn how to leverage the Smokeball Client SDK to enhance your integration.
+</Card>
+</CardGroup>
+<div className="flex flex-col w-full " style={{ marginTop: '2rem', marginBottom: '2rem' }}>
+  <h2
+    className="text-gray-900 dark:text-gray-200"
+    style={{
+      fontSize: '2rem',
+      fontWeight: '800',
+      fontFamily: 'Poppins'
+    }}
+  >
+  Interested in becoming an Integration Partner?
+  </h2>
+
+</div>
+
+<p
+    className="text-gray-700 dark:text-gray-300"
+    style={{
+      fontSize: '1.05rem',
+      marginBottom: '1rem'
+    }}
+  >
+  If you've developed a software solution tailored to the Legal Industry, we'd love to hear from you! Collaborate with Smokeball to help our clients "run their best firm."
+  <br/>
+Start your integration journey by submitting your interest today. A member of our Partnerships or Product Team will reach out to discuss next steps.
+</p>
+
+<CardGroup cols={1}>
+  <Card
+  title="Join the Smokeball Partner Program"
+  icon="handshake"
+  href="https://marketplace.smokeball.com/application_forms/join-the-smokeball-partner-program/partner_applications/new"
+  iconType="solid"
+  horizontal
+/>
+</CardGroup>
+
+</div>
