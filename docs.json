@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "SmokeBall",
+  "name": "Smokeball",
   "colors": {
     "primary": "#f2600c",
     "light": "#f2600c",
