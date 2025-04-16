@@ -29,14 +29,49 @@
         "pages": ["home"]
       },
       {
+        "tab": "Platform",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "docs/platform-docs/va20w41tid7py-get-started-overview",
+              "docs/platform-docs/8j90k123i567j-partner-program"
+            ]
+          },
+          {
+            "group": "Build",
+            "pages": [
+              "docs/platform-docs/2a34b567c890d-developer-portal",
+              {
+                "group": "Apps",
+                "icon": "rocket",
+                "pages": [
+                  "docs/platform-docs/3b45c6789d012-developer-apps-overview",
+                  "docs/platform-docs/4f56d789e123f-creating-an-app",
+                  "docs/platform-docs/5g67h890f234g-launching-your-app",
+                  "docs/platform-docs/7i89j012h456i-sharing-your-app",
+                  "docs/platform-docs/6h78i901g345h-security"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Troubleshooting",
+            "pages": [
+              "docs/platform-docs/0l12m345k789l-common-issues"
+            ]
+          }
+        ]
+      },
+      {
         "tab": "API",
         "groups": [
           {
             "group": "Documentation",
             "pages": [
               "docs/api-docs/1e13a13124aee-introduction",
-              "docs/api-docs/0d3adba1494ce-layouts",
-              "docs/api-docs/272770a37d359-searching"
+              "docs/api-docs/272770a37d359-searching",
+              "docs/api-docs/0d3adba1494ce-layouts"
             ]
           },
           {
@@ -80,9 +115,9 @@
           "icon": "signal"
         },
         {
-          "anchor": "Contact Us",
-          "href": "https://www.smokeball.com/contact-us",
-          "icon": "headphones"
+          "anchor": "Marketplace",
+          "href": "https://marketplace.smokeball.com",
+          "icon": "store"
         },
         {
           "anchor": "Blog",

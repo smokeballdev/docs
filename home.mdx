@@ -36,12 +36,12 @@ export function openSearch() {
         fontFamily: 'Poppins'
       }}
     >
-    Explore our comprehensive documentation to get started with Smokeball's APIs, webhooks, and the Smokeball Client SDK.
+    Explore our comprehensive documentation to get started with Smokeball's APIs, Webhooks, and the Smokeball Client SDK.
     </p>
     <div className="flex items-center justify-center">
     <button
       type="button"
-      className="hidden w-full lg:flex items-center justify-center text-sm leading-6 rounded-full py-3 px-8 text-white bg-primary hover:bg-[#ff825c] transition-all duration-200 relative"
+      className="hidden w-full lg:flex items-center justify-center text-sm leading-6 rounded-full py-3 px-8 text-white bg-primary relative"
       id="home-search-entry" 
       style={{
         marginTop: '2rem',
@@ -50,19 +50,22 @@ export function openSearch() {
         fontWeight: '700',
         fontSize: '1.1rem',
         letterSpacing: '0.02em',
-        border: 'none',
-        boxShadow: '0 4px 15px -3px rgba(242, 96, 12, 0.3)',
+        border: '2px solid transparent',
         cursor: 'pointer',
-        transform: 'translateY(0)',
-        transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out'
+        transition: 'all 0.2s ease-in-out',
+        outline: 'none',
+        backgroundColor: '#FF5C00',
+        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.transform = 'translateY(-2px)';
-        e.currentTarget.style.boxShadow = '0 6px 20px -3px rgba(242, 96, 12, 0.4)';
+        e.currentTarget.style.backgroundColor = '#FF7A33';
+        e.currentTarget.style.transform = 'scale(1.02)';
+        e.currentTarget.style.boxShadow = '0 6px 8px -1px rgba(0, 0, 0, 0.15), 0 3px 6px -1px rgba(0, 0, 0, 0.08)';
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.transform = 'translateY(0)';
-        e.currentTarget.style.boxShadow = '0 4px 15px -3px rgba(242, 96, 12, 0.3)';
+        e.currentTarget.style.backgroundColor = '#FF5C00';
+        e.currentTarget.style.transform = 'scale(1)';
+        e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
       }}
       onClick={openSearch}
     >

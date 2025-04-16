@@ -1,0 +1,61 @@
+---
+title: "Launching your app"
+---
+
+This guide will help you deploy and launch your app on the platform.
+
+## Before You Launch
+
+Make sure you have:
+- Completed all development and testing
+- Fixed all known issues
+- Updated documentation
+- Prepared release notes
+
+## Deployment Process
+
+### Step 1: Prepare for Deployment
+
+```bash
+# Build the production version
+platform build --production
+
+# Verify the build
+platform verify
+```
+
+### Step 2: Deploy Your App
+
+```bash
+# Deploy to staging
+platform deploy --stage
+
+# Deploy to production
+platform deploy --prod
+```
+
+## Post-Launch Checklist
+
+- Monitor app performance
+- Check error logs
+- Gather user feedback
+- Plan for updates
+
+## Common Deployment Issues
+
+1. **Build Failures**
+   - Check dependencies
+   - Verify configuration
+   - Review build logs
+
+2. **Deployment Errors**
+   - Check permissions
+   - Verify network connectivity
+   - Review deployment logs
+
+## Next Steps
+
+After launching your app:
+- Monitor its performance
+- Gather user feedback
+- Plan for updates and improvements 

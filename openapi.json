@@ -7,7 +7,9 @@
   "paths": {
     "/activitycodes/{id}": {
       "get": {
-        "tags": ["Activity Codes"],
+        "tags": [
+          "Activity Codes"
+        ],
         "summary": "Get activity code",
         "description": "Retrieves a specified activity code.",
         "operationId": "GetActivityCodeById",
@@ -55,7 +57,9 @@
         }
       },
       "put": {
-        "tags": ["Activity Codes"],
+        "tags": [
+          "Activity Codes"
+        ],
         "summary": "Update an activity code",
         "description": "Updates a specified activity code.",
         "operationId": "UpdateActivityCode",
@@ -127,7 +131,9 @@
         }
       },
       "delete": {
-        "tags": ["Activity Codes"],
+        "tags": [
+          "Activity Codes"
+        ],
         "summary": "Delete an activity code",
         "description": "Deletes a specified activity code.",
         "operationId": "DeleteActivityCode",
@@ -170,7 +176,9 @@
     },
     "/activitycodes": {
       "get": {
-        "tags": ["Activity Codes"],
+        "tags": [
+          "Activity Codes"
+        ],
         "summary": "Get activity codes",
         "description": "Returns a list of activity codes.",
         "operationId": "GetActivityCodes",
@@ -219,7 +227,9 @@
         }
       },
       "post": {
-        "tags": ["Activity Codes"],
+        "tags": [
+          "Activity Codes"
+        ],
         "summary": "Create an activity code",
         "description": "Creates an activity code.",
         "operationId": "CreateActivityCode",
@@ -280,7 +290,9 @@
     },
     "/matters/{matterId}/archive": {
       "get": {
-        "tags": ["Archive"],
+        "tags": [
+          "Archive"
+        ],
         "summary": "Get the archive for a matter",
         "description": "Retrieves an archive for a matter.",
         "operationId": "GetArchiveForMatter",
@@ -311,7 +323,9 @@
         }
       },
       "put": {
-        "tags": ["Archive"],
+        "tags": [
+          "Archive"
+        ],
         "summary": "Update an archive for a matter.",
         "description": "Updates a specified matter's archive.",
         "operationId": "UpdateArchive",
@@ -373,7 +387,9 @@
         }
       },
       "patch": {
-        "tags": ["Archive"],
+        "tags": [
+          "Archive"
+        ],
         "summary": "Patch an archive for a matter.",
         "description": "Updates a specified matter's archive with patch operations.",
         "operationId": "PatchArchive",
@@ -422,7 +438,9 @@
     },
     "/groups": {
       "get": {
-        "tags": ["Authorization"],
+        "tags": [
+          "Authorization"
+        ],
         "summary": "Get authorization groups",
         "description": "Retrieves auhorization groups for the firm associated with the authenticated client.",
         "operationId": "GetGroups",
@@ -440,7 +458,9 @@
         }
       },
       "post": {
-        "tags": ["Authorization"],
+        "tags": [
+          "Authorization"
+        ],
         "summary": "Create an authorization group",
         "description": "Creates an authorization group.",
         "operationId": "CreateGroup",
@@ -494,7 +514,9 @@
     },
     "/groups/{id}": {
       "get": {
-        "tags": ["Authorization"],
+        "tags": [
+          "Authorization"
+        ],
         "summary": "Get an authorization group",
         "description": "Retrieves a specified authorization group.",
         "operationId": "GetGroup",
@@ -525,7 +547,9 @@
         }
       },
       "put": {
-        "tags": ["Authorization"],
+        "tags": [
+          "Authorization"
+        ],
         "summary": "Update an authorization group",
         "description": "Updates a specified authorization group.",
         "operationId": "UpdateGroup",
@@ -590,7 +614,9 @@
         }
       },
       "delete": {
-        "tags": ["Authorization"],
+        "tags": [
+          "Authorization"
+        ],
         "summary": "Deletes an authorization group",
         "description": "Delete an authorization group.",
         "operationId": "DeleteGroup",
@@ -623,7 +649,9 @@
     },
     "/policies/{reference}": {
       "get": {
-        "tags": ["Authorization"],
+        "tags": [
+          "Authorization"
+        ],
         "summary": "Get an authorization policy",
         "description": "Retrieves a specified authorization policy.",
         "operationId": "GetPolicy",
@@ -654,7 +682,9 @@
         }
       },
       "put": {
-        "tags": ["Authorization"],
+        "tags": [
+          "Authorization"
+        ],
         "summary": "Update an authorization policy",
         "description": "Updates a specified authorization policy.",
         "operationId": "UpdatePolicy",
@@ -721,7 +751,9 @@
     },
     "/policies": {
       "post": {
-        "tags": ["Authorization"],
+        "tags": [
+          "Authorization"
+        ],
         "summary": "Create an authorization policy",
         "description": "Creates an authorization policy.",
         "operationId": "CreatePolicy",
@@ -775,7 +807,9 @@
     },
     "/bankaccountbalances/{id}": {
       "get": {
-        "tags": ["Bank Accounts"],
+        "tags": [
+          "Bank Accounts"
+        ],
         "summary": "Get a bank account balance",
         "description": "Retrieves a specified bank account balance.",
         "operationId": "GetBankAccountBalanceById",
@@ -829,7 +863,9 @@
     },
     "/bankaccounts/{id}": {
       "get": {
-        "tags": ["Bank Accounts"],
+        "tags": [
+          "Bank Accounts"
+        ],
         "summary": "Get a bank account",
         "description": "Retrieves a specified bank account.",
         "operationId": "GetBankAccountById",
@@ -882,7 +918,9 @@
     },
     "/bankaccounts": {
       "get": {
-        "tags": ["Bank Accounts"],
+        "tags": [
+          "Bank Accounts"
+        ],
         "summary": "Get bank accounts",
         "description": "Returns a list of bank accounts.",
         "operationId": "GetBankAccounts",
@@ -902,7 +940,9 @@
     },
     "/bankaccounts/{bankAccountId}/transactions/{id}": {
       "get": {
-        "tags": ["Bank Accounts"],
+        "tags": [
+          "Bank Accounts"
+        ],
         "summary": "Get a bank account transaction",
         "description": "Retrieves a specified bank account transaction.",
         "operationId": "GetTransactionById",
@@ -963,7 +1003,9 @@
     },
     "/bankaccounts/{bankAccountId}/transactions": {
       "post": {
-        "tags": ["Bank Accounts"],
+        "tags": [
+          "Bank Accounts"
+        ],
         "summary": "Create bank account transaction",
         "description": "Creates a bank account transaction.",
         "operationId": "CreateTransactionForBankAccount",
@@ -1037,7 +1079,9 @@
     },
     "/contacts/{contactId}/relations": {
       "get": {
-        "tags": ["Contacts"],
+        "tags": [
+          "Contacts"
+        ],
         "summary": "Get contact relations",
         "description": "Returns a list of relations for a specified contact if associated with the authenticated client.",
         "operationId": "GetRelations",
@@ -1071,7 +1115,9 @@
         }
       },
       "post": {
-        "tags": ["Contacts"],
+        "tags": [
+          "Contacts"
+        ],
         "summary": "Create a contact relation",
         "description": "Creates a relation for a specified contact.",
         "operationId": "CreateRelation",
@@ -1135,7 +1181,9 @@
     },
     "/contacts/{contactId}/relations/{relatedContactId}": {
       "get": {
-        "tags": ["Contacts"],
+        "tags": [
+          "Contacts"
+        ],
         "summary": "Get a contact relation",
         "description": "Retrieves a relation for a specified contact if associated with the authenticated client.",
         "operationId": "GetRelationById",
@@ -1178,7 +1226,9 @@
         }
       },
       "put": {
-        "tags": ["Contacts"],
+        "tags": [
+          "Contacts"
+        ],
         "summary": "Update a contact relation",
         "description": "Updates a relation for a specified contact.",
         "operationId": "UpdateRelation",
@@ -1252,7 +1302,9 @@
         }
       },
       "delete": {
-        "tags": ["Contacts"],
+        "tags": [
+          "Contacts"
+        ],
         "summary": "Delete a contact relation",
         "description": "Deletes a relation for a specified contact.",
         "operationId": "DeleteRelation",
@@ -1297,7 +1349,9 @@
     },
     "/contacts": {
       "get": {
-        "tags": ["Contacts"],
+        "tags": [
+          "Contacts"
+        ],
         "summary": "Get contacts",
         "description": "Returns a list of contacts.",
         "operationId": "GetContacts",
@@ -1394,7 +1448,9 @@
         }
       },
       "post": {
-        "tags": ["Contacts"],
+        "tags": [
+          "Contacts"
+        ],
         "summary": "Create a contact",
         "description": "Creates a contact.",
         "operationId": "CreateContact",
@@ -1445,7 +1501,9 @@
     },
     "/contacts/{id}": {
       "get": {
-        "tags": ["Contacts"],
+        "tags": [
+          "Contacts"
+        ],
         "summary": "Get a contact",
         "description": "Retrieves a specified contact.",
         "operationId": "GetContactById",
@@ -1480,7 +1538,9 @@
         }
       },
       "put": {
-        "tags": ["Contacts"],
+        "tags": [
+          "Contacts"
+        ],
         "summary": "Update a contact",
         "description": "Updates a specified contact.",
         "operationId": "UpdateContact",
@@ -1546,7 +1606,9 @@
         }
       },
       "delete": {
-        "tags": ["Contacts"],
+        "tags": [
+          "Contacts"
+        ],
         "summary": "Delete a contact",
         "description": "Deletes a specified contact.",
         "operationId": "DeleteContact",
@@ -1583,7 +1645,9 @@
     },
     "/events": {
       "get": {
-        "tags": ["Events"],
+        "tags": [
+          "Events"
+        ],
         "summary": "Get events",
         "description": "Returns a list of events.",
         "operationId": "GetEvents",
@@ -1673,7 +1737,9 @@
         }
       },
       "post": {
-        "tags": ["Events"],
+        "tags": [
+          "Events"
+        ],
         "summary": "Create event",
         "description": "Create new event.",
         "operationId": "CreateEvent",
@@ -1727,7 +1793,9 @@
     },
     "/events/{eventId}": {
       "get": {
-        "tags": ["Events"],
+        "tags": [
+          "Events"
+        ],
         "summary": "Get an event",
         "description": "Retrieves a specified event.",
         "operationId": "GetEventById",
@@ -1762,7 +1830,9 @@
         }
       },
       "put": {
-        "tags": ["Events"],
+        "tags": [
+          "Events"
+        ],
         "summary": "Update event",
         "description": "Updates event details.",
         "operationId": "UpdateEvent",
@@ -1824,7 +1894,9 @@
         }
       },
       "delete": {
-        "tags": ["Events"],
+        "tags": [
+          "Events"
+        ],
         "summary": "Delete event",
         "description": "Deletes a specified event.",
         "operationId": "DeleteEvent",
@@ -1857,7 +1929,9 @@
     },
     "/events/{eventId}/reminders": {
       "get": {
-        "tags": ["Events"],
+        "tags": [
+          "Events"
+        ],
         "summary": "Gets reminders for an event",
         "description": "Returns the collection of reminders for an event",
         "operationId": "GetReminders",
@@ -1894,7 +1968,9 @@
         }
       },
       "post": {
-        "tags": ["Events"],
+        "tags": [
+          "Events"
+        ],
         "summary": "Create reminder for an event",
         "description": "Create new reminder for an event.",
         "operationId": "CreateReminder",
@@ -1961,7 +2037,9 @@
     },
     "/events/{eventId}/reminders/{reminderId}": {
       "put": {
-        "tags": ["Events"],
+        "tags": [
+          "Events"
+        ],
         "summary": "Update a reminder for an event",
         "description": "Updates an existing reminder for an event.",
         "operationId": "UpdateReminder",
@@ -2034,7 +2112,9 @@
         }
       },
       "delete": {
-        "tags": ["Events"],
+        "tags": [
+          "Events"
+        ],
         "summary": "Delete reminder for an event",
         "description": "Deletes a specified event reminder.",
         "operationId": "DeleteReminder",
@@ -2078,7 +2158,9 @@
     },
     "/matters/{matterId}/expenses": {
       "get": {
-        "tags": ["Expenses"],
+        "tags": [
+          "Expenses"
+        ],
         "summary": "Get expenses",
         "description": "Returns a list of expenses.",
         "operationId": "GetExpenses",
@@ -2135,7 +2217,9 @@
         }
       },
       "post": {
-        "tags": ["Expenses"],
+        "tags": [
+          "Expenses"
+        ],
         "summary": "Create an expense on the matter",
         "description": "Creates an expense.",
         "operationId": "CreateExpense",
@@ -2206,7 +2290,9 @@
     },
     "/matters/{matterId}/expenses/{id}": {
       "get": {
-        "tags": ["Expenses"],
+        "tags": [
+          "Expenses"
+        ],
         "summary": "Get a expense",
         "description": "Retrieves a specified expense.",
         "operationId": "GetExpenseById",
@@ -2262,7 +2348,9 @@
         }
       },
       "put": {
-        "tags": ["Expenses"],
+        "tags": [
+          "Expenses"
+        ],
         "summary": "Update an expense on a matter",
         "description": "Updates a specified expense.",
         "operationId": "UpdateExpense",
@@ -2342,7 +2430,9 @@
         }
       },
       "patch": {
-        "tags": ["Expenses"],
+        "tags": [
+          "Expenses"
+        ],
         "summary": "Patch an expense on a matter",
         "description": "Updates a specified expense with patch operations.",
         "operationId": "PatchExpense",
@@ -2417,7 +2507,9 @@
         }
       },
       "delete": {
-        "tags": ["Expenses"],
+        "tags": [
+          "Expenses"
+        ],
         "summary": "Delete an expense",
         "description": "Deletes a specified expense.",
         "operationId": "DeleteExpense",
@@ -2468,7 +2560,9 @@
     },
     "/matters/{matterId}/fees": {
       "get": {
-        "tags": ["Fees"],
+        "tags": [
+          "Fees"
+        ],
         "summary": "Get fees",
         "description": "Returns a list of fees.",
         "operationId": "GetFees",
@@ -2525,7 +2619,9 @@
         }
       },
       "post": {
-        "tags": ["Fees"],
+        "tags": [
+          "Fees"
+        ],
         "summary": "Create a fee",
         "description": "Creates a fee.",
         "operationId": "CreateFee",
@@ -2596,7 +2692,9 @@
     },
     "/matters/{matterId}/fees/{id}": {
       "get": {
-        "tags": ["Fees"],
+        "tags": [
+          "Fees"
+        ],
         "summary": "Get a fee",
         "description": "Retrieves a specified fee.",
         "operationId": "GetFeeById",
@@ -2652,7 +2750,9 @@
         }
       },
       "put": {
-        "tags": ["Fees"],
+        "tags": [
+          "Fees"
+        ],
         "summary": "Update a fee on a matter",
         "description": "Updates a specified fee.",
         "operationId": "UpdateFee",
@@ -2732,7 +2832,9 @@
         }
       },
       "patch": {
-        "tags": ["Fees"],
+        "tags": [
+          "Fees"
+        ],
         "summary": "Patch a fee on a matter",
         "description": "Updates a specified fee.",
         "operationId": "PatchFee",
@@ -2797,7 +2899,9 @@
         }
       },
       "delete": {
-        "tags": ["Fees"],
+        "tags": [
+          "Fees"
+        ],
         "summary": "Delete a fee",
         "description": "Deletes a specified fee.",
         "operationId": "DeleteFee",
@@ -2848,7 +2952,9 @@
     },
     "/matters/{matterId}/documents/files": {
       "get": {
-        "tags": ["Files"],
+        "tags": [
+          "Files"
+        ],
         "summary": "Get files on a matter",
         "description": "Returns a list of files associated with a matter in ascending order of date created, i.e. oldest first.",
         "operationId": "GetFiles",
@@ -2913,7 +3019,9 @@
         }
       },
       "post": {
-        "tags": ["Files"],
+        "tags": [
+          "Files"
+        ],
         "summary": "Add file to a matter",
         "description": "Uploads a new file for the specified matter.",
         "operationId": "AddFile",
@@ -2985,7 +3093,9 @@
     },
     "/matters/{matterId}/documents/files/{fileId}": {
       "get": {
-        "tags": ["Files"],
+        "tags": [
+          "Files"
+        ],
         "summary": "Get a file",
         "description": "Retrieves a specified file.",
         "operationId": "GetFileById",
@@ -3041,7 +3151,9 @@
         }
       },
       "put": {
-        "tags": ["Files"],
+        "tags": [
+          "Files"
+        ],
         "summary": "Upload/update version or metadata of a file",
         "description": "Updates the metadata for a file or uploads a new version of the file",
         "operationId": "UpdateFile",
@@ -3129,7 +3241,9 @@
         }
       },
       "patch": {
-        "tags": ["Files"],
+        "tags": [
+          "Files"
+        ],
         "summary": "Patch version or metadata of a file",
         "description": "Updates the metadata for a file or uploads a new version of the file",
         "operationId": "PatchFile",
@@ -3204,7 +3318,9 @@
         }
       },
       "delete": {
-        "tags": ["Files"],
+        "tags": [
+          "Files"
+        ],
         "summary": "Delete a file",
         "description": "Deletes a specified matter file.",
         "operationId": "DeleteFile",
@@ -3264,7 +3380,9 @@
     },
     "/matters/{matterId}/documents/files/{fileId}/download": {
       "get": {
-        "tags": ["Files"],
+        "tags": [
+          "Files"
+        ],
         "summary": "Get download url for a file",
         "description": "Retrieves download details for a specified matter file.",
         "operationId": "DownloadFile",
@@ -3339,7 +3457,9 @@
     },
     "/matters/{matterId}/documents/files/{fileId}/upload": {
       "get": {
-        "tags": ["Files"],
+        "tags": [
+          "Files"
+        ],
         "summary": "Get upload url for a file",
         "description": "Retrieves upload details for a specified matter file.",
         "operationId": "UploadFile",
@@ -3397,7 +3517,9 @@
     },
     "/matters/{matterId}/documents/files/bulk": {
       "post": {
-        "tags": ["Files"],
+        "tags": [
+          "Files"
+        ],
         "summary": "Add files to a matter",
         "description": "Uploads a batch of files for the specified matter. Used for data migrations.",
         "operationId": "BulkAddFiles",
@@ -3469,7 +3591,9 @@
     },
     "/matters/{matterId}/documents/files/{fileId}/preview": {
       "get": {
-        "tags": ["Files"],
+        "tags": [
+          "Files"
+        ],
         "summary": "Returns info to preview a file",
         "operationId": "GetPreview",
         "parameters": [
@@ -3536,7 +3660,9 @@
         }
       },
       "post": {
-        "tags": ["Files"],
+        "tags": [
+          "Files"
+        ],
         "summary": "Creates a preview request",
         "description": "Creates a preview for the specified file.",
         "operationId": "CreatePreview",
@@ -3604,7 +3730,9 @@
     },
     "/matters/{matterId}/documents/files/{fileId}/preview/{documentVersionId}": {
       "get": {
-        "tags": ["Files"],
+        "tags": [
+          "Files"
+        ],
         "summary": "Returns info to preview a file",
         "operationId": "GetPreviewById",
         "parameters": [
@@ -3682,7 +3810,9 @@
     },
     "/firm": {
       "get": {
-        "tags": ["Firm"],
+        "tags": [
+          "Firm"
+        ],
         "summary": "Get firm",
         "description": "Retrieves the details of the firm associated with the authenticated client.",
         "operationId": "GetFirm",
@@ -3703,7 +3833,9 @@
         }
       },
       "put": {
-        "tags": ["Firm"],
+        "tags": [
+          "Firm"
+        ],
         "summary": "Update firm",
         "description": "Updates firm details for the current authenticated client.",
         "operationId": "UpdateFirm",
@@ -3755,7 +3887,9 @@
         }
       },
       "post": {
-        "tags": ["Firm"],
+        "tags": [
+          "Firm"
+        ],
         "summary": "Create firm",
         "description": "Creates a firm for the current authenticated client and registers an existing user as a staff member and firm owner.",
         "operationId": "CreateFirm",
@@ -3809,7 +3943,9 @@
     },
     "/firmusers": {
       "get": {
-        "tags": ["Firm Users"],
+        "tags": [
+          "Firm Users"
+        ],
         "summary": "Get firm staff/user mappings",
         "description": "Retrieves a list of staff/user mappings in the firm associated with the authenticated client.",
         "operationId": "GetFirmUsers",
@@ -3832,7 +3968,9 @@
     },
     "/firmusers/{id}": {
       "get": {
-        "tags": ["Firm Users"],
+        "tags": [
+          "Firm Users"
+        ],
         "summary": "Get firm staff/user mapping",
         "description": "Retrieves a staff/user mapping (based on staff or user id parameter provided) in the firm associated with the authenticated client.",
         "operationId": "GetFirmUserById",
@@ -3860,7 +3998,9 @@
         }
       },
       "put": {
-        "tags": ["Firm Users"],
+        "tags": [
+          "Firm Users"
+        ],
         "summary": "Update firm staff/user mapping",
         "description": "Updates a staff/user mapping in the firm associated with the authenticated client.",
         "operationId": "UpdateFirmUser",
@@ -3928,7 +4068,9 @@
         }
       },
       "delete": {
-        "tags": ["Firm Users"],
+        "tags": [
+          "Firm Users"
+        ],
         "summary": "Delete firm staff/user mapping",
         "description": "Removes the user from the firm associated with the authenticated client.\r\n\r\nThe staff member is set as a former staff member and a former user. User access is also disabled.",
         "operationId": "DeleteFirmUser",
@@ -3964,7 +4106,9 @@
     },
     "/matters/{matterId}/documents/folders": {
       "get": {
-        "tags": ["Folders"],
+        "tags": [
+          "Folders"
+        ],
         "summary": "Get folders/files under root folder",
         "description": "Returns a list of sub folders and files under the root folder of a matter",
         "operationId": "GetFolders",
@@ -4012,7 +4156,9 @@
         }
       },
       "post": {
-        "tags": ["Folders"],
+        "tags": [
+          "Folders"
+        ],
         "summary": "Create a folder",
         "description": "Creates a new folder under the specified matter.",
         "operationId": "CreateRootFolder",
@@ -4083,7 +4229,9 @@
     },
     "/matters/{matterId}/documents/folders/{folderId}": {
       "get": {
-        "tags": ["Folders"],
+        "tags": [
+          "Folders"
+        ],
         "summary": "Get folders/files under a folder",
         "description": "Returns a list of sub folders and files under a specified folder of a matter",
         "operationId": "GetFolderById",
@@ -4149,7 +4297,9 @@
         }
       },
       "put": {
-        "tags": ["Folders"],
+        "tags": [
+          "Folders"
+        ],
         "summary": "Update a folder",
         "description": "Updates a folder belonging to the specified matter.",
         "operationId": "UpdateFolder",
@@ -4236,7 +4386,9 @@
         }
       },
       "patch": {
-        "tags": ["Folders"],
+        "tags": [
+          "Folders"
+        ],
         "summary": "Patch a folder",
         "description": "Updates a folder belonging to the specified matter.",
         "operationId": "PatchFolder",
@@ -4311,7 +4463,9 @@
         }
       },
       "delete": {
-        "tags": ["Folders"],
+        "tags": [
+          "Folders"
+        ],
         "summary": "Delete a folder",
         "description": "Deletes a folder belonging to the specified matter.",
         "operationId": "DeleteFolder",
@@ -4361,7 +4515,9 @@
     },
     "/matters/{matterId}/invoices": {
       "get": {
-        "tags": ["Invoices"],
+        "tags": [
+          "Invoices"
+        ],
         "summary": "Get invoices",
         "description": "Returns a list of invoices for a specified matter.",
         "operationId": "GetInvoices",
@@ -4421,7 +4577,9 @@
     },
     "/matters/{matterId}/invoices/{invoiceId}/download": {
       "get": {
-        "tags": ["Invoices"],
+        "tags": [
+          "Invoices"
+        ],
         "summary": "Get download url for an invoice",
         "description": "Retrieves download details for a specified invoice.",
         "operationId": "DownloadInvoiceFile",
@@ -4489,7 +4647,9 @@
     },
     "/layouts": {
       "get": {
-        "tags": ["LayoutDesigns"],
+        "tags": [
+          "LayoutDesigns"
+        ],
         "summary": "Get layout designs",
         "description": "Returns a list of layout designs.",
         "operationId": "GetLayoutDesigns",
@@ -4531,7 +4691,9 @@
     },
     "/layouts/{id}": {
       "get": {
-        "tags": ["LayoutDesigns"],
+        "tags": [
+          "LayoutDesigns"
+        ],
         "summary": "Get a layout design",
         "description": "Retrieves a specified layout design.",
         "operationId": "GetLayoutDesignById",
@@ -4572,7 +4734,9 @@
     },
     "/matters/{matterId}/layouts": {
       "get": {
-        "tags": ["LayoutMatterItems"],
+        "tags": [
+          "LayoutMatterItems"
+        ],
         "summary": "Get layouts",
         "description": "Returns a collection of layout items on a specified matter.",
         "operationId": "GetLayoutMatterItems",
@@ -4602,7 +4766,9 @@
         }
       },
       "post": {
-        "tags": ["LayoutMatterItems"],
+        "tags": [
+          "LayoutMatterItems"
+        ],
         "summary": "Add a new layout",
         "description": "Adds a new layout matter item to a matter.",
         "operationId": "AddLayout",
@@ -4709,7 +4875,9 @@
     },
     "/matters/{matterId}/layouts/{itemId}": {
       "get": {
-        "tags": ["LayoutMatterItems"],
+        "tags": [
+          "LayoutMatterItems"
+        ],
         "summary": "Get a layout",
         "description": "Retrieves a layout item on a specified matter.",
         "operationId": "GetLayoutMatterItemById",
@@ -4759,7 +4927,9 @@
         }
       },
       "patch": {
-        "tags": ["LayoutMatterItems"],
+        "tags": [
+          "LayoutMatterItems"
+        ],
         "summary": "Merge a layout",
         "description": "Merges layout data.",
         "operationId": "MergeLayout",
@@ -4874,7 +5044,9 @@
         }
       },
       "delete": {
-        "tags": ["LayoutMatterItems"],
+        "tags": [
+          "LayoutMatterItems"
+        ],
         "summary": "Remove a layout",
         "description": "Removes a layout matter item from a matter.",
         "operationId": "RemoveLayout",
@@ -4952,7 +5124,9 @@
     },
     "/matters/{matterId}/layouts/{itemId}/contacts": {
       "get": {
-        "tags": ["LayoutMatterItems"],
+        "tags": [
+          "LayoutMatterItems"
+        ],
         "summary": "Get layout contacts",
         "description": "Returns a list of contacts on a specified layout.",
         "operationId": "GetLayoutMatterItemContacts",
@@ -5005,7 +5179,9 @@
         }
       },
       "post": {
-        "tags": ["LayoutMatterItems"],
+        "tags": [
+          "LayoutMatterItems"
+        ],
         "summary": "Add a contact to a layout",
         "description": "Adds a new contact on a specified layout.\r\nIf contactData.Key already refers a contact, the current role/relationship will need to be removed manually using\r\n`DELETE /matters/{matterId}/roles/{id}` or `DELETE /matters/{matterId}/roles/{roleId}/relationships/{id}`.",
         "operationId": "AddLayoutMatterItemContact",
@@ -5079,7 +5255,9 @@
     },
     "/matters/{matterId}/billingconfiguration": {
       "get": {
-        "tags": ["Matter Billing Configuration"],
+        "tags": [
+          "Matter Billing Configuration"
+        ],
         "summary": "Get matter billing configuration",
         "description": "Retrieves the specified matters billing configuration.",
         "operationId": "GetBillingConfiguration",
@@ -5117,7 +5295,9 @@
         }
       },
       "put": {
-        "tags": ["Matter Billing Configuration"],
+        "tags": [
+          "Matter Billing Configuration"
+        ],
         "summary": "Update matter billing configuration",
         "description": "Retrieves the specified matters billing configuration.",
         "operationId": "UpdateBillingConfiguration",
@@ -5194,7 +5374,9 @@
     },
     "/matters/{matterId}/items": {
       "get": {
-        "tags": ["Matter Items"],
+        "tags": [
+          "Matter Items"
+        ],
         "summary": "Get items on a matter",
         "description": "Returns a list of items on a specified matter.",
         "operationId": "GetMatterItems",
@@ -5234,7 +5416,9 @@
     },
     "/matters/{matterId}/items/{id}": {
       "get": {
-        "tags": ["Matter Items"],
+        "tags": [
+          "Matter Items"
+        ],
         "summary": "Get an item on a matter",
         "description": "Returns an item on a specified matter.",
         "operationId": "GetMatterItem",
@@ -5282,7 +5466,9 @@
     },
     "/mattertypes": {
       "get": {
-        "tags": ["Matter Types"],
+        "tags": [
+          "Matter Types"
+        ],
         "summary": "Get matter types",
         "description": "Returns a paginated list of matter types based on search criteria. Deleted matter types are not included.\r\n\r\nNote: If no `Location` is provided, all matter types from all locations will be returned.",
         "operationId": "GetMatterTypes",
@@ -5362,7 +5548,9 @@
     },
     "/mattertypes/{id}": {
       "get": {
-        "tags": ["Matter Types"],
+        "tags": [
+          "Matter Types"
+        ],
         "summary": "Get a matter type",
         "description": "Retrieves a specified matter type.",
         "operationId": "GetMatterTypeById",
@@ -5402,7 +5590,9 @@
     },
     "/mattertypes/categories": {
       "get": {
-        "tags": ["Matter Types"],
+        "tags": [
+          "Matter Types"
+        ],
         "summary": "Get matter types categories",
         "description": "Returns a list of all the possible matter type categories.",
         "operationId": "GetCategories",
@@ -5422,7 +5612,9 @@
     },
     "/matters": {
       "get": {
-        "tags": ["Matters"],
+        "tags": [
+          "Matters"
+        ],
         "summary": "Get matters",
         "description": "Returns a list of matters.",
         "operationId": "GetMatters",
@@ -5551,7 +5743,9 @@
         }
       },
       "post": {
-        "tags": ["Matters"],
+        "tags": [
+          "Matters"
+        ],
         "summary": "Create a matter",
         "description": "Creates a new matter.\r\n            \r\nNote: This endpoint can also be used to create a `Lead`.\r\n\r\nWhen creating a `Lead` you MUST remember to set a valid lead specific `matterTypeId` field (see field description below for more details) and set the `isLead` field to true.\r\n\r\nThe `clientRole` and `otherSideRole` are optional and cannot be identical. They will be set to the default role(s) for the specified matter type - if not provided.",
         "operationId": "CreateMatter",
@@ -5612,7 +5806,9 @@
     },
     "/matters/{matterId}": {
       "get": {
-        "tags": ["Matters"],
+        "tags": [
+          "Matters"
+        ],
         "summary": "Get a matter",
         "description": "Retrieves a specified matter.",
         "operationId": "GetMatterById",
@@ -5647,7 +5843,9 @@
         }
       },
       "put": {
-        "tags": ["Matters"],
+        "tags": [
+          "Matters"
+        ],
         "summary": "Update a matter",
         "description": "Updates a specified matter.\r\n            \r\nThe following actions are currently not supported:\r\n            \r\n- `matterTypeId` cannot be modified, unless converting a lead to a matter\r\n            \r\n- `clientIds` cannot be modified\r\n            \r\n- `otherSideIds` cannot be modified\r\n\r\n-  `Matter` cannot be converted back to `Lead`",
         "operationId": "UpdateMatter",
@@ -5723,7 +5921,9 @@
         }
       },
       "patch": {
-        "tags": ["Matters"],
+        "tags": [
+          "Matters"
+        ],
         "summary": "Patch a matter (beta)",
         "description": "Patches a specified matter.\r\n            \r\nNote: This endpoint can also be used to update a `Lead` and to convert `Lead` to `Matter`.\r\n            \r\nSee `Matters` documentation for more details on how to use this.\r\n\r\nThe following actions are not supported:\r\n\r\n- `items` cannot be updated where either `clientIds` and/or `otherSideIds` are being updated\r\n            \r\n- `items` cannot be updated when converting a `Lead` to `Matter`\r\n            \r\n- `matterTypeId` and `clientRole` cannot be updated, unless converting a `Lead` to `Matter`\r\n            \r\n- `Matter` cannot be converted back to `Lead`",
         "operationId": "PatchMatter",
@@ -5787,7 +5987,9 @@
         }
       },
       "delete": {
-        "tags": ["Matters"],
+        "tags": [
+          "Matters"
+        ],
         "summary": "Delete a matter",
         "description": "Deletes a specified matter.",
         "operationId": "DeleteMatter",
@@ -5834,7 +6036,9 @@
     },
     "/matters/{matterId}/memos": {
       "get": {
-        "tags": ["Memos"],
+        "tags": [
+          "Memos"
+        ],
         "summary": "Get memos on a matter",
         "description": "Returns a list of memos on the specified matter.",
         "operationId": "GetMemos",
@@ -5882,7 +6086,9 @@
         }
       },
       "post": {
-        "tags": ["Memos"],
+        "tags": [
+          "Memos"
+        ],
         "summary": "Create a memo on a matter",
         "description": "Creates a memo on the specified matter.",
         "operationId": "CreateMemo",
@@ -5946,7 +6152,9 @@
     },
     "/matters/{matterId}/memos/{id}": {
       "get": {
-        "tags": ["Memos"],
+        "tags": [
+          "Memos"
+        ],
         "summary": "Get a memo",
         "description": "Retrieves a specified memo.",
         "operationId": "GetMemoById",
@@ -5985,7 +6193,9 @@
         }
       },
       "put": {
-        "tags": ["Memos"],
+        "tags": [
+          "Memos"
+        ],
         "summary": "Update a memo",
         "description": "Updates a specified memo.",
         "operationId": "UpdateMemo",
@@ -6058,7 +6268,9 @@
         }
       },
       "delete": {
-        "tags": ["Memos"],
+        "tags": [
+          "Memos"
+        ],
         "summary": "Delete a memo",
         "description": "Deletes a specified memo.",
         "operationId": "DeleteMemo",
@@ -6102,7 +6314,9 @@
     },
     "/plugins/{pluginId}": {
       "get": {
-        "tags": ["Plugins"],
+        "tags": [
+          "Plugins"
+        ],
         "summary": "Get a plugin",
         "description": "Returns the plugin.",
         "operationId": "GetPlugin",
@@ -6141,7 +6355,9 @@
         }
       },
       "put": {
-        "tags": ["Plugins"],
+        "tags": [
+          "Plugins"
+        ],
         "summary": "Update existing plugin",
         "description": "Updates a plugin with the specified plugin details.",
         "operationId": "UpdatePluginAsync",
@@ -6231,7 +6447,9 @@
         }
       },
       "delete": {
-        "tags": ["Plugins"],
+        "tags": [
+          "Plugins"
+        ],
         "summary": "Delete existing plugin",
         "description": "Deletes an existing plugin by id.",
         "operationId": "DeletePluginAsync",
@@ -6292,7 +6510,9 @@
     },
     "/plugins": {
       "get": {
-        "tags": ["Plugins"],
+        "tags": [
+          "Plugins"
+        ],
         "summary": "Get plugins",
         "description": "Returns existing plugins.",
         "operationId": "GetPlugins",
@@ -6332,7 +6552,9 @@
         }
       },
       "post": {
-        "tags": ["Plugins"],
+        "tags": [
+          "Plugins"
+        ],
         "summary": "Create a new plugin",
         "description": "Creates a new plugin with the specified plugin details.",
         "operationId": "CreatePluginAsync",
@@ -6413,7 +6635,9 @@
     },
     "/plugins/{pluginId}/subscriptions/{id}": {
       "get": {
-        "tags": ["Plugins"],
+        "tags": [
+          "Plugins"
+        ],
         "summary": "Get a plugin subscription",
         "description": "Returns the plugin subscription.",
         "operationId": "GetPluginSubscription",
@@ -6481,7 +6705,9 @@
         }
       },
       "delete": {
-        "tags": ["Plugins"],
+        "tags": [
+          "Plugins"
+        ],
         "summary": "Unsubscribes account from plugin",
         "description": "Unsubscribes an account from the specified plugin.",
         "operationId": "DeletePluginSubscriptionAsync",
@@ -6551,7 +6777,9 @@
     },
     "/plugins/{pluginId}/subscriptions": {
       "get": {
-        "tags": ["Plugins"],
+        "tags": [
+          "Plugins"
+        ],
         "summary": "Get plugin subscriptions",
         "description": "Returns plugin subscriptions for the account.",
         "operationId": "GetPluginSubscriptions",
@@ -6630,7 +6858,9 @@
         }
       },
       "post": {
-        "tags": ["Plugins"],
+        "tags": [
+          "Plugins"
+        ],
         "summary": "Subscribe account to plugin",
         "description": "Subscribes an account with the specified plugin.",
         "operationId": "CreatePluginSubscriptionAsync",
@@ -6691,7 +6921,9 @@
     },
     "/referraltypes": {
       "get": {
-        "tags": ["Referral Types"],
+        "tags": [
+          "Referral Types"
+        ],
         "summary": "Get referral types",
         "description": "Returns referral types, including custom referral types.",
         "operationId": "GetReferralTypes",
@@ -6721,7 +6953,9 @@
     },
     "/referraltypes/{id}": {
       "get": {
-        "tags": ["Referral Types"],
+        "tags": [
+          "Referral Types"
+        ],
         "summary": "Get a referral type",
         "description": "Retrieves a specified referral type.",
         "operationId": "GetReferralTypeByIdOrName",
@@ -6754,7 +6988,9 @@
     },
     "/matters/{matterId}/roles/{roleId}/relationships": {
       "get": {
-        "tags": ["Relationships"],
+        "tags": [
+          "Relationships"
+        ],
         "summary": "Get relationships on a matter",
         "description": "Returns associated relationships for a specified matter and role group.",
         "operationId": "GetRelationshipsOnRole",
@@ -6802,7 +7038,9 @@
         }
       },
       "post": {
-        "tags": ["Relationships"],
+        "tags": [
+          "Relationships"
+        ],
         "summary": "Add relationship to a role",
         "description": "Appends a new relationship with an existing role in the specified matter.",
         "operationId": "AddAnotherRelationshipToRole",
@@ -6901,7 +7139,9 @@
     },
     "/matters/{matterId}/roles/{roleId}/relationships/{id}": {
       "get": {
-        "tags": ["Relationships"],
+        "tags": [
+          "Relationships"
+        ],
         "summary": "Get relationship on a role",
         "description": "Returns a relationship with a specified role in a matter.",
         "operationId": "GetRelationshipOnRole",
@@ -6958,7 +7198,9 @@
         }
       },
       "put": {
-        "tags": ["Relationships"],
+        "tags": [
+          "Relationships"
+        ],
         "summary": "Update a relationship",
         "description": "Updates a specified relationship on a matter.",
         "operationId": "UpdateRelationship",
@@ -7046,7 +7288,9 @@
         }
       },
       "delete": {
-        "tags": ["Relationships"],
+        "tags": [
+          "Relationships"
+        ],
         "summary": "Remove relationship from a role in a matter.",
         "operationId": "RemoveRelationshipFromRole",
         "parameters": [
@@ -7112,7 +7356,9 @@
     },
     "/matters/{matterId}/roles": {
       "get": {
-        "tags": ["Roles"],
+        "tags": [
+          "Roles"
+        ],
         "summary": "Get roles on a matter",
         "description": "Returns associated roles for a specified matter.",
         "operationId": "GetRolesOnMatter",
@@ -7151,7 +7397,9 @@
         }
       },
       "post": {
-        "tags": ["Roles"],
+        "tags": [
+          "Roles"
+        ],
         "summary": "Add role to a matter",
         "description": "Appends a new role in the specified matter.",
         "operationId": "AddAnotherRoleToMatter",
@@ -7241,7 +7489,9 @@
     },
     "/matters/{matterId}/roles/{id}": {
       "get": {
-        "tags": ["Roles"],
+        "tags": [
+          "Roles"
+        ],
         "summary": "Get role on a matter",
         "description": "Returns a role in a specified matter.",
         "operationId": "GetRoleOnMatter",
@@ -7289,7 +7539,9 @@
         }
       },
       "put": {
-        "tags": ["Roles"],
+        "tags": [
+          "Roles"
+        ],
         "summary": "Update role on a matter",
         "description": "Updates a specified role on a matter.",
         "operationId": "UpdateRole",
@@ -7368,7 +7620,9 @@
         }
       },
       "delete": {
-        "tags": ["Roles"],
+        "tags": [
+          "Roles"
+        ],
         "summary": "Remove role from a matter",
         "description": "Removes a specified role from a matter.",
         "operationId": "RemoveRoleFromMatter",
@@ -7426,7 +7680,9 @@
     },
     "/staff": {
       "get": {
-        "tags": ["Staff"],
+        "tags": [
+          "Staff"
+        ],
         "summary": "Search firm staff members",
         "description": "Retrieves a paginated list of staff members (filtered based on search parameters provided) in the firm associated with the authenticated client.",
         "operationId": "GetStaff",
@@ -7465,7 +7721,9 @@
         }
       },
       "post": {
-        "tags": ["Staff"],
+        "tags": [
+          "Staff"
+        ],
         "summary": "Create firm staff member",
         "description": "Creates a staff member in the firm associated with the authenticated client.",
         "operationId": "CreateStaff",
@@ -7519,7 +7777,9 @@
     },
     "/staff/{id}": {
       "get": {
-        "tags": ["Staff"],
+        "tags": [
+          "Staff"
+        ],
         "summary": "Get firm staff member",
         "description": "Retrieves a staff member (based on staff id parameter provided) in the firm associated with the authenticated client.",
         "operationId": "GetStaffById",
@@ -7553,7 +7813,9 @@
         }
       },
       "put": {
-        "tags": ["Staff"],
+        "tags": [
+          "Staff"
+        ],
         "summary": "Update firm staff member",
         "description": "Updates a staff member in the firm associated with the authenticated client.",
         "operationId": "UpdateStaff",
@@ -7615,7 +7877,9 @@
         }
       },
       "delete": {
-        "tags": ["Staff"],
+        "tags": [
+          "Staff"
+        ],
         "summary": "Deletes a firm staff member",
         "description": "Sets the staff member from the firm associated with the authenticated client as a former staff member.\r\n\r\nThe staff member is set as a former staff member and if they are a user, becomes a former user. User access is also disabled.",
         "operationId": "DeleteStaff",
@@ -7648,7 +7912,9 @@
     },
     "/stages": {
       "get": {
-        "tags": ["Stages"],
+        "tags": [
+          "Stages"
+        ],
         "summary": "Get stage to matter mappings in the firm",
         "description": "Returns a list of stage to matter mappings in the firm.",
         "operationId": "GetMatterStages",
@@ -7708,7 +7974,9 @@
     },
     "/matters/{matterId}/stages": {
       "get": {
-        "tags": ["Stages"],
+        "tags": [
+          "Stages"
+        ],
         "summary": "Get a matter stage information",
         "description": "Returns the specified matters stage information.",
         "operationId": "GetStagesOnMatter",
@@ -7759,7 +8027,9 @@
     },
     "/stagesets": {
       "get": {
-        "tags": ["Stages"],
+        "tags": [
+          "Stages"
+        ],
         "summary": "Get stage sets for the firm",
         "description": "Returns a list of stage sets for the firm.",
         "operationId": "GetStageSets",
@@ -7819,7 +8089,9 @@
     },
     "/stagesets/{id}": {
       "get": {
-        "tags": ["Stages"],
+        "tags": [
+          "Stages"
+        ],
         "summary": "Get a stage set",
         "description": "Returns the specified stage set.",
         "operationId": "GetStageSetById",
@@ -7869,7 +8141,9 @@
     },
     "/stagesets/{stageSetId}/stages/{id}": {
       "get": {
-        "tags": ["Stages"],
+        "tags": [
+          "Stages"
+        ],
         "summary": "Get a stage on a stage set",
         "description": "Return the specified stage on the stage set.",
         "operationId": "GetStageOnStageSet",
@@ -7922,7 +8196,9 @@
     },
     "/subscriptions/{subscriptionId}/paymentmethods": {
       "get": {
-        "tags": ["Subscription Payments"],
+        "tags": [
+          "Subscription Payments"
+        ],
         "summary": "Get payment methods",
         "description": "Returns all payment methods associated with a subscriptions customer sorted by the most recently added payment methods first.",
         "operationId": "GetPaymentMethodsAsync",
@@ -7995,7 +8271,9 @@
         }
       },
       "post": {
-        "tags": ["Subscription Payments"],
+        "tags": [
+          "Subscription Payments"
+        ],
         "summary": "Add payment method",
         "description": "Adds a new payment method to a subscription.\r\n\r\nImportant notes:\r\n* First payment method added becomes default automatically\r\n* Can optionally set as default payment method\r\n* Can force immediate charge for overdue invoices\r\n* Payment information format depends on payment system",
         "operationId": "AddPaymentMethodAsync",
@@ -8089,7 +8367,9 @@
     },
     "/subscriptions/{subscriptionId}/paymentmethods/{id}": {
       "get": {
-        "tags": ["Subscription Payments"],
+        "tags": [
+          "Subscription Payments"
+        ],
         "summary": "Get payment method",
         "description": "Returns a specific payment method associated with a subscription.",
         "operationId": "GetPaymentMethodAsync",
@@ -8149,7 +8429,9 @@
         }
       },
       "delete": {
-        "tags": ["Subscription Payments"],
+        "tags": [
+          "Subscription Payments"
+        ],
         "summary": "Remove payment method",
         "description": "Removes a payment method from a subscription.\r\n\r\nImportant notes:\r\n* Can optionally specify a new default payment method\r\n* Removing default without replacement may cause subscription to go OVERDUE",
         "operationId": "RemovePaymentMethodAsync",
@@ -8236,7 +8518,9 @@
     },
     "/subscriptions/paymentsystems": {
       "get": {
-        "tags": ["Subscription Payments"],
+        "tags": [
+          "Subscription Payments"
+        ],
         "summary": "Get supported payment systems",
         "description": "Returns all supported payment systems and their supported payment method types.\r\nCurrently supports:\r\n* STRIPE with CREDIT_CARD payment type",
         "operationId": "GetSupportedPaymentSystemsAsync",
@@ -8269,7 +8553,9 @@
     },
     "/subscriptions/{subscriptionId}/paymentmethods/{id}/default": {
       "put": {
-        "tags": ["Subscription Payments"],
+        "tags": [
+          "Subscription Payments"
+        ],
         "summary": "Set default payment method",
         "description": "Sets a payment method as the default for a subscription.\r\n\r\nImportant notes:\r\n* Replaces any existing default payment method\r\n* No-op if payment method is already default",
         "operationId": "SetDefaultPaymentMethodAsync",
@@ -8324,7 +8610,9 @@
     },
     "/subscriptions/promotions": {
       "get": {
-        "tags": ["Subscription Promotions"],
+        "tags": [
+          "Subscription Promotions"
+        ],
         "summary": "Get all promotions",
         "description": "Returns all available promotions with their eligibility criteria and benefits.",
         "operationId": "GetPromotions",
@@ -8379,7 +8667,9 @@
     },
     "/subscriptions/promotions/{id}": {
       "get": {
-        "tags": ["Subscription Promotions"],
+        "tags": [
+          "Subscription Promotions"
+        ],
         "summary": "Get promotion",
         "description": "Retrieves detailed information for a specific promotion.",
         "operationId": "GetPromotion",
@@ -8420,7 +8710,9 @@
     },
     "/subscriptions/{subscriptionId}/promotions/{id}": {
       "post": {
-        "tags": ["Subscription Promotions"],
+        "tags": [
+          "Subscription Promotions"
+        ],
         "summary": "Apply promotion to subscription",
         "description": "Applies a promotion to a subscription.\r\n\r\nImportant considerations:\r\n* Some promotions may have redemption limits per subscription\r\n* Some promotions may have duration limits\r\n* Signup promotions cannot be applied to an existing subscription\r\n* Trial promotions are tied to a single tier or add-on",
         "operationId": "ApplyPromotionAsync",
@@ -8490,7 +8782,9 @@
         }
       },
       "delete": {
-        "tags": ["Subscription Promotions"],
+        "tags": [
+          "Subscription Promotions"
+        ],
         "summary": "Remove promotion from subscription",
         "description": "Removes a promotion from a subscription.",
         "operationId": "RemovePromotionAsync",
@@ -8545,7 +8839,9 @@
     },
     "/subscriptions/addons": {
       "get": {
-        "tags": ["Subscriptions"],
+        "tags": [
+          "Subscriptions"
+        ],
         "summary": "Get all add-ons",
         "description": "Returns a list of all available add-ons with their features and pricing.\r\n\r\nUse this endpoint to display the complete catalog of available add-ons.",
         "responses": {
@@ -8577,7 +8873,9 @@
     },
     "/subscriptions/addons/{id}": {
       "get": {
-        "tags": ["Subscriptions"],
+        "tags": [
+          "Subscriptions"
+        ],
         "summary": "Get an add-on",
         "description": "Returns the specified product add-on with its features and pricing.\r\n\r\nUse this endpoint to retreive add-on information when only an id is available.",
         "operationId": "GetAddOnAsync",
@@ -8618,7 +8916,9 @@
     },
     "/subscriptions/{subscriptionId}/addons/{id}": {
       "post": {
-        "tags": ["Subscriptions"],
+        "tags": [
+          "Subscriptions"
+        ],
         "summary": "Add add-on",
         "description": "Adds a specific add-on to a subscription.\r\n\r\nImportant considerations:\r\n* Add-ons must be compatible with the subscription's current tier\r\n* Billing will be prorated for the remaining period",
         "parameters": [
@@ -8683,7 +8983,9 @@
         }
       },
       "delete": {
-        "tags": ["Subscriptions"],
+        "tags": [
+          "Subscriptions"
+        ],
         "summary": "Remove add-on",
         "description": "Removes a specific add-on from a subscription.\r\n\r\nImportant considerations:\r\n* Removal takes effect immediately\r\n* Usage limits will be adjusted\r\n* Billing will be prorated\r\n* Dependent add-ons may also be removed",
         "parameters": [
@@ -8740,7 +9042,9 @@
     },
     "/subscriptions": {
       "get": {
-        "tags": ["Subscriptions"],
+        "tags": [
+          "Subscriptions"
+        ],
         "summary": "Get subscriptions",
         "description": "Returns a list of all available subscriptions with their current status and details.\r\n\r\nThe response includes:\r\n* Subscription IDs\r\n* Current tier\r\n* Active add-ons\r\n* Subscription status",
         "operationId": "GetSubscriptions",
@@ -8773,7 +9077,9 @@
     },
     "/subscriptions/{id}": {
       "get": {
-        "tags": ["Subscriptions"],
+        "tags": [
+          "Subscriptions"
+        ],
         "summary": "Get subscription",
         "description": "Retrieves detailed information for a specific subscription.\r\n\r\nThe response includes:\r\n* Current tier\r\n* Active add-ons\r\n* Subscription status",
         "operationId": "GetSubscription",
@@ -8823,7 +9129,9 @@
         }
       },
       "patch": {
-        "tags": ["Subscriptions"],
+        "tags": [
+          "Subscriptions"
+        ],
         "summary": "Update subscription",
         "description": "Updates a subscriptions tiers, add-ons, or interval.\r\n\r\nImportant considerations:\r\n* Updates cannot be made to canceled subscriptions\r\n* Tier changes take effect immediately\r\n* Billing will be prorated for the remaining period\r\n* Existing add-ons may need to be re-validated\r\n* Some features may be disabled if not available in new tier",
         "operationId": "UpdateSubscriptionAsync",
@@ -8913,7 +9221,9 @@
     },
     "/subscriptions/{id}/invoices": {
       "get": {
-        "tags": ["Subscriptions"],
+        "tags": [
+          "Subscriptions"
+        ],
         "summary": "Get subscription invoices",
         "description": "Retrieves invoices for the specified subscription. \r\n\r\nInvoices are returned sorted by creation date with the most recent invoices appearing first.",
         "operationId": "GetSubscriptionInvoicesAsync",
@@ -8974,7 +9284,9 @@
     },
     "/subscriptions/{id}/promotions": {
       "get": {
-        "tags": ["Subscriptions"],
+        "tags": [
+          "Subscriptions"
+        ],
         "summary": "Get subscription promotions",
         "description": "Retrieves promotions available for the specified subscription.",
         "operationId": "GetSubscriptionPromotions",
@@ -9049,7 +9361,9 @@
     },
     "/subscriptions/{id}/changes": {
       "get": {
-        "tags": ["Subscriptions"],
+        "tags": [
+          "Subscriptions"
+        ],
         "summary": "Get subscription changes",
         "description": "Returns a log of changes made to the subscription through the API.",
         "operationId": "GetSubscriptionChangesAsync",
@@ -9113,7 +9427,9 @@
     },
     "/subscriptions/{id}/cancel": {
       "patch": {
-        "tags": ["Subscriptions"],
+        "tags": [
+          "Subscriptions"
+        ],
         "summary": "Cancel subscription",
         "description": "Cancels a subscription using the supplied cancellation request.\r\n\r\nSupported cancellation types:\r\n* PeriodEnd - Cancel subscription at the end of the billing cycle\r\n* Immediate - Cancel subscription immediately\r\n* Date - Cancel at specified 'CancelAt' date\r\n\r\nIf not supplied, PeriodEnd is used and the subscription is cancelled at the end of the billing cycle.\r\n\r\nImportant considerations:\r\n* If the subscription is trialing a tier, the tier is reverted to the previous tier at the end of the trials duration. This is only supported with PeriodEnd CancellationType.\r\n* If the subscription is trialing an add-on, the add-on is removed at the end of the trials duration. This is only supported with PeriodEnd CancellationType.",
         "operationId": "CancelSubscriptionAsync",
@@ -9199,7 +9515,9 @@
     },
     "/subscriptions/{id}/resume": {
       "patch": {
-        "tags": ["Subscriptions"],
+        "tags": [
+          "Subscriptions"
+        ],
         "summary": "Resume subscription",
         "description": "Resumes a subscription that is pending cancellation or is already canceled.\r\n\r\nIf the subscription is in a CANCELED state:\r\n * An immediate charge for the subscription amount will be trigered.\r\n * If the charge is unsuccessful, the subscription will be moved to PASTDUE status until a charge is successful.\r\n * If all charge retry attempts fail, the subscription will be become CANCELED once again.\r\nIf the subscription is in the PENDING cancellation state:\r\n * The existing billing cycle will remain in place",
         "operationId": "ResumeSubscriptionAsync",
@@ -9288,7 +9606,9 @@
     },
     "/subscriptions/tiers": {
       "get": {
-        "tags": ["Subscriptions"],
+        "tags": [
+          "Subscriptions"
+        ],
         "summary": "Get all tiers",
         "description": "Returns a list of all available product tiers with their features and pricing.\r\n\r\nUse this endpoint to:\r\n* Display available tiers to customers\r\n* Show pricing information",
         "responses": {
@@ -9320,7 +9640,9 @@
     },
     "/subscriptions/tiers/{id}": {
       "get": {
-        "tags": ["Subscriptions"],
+        "tags": [
+          "Subscriptions"
+        ],
         "summary": "Get a tier",
         "description": "Returns the specified product tier with its features and pricing.\r\n\r\nUse this endpoint to retreive tier information when only an id is available.",
         "operationId": "GetTierAsync",
@@ -9364,7 +9686,9 @@
     },
     "/subscriptions/tiers/{id}/addons": {
       "get": {
-        "tags": ["Subscriptions"],
+        "tags": [
+          "Subscriptions"
+        ],
         "summary": "Get tier add-ons",
         "description": "Lists all available add-ons for a specific product tier.\r\n\r\nThe response includes:\r\n* Add-on details and pricing\r\n* Compatibility information\r\n* Usage limits\r\n* Dependencies or prerequisites\r\n\r\nUse this endpoint to show customers which add-ons are available for their tier.",
         "parameters": [
@@ -9418,7 +9742,9 @@
     },
     "/subscriptions/{subscriptionId}/tiers/{id}": {
       "patch": {
-        "tags": ["Subscriptions"],
+        "tags": [
+          "Subscriptions"
+        ],
         "summary": "Switch product tier",
         "description": "Changes a subscription's product tier to the specified tier.\r\n\r\nImportant considerations:\r\n* Tier changes take effect immediately\r\n* Billing will be prorated for the remaining period\r\n* Existing add-ons may need to be re-validated\r\n* Some features may be disabled if not available in new tier",
         "parameters": [
@@ -9506,7 +9832,9 @@
     },
     "/tasks/{taskId}/subtasks/{id}": {
       "get": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "summary": "Get a subtask",
         "description": "Retrieves a specified subtask.",
         "operationId": "GetSubTaskById",
@@ -9550,7 +9878,9 @@
         }
       },
       "put": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "summary": "Update a subtask",
         "description": "Updates a specified subtask of a specified task.",
         "operationId": "UpdateSubTask",
@@ -9622,7 +9952,9 @@
         }
       },
       "delete": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "summary": "Delete a subtask",
         "description": "Deletes a specified subtask of a specified task.",
         "operationId": "DeleteSubTask",
@@ -9662,7 +9994,9 @@
     },
     "/tasks/{taskId}/subtasks": {
       "get": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "summary": "Get subtasks",
         "description": "Returns a list of subtasks for a specified task if associated with the authenticated client.",
         "operationId": "GetSubTasks",
@@ -9697,7 +10031,9 @@
         }
       },
       "post": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "summary": "Create a subtask",
         "description": "Creates a subtask for a specified task.",
         "operationId": "CreateSubTask",
@@ -9762,7 +10098,9 @@
     },
     "/tasks/{taskId}/documents": {
       "get": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "summary": "Get task documents",
         "description": "Returns a list of document links for the specified task, if associated with the authenticated client.",
         "operationId": "GetTaskDocuments",
@@ -9797,7 +10135,9 @@
         }
       },
       "post": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "summary": "Create a task document",
         "description": "Links the specified document to the specified task.",
         "operationId": "CreateTaskDocument",
@@ -9868,7 +10208,9 @@
     },
     "/tasks/{taskId}/documents/{id}": {
       "get": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "summary": "Get a task document",
         "description": "Retrieves the specified task document for the specified task.",
         "operationId": "GetTaskDocumentById",
@@ -9912,7 +10254,9 @@
         }
       },
       "delete": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "summary": "Delete a task document",
         "description": "Unlinks the specified document from the specified task.",
         "operationId": "DeleteTaskDocument",
@@ -9958,7 +10302,9 @@
     },
     "/tasks/{id}": {
       "get": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "summary": "Get a task",
         "description": "Retrieves a specified task.",
         "operationId": "GetTaskById",
@@ -10010,7 +10356,9 @@
         }
       },
       "put": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "summary": "Update a task",
         "description": "Updates a specified task.",
         "operationId": "UpdateTask",
@@ -10093,7 +10441,9 @@
         }
       },
       "delete": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "summary": "Delete a task",
         "description": "Deletes a specified task.",
         "operationId": "DeleteTask",
@@ -10134,7 +10484,9 @@
     },
     "/tasks": {
       "get": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "summary": "Get tasks",
         "description": "Returns a list of tasks.",
         "operationId": "GetTasks",
@@ -10216,7 +10568,9 @@
         }
       },
       "post": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "summary": "Create a task",
         "description": "Creates a task.",
         "operationId": "CreateTask",
@@ -10277,7 +10631,9 @@
     },
     "/users/{id}": {
       "get": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "summary": "Get a user",
         "description": "Retrieves a specified user. Only accessible using client credentials grant.",
         "operationId": "GetUserByIdAsync",
@@ -10336,7 +10692,9 @@
         }
       },
       "delete": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "summary": "Remove a user",
         "description": "Removes a user. Only accessible using client credentials grant.\r\n            \r\nUser must belong to the specified account.",
         "operationId": "DeleteUserAsync",
@@ -10383,7 +10741,9 @@
     },
     "/users": {
       "post": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "summary": "Create a user",
         "description": "Creates a user. Only accessible using client credentials grant.\r\n            \r\nSends an email with a generated password if the password is missing.",
         "operationId": "CreateUserAsync",
@@ -10450,7 +10810,9 @@
     },
     "/users/{id}/invite": {
       "post": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "summary": "Resend a user invitation",
         "description": "Resends an invitation email with a temporary password for the specified user.\r\nOnly accessible using client credentials grant.\r\n\r\nThe user must exist and belong to the specified account.",
         "operationId": "InviteUserAsync",
@@ -10497,7 +10859,9 @@
     },
     "/webhooks/types": {
       "get": {
-        "tags": ["Webhooks"],
+        "tags": [
+          "Webhooks"
+        ],
         "summary": "Get event types",
         "description": "Returns the available event types.",
         "operationId": "GetEventTypes",
@@ -10527,7 +10891,9 @@
     },
     "/webhooks": {
       "get": {
-        "tags": ["Webhooks"],
+        "tags": [
+          "Webhooks"
+        ],
         "summary": "Get webhook subscriptions",
         "description": "Returns existing webhook subscriptions.",
         "operationId": "GetSubscriptions",
@@ -10570,7 +10936,9 @@
         }
       },
       "post": {
-        "tags": ["Webhooks"],
+        "tags": [
+          "Webhooks"
+        ],
         "summary": "Create new webhook subscription",
         "description": "Creates a new webhook subscription with the specified subscription details.",
         "operationId": "CreateSubscription",
@@ -10631,7 +10999,9 @@
     },
     "/webhooks/{id}": {
       "get": {
-        "tags": ["Webhooks"],
+        "tags": [
+          "Webhooks"
+        ],
         "summary": "Get a webhook subscription",
         "description": "Returns the webhook subscription.",
         "operationId": "GetSubscription",
@@ -10669,7 +11039,9 @@
         }
       },
       "put": {
-        "tags": ["Webhooks"],
+        "tags": [
+          "Webhooks"
+        ],
         "summary": "Update a webhook subscription",
         "description": "Updates a webhook subscription with the specified subscription details.",
         "operationId": "UpdateSubscription",
@@ -10751,7 +11123,9 @@
         }
       },
       "delete": {
-        "tags": ["Webhooks"],
+        "tags": [
+          "Webhooks"
+        ],
         "summary": "Deletes a webhook subscription",
         "description": "Deletes and unsubscribes from the specified webhook subscription.",
         "operationId": "DeleteSubscription",
@@ -10784,7 +11158,9 @@
     },
     "/webhooks/{id}/notify": {
       "post": {
-        "tags": ["Webhooks"],
+        "tags": [
+          "Webhooks"
+        ],
         "summary": "Notify a webhook subscription",
         "description": "Notifies a webhook subscription with a 'noop' event type.\r\n            \r\nUsed for testing purposes.",
         "operationId": "Notify",
@@ -10819,7 +11195,12 @@
   "components": {
     "schemas": {
       "AccountTypes": {
-        "enum": [0, 1, 2, 3],
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
         "type": "integer",
         "format": "int32"
       },
@@ -11498,13 +11879,21 @@
         "additionalProperties": false
       },
       "ActivityRateType": {
-        "enum": [0, 1, 2],
+        "enum": [
+          0,
+          1,
+          2
+        ],
         "type": "integer",
         "description": "The activity rate type.\r\n\r\nPossible values: UseDefaultStaffRate = '0', OverrideRateForAllStaff = '1', OverrideRatePerStaff = '2'",
         "format": "int32"
       },
       "EntryType": {
-        "enum": [0, 1, 2],
+        "enum": [
+          0,
+          1,
+          2
+        ],
         "type": "integer",
         "description": "Type of the activity.\r\n\r\nPossible values: Fixed = '0', Time = '1', Expense = '2'",
         "format": "int32"
@@ -11578,7 +11967,9 @@
         "additionalProperties": false
       },
       "ArchiveDto": {
-        "required": ["isArchived"],
+        "required": [
+          "isArchived"
+        ],
         "type": "object",
         "properties": {
           "archivedDate": {
@@ -11809,13 +12200,25 @@
         "additionalProperties": false
       },
       "BillingTypeEnum": {
-        "enum": [0, 1, 2, 3, 4, 5, 6, 7],
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
         "type": "integer",
         "description": "The billing type.\r\n\r\nPossible values: \r\nNone = 0, \r\nFixed Fee = 1, \r\nFixed Fee per Appearance = 2, \r\nTime Based = 3, \r\nContingency Dollars = 4, \r\nContingency Percent = 5, \r\nNot Billable = 6,\r\nConditionalFeeAgreement = 7",
         "format": "int32"
       },
       "TimekeeperClassificationType": {
-        "enum": [0, 1],
+        "enum": [
+          0,
+          1
+        ],
         "type": "integer",
         "description": "The associated Legal Electronic Data Exchange Standard (LEDES) classification type.\r\n\r\nPossible values: Length6 = 0, Length2 = 1.\r\n\r\nOnly supported in the US.",
         "format": "int32"
@@ -14073,7 +14476,9 @@
         "description": "Utbms Details"
       },
       "AddFileDto": {
-        "required": ["fileName"],
+        "required": [
+          "fileName"
+        ],
         "type": "object",
         "properties": {
           "fileName": {
@@ -14157,7 +14562,9 @@
         "additionalProperties": false
       },
       "EditFileDto": {
-        "required": ["fileName"],
+        "required": [
+          "fileName"
+        ],
         "type": "object",
         "properties": {
           "fileName": {
@@ -14461,7 +14868,9 @@
         "additionalProperties": false
       },
       "FolderDto": {
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "type": "object",
         "properties": {
           "name": {
@@ -15000,7 +15409,13 @@
         "additionalProperties": false
       },
       "EventType": {
-        "enum": [0, 1, 2, 3, 4],
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
         "type": "integer",
         "description": "The type of the event.\r\n\r\nPossible values: Non Recurring Event = 0, Recurring Pattern Series = 1, Single Recurring Occurrence = 2, Modified Recurring Occurrence = 3, Deleted Recurring Occurrence = 4",
         "format": "int32"
@@ -15619,7 +16034,10 @@
         "additionalProperties": false
       },
       "FeeDto": {
-        "required": ["feeDate", "subject"],
+        "required": [
+          "feeDate",
+          "subject"
+        ],
         "type": "object",
         "properties": {
           "updatedByUserId": {
@@ -15893,7 +16311,10 @@
         "additionalProperties": false
       },
       "FeeType": {
-        "enum": [0, 1],
+        "enum": [
+          0,
+          1
+        ],
         "type": "integer",
         "description": "The type of the fee (Fixed = 0, Time = 1).",
         "format": "int32"
@@ -15915,7 +16336,10 @@
             },
             "description": "The optional add-ons the firm is subscribed to. Must be specified with an accompanying productId.\r\n\r\nThe supported add-ons are listed below, the identifier (listed in brackets) must be used.\r\n\r\n* Intake (ADD001)\r\n\r\n* AutoTime (ADD003)\r\n\r\n* FamilyPro (ADD004)\r\n\r\n* Api (ADD005)\r\n\r\n* Workflows (ADD006)\r\n\r\n* PowerBI (ADD007)\r\n\r\n* Archie (ADD008)\r\n\r\n* SSO (ADD010)\r\n\r\nPossible values: ADD01, ADD003, ADD004, ADD005, ADD006, ADD007, ADD008, ADD010",
             "nullable": true,
-            "example": ["ADD01", "ADD003"]
+            "example": [
+              "ADD01",
+              "ADD003"
+            ]
           },
           "name": {
             "type": "string",
@@ -16082,7 +16506,10 @@
             },
             "description": "The optional add-ons the firm is subscribed to. Must be specified with an accompanying productId.\r\n\r\nThe supported add-ons are listed below, the identifier (listed in brackets) must be used.\r\n\r\n* Intake (ADD001)\r\n\r\n* AutoTime (ADD003)\r\n\r\n* FamilyPro (ADD004)\r\n\r\n* Api (ADD005)\r\n\r\n* Workflows (ADD006)\r\n\r\n* PowerBI (ADD007)\r\n\r\n* Archie (ADD008)\r\n\r\n* SSO (ADD010)\r\n\r\nPossible values: ADD01, ADD003, ADD004, ADD005, ADD006, ADD007, ADD008, ADD010",
             "nullable": true,
-            "example": ["ADD01", "ADD003"]
+            "example": [
+              "ADD01",
+              "ADD003"
+            ]
           },
           "email": {
             "type": "string",
@@ -16174,7 +16601,11 @@
         "additionalProperties": false
       },
       "FirmAccountStatus": {
-        "enum": ["Active", "Warning", "Suspended"],
+        "enum": [
+          "Active",
+          "Warning",
+          "Suspended"
+        ],
         "type": "string"
       },
       "FirmAddress": {
@@ -16942,7 +17373,10 @@
             },
             "description": "The optional add-ons the firm is subscribed to. Must be specified with an accompanying productId.\r\n\r\nThe supported add-ons are listed below, the identifier (listed in brackets) must be used.\r\n\r\n* Intake (ADD001)\r\n\r\n* AutoTime (ADD003)\r\n\r\n* FamilyPro (ADD004)\r\n\r\n* Api (ADD005)\r\n\r\n* Workflows (ADD006)\r\n\r\n* PowerBI (ADD007)\r\n\r\n* Archie (ADD008)\r\n\r\n* SSO (ADD010)\r\n\r\nPossible values: ADD01, ADD003, ADD004, ADD005, ADD006, ADD007, ADD008, ADD010",
             "nullable": true,
-            "example": ["ADD01", "ADD003"]
+            "example": [
+              "ADD01",
+              "ADD003"
+            ]
           },
           "name": {
             "type": "string",
@@ -17026,7 +17460,10 @@
         "additionalProperties": false
       },
       "AuthorizationPolicyType": {
-        "enum": [0, 1],
+        "enum": [
+          0,
+          1
+        ],
         "type": "integer",
         "format": "int32"
       },
@@ -17402,7 +17839,10 @@
         "additionalProperties": false
       },
       "DiscountType": {
-        "enum": [0, 1],
+        "enum": [
+          0,
+          1
+        ],
         "type": "integer",
         "format": "int32"
       },
@@ -17700,7 +18140,13 @@
         "additionalProperties": false
       },
       "InvoiceStatus": {
-        "enum": [0, 1, 2, 3, 4],
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
         "type": "integer",
         "description": "The status of the invoice.\r\n\r\nPossible values: Draft = 0, Final = 1, Paid = 2, Deleted = 3 or Void = 4.",
         "format": "int32"
@@ -17946,7 +18392,10 @@
         "additionalProperties": false
       },
       "LayoutContactData": {
-        "required": ["contactId", "key"],
+        "required": [
+          "contactId",
+          "key"
+        ],
         "type": "object",
         "properties": {
           "key": {
@@ -18045,7 +18494,12 @@
             },
             "description": "List of possible values (e.g. for Combobox field).",
             "nullable": true,
-            "example": ["Residence", "Commercial", "Factory", "Office"]
+            "example": [
+              "Residence",
+              "Commercial",
+              "Factory",
+              "Office"
+            ]
           }
         },
         "additionalProperties": false
@@ -18751,7 +19205,9 @@
             },
             "description": "List of 'Client' contact id's associated with the matter.",
             "nullable": true,
-            "example": ["832e778f-83df-454a-b344-768a862a7e67"]
+            "example": [
+              "832e778f-83df-454a-b344-768a862a7e67"
+            ]
           },
           "otherSideIds": {
             "type": "array",
@@ -18760,7 +19216,9 @@
             },
             "description": "List of 'OtherSide' contact id's associated with the matter.",
             "nullable": true,
-            "example": ["776e778f-83df-454a-b344-768a862a6e58"]
+            "example": [
+              "776e778f-83df-454a-b344-768a862a6e58"
+            ]
           },
           "branchId": {
             "type": "string",
@@ -19478,7 +19936,9 @@
             },
             "description": "List of associated representative contact ids.",
             "nullable": true,
-            "example": ["776e778f-83df-454a-b344-768a862a7e67"]
+            "example": [
+              "776e778f-83df-454a-b344-768a862a7e67"
+            ]
           },
           "isMatterItemRequired": {
             "type": "boolean",
@@ -19595,7 +20055,9 @@
             },
             "description": "List of associated representative contact ids.",
             "nullable": true,
-            "example": ["776e778f-83df-454a-b344-768a862a7e67"]
+            "example": [
+              "776e778f-83df-454a-b344-768a862a7e67"
+            ]
           },
           "isMatterItemRequired": {
             "type": "boolean",
@@ -19735,7 +20197,10 @@
             },
             "description": "List of possible representative types for the matter type.",
             "nullable": true,
-            "example": ["Applicant", "Respondent"]
+            "example": [
+              "Applicant",
+              "Respondent"
+            ]
           },
           "location": {
             "type": "string",
@@ -19821,7 +20286,10 @@
             },
             "description": "List of possible representative types for the matter type.",
             "nullable": true,
-            "example": ["Applicant", "Respondent"]
+            "example": [
+              "Applicant",
+              "Respondent"
+            ]
           },
           "location": {
             "type": "string",
@@ -19959,7 +20427,10 @@
         "additionalProperties": false
       },
       "TypeCategory": {
-        "enum": [0, 1],
+        "enum": [
+          0,
+          1
+        ],
         "type": "integer",
         "description": "Name of the category type to which the matter type belongs (i.e. MatterType or LeadType).\r\n            \r\nPossible values: Matter Type = 0, Lead Type = 1.",
         "format": "int32"
@@ -20051,7 +20522,10 @@
         "additionalProperties": false
       },
       "MemoDto": {
-        "required": ["text", "title"],
+        "required": [
+          "text",
+          "title"
+        ],
         "type": "object",
         "properties": {
           "title": {
@@ -20255,7 +20729,11 @@
         "additionalProperties": false
       },
       "PluginApplication": {
-        "enum": ["Native", "Web", "Archie"],
+        "enum": [
+          "Native",
+          "Web",
+          "Archie"
+        ],
         "type": "string",
         "description": "The application that the plugin should be rendered in."
       },
@@ -20610,7 +21088,10 @@
         "additionalProperties": false
       },
       "PluginType": {
-        "enum": ["Button", "Tab"],
+        "enum": [
+          "Button",
+          "Tab"
+        ],
         "type": "string",
         "description": "The type of component the plugin should represent."
       },
@@ -22034,7 +22515,11 @@
         "additionalProperties": false
       },
       "DocumentType": {
-        "enum": [0, 1, 2],
+        "enum": [
+          0,
+          1,
+          2
+        ],
         "type": "integer",
         "description": "Available document types: \"File = 0\", \"FormTemplate = 1\", \"Memo = 2\" \r\n\r\nThe FormTemplate (1) document type is not currently supported for task document creation.",
         "format": "int32"
@@ -22182,7 +22667,9 @@
         "additionalProperties": false
       },
       "SubTaskDto": {
-        "required": ["subject"],
+        "required": [
+          "subject"
+        ],
         "type": "object",
         "properties": {
           "staffId": {
@@ -22472,7 +22959,9 @@
         "additionalProperties": false
       },
       "TaskDocumentDto": {
-        "required": ["type"],
+        "required": [
+          "type"
+        ],
         "type": "object",
         "properties": {
           "documentId": {
@@ -22704,7 +23193,9 @@
         "additionalProperties": false
       },
       "UserDto": {
-        "required": ["email"],
+        "required": [
+          "email"
+        ],
         "type": "object",
         "properties": {
           "email": {
@@ -22779,7 +23270,10 @@
             },
             "description": "The event types that the webhook subscription is subscribed to.",
             "nullable": true,
-            "example": ["matter.updated", "contact.created"]
+            "example": [
+              "matter.updated",
+              "contact.created"
+            ]
           },
           "eventNotificationUrl": {
             "type": "string",
@@ -22830,7 +23324,10 @@
             },
             "description": "The event types that the webhook subscription should be subscribed to.",
             "nullable": true,
-            "example": ["matter.updated", "contact.created"]
+            "example": [
+              "matter.updated",
+              "contact.created"
+            ]
           },
           "eventNotificationUrl": {
             "type": "string",
@@ -22942,7 +23439,7 @@
   },
   "servers": [
     {
-      "url": "https://api.smokeball.com",
+      "url": "https://stagingapi.smokeball.com",
       "description": "API"
     }
   ],

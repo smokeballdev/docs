@@ -1,0 +1,94 @@
+---
+title: "Security"
+---
+
+This guide covers essential security practices for handling authentication tokens and securing your app on the Smokeball platform.
+
+## Token Security
+
+### Storing Tokens
+- Never store tokens in plain text
+- Refresh token when required
+- Monitor token expiration and refresh before expiry
+
+### Token Handling
+```javascript
+// Example: Secure token storage
+const secureStorage = {
+  setToken: async (token) => {
+    await SecureStore.setItemAsync('auth_token', token);
+  },
+  getToken: async () => {
+    return await SecureStore.getItemAsync('auth_token');
+  }
+};
+```
+
+## Authentication Best Practices
+
+### OAuth 2.0 Implementation
+- Use PKCE (Proof Key for Code Exchange)
+- Implement proper redirect URI validation
+- Handle token refresh flows
+- Monitor for token expiration
+
+### Secure Communication
+- Always use HTTPS
+- Implement certificate pinning
+- Validate server certificates
+- Use secure WebSocket connections
+
+## Access Control
+
+### Permission Management
+- Request minimum required permissions
+- Implement granular access controls
+- Regularly audit permissions
+- Handle permission revocation
+
+### Session Management
+- Implement proper session timeouts
+- Handle concurrent sessions
+- Provide secure logout mechanisms
+- Clear tokens on logout
+
+## Security Checklist
+
+1. **Token Storage**
+   - [ ] Use secure storage
+   - [ ] Implement token encryption
+   - [ ] Handle token expiration
+   - [ ] Clear tokens on logout
+
+2. **Authentication**
+   - [ ] Implement OAuth 2.0 correctly
+   - [ ] Use PKCE
+   - [ ] Handle refresh tokens
+   - [ ] Validate redirect URIs
+
+3. **Communication**
+   - [ ] Use HTTPS
+   - [ ] Implement certificate pinning
+   - [ ] Validate certificates
+   - [ ] Secure WebSocket connections
+
+## Common Security Issues
+
+### Token Leakage
+- Avoid logging tokens
+- Don't include tokens in URLs
+- Be careful with error messages
+- Implement proper error handling
+
+### Session Hijacking
+- Use secure cookies
+- Implement CSRF protection
+- Validate session tokens
+- Monitor for suspicious activity
+
+## Resources
+
+- [OAuth 2.0 Best Practices](https://oauth.net/2/)
+- [Token Security Guidelines](/security/tokens)
+- [Authentication Examples](/examples/auth)
+- [Security Tools](/tools/security) 
