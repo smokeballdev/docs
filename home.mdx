@@ -17,12 +17,12 @@ export function openSearch() {
       className="text-gray-900 dark:text-gray-200"
       style={{
        fontWeight: '800',
-       fontSize: '50px',
+       fontSize: '36px',
        margin: '0',
        fontFamily: 'Poppins'
       }}
     >
-      Welcome to the Smokeball Developer page!
+      Build better legal software with Smokeball
     </div>
     <p
       className="prose prose-gray dark:prose-invert text-center justify-center"
@@ -41,23 +41,33 @@ export function openSearch() {
     <div className="flex items-center justify-center">
     <button
       type="button"
-      className="hidden w-full lg:flex items-center text-sm leading-6 rounded-full py-3 px-6 text-white bg-[#FF6B3D] hover:bg-[#ff825c] transition-colors duration-200 relative"
-      id="home-search-entry"
+      className="hidden w-full lg:flex items-center justify-center text-sm leading-6 rounded-full py-3 px-8 text-white bg-primary hover:bg-[#ff825c] transition-all duration-200 relative"
+      id="home-search-entry" 
       style={{
         marginTop: '2rem',
-        maxWidth: '28rem',
+        maxWidth: '24rem',
         fontFamily: 'Poppins',
-        fontWeight: '800',
-        fontSize: '1rem',
-        letterSpacing: '0.01em',
+        fontWeight: '700',
+        fontSize: '1.1rem',
+        letterSpacing: '0.02em',
         border: 'none',
-        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-        outline: '4px solid #1e293b',
+        boxShadow: '0 4px 15px -3px rgba(242, 96, 12, 0.3)',
+        cursor: 'pointer',
+        transform: 'translateY(0)',
+        transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out'
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = 'translateY(-2px)';
+        e.currentTarget.style.boxShadow = '0 6px 20px -3px rgba(242, 96, 12, 0.4)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = 'translateY(0)';
+        e.currentTarget.style.boxShadow = '0 4px 15px -3px rgba(242, 96, 12, 0.3)';
       }}
       onClick={openSearch}
     >
       <svg
-        className="h-5 w-5 flex-none text-white"
+        className="h-6 w-6 flex-none text-white"
         style={{
           marginRight: '0.75rem',
           maskImage:
@@ -124,7 +134,7 @@ export function openSearch() {
       fontFamily: 'Poppins'
     }}
   >
-  Interested in becoming an Integration Partner?
+  Become a Smokeball integration partner
   </h2>
 
 </div>

@@ -106,8 +106,8 @@
     ],
     "primary": {
       "type": "button",
-      "label": "Book a Demo",
-      "href": "https://www.smokeball.com/book-demo"
+      "label": "Developer Console",
+      "href": "https://console.smokeball.com"
     }
   },
   "footer": {
