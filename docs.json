@@ -119,9 +119,7 @@
             "group": "SDK",
             "pages": [
               "docs/sdk-docs/a3b10391954fa-auth-api-interface",
-              "docs/sdk-docs/01776c41f5064-firm-api-interface",
-              "docs/sdk-docs/gen/smokeball-client-sdk.auth.api",
-              "docs/sdk-docs/gen/smokeball-client-sdk.firm.api"
+              "docs/sdk-docs/01776c41f5064-firm-api-interface"
             ]
           }
         ]
