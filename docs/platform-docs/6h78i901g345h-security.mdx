@@ -1,12 +1,30 @@
 ---
 title: "Security"
+description: "Learn how to follow best security practices"
 ---
 
 This guide covers essential security practices for handling authentication tokens and securing your app on the Smokeball platform.
 
+## Best Practices
+
+Here are essential security practices for handling OAuth 2.0 authentication tokens in your application:
+
+### Secure Token Storage
+
+- Never store access tokens or refresh tokens in client-side code, local storage, or cookies
+- Store tokens securely on your backend server using:
+  - Encrypted databases
+  - Key management services (AWS KMS, Azure Key Vault, etc.)
+- Use environment variables for sensitive credentials in development
+- Implement proper access controls and audit logging for token access
+
+### Token Handling
+
+- Only transmit tokens over HTTPS/TLS
+- Implement token refresh using the supplied refresh token
+- Revoke compromised tokens immediately or contact us if you think you have been compromised
+
 ## Resources
 
 - [OAuth 2.0 Best Practices](https://oauth.net/2/)
-- [Token Security Guidelines](/security/tokens)
-- [Authentication Examples](/examples/auth)
-- [Security Tools](/tools/security) 
+- [OAuth 2.0 Security](https://datatracker.ietf.org/doc/html/rfc6819)

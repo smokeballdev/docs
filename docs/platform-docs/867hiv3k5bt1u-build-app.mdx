@@ -1,0 +1,153 @@
+---
+title: "Building your app"
+description: "Learn how to build apps for Smokeball as a firm or partner"
+---
+
+This guide explains how to build applications for Smokeball, with separate processes for law firms and integration partners.
+
+After creating your app, select your app from the list to view its configuration details and settings:
+
+<Frame>
+  <img src="/images/apps/build-an-app.png"/>
+</Frame>
+
+## Environment
+
+You can switch between the Staging and Production environments to access different configurations of your app using the tabs above your app details.
+
+<Info>
+Partners developing applications for multiple firms must go through our staging environment and security review process before accessing production.
+
+Firms building custom applications for their own use have direct access to the production environment.
+</Info>
+
+For Partners, the Production environment becomes available after your app is successfully published. Learn more in our [publishing your app](/docs/platform-docs/publishing-app) guide.
+
+## App Name and Description
+The App name and description help identify your app within the Developer Console and internal systems. While these are important for development and administration purposes, they are separate from your marketplace listing details which are managed through our Partnerships team.
+
+Choose a clear, descriptive name and provide a concise description that accurately represents your app’s functionality.
+
+<Note>
+The app name and description are independant and not reflected in your marketplace listing.
+</Note>
+
+## Scopes
+Scopes define the specific permissions and access levels your app requires to interact with Smokeball's APIs. When users authorize your app, they grant access only to the functionality defined by your selected scopes:
+
+- Read scopes permit GET requests
+- Write scopes permit POST, PUT, PATCH requests
+- Multiple scopes may be needed for actions on child resources (e.g. both matters/write and documents/write are needed for adding files to a matter)
+
+You should request only the minimum scopes necessary for your app's functionality to build trust with users. While you can grant any scope in Staging, they must be approved for Production use when submitting your app.
+
+<Warning>
+Requesting unnecessary scopes may cause users to be hesitant to authorize your app. Only select scopes that are essential for your app's core functionality.
+</Warning>
+
+
+## Callback URLs
+Callback URLs (or redirect URLs) are essential endpoints that handle the OAuth 2.0 authorization flow. They specify where users will be redirected after authorizing your application:
+
+- The authorization server redirects users here after they grant/deny permission
+- The URL must exactly match one registered in your app settings
+- Only HTTPS URLs are allowed in production (except for localhost during development)
+
+<Warning>
+Your authorization request will fail if the redirect URI doesn't exactly match one of your registered callback URLs, including:
+- Protocol (http vs https)
+- Hostname (including subdomains)
+- Port number
+- Path and query parameters
+</Warning>
+
+For security, we recommend:
+- Using dedicated endpoints for handling OAuth callbacks
+- [Implementing CSRF protection](#csrf-protection)
+- Validating state parameters
+- Only registering URLs you control
+
+You can add multiple callback URLs to support different environments (development, staging, production) or application components.
+
+## Logout URLs
+Logout URLs specify where users will be redirected after signing out of your application. These URLs serve several important purposes:
+
+- Allow you to properly clean up user sessions and cached data
+- Provide opportunity to remove sensitive information
+- Enable seamless user experience by redirecting to appropriate landing pages
+- Support proper token revocation and cleanup
+
+Configuration requirements:
+- The logout_uri parameter in your /logout endpoint calls must exactly match a registered logout URL
+- Multiple logout URLs can be registered
+
+<Warning>
+Your logout request will fail if the provided url doesn't exactly match one of your registered logout URLs.
+</Warning>
+
+## Credentials
+Your app's OAuth 2.0 credentials consist of a client ID and client secret that are used to authenticate API requests and obtain access tokens through the OAuth 2.0 authorization flow
+
+### Client ID and Secret
+The client ID uniquely identifies your application when making requests to the Smokeball API. The client secret is a confidential key used to authenticate your application:
+
+- The client ID is public and included in authorization requests
+- The client secret must be kept secure and never exposed in client-side code (note: client secrets are not used with PKCE/public clients)
+- Both are required for obtaining access tokens via OAuth flows
+- Contact our partners team immediately if you suspect your client secret has been compromised so it can be rotated
+
+### Client Grant
+There are 2 different types of client grants
+- **Authorization Code Grant**: The standard OAuth 2.0 flow for applications that can securely store client secrets. Uses PKCE (Proof Key for Code Exchange) if configured as a Public Client during app creation, otherwise requires client secrets. Provides the highest level of security.
+
+- **Client Credentials Grant**: For server-to-server applications that need to access resources without user context. Currently not supported via the Developer Console and not provided to partners.
+
+For detailed implementation guides and examples, see our [API Documentation](/docs/api-docs).
+
+
+### Access Token
+Access tokens are typically short-lived to enhance security, and their expiration is an essential aspect of the OAuth 2.0 security framework. The access token should be kept secure and not exposed to unauthorized parties.
+
+### Refresh Token
+A refresh token is a long-lived token used to obtain a new access token once the original access token expires.
+
+It allows your Smokeball App to remain authenticated and continue using the Smokeball API. Once the refresh token expires, a new one must be acquired via the OAuth 2.0 process. The refresh token should be kept secure and not exposed to unauthorized parties. 
+
+### Token Expiry
+Access tokens have a default expiry of 1 hour for security. When an access token expires:
+
+- API requests will return 401 Unauthorized errors
+- Your application should obtain a new access token using the refresh token
+
+Refresh tokens are valid for 30 days by default.
+
+<Note>
+You can request a longer refresh token expiry period when submitting your app for production approval. Include this request in the submission notes when publishing your app and our team will review based on your use case.
+</Note>
+
+For best practices on securely managing tokens, see our [Security](/docs/platform-docs/6h78i901g345h-security) guidelines.
+
+
+## Resources
+
+### Documentation
+- [API Documentation](/docs/api-docs/1e13a13124aee-introduction)
+- [SDK Documentation](/docs/sdk-docs/675c9816cdaf6-getting-started)
+- [Security Guidelines](/docs/platform-docs/6h78i901g345h-security)
+
+### CSRF Protection
+Cross-Site Request Forgery (CSRF) protection is critical when implementing OAuth flows. Here are key practices to prevent CSRF attacks:
+
+#### Use State Parameter
+- Generate a unique, random state parameter for each authorization request
+- Store the state in your server-side session
+- Validate the returned state matches before processing the callback
+- Use cryptographically secure random values (at least 128 bits)
+
+### Tools
+- [Developer Console](https://console.smokeball.com)
+- [Status Page](https://status.smokeball.com)
+- [Support Portal](https://support.smokeball.com)
+
+Need help? [Contact our support team](https://support.smokeball.com)
+

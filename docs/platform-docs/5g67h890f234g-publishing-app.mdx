@@ -1,0 +1,64 @@
+---
+title: "Publishing your app"
+description: "Publish your app to the marketplace"
+---
+
+Before publishing your App, ensure you are following best practices:
+
+## Scope Usage
+You must demonstrate the use of all the permissions (scopes) you are requesting within the staging environment. This helps us verify that your app is using the scopes appropriately.
+
+## Best Practices & Efficient Usage
+To ensure your app performs efficiently and meets our standards, please follow these best practices:
+
+   #### Minimize Excessive Polling
+   - Avoid repeatedly querying our APIs at frequent intervals. Instead, leverage webhooks to be notified when changes occur.
+   - Polling should only be used when absolutely necessary, and with appropriate intervals.
+
+   #### Efficient API Usage
+   - **Pagination**: Handle API responses with pagination to manage large datasets and prevent overload.
+   - **Rate limiting**: Respect API rate limits by implementing retries with exponential backoff to prevent throttling.
+
+   #### Error Handling
+   - Implement robust error handling for network issues, failed API calls, and server-side errors.
+   - Use retry mechanisms for transient errors but avoid overwhelming the server with retries.
+
+   #### Security & Data Privacy
+   - Request only the scopes you truly need for your app's functionality. Excessive permission requests might lead to rejection.
+   - Follow OAuth2 best practices for authentication and refresh tokens properly to avoid unnecessary login requests.
+
+   #### Testing & Monitoring
+   - Thoroughly test your app in a staging environment that mimics production.
+   - Set up real-time monitoring to catch issues early, and track the performance of your app in production.
+
+## Review Process
+Our review process ensures that all apps meet our quality and security standards before being made available to users. The process includes:
+
+1. **Best Practices Verification**
+   - We verify that your app follows all the best practices outlined above
+   - This includes checking scope usage, API efficiency, error handling, and security measures
+   - Performance and resource usage are evaluated to ensure they meet our standards
+
+2. **Staging Environment Demo**
+   - Contact our Partnerships team to schedule a demonstration of your app
+   - The demo should show your app running in the staging environment
+   - Be prepared to demonstrate all major features and functionality
+   - Our team will verify proper implementation of requested scopes
+
+3. **Security Assessment**
+   - Your app's security measures will be evaluated
+   - We'll verify proper implementation of OAuth2 flows
+   - Data handling practices will be reviewed
+
+Only after successfully completing the review process will your app be approved for production deployment. This helps ensure that all apps in our ecosystem maintain high standards of quality and security.
+
+<Info>
+ Contact the Partnerships team at partners@smokeball.com to initiate the review process.
+</Info>
+
+## Next Steps
+
+After publshing your app:
+- Monitor its performance
+- Gather user feedback
+- Plan for updates and improvements 

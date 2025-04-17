@@ -5,57 +5,81 @@ icon: "bug"
 
 This guide addresses frequently encountered problems and their solutions.
 
-## Development Issues
+## Partner Invite Password Expired
 
-### Build Failures
-**Problem**: App fails to build
-**Solution**:
-- Check dependency versions
-- Verify build configuration
-- Review error messages
+If your temporary password from a partner program invitation has expired:
 
-### Runtime Errors
-**Problem**: App crashes or behaves unexpectedly
-**Solution**:
-- Check error logs
-- Verify environment variables
-- Test with different inputs
+1. Contact our [support team](https://support.smokeball.com) to request a new invitation
+2. We'll send you a fresh invite with a new temporary password
+3. Use the new password to complete your account setup within 24 hours
 
-## Deployment Issues
+<Note>
+Partner invitation passwords expire after 7 days for security purposes. Be sure to set up your account promptly after receiving a new invite.
+</Note>
 
-### Deployment Failures
-**Problem**: Deployment process fails
-**Solution**:
-- Check network connectivity
-- Verify permissions
-- Review deployment logs
+## Smokeball Login Issues
+If you're unable to log in to Smokeball, this is because  Partner accounts and Smokeball accounts are for separate systems:
 
-### Performance Issues
-**Problem**: App runs slowly
-**Solution**:
-- Optimize code
-- Check resource usage
-- Review database queries
+- Partner accounts are used for accessing the Developer Console and Partner Portal
+- Smokeball accounts are firm-specific logins used to access the Smokeball application
+- Your partner credentials cannot be used to log into Smokeball directly
 
-## Integration Issues
+If you need a Smokeball account for testing:
 
-### API Connection Problems
-**Problem**: Cannot connect to external services
-**Solution**:
-- Verify API credentials
-- Check network settings
-- Test API endpoints
+1. Contact our partners team to request a test account
+2. Specify which environment and region you need access to
+3. We'll provision a dedicated Smokeball account for your testing needs
 
-### Data Synchronization
-**Problem**: Data not syncing correctly
-**Solution**:
-- Check sync configuration
-- Verify data formats
-- Review sync logs
+<Note>
+Smokeball accounts are environment and region-specific, tied to individual firms. Your partner portal credentials won't work for logging into Smokeball directly - you need separate Smokeball account credentials.
+</Note>
 
-## Getting Help
+<Warning>
+Don't try using your partner portal or developer console credentials to log in to Smokeball. These are separate systems that require different authentication.
+</Warning>
 
-If you encounter issues not covered here:
-1. Check the documentation
-2. Search the knowledge base
-3. Contact support 
+## Missing TOTP/2FA Code
+
+If you're being prompted for a TOTP (Time-based One-Time Password) code but haven't set up 2FA:
+
+1. Contact our [support team](https://support.smokeball.com) to request a Partner account reset
+2. We'll verify your identity and reset your 2FA settings
+3. You can then set up a new authenticator during your next login
+
+<Note>
+TOTP codes are required for all partner accounts as an additional security measure.
+</Note>
+
+## OAuth Login Issues
+If you're encountering OAuth login issues, first verify you're using the correct authorization URL:
+
+- Check that you're using the base authorization URL as specified in our [API Documentation](/docs/api-docs/1e13a13124aee-introduction)
+- Ensure you're using the correct environment-specific URL (staging vs production)
+- Verify your redirect URI exactly matches one registered in your app settings
+
+Common OAuth login issues include:
+
+- Using incorrect environment URLs
+- Mismatched redirect URIs 
+- Missing or invalid scopes
+- Incorrect client credentials
+
+<Warning>
+Using the wrong base authorization URL will cause OAuth flows to fail. Always reference the official API documentation for the correct endpoints.
+</Warning>
+
+## Rate Limits
+If you're experiencing API rate limits, this is expected behavior to ensure platform stability and fair usage:
+
+- Rate limits are enforced per client ID and endpoint
+- Refer to our [API Documentation](/docs/api-docs/1e13a13124aee-introduction) for specific limits
+- Use exponential backoff when retrying rate-limited requests
+- Consider caching frequently accessed data
+
+<Note>
+Rate limits help maintain platform stability and ensure fair access for all integrations. Your app should be designed to work within these constraints.
+</Note>
+
+<Warning>
+Rate limit increases are only granted in exceptional circumstances. Design your integration to work efficiently within the standard limits.
+</Warning>

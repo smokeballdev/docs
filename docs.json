@@ -47,10 +47,10 @@
                 "icon": "rocket",
                 "pages": [
                   "docs/platform-docs/3b45c6789d012-apps-overview",
-                  "docs/platform-docs/4f56d789e123f-creating-an-app",
-                  "docs/platform-docs/867hiv3k5bt1u-build-your-app",
-                  "docs/platform-docs/5g67h890f234g-publishing-your-app",
-                  "docs/platform-docs/7i89j012h456i-sharing-your-app",
+                  "docs/platform-docs/4f56d789e123f-creating-app",
+                  "docs/platform-docs/867hiv3k5bt1u-build-app",
+                  "docs/platform-docs/5g67h890f234g-publishing-app",
+                  "docs/platform-docs/7i89j012h456i-sharing-app",
                   "docs/platform-docs/6h78i901g345h-security"
                 ]
               }
@@ -70,9 +70,36 @@
           {
             "group": "Documentation",
             "pages": [
-              "docs/api-docs/1e13a13124aee-introduction",
+              {
+                "group": "Getting Started",
+                "icon": "hand-wave",
+                "pages": [
+                  "docs/api-docs/1e13a13124aee-overview",
+                  "docs/api-docs/1e13a13124aee-base-urls",
+                  "docs/api-docs/1e13a13124aee-rate-limits"
+                ]
+              },
+              {
+                "group": "Authentication",
+                "icon": "lock",
+                "pages": [
+                  "docs/api-docs/c916c683c136e-authentication-overview",
+                  "docs/api-docs/2t26gcuuqf1wk-authorization-code-grant",
+                  "docs/api-docs/h72024p76i8e1-client-credentials-grant",
+                  "docs/api-docs/9de98u0xqsckx-logout-endpoint"
+                ]
+              },
+              "docs/api-docs/voyymdyjn5yp3-making-requests",
+              "docs/api-docs/xevfrndwy7o2b-resource-creation",
               "docs/api-docs/272770a37d359-searching",
-              "docs/api-docs/0d3adba1494ce-layouts"
+              {
+                "group": "Matters and Leads",
+                "icon": "folder",
+                "pages": [
+                  "docs/api-docs/voyymdyjn5yp3-leads",
+                  "docs/api-docs/0d3adba1494ce-layouts"
+                ]
+              }
             ]
           },
           {
@@ -89,19 +116,19 @@
             "pages": ["docs/sdk-docs/675c9816cdaf6-getting-started"]
           },
           {
-            "group": "APIs",
+            "group": "SDK",
             "pages": [
-              {
-                "group": "Client SDK",
-                "pages": [
-                  "docs/sdk-docs/482a092a949be-smokeball-client-sdk-package",
-                  "docs/sdk-docs/a3b10391954fa-auth-api-interface",
-                  "docs/sdk-docs/01776c41f5064-firm-api-interface"
-                ]
-              }
+              "docs/sdk-docs/a3b10391954fa-auth-api-interface",
+              "docs/sdk-docs/01776c41f5064-firm-api-interface",
+              "docs/sdk-docs/gen/smokeball-client-sdk.auth.api",
+              "docs/sdk-docs/gen/smokeball-client-sdk.firm.api"
             ]
           }
         ]
+      },
+      {
+        "tab": "Status",
+        "pages": ["docs/platform-docs/e8rdxqzugb5zf-status"]
       },
       {
         "tab": "Changelog",
@@ -110,11 +137,6 @@
     ],
     "global": {
       "anchors": [
-        {
-          "anchor": "Status",
-          "href": "https://status.smokeball.com/",
-          "icon": "signal"
-        },
         {
           "anchor": "Marketplace",
           "href": "https://marketplace.smokeball.com",

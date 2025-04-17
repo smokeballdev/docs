@@ -1,0 +1,48 @@
+---
+title: "Rate Limits"
+description: "Understanding Smokeball API rate limits and throttling"
+---
+
+Throttling and limiting is a policy that affects the frequency an API can be called. They are put in place to protect server infrastructure from abuse or misuse. Smokeball employs rate limits to enable consistent load allocation across our platform.
+
+## How Rate Limiting Works
+
+The Smokeball API uses the [token bucket algorithm](https://en.wikipedia.org/wiki/Token_bucket). Smokeball API partners are assigned a "Burst" and "Rate" Limit.
+
+- The **burst** limit defines the number of requests the API can handle concurrently
+- The **rate** limit defines the number of allowed requests per second
+
+## Default Limits
+
+Unless otherwise specified, Smokeball API partners are assigned the following limits:
+
+| Region | Rate (requests per second) | Burst (concurrent requests) |
+| :--- | :---: | :---: |
+| US | 5 | 5 |
+| AU | 5 | 5 | 
+| UK | 5 | 5 |
+
+## Handling Rate Limits
+
+When you exceed the rate limit, the API will return a `429 Too Many Requests` response. To handle this:
+
+1. Implement exponential backoff
+2. Monitor your request rate
+3. Cache responses when possible
+4. Batch requests when appropriate
+
+## Best Practices
+
+- Monitor your API usage
+- Implement proper error handling
+- Use caching strategies
+- Consider request batching
+- Implement retry logic with backoff
+
+## Need Higher Limits?
+
+If you require higher rate limits, please contact our support team with:
+- Your use case
+- Expected request volume
+- Required limits
+- Justification for the increase 
