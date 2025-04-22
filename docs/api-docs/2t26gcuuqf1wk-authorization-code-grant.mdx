@@ -158,8 +158,8 @@ PKCE is an extension of the Authorization Code Grant flow, designed for mobile a
 ### Generate a Code Verifier and Code Challenge
 To initiate the PKCE flow, you must generate a **code_verifier**, which is a random string, and a **code_challenge**, which is derived by hashing the **code_verifier** using SHA-256 and then Base64-URL encoding it.
 
-#### C# Example
-``` csharp
+<CodeGroup>
+``` csharp c#
 using System;
 using System.Security.Cryptography;
 using System.Text;
@@ -206,9 +206,7 @@ class PKCEGenerator
     }
 }
 ```
-
-#### JavaScript Example
-``` javascript
+``` javascript javascript
 // Function to generate a random code verifier
 function generateCodeVerifier() {
     const array = new Uint8Array(32); // 32-byte random string
@@ -242,6 +240,7 @@ function base64UrlEncode(arrayBuffer) {
     console.log('Code Challenge:', codeChallenge);
 })();
 ```
+</CodeGroup>
 
 ### Request Authorization Code for Access Token
 Direct the user to `https://auth.smokeball.com/oauth2/authorize` with the following parameters: 
