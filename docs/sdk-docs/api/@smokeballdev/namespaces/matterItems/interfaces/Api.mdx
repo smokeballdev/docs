@@ -1,0 +1,39 @@
+---
+title: MatterItems
+---
+[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+
+***
+
+# Interface: Api
+
+Entry point for matter items to Smokeball.
+
+## Methods
+
+### get()
+
+> **get**(`matterId?`): `Promise`\<[`MatterItems`](MatterItems.md)\>
+
+Gets the matter items associated to the current context or the specified matter id if provided.
+
+#### Parameters
+
+##### matterId?
+
+`string`
+
+the matter items to retrieve, use null for the matter in the current context.
+
+#### Returns
+
+`Promise`\<[`MatterItems`](MatterItems.md)\>
+
+the matter items for the specified matter.
+
+#### Example
+
+```
+// Returns the matter items with the specified matter id.
+const matterItems = await sdk.matterItems.get('e9b9084b-c9b4-4f3c-9f5a-4c83ed3ac265');
+```

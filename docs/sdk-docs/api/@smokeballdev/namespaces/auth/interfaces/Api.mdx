@@ -1,0 +1,52 @@
+---
+title: Auth
+---
+[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+
+***
+
+# Interface: Api
+
+Entry point for auth to Smokeball.
+
+## Methods
+
+### idToken()
+
+> **idToken**(): `Promise`\<`string`\>
+
+Retrieves the id token. This token can be used to access the api.
+Only available to trusted clients.
+
+#### Returns
+
+`Promise`\<`string`\>
+
+the current id token.
+
+#### Example
+
+```
+const token = await sdk.auth.idToken();
+```
+
+***
+
+### token()
+
+> **token**(): `Promise`\<`string`\>
+
+Retrieves the access token.
+Only available to trusted clients.
+
+#### Returns
+
+`Promise`\<`string`\>
+
+the current access token.
+
+#### Example
+
+```
+const token = await sdk.auth.token();
+```

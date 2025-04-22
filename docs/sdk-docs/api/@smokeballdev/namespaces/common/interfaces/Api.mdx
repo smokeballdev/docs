@@ -1,0 +1,230 @@
+---
+title: Common
+---
+[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+
+***
+
+# Interface: Api
+
+The entry point for communication with Smokeball.
+
+## Properties
+
+### auth
+
+> **auth**: [`Api`](../../auth/interfaces/Api.md)
+
+#### Returns
+
+the auth api.
+
+***
+
+### communicate
+
+> **communicate**: [`Api`](../../communicate/interfaces/Api.md)
+
+#### Returns
+
+the communicate api.
+
+***
+
+### contacts
+
+> **contacts**: [`Api`](../../contacts/interfaces/Api.md)
+
+#### Returns
+
+the contacts api.
+
+***
+
+### context
+
+> **context**: [`Context`](Context.md)
+
+#### Returns
+
+the context associated to the current session.
+
+***
+
+### correspondence
+
+> **correspondence**: [`Api`](../../correspondence/interfaces/Api.md)
+
+#### Returns
+
+the correspondence api.
+
+***
+
+### files
+
+> **files**: [`Api`](../../files/interfaces/Api.md)
+
+#### Returns
+
+the files api.
+
+***
+
+### firm
+
+> **firm**: [`Api`](../../firm/interfaces/Api.md)
+
+#### Returns
+
+the firm api.
+
+***
+
+### forms
+
+> **forms**: [`Api`](../../forms/interfaces/Api.md)
+
+#### Returns
+
+the form api.
+
+***
+
+### host
+
+> **host**: [`Api`](../../host/interfaces/Api.md)
+
+#### Returns
+
+the host api.
+
+***
+
+### layouts
+
+> **layouts**: [`Api`](../../layouts/interfaces/Api.md)
+
+#### Returns
+
+the layouts api.
+
+***
+
+### matterItems
+
+> **matterItems**: [`Api`](../../matterItems/interfaces/Api.md)
+
+#### Returns
+
+the matter items api.
+
+***
+
+### matters
+
+> **matters**: [`Api`](../../matters/interfaces/Api.md)
+
+#### Returns
+
+the matters api.
+
+***
+
+### matterTypes
+
+> **matterTypes**: [`Api`](../../matterTypes/interfaces/Api.md)
+
+#### Returns
+
+the matter types api.
+
+***
+
+### memos
+
+> **memos**: [`Api`](../../memos/interfaces/Api.md)
+
+#### Returns
+
+the memos api.
+
+***
+
+### relationships
+
+> **relationships**: [`Api`](../../relationships/interfaces/Api.md)
+
+#### Returns
+
+the relationships api.
+
+***
+
+### roles
+
+> **roles**: [`Api`](../../roles/interfaces/Api.md)
+
+#### Returns
+
+the roles api.
+
+***
+
+### staff
+
+> **staff**: [`Api`](../../staff/interfaces/Api.md)
+
+#### Returns
+
+the staff api.
+
+***
+
+### subTasks
+
+> **subTasks**: [`Api`](../../subTasks/interfaces/Api.md)
+
+#### Returns
+
+the subTasks api.
+
+***
+
+### tasks
+
+> **tasks**: [`Api`](../../tasks/interfaces/Api.md)
+
+#### Returns
+
+the tasks api.
+
+***
+
+### version?
+
+> `optional` **version**: `string`
+
+#### Returns
+
+the version of @smokeballdev/smokeball-client-sdk
+
+## Methods
+
+### init()
+
+> **init**(`request?`): `Promise`\<`void`\>
+
+Initializes a session for communication with Smokeball. Also sets the session context.
+
+The matterId is set in the context when initialized in a matter window.
+
+#### Parameters
+
+##### request?
+
+[`InitRequest`](InitRequest.md)
+
+#### Returns
+
+`Promise`\<`void`\>

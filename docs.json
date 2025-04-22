@@ -121,8 +121,25 @@
           {
             "group": "SDK",
             "pages": [
-              "docs/sdk-docs/a3b10391954fa-auth-api-interface",
-              "docs/sdk-docs/01776c41f5064-firm-api-interface"
+              "docs/sdk-docs/api/classes/SmokeballClientSdk",
+              "docs/sdk-docs/api/@smokeballdev/namespaces/auth/interfaces/Api",
+              "docs/sdk-docs/api/@smokeballdev/namespaces/host/interfaces/Api",
+              "docs/sdk-docs/api/@smokeballdev/namespaces/firm/interfaces/Api",
+              "docs/sdk-docs/api/@smokeballdev/namespaces/staff/interfaces/Api",
+              "docs/sdk-docs/api/@smokeballdev/namespaces/contacts/interfaces/Api",
+              "docs/sdk-docs/api/@smokeballdev/namespaces/correspondence/interfaces/Api",
+              "docs/sdk-docs/api/@smokeballdev/namespaces/communicate/interfaces/Api",
+              "docs/sdk-docs/api/@smokeballdev/namespaces/matterTypes/interfaces/Api",
+              "docs/sdk-docs/api/@smokeballdev/namespaces/matters/interfaces/Api",
+              "docs/sdk-docs/api/@smokeballdev/namespaces/matterItems/interfaces/Api",
+              "docs/sdk-docs/api/@smokeballdev/namespaces/memos/interfaces/Api",
+              "docs/sdk-docs/api/@smokeballdev/namespaces/files/interfaces/Api",
+              "docs/sdk-docs/api/@smokeballdev/namespaces/roles/interfaces/Api",
+              "docs/sdk-docs/api/@smokeballdev/namespaces/relationships/interfaces/Api",
+              "docs/sdk-docs/api/@smokeballdev/namespaces/layouts/interfaces/Api",
+              "docs/sdk-docs/api/@smokeballdev/namespaces/tasks/interfaces/Api",
+              "docs/sdk-docs/api/@smokeballdev/namespaces/subTasks/interfaces/Api"
+            
             ]
           }
         ]

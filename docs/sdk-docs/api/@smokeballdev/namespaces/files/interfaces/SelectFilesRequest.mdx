@@ -1,0 +1,80 @@
+---
+title: Files
+---
+[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+
+***
+
+# Interface: SelectFilesRequest
+
+## Properties
+
+### allowCombiningAsPdf?
+
+> `optional` **allowCombiningAsPdf**: `boolean`
+
+Flag indicating whether to allow combining files into a single PDF document. Defaults to true if unset
+
+***
+
+### allowConversionToPdf?
+
+> `optional` **allowConversionToPdf**: `boolean`
+
+Flag indicating whether to allow conversion of individual files to PDF format. Defaults to true if unset
+
+***
+
+### confirmationText?
+
+> `optional` **confirmationText**: `string`
+
+Confirmation text to display. Defaults to 'SELECT' if unset.
+
+***
+
+### fileExtensions?
+
+> `optional` **fileExtensions**: `string`[]
+
+Array of file extensions that will display in the file picker. Leaving unset will display all file types
+
+***
+
+### fileSelectionLimit?
+
+> `optional` **fileSelectionLimit**: `number`
+
+Maximum number of files that can be attached. Leave unset or set to 0 for no limit.
+
+***
+
+### heading?
+
+> `optional` **heading**: `string`
+
+Heading of the selection component. Default used if unset
+
+***
+
+### matterId?
+
+> `optional` **matterId**: `string`
+
+Matter id.
+
+***
+
+### showEmails?
+
+> `optional` **showEmails**: `boolean`
+
+Show emails by default. Defaults to false if unset.
+
+***
+
+### title?
+
+> `optional` **title**: `string`
+
+Title of the selection window. Default used if unset

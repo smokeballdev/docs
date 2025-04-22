@@ -1,0 +1,37 @@
+---
+title: Forms
+---
+[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+
+***
+
+# Interface: Api
+
+Entry point for forms in Smokeball.
+
+## Methods
+
+### open()
+
+> **open**(`request`): `Promise`\<[`OpenFormResult`](OpenFormResult.md)\>
+
+Opens the specified form in the native app.
+
+#### Parameters
+
+##### request
+
+[`FormRequest`](FormRequest.md)
+
+#### Returns
+
+`Promise`\<[`OpenFormResult`](OpenFormResult.md)\>
+
+#### Example
+
+```
+const request: FileRequest = {
+ id: 'f0d5020e-87d6-47a9-96a5-9489ee243ace',
+}
+sdk.forms.open(request);
+```

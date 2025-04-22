@@ -1,0 +1,99 @@
+---
+title: Files
+---
+[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+
+***
+
+# Interface: Api
+
+Entry point for files in Smokeball.
+
+## Methods
+
+### getMany()
+
+> **getMany**(`request`): `Promise`\<[`GetMatterFilesResponse`](GetMatterFilesResponse.md)\>
+
+Returns a page of files from the given Matter and Folder.
+
+#### Parameters
+
+##### request
+
+[`GetMatterFilesRequest`](GetMatterFilesRequest.md)
+
+#### Returns
+
+`Promise`\<[`GetMatterFilesResponse`](GetMatterFilesResponse.md)\>
+
+#### Example
+
+```
+const request: GetMatterFilesRequest = {
+ matterId: '410f2b2b-7adf-436e-a5fd-dab1733d3fba',
+ // The folder id can be left empty and will default to the root directory.
+ folderId: '410f2b2b-7adf-436e-a5fd-dab1733d3fbb',
+ limit: 10,
+ offset: 0
+}
+const files = sdk.files.getMany(request);
+```
+
+***
+
+### open()
+
+> **open**(`request`): `void`
+
+Opens the specified file in the native app.
+
+#### Parameters
+
+##### request
+
+[`FileRequest`](FileRequest.md)
+
+#### Returns
+
+`void`
+
+#### Example
+
+```
+const request: FileRequest = {
+ id: 'da06e491-3a68-4da1-be1c-7e734491bbe6',
+ versionId: '410f2b2b-7adf-436e-a5fd-dab1733d3fba'
+}
+sdk.files.open(request);
+```
+
+***
+
+### select()
+
+> **select**(`request`): `Promise`\<[`File`](File.md)[]\>
+
+Opens a file picker to select files from a matter.
+Returns the selected files.
+
+#### Parameters
+
+##### request
+
+[`SelectFilesRequest`](SelectFilesRequest.md)
+
+#### Returns
+
+`Promise`\<[`File`](File.md)[]\>
+
+#### Example
+
+```
+const request: SelectFilesRequest = {
+ confirmationText: 'SELECT',
+ fileSelectionLimit: 2,
+ showEmails: false,
+}
+sdk.files.select(request);
+```

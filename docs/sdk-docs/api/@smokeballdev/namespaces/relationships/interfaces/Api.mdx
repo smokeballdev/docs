@@ -1,0 +1,137 @@
+---
+title: Relationships
+---
+[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+
+***
+
+# Interface: Api
+
+Entry point for relationships to Smokeball.
+
+## Methods
+
+### add()
+
+> **add**(`request`): `Promise`\<[`Relationship`](Relationship.md)\>
+
+Adds a new relationship to a role with the specified contact id to the current context and returns the relationship.
+
+#### Parameters
+
+##### request
+
+[`AddRelationshipRequest`](AddRelationshipRequest.md)
+
+the add relationship request.
+
+#### Returns
+
+`Promise`\<[`Relationship`](Relationship.md)\>
+
+#### Example
+
+```
+const request: AddRelationshipRequest = {
+  name: 'Solicitor',
+  contactId: 'fd540bd6-f74c-45bf-b2ab-8107d0781a83',
+  roleId: 'dfcd71c6-d168-42bd-9370-0fe89dfb0d74'
+};
+
+const relationship = await sdk.relationships.add(request);
+```
+
+***
+
+### get()
+
+> **get**(`roleId`): `Promise`\<[`Relationships`](Relationships.md)\>
+
+Gets the relationships of a role for the current context.
+
+#### Parameters
+
+##### roleId
+
+`string`
+
+the role id to get relationships from.
+
+#### Returns
+
+`Promise`\<[`Relationships`](Relationships.md)\>
+
+the relationships of a role for the current context.
+
+#### Example
+
+```
+// Returns the relationships of a role for the current context.
+const relationships = await sdk.relationships.get('dfcd71c6-d168-42bd-9370-0fe89dfb0d74');
+```
+
+***
+
+### remove()
+
+> **remove**(`roleId`, `id`): `Promise`\<[`Relationships`](Relationships.md)\>
+
+Removes the specified relationship from a role for the current context. Returns the remaining relationships for that role.
+
+#### Parameters
+
+##### roleId
+
+`string`
+
+the role id to remove from.
+
+##### id
+
+`string`
+
+the relationship id to remove.
+
+#### Returns
+
+`Promise`\<[`Relationships`](Relationships.md)\>
+
+#### Example
+
+```
+const relationships = await sdk.relationships.remove('6f00a467-2d2d-40e2-944f-dff48d3617b4', 'dfcd71c6-d168-42bd-9370-0fe89dfb0d74');
+```
+
+***
+
+### update()
+
+> **update**(`request`): `Promise`\<[`Relationship`](Relationship.md)\>
+
+Updates the relationship associated to the specified role id and returns the relationship.
+
+#### Parameters
+
+##### request
+
+[`UpdateRelationshipRequest`](UpdateRelationshipRequest.md)
+
+the update request.
+
+#### Returns
+
+`Promise`\<[`Relationship`](Relationship.md)\>
+
+#### Example
+
+```
+const request: UpdateRelationshipRequest = {
+  id: '6f00a467-2d2d-40e2-944f-dff48d3617b4',
+  roleId: 'dfcd71c6-d168-42bd-9370-0fe89dfb0d74',
+
+  // Specify the fields to update here.
+  contactId: 'fd540bd6-f74c-45bf-b2ab-8107d0781a83',
+};
+
+const relationship = await sdk.relationships.update(request);
+```

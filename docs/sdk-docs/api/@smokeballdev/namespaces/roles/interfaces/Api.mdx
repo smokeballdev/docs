@@ -1,0 +1,150 @@
+---
+title: Roles
+---
+[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+
+***
+
+# Interface: Api
+
+Entry point for roles to Smokeball.
+
+## Methods
+
+### add()
+
+> **add**(`request`): `Promise`\<[`Role`](Role.md)\>
+
+Adds a new role with the specified contactId to the current context and returns the role.
+
+#### Parameters
+
+##### request
+
+[`AddRoleRequest`](AddRoleRequest.md)
+
+the create request.
+
+#### Returns
+
+`Promise`\<[`Role`](Role.md)\>
+
+#### Example
+
+```
+const request: AddRoleRequest = {
+  name: 'Client',
+  contactId: 'fd540bd6-f74c-45bf-b2ab-8107d0781a83',
+};
+const roles = await sdk.roles.add(request);
+```
+
+***
+
+### get()
+
+> **get**(): `Promise`\<[`Roles`](Roles.md)\>
+
+Gets the roles associated to the current context.
+
+#### Returns
+
+`Promise`\<[`Roles`](Roles.md)\>
+
+the roles for the current context.
+
+#### Example
+
+```
+// Returns the roles for the current context.
+const roles = await sdk.roles.get();
+```
+
+***
+
+### observe()
+
+> **observe**(`callback`, `matterId?`): `void`
+
+Creates a subscription for the roles associated to the current context or the specified matter id if provided.
+
+Only one subscription will be made per session. Regardless of how many times this function is called, the last registered callback will be used.
+
+#### Parameters
+
+##### callback
+
+(`roles`) => `void`
+
+the function to execute when a change is made to contact(s) in Smokeball.
+
+##### matterId?
+
+`string`
+
+#### Returns
+
+`void`
+
+#### Example
+
+```
+sdk.roles.observe(roles => {
+  // Perform syncing code here.
+});
+```
+
+***
+
+### remove()
+
+> **remove**(`id`): `Promise`\<[`Roles`](Roles.md)\>
+
+Removes the specified role from the current context.
+
+#### Parameters
+
+##### id
+
+`string`
+
+#### Returns
+
+`Promise`\<[`Roles`](Roles.md)\>
+
+#### Example
+
+```
+const roles = await sdk.roles.remove(id);
+```
+
+***
+
+### update()
+
+> **update**(`request`): `Promise`\<[`Role`](Role.md)\>
+
+Updates the role associated to the specified role id and returns the role.
+
+#### Parameters
+
+##### request
+
+[`UpdateRoleRequest`](UpdateRoleRequest.md)
+
+the update request.
+
+#### Returns
+
+`Promise`\<[`Role`](Role.md)\>
+
+#### Example
+
+```
+const request: UpdateRoleRequest = {
+  id: '6f00a467-2d2d-40e2-944f-dff48d3617b4',
+  // Specify the fields to update here.
+  contactId: 'fd540bd6-f74c-45bf-b2ab-8107d0781a83',
+};
+const roles = await sdk.roles.update(request);
+```

@@ -1,0 +1,134 @@
+---
+title: Correspondence
+---
+[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+
+***
+
+# Interface: Api
+
+Entry point for correspondence to Smokeball.
+
+## Methods
+
+### document()
+
+> **document**(`request`): `void`
+
+Opens a Word document with the specified body content
+
+#### Parameters
+
+##### request
+
+[`DocumentRequest`](DocumentRequest.md)
+
+the create request.
+
+#### Returns
+
+`void`
+
+#### Example
+
+```
+const request: DocumentRequest = {
+ // Specify the fields here.
+};
+// Opens pre-populated Word document.
+sdk.correspondence.document(request);
+```
+
+***
+
+### email()
+
+> **email**(`request`): `void`
+
+Opens pre-populated email window.
+
+#### Parameters
+
+##### request
+
+[`EmailRequest`](EmailRequest.md)
+
+the create request.
+
+#### Returns
+
+`void`
+
+#### Example
+
+```
+const request: EmailRequest = {
+ // Specify the fields here.
+};
+// Opens pre-populated email window.
+sdk.correspondence.email(request);
+```
+
+***
+
+### form()
+
+> **form**(`request`): `void`
+
+Opens pre-populated form/caption window (US only).
+
+#### Parameters
+
+##### request
+
+[`FormRequest`](FormRequest.md)
+
+the create request.
+
+#### Returns
+
+`void`
+
+#### Throws
+
+NotImplementedException in AU/UK region
+
+#### Example
+
+```
+const request: FormRequest = {
+ // Specify the fields here.
+};
+// Opens form/caption selection window.
+sdk.correspondence.form(request);
+```
+
+***
+
+### letter()
+
+> **letter**(`request`): `void`
+
+Opens pre-populated letter window.
+
+#### Parameters
+
+##### request
+
+[`LetterRequest`](LetterRequest.md)
+
+the create request.
+
+#### Returns
+
+`void`
+
+#### Example
+
+```
+const request: LetterRequest = {
+ // Specify the fields here.
+};
+// Opens pre-populated email window.
+sdk.correspondence.letter(request);
+```

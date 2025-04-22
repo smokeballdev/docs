@@ -1,0 +1,229 @@
+---
+title: Tasks
+---
+[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+
+***
+
+# Interface: Api
+
+Entry point for task to Smokeball.
+
+## Methods
+
+### all()
+
+> **all**(`matterId?`): `Promise`\<[`Task`](Task.md)[]\>
+
+Gets the tasks associated with the matter in the current context or the specified matter id if provided.
+
+#### Parameters
+
+##### matterId?
+
+`string`
+
+#### Returns
+
+`Promise`\<[`Task`](Task.md)[]\>
+
+the tasks associated with the matter in the current context or the specified matter id.
+
+#### Example
+
+```
+// Returns the tasks associated with the matter in the current context or the specified matter id.
+const tasks = await sdk.tasks.all('e9b9084b-c9b4-4f3c-9f5a-4c83ed3ac265');
+```
+
+***
+
+### create()
+
+> **create**(`request`): `Promise`\<[`Task`](Task.md)\>
+
+Creates a new task for the specified matter id and returns the newly created task.
+
+#### Parameters
+
+##### request
+
+[`CreateTaskRequest`](CreateTaskRequest.md)
+
+the create request.
+
+#### Returns
+
+`Promise`\<[`Task`](Task.md)\>
+
+#### Example
+
+```
+const request: TaskRequest = {
+  matterId: 'fd540bd6-f74c-45bf-b2ab-8107d0781a83',
+  staffId: '750eb5c5-ac0b-7d11-4997-e0ce9d8896c8',
+  completedByStaffId: '750eb5c5-ac0b-7d11-4997-e0ce9d8896c8',
+  assigneeIds: ['750eb5c5-ac0b-7d11-4997-e0ce9d8896c8'],
+  subject: 'Review contract for John Smith',
+  note: 'Contract needs to be reviewed and discussed with John',
+  categories: ['Contract','Employee'],
+  dueDate: '2022-10-01',
+  isCompleted: true,
+  completedDate: '2022-10-01',
+  duration: 'PT4H33M',
+};
+const response = await sdk.tasks.create(request);
+```
+
+***
+
+### delete()
+
+> **delete**(`id`): `Promise`\<[`Task`](Task.md)\>
+
+Marks task with the specified task id as deleted and returns the deleted task.
+
+#### Parameters
+
+##### id
+
+`string`
+
+#### Returns
+
+`Promise`\<[`Task`](Task.md)\>
+
+#### Example
+
+```
+const response = await sdk.tasks.delete('e9b9084b-c9b4-4f3c-9f5a-4c83ed3ac265');
+```
+
+***
+
+### get()
+
+> **get**(`id`): `Promise`\<[`Task`](Task.md)\>
+
+Gets the task associated with the specified task id.
+
+#### Parameters
+
+##### id
+
+`string`
+
+#### Returns
+
+`Promise`\<[`Task`](Task.md)\>
+
+the task associated with the specified task id.
+
+#### Example
+
+```
+// Returns the task associated with the specified task id.
+const task = await sdk.tasks.get('e9b9084b-c9b4-4f3c-9f5a-4c83ed3ac265');
+```
+
+***
+
+### open()
+
+> **open**(`taskId`): `void`
+
+Opens the specified task.
+
+#### Parameters
+
+##### taskId
+
+`string`
+
+the task to open.
+
+#### Returns
+
+`void`
+
+#### Example
+
+```
+// Opens the task with the specified id.
+await sdk.tasks.open('d2e8aea9-e201-4be7-bbe6-a4f64cc491ab');
+```
+
+***
+
+### openNew()
+
+> **openNew**(`request`): `void`
+
+Opens pre-populated task window.
+
+#### Parameters
+
+##### request
+
+[`OpenNewRequest`](OpenNewRequest.md)
+
+the add task request.
+
+#### Returns
+
+`void`
+
+#### Example
+
+```
+const request: OpenNewRequest = {
+  matterId: 'fd540bd6-f74c-45bf-b2ab-8107d0781a83',
+  subject: 'Review contract for John Smith',
+  assigneeIds: ['750eb5c5-ac0b-7d11-4997-e0ce9d8896c8'],
+  note: 'Contract needs to be reviewed and discussed with John',
+  dueDate: '2022-10-01',
+  duration: 'PT4H33M',
+};
+
+await sdk.tasks.openNew(request);
+```
+
+***
+
+### update()
+
+> **update**(`request`): `Promise`\<[`Task`](Task.md)\>
+
+Updates a task with the specified task id and returns the updated task.
+
+#### Parameters
+
+##### request
+
+[`UpdateTaskRequest`](UpdateTaskRequest.md)
+
+the update request.
+
+#### Returns
+
+`Promise`\<[`Task`](Task.md)\>
+
+#### Example
+
+```
+const request: TaskRequest = {
+  taskId: '410f2b2b-7adf-436e-a5fd-dab1733d3fba',
+  matterId: 'fd540bd6-f74c-45bf-b2ab-8107d0781a83',
+  staffId: '750eb5c5-ac0b-7d11-4997-e0ce9d8896c8',
+  completedByStaffId: '750eb5c5-ac0b-7d11-4997-e0ce9d8896c8',
+  assigneeIds: ['750eb5c5-ac0b-7d11-4997-e0ce9d8896c8'],
+  subject: 'Review contract for John Smith',
+  note: 'Contract needs to be reviewed and discussed with John',
+  categories: ['Contract','Employee'],
+  dueDate: '2022-10-01',
+  isCompleted: true,
+  completedDate: '2022-10-01',
+  duration: 'PT4H33M',
+};
+const response = await sdk.tasks.update(request);
+```

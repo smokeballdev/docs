@@ -1,0 +1,90 @@
+---
+title: Firm
+---
+[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+
+***
+
+# Interface: Api
+
+Entry point for firm to Smokeball.
+
+## Methods
+
+### get()
+
+> **get**(): `Promise`\<[`Firm`](Firm.md)\>
+
+Gets the firm associated with the current context.
+
+#### Returns
+
+`Promise`\<[`Firm`](Firm.md)\>
+
+the firm associated with the current context.
+
+#### Example
+
+```
+// Returns the firm associated with the current context.
+const firm = await sdk.firm.get();
+```
+
+***
+
+### observe()
+
+> **observe**(`callback`): `void`
+
+Creates a subscription for the firm associated with the current context.
+
+Only one subscription will be made per session. Regardless of how many times this function is called, the last registered callback will be used.
+
+#### Parameters
+
+##### callback
+
+(`firm`) => `void`
+
+the function to execute when a change is made to firm(s) in Smokeball.
+
+#### Returns
+
+`void`
+
+#### Example
+
+```
+sdk.firm.observe(firm => {
+  // Perform syncing code here.
+});
+```
+
+***
+
+### update()
+
+> **update**(`request`): `Promise`\<[`Firm`](Firm.md)\>
+
+Updates the firm associated with the current context.
+
+#### Parameters
+
+##### request
+
+[`UpdateFirmRequest`](UpdateFirmRequest.md)
+
+the update request.
+
+#### Returns
+
+`Promise`\<[`Firm`](Firm.md)\>
+
+#### Example
+
+```
+const request: UpdateFirmRequest = {
+ // Specify the fields to update here.
+};
+const firm = await sdk.firm.update(request);
+```

@@ -1,0 +1,188 @@
+---
+title: Matters
+---
+[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+
+***
+
+# Interface: Api
+
+Entry point for matters to Smokeball.
+
+## Methods
+
+### create()
+
+> **create**(`request`): `Promise`\<[`Matter`](Matter.md)\>
+
+Opens a matter window with a newly created matter or lead and returns the matter.
+
+#### Parameters
+
+##### request
+
+[`CreateMatterRequest`](CreateMatterRequest.md)
+
+the create request.
+
+#### Returns
+
+`Promise`\<[`Matter`](Matter.md)\>
+
+the created matter.
+
+#### Example
+
+```
+const request: matters.CreateMatterRequest = {
+  // Specify the fields here.
+};
+const matter = await sdk.matters.create(request);
+```
+
+***
+
+### get()
+
+> **get**(`matterId?`): `Promise`\<[`Matter`](Matter.md)\>
+
+Gets the matter associated to the current context or the specified matter id if provided.
+
+#### Parameters
+
+##### matterId?
+
+`string`
+
+the matter to retrieve, use null for the matter in the current context.
+
+#### Returns
+
+`Promise`\<[`Matter`](Matter.md)\>
+
+the specified matter.
+
+#### Example
+
+```
+// Returns the matter associated to the current context.
+const matter = await sdk.matters.get();
+// Returns the matter with the specified matter id.
+const matter = await sdk.matters.get('d2e8aea9-e201-4be7-bbe6-a4f64cc491ab');
+```
+
+***
+
+### getMany()
+
+> **getMany**(`request`): `Promise`\<[`GetMattersResponse`](GetMattersResponse.md)\>
+
+Get matters associated with matter ids provided.
+
+#### Parameters
+
+##### request
+
+[`GetMattersRequest`](GetMattersRequest.md)
+
+the matters to retrieve.
+
+#### Returns
+
+`Promise`\<[`GetMattersResponse`](GetMattersResponse.md)\>
+
+specified matters.
+
+#### Example
+
+```
+const request: matters.GetMattersRequest = {
+ ids: ['d2e8aea9-e201-4be7-bbe6-a4f64cc491ab','d2e8aea9-e201-4be7-bbe6-a4f64cc491ac']
+}
+
+const matters = await sdk.matters.getMany(request);
+```
+
+***
+
+### observe()
+
+> **observe**(`callback`, `matterId?`): `void`
+
+Creates a subscription for the matter associated to the current context or the specified matter id if provided.
+
+Only one subscription will be made per session. Regardless of how many times this function is called, the last registered callback will be used.
+
+#### Parameters
+
+##### callback
+
+(`matter`) => `void`
+
+the function to execute when a change is made to matter(s) in Smokeball.
+
+##### matterId?
+
+`string`
+
+the matter to subscribe to.
+
+#### Returns
+
+`void`
+
+#### Example
+
+```
+sdk.matters.observe(matter => {
+  // Perform syncing code here.
+});
+```
+
+***
+
+### open()
+
+> **open**(`matterId?`): `void`
+
+Opens the matter associated to the current context (brings it into view) or the specified matter id if provided.
+
+#### Parameters
+
+##### matterId?
+
+`string`
+
+the matter to open, use null for the matter in the current context.
+
+#### Returns
+
+`void`
+
+#### Example
+
+```
+// Opens the matter associated to the current context.
+sdk.matters.open();
+// Opens the matter with the specified id.
+sdk.matters.open('d2e8aea9-e201-4be7-bbe6-a4f64cc491ab');
+```
+
+***
+
+### select()
+
+> **select**(): `Promise`\<`string`\>
+
+Opens a matter picker to select a matter.
+Returns the selected matter id.
+
+#### Returns
+
+`Promise`\<`string`\>
+
+#### Example
+
+```
+const matterId = await sdk.matters.select()
+```

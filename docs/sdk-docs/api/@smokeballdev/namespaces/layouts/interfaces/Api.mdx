@@ -1,0 +1,228 @@
+---
+title: Layouts
+---
+[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+
+***
+
+# Interface: Api
+
+Entry point for layouts to Smokeball.
+
+## Methods
+
+### add()
+
+> **add**(`request`): `Promise`\<[`LayoutMatter`](LayoutMatter.md)\>
+
+Adds a new layout matter item to a matter.
+
+#### Parameters
+
+##### request
+
+[`AddLayoutMatterItemRequest`](AddLayoutMatterItemRequest.md)
+
+the update request.
+
+#### Returns
+
+`Promise`\<[`LayoutMatter`](LayoutMatter.md)\>
+
+#### Example
+
+```
+const request: AddLayoutMatterItemRequest = {
+  layoutDesignId: '913bb0d3-f7b7-4702-9419-ee508f7782d0',
+  parentItemId: '7250a634-4d67-4054-8f07-5b6c8a9dcfa8',
+  values: [
+      // Specify the fields to update here. Fields that are missing are ignored.
+  ]
+};
+const layout = await sdk.layouts.add(request);
+```
+
+***
+
+### get()
+
+> **get**(`matterId?`): `Promise`\<[`LayoutMatter`](LayoutMatter.md)\>
+
+Gets the layout associated to the current context or the specified matter id if provided.
+
+#### Parameters
+
+##### matterId?
+
+`string`
+
+the layout to retrieve, use null for the matter in the current context.
+
+#### Returns
+
+`Promise`\<[`LayoutMatter`](LayoutMatter.md)\>
+
+the specified layout.
+
+#### Example
+
+```
+// Returns the layout with the specified matter id.
+const matter = await sdk.layouts.get('e9b9084b-c9b4-4f3c-9f5a-4c83ed3ac265');
+```
+
+***
+
+### getContacts()
+
+> **getContacts**(`itemId`): `Promise`\<[`GetLayoutMatterItemContactsResponse`](GetLayoutMatterItemContactsResponse.md)\>
+
+Gets the contacts associated to the provided item id and matter id of the current context.
+
+#### Parameters
+
+##### itemId
+
+`string`
+
+the layout item with contacts.
+
+#### Returns
+
+`Promise`\<[`GetLayoutMatterItemContactsResponse`](GetLayoutMatterItemContactsResponse.md)\>
+
+the contacts associated with the layout item.
+
+#### Example
+
+```
+const layoutContacts = await sdk.layouts.getContacts('e9b9084b-c9b4-4f3c-9f5a-4c83ed3ac265');
+```
+
+***
+
+### getItem()
+
+> **getItem**(`itemId`): `Promise`\<[`LayoutMatterItem`](LayoutMatterItem.md)\>
+
+Gets a layout item associated to the current context.
+
+#### Parameters
+
+##### itemId
+
+`string`
+
+the layout item to retrieve.
+
+#### Returns
+
+`Promise`\<[`LayoutMatterItem`](LayoutMatterItem.md)\>
+
+the specified layout item.
+
+#### Example
+
+```
+// Returns a layout item.
+const item = await sdk.layouts.getItem('21e9a129-8fa3-4a94-812c-123d7716df8e');
+```
+
+***
+
+### observe()
+
+> **observe**(`callback`, `matterId?`): `void`
+
+Creates a subscription for the layout matter associated to the current context or the specified matter id if provided.
+
+Only one subscription will be made per session. Regardless of how many times this function is called, the last registered callback will be used.
+
+#### Parameters
+
+##### callback
+
+(`layout`) => `void`
+
+the function to execute when a change is made to layout(s) in Smokeball.
+
+##### matterId?
+
+`string`
+
+the layout to subscribe to.
+
+#### Returns
+
+`void`
+
+#### Example
+
+```
+sdk.layouts.observe(layouts => {
+  // Perform syncing code here.
+});
+```
+
+***
+
+### remove()
+
+> **remove**(`request`): `Promise`\<[`LayoutMatter`](LayoutMatter.md)\>
+
+Removes a layout matter item from a matter.
+
+#### Parameters
+
+##### request
+
+[`RemoveLayoutMatterItemRequest`](RemoveLayoutMatterItemRequest.md)
+
+the update request.
+
+#### Returns
+
+`Promise`\<[`LayoutMatter`](LayoutMatter.md)\>
+
+#### Example
+
+```
+const request: RemoveLayoutMatterItemRequest = {
+  itemId: 'f6dd87bf-0266-40cf-b256-fdbc3ffbac66',
+  parentItemId: '7250a634-4d67-4054-8f07-5b6c8a9dcfa8',
+};
+const layout = await sdk.layouts.remove(request);
+```
+
+***
+
+### update()
+
+> **update**(`request`): `Promise`\<[`LayoutMatter`](LayoutMatter.md)\>
+
+Updates the layout associated to the specified matter id and returns the layout.
+
+#### Parameters
+
+##### request
+
+[`UpdateLayoutMatterItemRequest`](UpdateLayoutMatterItemRequest.md)
+
+the update request.
+
+#### Returns
+
+`Promise`\<[`LayoutMatter`](LayoutMatter.md)\>
+
+#### Example
+
+```
+const request: UpdateLayoutMatterItemRequest = {
+  matterId: 'a31260b5-9921-4723-83c5-61b8679941af',
+  itemId: '7250a634-4d67-4054-8f07-5b6c8a9dcfa8',
+  values: [
+      // Specify the fields to update here. Fields that are missing are ignored.
+  ]
+};
+const layout = await sdk.layouts.update(request);
+```

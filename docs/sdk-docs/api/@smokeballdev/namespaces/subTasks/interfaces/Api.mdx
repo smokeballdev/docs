@@ -1,0 +1,164 @@
+---
+title: SubTasks
+---
+[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+
+***
+
+# Interface: Api
+
+Entry point for task to Smokeball.
+
+## Methods
+
+### all()
+
+> **all**(`taskId`): `Promise`\<[`SubTask`](SubTask.md)[]\>
+
+Gets the subTasks associated with the specified task id.
+
+#### Parameters
+
+##### taskId
+
+`string`
+
+#### Returns
+
+`Promise`\<[`SubTask`](SubTask.md)[]\>
+
+the subTasks associated with the specified task id.
+
+#### Example
+
+```
+// Returns the subTasks associated with the specified task id.
+const subTasks = await sdk.subTasks.all('e9b9084b-c9b4-4f3c-9f5a-4c83ed3ac265');
+```
+
+***
+
+### create()
+
+> **create**(`request`): `Promise`\<[`SubTask`](SubTask.md)\>
+
+Creates a new subTask for the specified task id and returns the newly created subTask.
+
+#### Parameters
+
+##### request
+
+[`CreateSubTaskRequest`](CreateSubTaskRequest.md)
+
+the create request.
+
+#### Returns
+
+`Promise`\<[`SubTask`](SubTask.md)\>
+
+#### Example
+
+```
+const request: SubTaskRequest = {
+  taskId: '410f2b2b-7adf-436e-a5fd-dab1733d3fba',
+  staffId: '750eb5c5-ac0b-7d11-4997-e0ce9d8896c8',
+  completedByStaffId: '750eb5c5-ac0b-7d11-4997-e0ce9d8896c8',
+  subject: 'Review contract for John Smith',
+  isCompleted: true,
+  completedDate: '2022-10-01'
+};
+const response = await sdk.subTasks.create(request);
+```
+
+***
+
+### delete()
+
+> **delete**(`id`, `taskId`): `Promise`\<[`SubTask`](SubTask.md)\>
+
+Marks subTask with the specified id and parent task id as deleted and returns the deleted subTask.
+
+#### Parameters
+
+##### id
+
+`string`
+
+##### taskId
+
+`string`
+
+#### Returns
+
+`Promise`\<[`SubTask`](SubTask.md)\>
+
+#### Example
+
+```
+const response = await sdk.subTasks.delete('e9b9084b-c9b4-4f3c-9f5a-4c83ed3ac265','750eb5c5-ac0b-7d11-4997-e0ce9d8896c8');
+```
+
+***
+
+### get()
+
+> **get**(`id`, `taskId`): `Promise`\<[`SubTask`](SubTask.md)\>
+
+Gets the subTask associated with the specified id and parent task id.
+
+#### Parameters
+
+##### id
+
+`string`
+
+##### taskId
+
+`string`
+
+#### Returns
+
+`Promise`\<[`SubTask`](SubTask.md)\>
+
+the subTask associated with the specified id and parent task id.
+
+#### Example
+
+```
+// Returns the subTask associated with the specified id and parent task id.
+const subTask = await sdk.subTasks.get('e9b9084b-c9b4-4f3c-9f5a-4c83ed3ac265','750eb5c5-ac0b-7d11-4997-e0ce9d8896c8');
+```
+
+***
+
+### update()
+
+> **update**(`request`): `Promise`\<[`SubTask`](SubTask.md)\>
+
+Updates a subTask with the specified id and returns the updated subTask.
+
+#### Parameters
+
+##### request
+
+[`UpdateSubTaskRequest`](UpdateSubTaskRequest.md)
+
+the update request.
+
+#### Returns
+
+`Promise`\<[`SubTask`](SubTask.md)\>
+
+#### Example
+
+```
+const request: SubTaskRequest = {
+  taskId: '410f2b2b-7adf-436e-a5fd-dab1733d3fba',
+  staffId: '750eb5c5-ac0b-7d11-4997-e0ce9d8896c8',
+  completedByStaffId: '750eb5c5-ac0b-7d11-4997-e0ce9d8896c8',
+  subject: 'Review contract for John Smith',
+  isCompleted: true,
+  completedDate: '2022-10-01'
+};
+const response = await sdk.subTasks.update(request);
+```

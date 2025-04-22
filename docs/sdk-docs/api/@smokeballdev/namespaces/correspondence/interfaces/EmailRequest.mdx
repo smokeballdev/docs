@@ -1,0 +1,74 @@
+---
+title: Correspondence
+---
+[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+
+***
+
+# Interface: EmailRequest
+
+Email request.
+
+## Properties
+
+### attachments?
+
+> `optional` **attachments**: [`FileAttachment`](FileAttachment.md)[]
+
+Email attachments
+
+***
+
+### bcc?
+
+> `optional` **bcc**: [`EmailRecipient`](EmailRecipient.md)[]
+
+Email recipients to send via blind carbon copy.
+
+***
+
+### bodyContentType?
+
+> `optional` **bodyContentType**: [`BodyContentType`](../type-aliases/BodyContentType.md)
+
+Body content type
+
+***
+
+### bodyHtml?
+
+> `optional` **bodyHtml**: `string`
+
+Body content in HTML format.
+
+***
+
+### cc?
+
+> `optional` **cc**: [`EmailRecipient`](EmailRecipient.md)[]
+
+Email recipients to send via carbon copy.
+
+***
+
+### matterId?
+
+> `optional` **matterId**: `string`
+
+Matter id.
+
+***
+
+### subject?
+
+> `optional` **subject**: `string`
+
+Email subject.
+
+***
+
+### to
+
+> **to**: [`EmailRecipient`](EmailRecipient.md)[]
+
+Email recipients to send.

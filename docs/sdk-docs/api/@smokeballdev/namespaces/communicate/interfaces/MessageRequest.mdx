@@ -1,0 +1,50 @@
+---
+title: Communicate
+---
+[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+
+***
+
+# Interface: MessageRequest
+
+Create message request.
+
+## Properties
+
+### attachments?
+
+> `optional` **attachments**: [`FileAttachment`](FileAttachment.md)[]
+
+Message attachments
+
+***
+
+### contactIds?
+
+> `optional` **contactIds**: `string`[]
+
+Contacts to send the message to.
+
+***
+
+### matterId?
+
+> `optional` **matterId**: `string`
+
+Matter id.
+
+***
+
+### message?
+
+> `optional` **message**: `string`
+
+Message to communicate. Can contain plain text with markdown links in the format: [link label](link url)
+
+***
+
+### staffIds?
+
+> `optional` **staffIds**: `string`[]
+
+Staff members to send the message to.

@@ -1,0 +1,42 @@
+---
+title: Memos
+---
+[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+
+***
+
+# Interface: Api
+
+Entry point for memos in Smokeball.
+
+## Methods
+
+### openNew()
+
+> **openNew**(`request`): `void`
+
+Opens pre-populated memo window.
+
+#### Parameters
+
+##### request
+
+[`OpenNewRequest`](OpenNewRequest.md)
+
+the open new memo request.
+
+#### Returns
+
+`void`
+
+#### Example
+
+```
+const request: OpenNewRequest = {
+  matterId: 'fd540bd6-f74c-45bf-b2ab-8107d0781a83',
+  title: 'Client Meeting Notes',
+  text: 'The client accepted our proposal'
+};
+
+await sdk.memos.openNew(request);
+```

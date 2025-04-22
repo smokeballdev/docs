@@ -1,0 +1,72 @@
+---
+title: Contacts
+---
+[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+
+***
+
+# Interface: UpdateContactRequest
+
+Update contact request.
+
+## Extends
+
+- [`CreateContactRequest`](CreateContactRequest.md)
+
+## Properties
+
+### company?
+
+> `optional` **company**: [`Company`](Company.md)
+
+Company details of the contact.
+
+#### Inherited from
+
+[`CreateContactRequest`](CreateContactRequest.md).[`company`](CreateContactRequest.md#company)
+
+***
+
+### groupOfPeople?
+
+> `optional` **groupOfPeople**: [`CreateGroupOfPeopleRequest`](CreateGroupOfPeopleRequest.md)
+
+Group of people details of the contact.
+
+#### Inherited from
+
+[`CreateContactRequest`](CreateContactRequest.md).[`groupOfPeople`](CreateContactRequest.md#groupofpeople)
+
+***
+
+### id
+
+> **id**: `string`
+
+Contact id
+
+***
+
+### person?
+
+> `optional` **person**: [`Person`](Person.md)
+
+Person details of the contact.
+
+#### Inherited from
+
+[`CreateContactRequest`](CreateContactRequest.md).[`person`](CreateContactRequest.md#person)
+
+***
+
+### trust?
+
+> `optional` **trust**: [`CreateTrustRequest`](../type-aliases/CreateTrustRequest.md)
+
+Trust details of the contact.
+
+Only supported in US.
+
+#### Inherited from
+
+[`CreateContactRequest`](CreateContactRequest.md).[`trust`](CreateContactRequest.md#trust)

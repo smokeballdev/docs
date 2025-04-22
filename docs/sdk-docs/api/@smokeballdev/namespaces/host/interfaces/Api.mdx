@@ -1,0 +1,168 @@
+---
+title: Host
+---
+[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+
+***
+
+# Interface: Api
+
+Entry point for the host in Smokeball.
+
+## Methods
+
+### close()
+
+> **close**(`request?`): `void`
+
+Closes the host in the native app.
+When being called in the native app, this action closes the modal browser window. Nothing happens if called within a browser tab.
+
+#### Parameters
+
+##### request?
+
+[`CloseRequest`](CloseRequest.md)
+
+#### Returns
+
+`void`
+
+#### Example
+
+```
+sdk.host.close();
+```
+
+***
+
+### modal()
+
+> **modal**(`request`): `Promise`\<`boolean`\>
+
+Opens the provided url into a new browser window and returns only when the newly opened window is closed.
+
+#### Parameters
+
+##### request
+
+[`OpenRequest`](OpenRequest.md)
+
+#### Returns
+
+`Promise`\<`boolean`\>
+
+#### Example
+
+```
+const request: OpenRequest = {
+   url: 'https://www.google.com/',
+   title: 'title'
+};
+const result = await sdk.host.modal(request);
+```
+
+***
+
+### open()
+
+> **open**(`request`): `void`
+
+Opens the provided url into a new browser window.
+
+#### Parameters
+
+##### request
+
+[`OpenRequest`](OpenRequest.md)
+
+#### Returns
+
+`void`
+
+#### Example
+
+```
+const request: OpenRequest = {
+   url: 'https://www.google.com/',
+   title: 'title'
+};
+sdk.host.open(request);
+```
+
+***
+
+### refresh()
+
+> **refresh**(): `void`
+
+Refresh the host in the native app.
+When being called in the native app, this action will refresh the modal browser window.
+
+#### Returns
+
+`void`
+
+#### Example
+
+```
+sdk.host.refresh();
+```
+
+***
+
+### selectTab()
+
+> **selectTab**(`tab`): `void`
+
+Selects the tab in the host view.
+When being called in the native app, this action selects the specified tab. Nothing happens if the selected tab is invalid.
+Currently only supports the matter view. The main view is NOT supported.
+
+#### Parameters
+
+##### tab
+
+`number`
+
+#### Returns
+
+`void`
+
+#### Example
+
+```
+sdk.host.selectTab(MatterTabs.Tasks);
+```
+
+***
+
+### type()
+
+> **type**(): [`HostType`](../enumerations/HostType.md)
+
+Retrieves the host's type.
+
+#### Returns
+
+[`HostType`](../enumerations/HostType.md)
+
+***
+
+### version()
+
+> **version**(): `Promise`\<[`Version`](Version.md)\>
+
+Retrieves the host's version.
+
+#### Returns
+
+`Promise`\<[`Version`](Version.md)\>
+
+the current version of the host.
+
+#### Example
+
+```
+const version = await sdk.host.version();
+```
