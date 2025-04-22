@@ -41,7 +41,7 @@
           {
             "group": "Build",
             "pages": [
-              "docs/platform-docs/2a34b567c890d-developer-portal",
+              "docs/platform-docs/2a34b567c890d-developer-console",
               {
                 "group": "Apps",
                 "icon": "rocket",

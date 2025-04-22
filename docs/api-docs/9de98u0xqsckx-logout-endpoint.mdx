@@ -10,17 +10,22 @@ The `/logout` endpoint is a redirection endpoint. It signs the user out and redi
 
 Make a GET request to `https://auth.smokeball.com/oauth2/logout` with the following query parameters:
 
-```json http
-{
-  "method": "get",
-  "url": "https://auth.smokeball.com/oauth2/logout",
-  "query": {
-    "response_type": "code",
-    "client_id": "xxxxx",
-    "redirect_uri": "https://xxxxxxxx"
+<CodeGroup>
+  ```bash curl
+  curl --request GET 'https://auth.smokeball.com/oauth2/logout?response_type=code&client_id=xxxxx&redirect_uri=https://xxxxxxxx'
+  ```
+  ```json http
+  {
+    "method": "GET",
+    "url": "https://auth.smokeball.com/oauth2/logout",
+    "query": {
+      "response_type": "code",
+      "client_id": "xxxxx",
+      "redirect_uri": "https://xxxxxxxx"
+    }
   }
-}
-```
+  ```
+</CodeGroup>
 
 ## Request Headers
 

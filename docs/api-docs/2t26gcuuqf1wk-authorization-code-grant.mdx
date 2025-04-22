@@ -1,10 +1,13 @@
 ---
 title: "Authorization Code Grant"
 ---
+The Authorization Code Grant is a standard OAuth 2.0 flow that enables secure user authentication and authorization. This flow allows applications to obtain an **access_token** by first receiving an authorization code after the user logs in. The process works as follows:
 
-## Overview
+1. Your application redirects the user to authenticate with their Smokeball credentials
+2. Upon successful authentication, Smokeball returns an authorization code to your redirect URI
+3. Your application exchanges this code for an **access_token** that can be used to make authenticated API requests
 
-The Authorization Code Grant flow is used to connect to the Smokeball API as an authenticated Smokeball user. The Smokeball user will authenticate using their credentials and an authorization code is passed back to your supplied redirect uri(s) which you can then exchange for an **access_token**.
+This is the recommended OAuth 2.0 flow when you need to access the Smokeball API on behalf of a specific user.
 
 ## Request User Authorization
 
@@ -12,40 +15,47 @@ Direct the user to `https://auth.smokeball.com/oauth2/authorize` with the follow
 
 Example:
 
-<Tabs>
-  <TabItem value="http" label="HTTP">
-  ```http
-  GET /oauth2/authorize?response_type=code&client_id=xxxxx&redirect_uri=https://xxxxxxxx HTTP/1.1
-  Host: auth.smokeball.com
-  ```
-  </TabItem>
-
-  <TabItem value="curl" label="cURL">
-  ```bash
+<CodeGroup>
+  ```bash curl
   curl -X GET 'https://auth.smokeball.com/oauth2/authorize?response_type=code&client_id=xxxxx&redirect_uri=https://xxxxxxxx'
   ```
-  </TabItem>
-
-  <TabItem value="js" label="JavaScript">
-  ```javascript
-  fetch('https://auth.smokeball.com/oauth2/authorize?response_type=code&client_id=xxxxx&redirect_uri=https://xxxxxxxx');
-  ```
-  </TabItem>
-</Tabs>
-
-```json http
-{
-  "method": "get",
-  "url": "https://auth.smokeball.com/oauth2/authorize",
-  "query": {
-    "response_type": "code",
-    "client_id": "xxxxx",
-    "redirect_uri": "https://xxxxxxxx"
+  ```json http
+  {
+    "method": "GET",
+    "url": "https://auth.smokeball.com/oauth2/authorize",
+    "query": {
+      "response_type": "code",
+      "client_id": "xxxxx",
+      "redirect_uri": "https://xxxxxxxx"
+    }
   }
-}
-```
+  ```
+</CodeGroup>
 
-> Note: Please **do not include** the `scope` query parameter when making an authorize request. This will ensure that all assigned scopes are automatically included in the access token.
+<ParamField path="response_type" type="string" required>
+  Must be set to "code" for Authorization Code flow.
+  Determines the OAuth 2.0 grant type being requested.
+</ParamField>
+<ParamField path="client_id" type="string" required>
+  The client identifier issued during application registration.
+  Used to identify the application making the authorization request.
+</ParamField>
+<ParamField path="redirect_uri" type="string" required>
+  The URI where the authorization server will send the authorization code.
+  Must match one of the pre-registered redirect URIs.
+</ParamField>
+<ParamField path="state" type="string">
+  An opaque value used to maintain state between request and callback.
+  Helps prevent CSRF attacks in the OAuth flow.
+
+  This parameter is optional.
+</ParamField>
+<ParamField path="scope" type="string">
+  The requested scope of access (space-delimited strings).
+  Defines the permissions being requested by the application.
+
+  This parameter is optional. Leaving it empty will ensure that all assigned scopes are automatically included in the access token.
+</ParamField>
 
 The user will be directed to a login page where they will need to use their Smokeball credentials to login.
 
@@ -63,32 +73,36 @@ The response returns a one time use code that is valid for five minutes.
 
 Once you have obtained an authorization code, you can now use it to get an **access_token** which may be used to make requests to the API.
 
-<Warning>
-The use of **id_token** to make API requests has been deprecated. API requests can now also be made using the **access_token**. 
-
-For further information, see [migration section](#migrating-from-id_token-to-access_token) below for migrating from **id_token** to **access_token**.
-
-Please note that the **id_token** will continue to work for the time being and **no immediate action is required**.
-</Warning>
-
 Make a POST request to `https://auth.smokeball.com/oauth2/token` with the following parameters and headers:
 
-```json http
-{
-  "method": "post",
-  "url": "https://auth.smokeball.com/oauth2/token",
-  "headers": {
-    "Authorization": "Basic Y2xpZW50X2lkOmNsaWVudF9zZWNyZXQ=",
-    "Content-Type": "application/x-www-form-urlencoded"    
-  },
-  "body": {
-    "grant_type": "authorization_code",
-    "client_id": "xxxx",
-    "redirect_uri": "https://xxxxx",
-    "code": "the code acquired from step 1"
+<CodeGroup>
+  ```bash curl
+  curl --request POST \
+    --url https://auth.smokeball.com/oauth2/token \
+    --header "Authorization: Basic Y2xpZW50X2lkOmNsaWVudF9zZWNyZXQ=" \
+    --header "Content-Type: application/x-www-form-urlencoded" \
+    --data-urlencode "grant_type=authorization_code" \
+    --data-urlencode "client_id=xxxx" \
+    --data-urlencode "redirect_uri=https://xxxxx" \
+    --data-urlencode "code=the code acquired from step 1"
+  ```
+  ```json http
+  {
+    "method": "POST",
+    "url": "https://auth.smokeball.com/oauth2/token",
+    "headers": {   
+      "Authorization": "Basic Y2xpZW50X2lkOmNsaWVudF9zZWNyZXQ=",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": {
+      "grant_type": "authorization_code",
+      "client_id": "xxxx",
+      "redirect_uri": "https://xxxxx",
+      "code": "the code acquired from step 1"
+    }
   }
-}
-```
+  ```
+</CodeGroup>
 
 > The **Authorization** header must be the string "Basic" followed by your client_id and client_secret with a colon : in between, Base64 Encoded.
 > For example, client_id:client_secret is Y2xpZW50X2lkOmNsaWVudF9zZWNyZXQ=
@@ -106,12 +120,36 @@ Content-Type: application/json
  "expires_in":3600
 }
 ```
+<ResponseField name="refresh_token" type="string">
+  A token used to obtain a new access token when the current one expires.
 
-By default, the returned **access_token** is valid for 60 minutes.
+  By default, the returned **refresh_token** is valid for 30 days. If you require a longer expiration period, please contact us to discuss your specific needs.
+</ResponseField>
+<ResponseField name="access_token" type="string">
+  The access token used to authenticate API requests.
 
-By default, the returned **refresh_token** is valid for 30 days. If you require a longer expiration period, please contact us to discuss your specific needs.
+  By default, the returned **access_token** is valid for 60 minutes.
+</ResponseField>
+<ResponseField name="token_type" type="string">
+  The type of token issued (typically `"Bearer"`).
 
-> **Important**: Your application is responsible for monitoring the expiration of the refresh token and prompting the user to re-authenticate when it expires. This ensures continuous access to the application without interruptions. See [AWS Cognito Token Endpoint Documentation](https://docs.aws.amazon.com/cognito/latest/developerguide/token-endpoint.html) for more information
+  Indicates how the token should be presented in API requests.
+</ResponseField>
+<ResponseField name="expires_in" type="number">
+  The lifetime of the access token in **seconds**.
+
+  After expiration, a new token must be obtained.
+</ResponseField>
+
+> **Important**: The refresh token expiry is not returned in the above response. Your application is responsible for monitoring the expiration of the refresh token and prompting the user to re-authenticate when it expires. This ensures continuous access to the application without interruptions. See [AWS Cognito Token Endpoint Documentation](https://docs.aws.amazon.com/cognito/latest/developerguide/token-endpoint.html) for more information
+
+<Warning>
+The use of **id_token** to make API requests has been deprecated. API requests can now also be made using the **access_token**. 
+
+For further information, see [migration section](#migrating-from-id_token-to-access_token) below for migrating from **id_token** to **access_token**.
+
+Please note that the **id_token** will continue to work for the time being and **no immediate action is required**.
+</Warning>
 
 ## PKCE (Proof Key for Code Exchange)
 PKCE is an extension of the Authorization Code Grant flow, designed for mobile and single-page applications where storing a client secret securely is difficult. It ensures a more secure flow by requiring a dynamically generated code verifier and code challenge. It is recommended that all authorization code flows are authorized using PKCE and it is *required* for all public api clients, which do not have a client secret.
@@ -207,19 +245,64 @@ function base64UrlEncode(arrayBuffer) {
 ### Request Authorization Code for Access Token
 Direct the user to `https://auth.smokeball.com/oauth2/authorize` with the following parameters: 
 
-```json http
-{
-  "method": "get",
-  "url": "https://auth.smokeball.com/oauth2/authorize",
-  "query": {
-    "response_type": "code",
-    "client_id": "xxxxx",
-    "redirect_uri": "https://your_redirect_uri",
-    "code_challenge_method": "S256",
-    "code_challenge": "your_code_challenge"
+<CodeGroup>
+  ```bash curl
+  curl --request GET \
+    --url "https://auth.smokeball.com/oauth2/authorize?response_type=code&client_id=xxxxx&redirect_uri=https://your_redirect_uri&code_challenge_method=S256&code_challenge=your_code_challenge"
+  ```
+  ```json http
+  {
+    "method": "GET",
+    "url": "https://auth.smokeball.com/oauth2/authorize",
+    "query": {
+      "response_type": "code",
+      "client_id": "xxxxx",
+      "redirect_uri": "https://your_redirect_uri",
+      "code_challenge_method": "S256",
+      "code_challenge": "your_code_challenge"
+    }
   }
-}
-```
+  ```
+</CodeGroup> 
+
+<ParamField path="response_type" type="string" required>
+  Must be set to "code" for Authorization Code flow.
+
+  Determines the OAuth 2.0 grant type being requested.
+</ParamField>
+<ParamField path="client_id" type="string" required>
+  The client identifier issued during application registration.
+
+  Used to identify the application making the authorization request.
+</ParamField>
+<ParamField path="redirect_uri" type="string" required>
+  The URI where the authorization server will send the authorization code.
+
+  Must match one of the pre-registered redirect URIs.
+</ParamField>
+<ParamField path="code_challenge" type="string" required>
+  The PKCE code challenge derived from the code verifier.
+
+  Generated using the S256 code challenge method.
+</ParamField>
+<ParamField path="code_challenge_method" type="string" required>
+  The hash method used to generate the code challenge (must be "S256").
+
+  Ensures secure PKCE implementation for authorization flow.
+</ParamField>
+<ParamField path="state" type="string">
+  An opaque value used to maintain state between request and callback.
+  
+  Helps prevent CSRF attacks in the OAuth flow.
+
+  This parameter is optional.
+</ParamField>
+<ParamField path="scope" type="string">
+  The requested scope of access (space-delimited strings).
+  Defines the permissions being requested by the application.
+
+    This parameter is optional. Leaving it empty will ensure that all assigned scopes are automatically included in the access token.
+</ParamField>
 
 For Smokeball API, only `S256` method is allowed for `code_challenge_method`
 
@@ -228,22 +311,65 @@ The user will be directed to the login page, and if authorized, redirected back 
 ### Exchange Authorization Code for Access Token
 After receiving the authorization code, use it along with the code_verifier to request an access token:
 
-```json http
-{
-  "method": "post",
-  "url": "https://auth.smokeball.com/oauth2/token",
-  "headers": {
-    "Content-Type": "application/x-www-form-urlencoded"
-  },
-  "body": {
-    "grant_type": "authorization_code",
-    "client_id": "xxxxx",
-    "code": "authorization_code_from_previous_step",
-    "redirect_uri": "https://your_redirect_uri",
-    "code_verifier": "your_code_verifier"
+<CodeGroup>
+  ```bash curl
+  curl --request POST \
+    --url https://auth.smokeball.com/oauth2/token \
+    --header "Content-Type: application/x-www-form-urlencoded" \
+    --data-urlencode "grant_type=authorization_code" \
+    --data-urlencode "client_id=xxxxx" \
+    --data-urlencode "code=authorization_code_from_previous_step" \
+    --data-urlencode "redirect_uri=https://your_redirect_uri" \
+    --data-urlencode "code_verifier=your_code_verifier"
+  ```
+  ```json http
+  {
+    "method": "POST",
+    "url": "https://auth.smokeball.com/oauth2/token",
+    "headers": {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": {
+      "grant_type": "authorization_code",
+      "client_id": "xxxxx",
+      "code": "authorization_code_from_previous_step",
+      "redirect_uri": "https://your_redirect_uri",
+      "code_verifier": "your_code_verifier"
+    }
   }
-}
-```
+  ```
+</CodeGroup>
+
+<ParamField path="grant_type" type="string" required>
+  Must be set to "authorization_code" for this flow.
+
+  Specifies the OAuth 2.0 grant type being used.
+</ParamField>
+<ParamField path="client_id" type="string" required>
+  The client identifier issued during application registration.
+
+  Must match the client_id used in the authorization request.
+</ParamField>
+<ParamField path="code" type="string" required>
+  The authorization code received from the authorization server.
+
+  This is the code obtained in the previous authorization step.
+</ParamField>
+<ParamField path="redirect_uri" type="string" required>
+  The same redirect URI that was used in the authorization request.
+
+  Must exactly match the previous URI for security validation.
+</ParamField>
+<ParamField path="code_verifier" type="string" required>
+  The original PKCE code verifier that was used to generate the code_challenge.
+
+  Used to prove possession of the authorization code.
+</ParamField>
+<ParamField path="client_secret" type="string" required>
+  The client secret for confidential clients.
+
+  Required if the client is configured with a secret.
+</ParamField>
 
 You will receive an access token that can be used to authenticate API requests.
 
@@ -251,21 +377,31 @@ You will receive an access token that can be used to authenticate API requests.
 
 You can use the **refresh_token** returned in the previous request to continuously retrieve a valid **access_token** for use with the API. To exchange a **refresh_token** for an **access_token**, make the following request:
 
-```json http
-{
-  "method": "post",
-  "url": "https://auth.smokeball.com/oauth2/token",
-  "headers": {
-    "Authorization": "Basic Y2xpZW50X2lkOmNsaWVudF9zZWNyZXQ=",
-    "Content-Type": "application/x-www-form-urlencoded"    
-  },
-  "body": {
-    "grant_type": "refresh_token",
-    "client_id": "xxxxxx",
-    "refresh_token": "xxxxxx"
+<CodeGroup>
+```bash curl
+  curl -X POST 'https://auth.smokeball.com/oauth2/token' \
+    --header 'Authorization: Basic Y2xpZW50X2lkOmNsaWVudF9zZWNyZXQ=' \
+    --header 'Content-Type: application/x-www-form-urlencoded' \
+    --data-urlencode 'grant_type=refresh_token' \
+    --data-urlencode 'client_id=xxxxxx' \
+    --data-urlencode 'refresh_token=xxxxxx'
+  ```
+  ```json http
+  {
+    "method": "POST",
+    "url": "https://auth.smokeball.com/oauth2/token",
+    "headers": {
+      "Authorization": "Basic Y2xpZW50X2lkOmNsaWVudF9zZWNyZXQ=",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": {
+      "grant_type": "refresh_token",
+      "client_id": "xxxxxx",
+      "refresh_token": "xxxxxx"
+    }
   }
-}
-```
+  ```
+</CodeGroup>
 
 **Sample Response**
 
@@ -279,6 +415,21 @@ Content-Type: application/json
  "expires_in":3600
 }
 ```
+<ResponseField name="access_token" type="string" required="true">
+  The access token used to authenticate API requests.
+
+  By default, the returned **access_token** is valid for 60 minutes.
+</ResponseField>
+<ResponseField name="token_type" type="string" required="true">
+  The type of token issued (typically `"Bearer"`).
+
+  Indicates how the token should be presented in API requests.
+</ResponseField>
+<ResponseField name="expires_in" type="number" required="true">
+  The lifetime of the access token in **seconds**.
+
+  After expiration, a new token must be obtained.
+</ResponseField>
 
 > See [AWS Cognito User Pool OAuth 2.0 Grants](https://aws.amazon.com/blogs/mobile/understanding-amazon-cognito-user-pool-oauth-2-0-grants/) for more information
 
