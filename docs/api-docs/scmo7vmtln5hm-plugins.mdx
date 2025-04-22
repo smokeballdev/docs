@@ -4,190 +4,160 @@ description: "Create, add and update plugins"
 icon: "plug"
 ---
 
-## Structure
+Smokeball offers a simple Plugin framework for developers to create custom web views within Smokeball desktop. A Plugin is defined by an integration partner, and can be assigned or subscribed to by multiple Smokeball firms.
 
-Every Matter has a familiar folder structure used to store files and documents:
+Smokeball offers two implementations of a Plugin - Button or Tab. Partners can customize the appearance of the button/tab for what is shown to users.
 
-<Frame>
-  <img src="/images/matters/files.png" alt="Files" />
-</Frame>
+Plugins are managed through two resources:
 
-If you want to work with the folder/file structure, then you will need to use the GET folders endpoint.
-Alternatively, if you prefer to work with a flat list of all Files on the Matter, you can use the GET files endpoint.
+[Plugins](https://smokeball.stoplight.io/docs/api-docs/1f775a2b8e24d-create-a-new-plugin) for creating or managing Plugins
 
-The root folder of a matter will always have an **id** of `null` and if no **folder id** is specified when adding a File, this is the folder that will be used by default.
+[PluginSubscriptions](https://smokeball.stoplight.io/docs/api-docs/e451fe7575947-subscribe-account-to-plugin) for assigning a Plugin to one or many Smokeball firms.
 
-Every folder including the root folder, will have a a number of sub-folders and files. When retrieveing a folder from the Folders endpoint you will get a list of the sub-folders and files in that folder. Here is a response for root folder of the Matter shown above:
+## Placement Keys
+One of the most important fields of a plugin is its `placement` key, which defines where the plugin appears in Smokeball.
 
-<CodeGroup>
-```bash curl
-curl --request GET "https://api.smokeball.com/matters/5bbc4d72-3001-46bf-acd7-c90dff4dc9fa/documents/folders" \
-    --header "x-api-key: Y2xpZW50X2lkOmNsaWV" \
-    --header "Authorization: Bearer Y2xpZW50X2lkOmNsaWV"
-```
-```json http
+The syntax of a placement key for the Plugins API is `page-zone`. Pages and Zones are described in further detail below:
+
+### Desktop Pages
+Smokeball desktop supports two pages where plugins can be placed:
+
+1. Main Window, denoted by `Window` key
+
+2. Matter Window, denoted by `MatterWindow` key
+
+### Desktop Zones
+The zones are unique places on a page where content can appear. For instance, a page can have both button zones and tab zones and the placement key determines where the Plugin appears in the page.
+
+Smokeball  determines how a set of plugins appear in the zone, generally at the end of the existing list. For ribbon buttons, they will be placed into their own ribbon group at the end of the zone.
+
+Below are the supported Matter window zones:
+
+`MatterWindow-MatterDetailsRibbon` - Places a Tab in Matter page
+
+`MatterWindow-MatterDetailsRibbonTab` - Places a Button in the 'Matter' Tab of Matter page
+
+Below are the supported Main window zones:
+
+`Window-SmokeballRibbonTab` - Places a Button in the 'Smokeball' Tab of Main page
+
+`Window-MainTabs` - Places a navigation tab inside the Smokeball left-side tabs
+
+`Window-MainRibbon` - Places a tab in the main window ribbon
+
+## SDK Support
+All browsers opened by Plugins support integration with the Smokeball SDK as long as the internal browser is used, when `attributes.page.useDefaultBrowser` is `true`.
+See [SDK Documentation](https://smokeball.stoplight.io/docs/sdk-docs/) for usage information.
+
+## Creating a Plugin
+Currently, Plugins can only be created and maintained by select partners. Smokeball is currently controlling the process of which accounts can access plugins.
+
+## Subscribing Smokeball Firms to Plugins
+Smokeball firms are subscribed to plugins through the [PluginSubscriptions](https://smokeball.stoplight.io/docs/api-docs/e451fe7575947-subscribe-account-to-plugin) resource. Partners authorized through the Client Credentials Grant can then subscribe accounts to their plugins. Available plugins are scoped to API client ids, meaning that you can only subscribe to plugins that were created using the same API client id.
+
+Smokeball firms that have subscribed to plugins will always receive the latest version of your plugins, and would be automatically updated to the latest changes.
+
+## Loading your Plugin
+When a Plugin is accessed in Smokeball, a request is dynamically made to the endpoint defined in the Plugins `requestEndpointUrl` field. The url returned by this request is then loaded into Smokeball.
+
+For more detailed usage documentation, please refer to the information below.
+
+### Requesting your URL
+Plugins support two fields which help load your view into Smokeball.
+
+Field | Description
+---------|----------
+ `requestEndpointUrl` | Used to request a URL from your backend.
+ `key` | Used to calculate a signature which must be used by your backend to verify that the request is from Smokeball.
+ 
+When a Plugin view is loaded, a `POST` request is made to the supplied `requestEndpointUrl` url with a payload similar to below:
+``` json
 {
-  "method": "get",
-  "url": "https://api.smokeball.com/matters/5bbc4d72-3001-46bf-acd7-c90dff4dc9fa/documents/folders"
-}
-```
-</CodeGroup>
-
-** Response **
-
-```json
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "value": [
-    {
-      "folders": [
-        {
-          "href": "https://api.smokeball.com/matters/5bbc4d72-3001-46bf-acd7-c90dff4dc9fa/documents/folders/27e52eaf-fa51-4582-bd59-ec3ea5ab664b",
-          "id": "27e52eaf-fa51-4582-bd59-ec3ea5ab664b",
-          "name": "Correspondence"
-        },
-        {
-          "href": "https://api.smokeball.com/matters/5bbc4d72-3001-46bf-acd7-c90dff4dc9fa/documents/folders/c2f7a537-4052-4bab-a4fb-84e0d7e7cef5",
-          "id": "c2f7a537-4052-4bab-a4fb-84e0d7e7cef5",
-          "name": "Contracts"
-        },
-        {
-          "href": "https://api.smokeball.com/matters/5bbc4d72-3001-46bf-acd7-c90dff4dc9fa/documents/folders/6f447d01-5379-493b-a60d-25fb4d64ff8a",
-          "id": "6f447d01-5379-493b-a60d-25fb4d64ff8a",
-          "name": "Emails"
-        }
-      ],
-      "files": [
-        {
-          "href": "https://api.smokeball.com/matters/5bbc4d72-3001-46bf-acd7-c90dff4dc9fa/documents/files/95df25eb-dc99-45dd-881f-4608e00f551b",
-          "id": "95df25eb-dc99-45dd-881f-4608e00f551b",
-          "folder": {},
-          "name": "1. Agenda",
-          "fileExtension": ".docx",
-          "ownerId": "e3f545b4-34cf-49e5-b3e2-55ab0876a84c",
-          "dateCreated": "2017-02-20T05:50:30.1568284Z",
-          "sizeBytes": 44775,
-          "downloadInfo": {
-            "href": "https://api.smokeball.com/matters/5bbc4d72-3001-46bf-acd7-c90dff4dc9fa/documents/files/95df25eb-dc99-45dd-881f-4608e00f551b/download"
-          }
-        },
-        {
-          "href": "https://api.smokeball.com/matters/5bbc4d72-3001-46bf-acd7-c90dff4dc9fa/documents/files/6fd46dfa-a46d-4de4-9553-dae30f7f523a",
-          "id": "6fd46dfa-a46d-4de4-9553-dae30f7f523a",
-          "folder": {},
-          "name": "Engagement Letter",
-          "fileExtension": ".docx",
-          "ownerId": "e3f545b4-34cf-49e5-b3e2-55ab0876a84c",
-          "dateCreated": "2020-05-22T01:36:17.4355416Z",
-          "sizeBytes": 20793,
-          "downloadInfo": {
-            "href": "https://api.smokeball.com/matters/5bbc4d72-3001-46bf-acd7-c90dff4dc9fa/documents/files/6fd46dfa-a46d-4de4-9553-dae30f7f523a/download"
-          }
-        }
-      ]
-    }
-  ]
-}
-```
-
----
-
-## Adding a File
-
-Adding a File to a Matter is a two-step process involving creating the meta-data for the File by POSTing to the files endpoint and then using the response to upload the actual file to the provided URL.
-
-Continuing with the Matter example above, if we wanted to add a File to the _Correspondence_ folder we would make the following request:
-
-<CodeGroup>
-```bash curl
-curl --request POST "https://api.smokeball.com/matters/5bbc4d72-3001-46bf-acd7-c90dff4dc9fa/documents/files" \
-    --header "x-api-key: Y2xpZW50X2lkOmNsaWV" \
-    --header "Authorization: Bearer Y2xpZW50X2lkOmNsaWV"
-```
-```json http
-{
-  "method": "post",
-  "url": "https://api.smokeball.com/matters/{matterId}/documents/files",
+  "method": "POST",
+  "path": "/",
+  "query": {},
+  "url": "https://your.app",
   "headers": {
-    "Content-Type": "application/json"
+    "signature": "3cafe40f92be6ac77d2792b4b267c2da11e3f3087b93bb19c6c5133786984b44",
+    "requestid": "e56f2c3f-b6de-4310-a7a2-c139d62f9711",
+    "timestamp": "638609288928990639",
+    "content-type": "application/json; charset=utf-8"
   },
-  "body": "{\n  \"fileName\": \"Letter to Creditor.docx\",\n  \"folderId\": \"27e52eaf-fa51-4582-bd59-ec3ea5ab664b\",\n  //\"dateCreated\": if not specified, the current datetime will be used\n}",
-  "path": {
-    "matterId": "5bbc4d72-3001-46bf-acd7-c90dff4dc9fa"
+  "body": {
+    "accountId": "a58f2f17-f138-4432-9965-d2cb539cde4d",
+    "userId": "b3d70217-791f-4d82-9fb8-2fcff5c04e58",
+    "userEmail": "user@organization.com",
+    "matterId": "86375bb7-0720-4dc6-b584-458bd7865d9e"
   }
 }
 ```
-</CodeGroup>
-
-**Response**
+Your endpoint should use this information to generate a URL to be viewed by the user. This url should be returned in the JSON response like so:
 ``` json
 {
-  "fileId": "e8ac0461-6bd9-477e-a95b-1d924332c91b",
-  "uploadUrl": "https://s3.amazonaws.com/MatterManagement.Staging/apiuploads/ODUyOGQwNjMtMjY2My00MWMwLTk0ZjQtN2JhMzNlYTRhNmQ0fGUzZjU0NWI0LTM0Y2YtNDllNS1iM2UyLTU1YWIwODc2YTg0Y3w1YmJjNGQ3Mi0zMDAxLTQ2YmYtYWNkNy1jOTBkZmY0ZGM5ZmF8MjdlNTJlYWYtZmE1MS00NTgyLWJkNTktZWMzZWE1YWI2NjRifGU4YWMwNDYxLTZiZDktNDc3ZS1hOTViLTFkOTI0MzMyYzkxYnxMZXR0ZXIgdG8gQ3JlZGl0b3IuZG9jeHw%3D?AWSAccessKeyId=ASIA364TCXVMR4RXEVO5&Expires=1590117388&x-amz-security-token=IQoJb3JpZ2luX2VjEOL%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIFTtWItZ%2Bdjveha7XuP4a05FCTqJmEs0G4VawxdRSaQ1AiEAvi%2FCGd0kyF%2FdDugSrNbl1sMPWSOIgtD%2B4jEAHP3BPnAq3wEIOxAAGgw4MjIyNTc4MjcxNjEiDDEkwjUUF2iV7yoZVCq8AeptjefBs2u6Wn2hFiAdoPw%2F9rGsXkXGfsbyPCDKeJP2yBzpNLGsPiKZkrvrJNNY5t8eViRNqSw69qt2qH4I50Q3O5iwg8kYguCZmFRJ6Gu4g89Og5kdX5FfISdzzoz4zRyVqHUg8j1RkXvaw6o6hpBGjwyLZL24dKqtRvgylLY4faQixoZ2hWYRkT87cuxwj2BOTTt6SNpKze0Atqh6QOV2LokwpIiQo1%2Bd5Ua0nC0Xl39P4pej17W43bDmMOzUnPYFOuABSZPF2G1tnIhP%2BuLtK9HvMobUUPk5cFLcKN5QxIW2hjwlwTZF3IPsvUOVq0AO0UnJd%2By4NdfwCcpm2fUulDFl8y5wKh3%2B0BifQDfsclANHL4Bb6na0Qpp8076HWiN6kbj7HRFNW4mTtsga%2BhK4kYHwAVhS6JR9bm46bz%2FsylzvuhLnIR1eG%2BUpZLJos6LJONIn9MNK78CXY6HJxaDLaewoQ3tAhU8CF%2F6mT3Oel2ZXeY40wm3xh2aqZS%2F9nze94RpJr%2Bf2U%2FHPH8tkB8tsAjflFIA4rGX%2B0BEfqJEWWalQVo%3D&Signature=sQ%2BUezLoeweLtLhyCDK%2Fy1a6naY%3D",
-  "expiry": "2020-05-22T03:16:28.3870695Z"
+  "url": "https://your-site.com/app"
 }
 ```
+> It is critical that the above structure is used in the response payload. If an incorrect format is used or the URL is missing, the user will not be able to use your app.
 
-You will get back the `fileId` of the new File and an `uploadUrl` that you can use to upload the actual file to AWS S3 with a PUT request. The uploadUrl will be valid up until the time specified in the `expiry` field.
+### Request Validation
+It is important that you verify that the URL request is from Smokeball to prevent malicious usage of your endpoint.
 
-> For detailed instructions on uploading files using pre-signed S3 URLs, see the [AWS documentation on using presigned URLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html). The documentation covers request headers, content types, and example code in multiple languages.
+If you supplied a `Key` property when creating a Plugin, a header named `Signature` will be included when Smokeball calls your `requestEndpointUrl`. The signature is a HMAC SHA256 hash that was created with the key that you provided. You can perform the same hashing process on your processing side to verify that the request came from Smokeball.
 
----
+### Computing the HMAC
+The `Signature` hash is calculated using these three bits of information:
+1. The `Timestamp` header which is the ticks representation of the UTC datetime (.Net format) the request was sent
+2. The `RequestId` header
+3. Your `ClientId` that you use to authenticate with the API
 
-## Uploading a new version
-
-To upload a new version of a file to an existing File on a Matter you need to get a new upload URL from the files endpoint:
+These three parameters need to be concatenated into a single string, seperated by a `|` and can then be used to create the hash. 
 
 <CodeGroup>
-```bash curl
-curl --request GET "https://api.smokeball.com/matters/5bbc4d72-3001-46bf-acd7-c90dff4dc9fa/documents/files/e8ac0461-6bd9-477e-a95b-1d924332c91b/upload" \
-    --header "x-api-key: Y2xpZW50X2lkOmNsaWV" \
-    --header "Authorization: Bearer Y2xpZW50X2lkOmNsaWV"
+``` csharp c#
+// Key you provided in the Plugin creation
+var key = "ei7641529ue420n8b9aa";
+
+var timestamp = "638609288928990639";
+var requestId = "e56f2c3f-b6de-4310-a7a2-c139d62f9711";
+var clientId = "lou1qnn0llav95f";
+
+var payload = $"{timestamp}|{requestId}|{clientId}";
+var hmac = new HMACSHA256(Encoding.UTF8.GetBytes(key));
+var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(payload));
+return BitConverter.ToString(hash).Replace("-", "").ToLower();
 ```
-```json http
-{
-  "method": "get",
-  "url": "https://api.smokeball.com/matters/5bbc4d72-3001-46bf-acd7-c90dff4dc9fa/documents/files/e8ac0461-6bd9-477e-a95b-1d924332c91b/upload"
-}
+``` javascript javascript
+const crypto = require('crypto');
+
+const key = "ei7641529ue420n8b9aa";
+
+const timestamp = "638609288928990639";
+const requestId = "e56f2c3f-b6de-4310-a7a2-c139d62f9711";
+const clientId = "lou1qnn0llav95f";
+
+const payload = `${timestamp}|${requestId}|${clientId}`;
+const hmac = crypto.createHmac('sha256', key);
+hmac.update(payload);
+const hash = hmac.digest('hex');
+
+return hash;
 ```
 </CodeGroup>
 
-**Response**
-``` json
-HTTP/1.1 200 OK
-Content-Type: application/json
+This produces the hash string `58817681863148b0e624c00f3094f99e1af31cd7b99a3c2e0655d64a2764d650`
 
-{
-  "fileId": "e8ac0461-6bd9-477e-a95b-1d924332c91b",
-  "uploadUrl": "https://s3.amazonaws.com/MatterManagement.Staging/apiuploads/ODUyOGQwNjMtMjY2My00MWMwLTk0ZjQtN2JhMzNlYTRhNmQ0fGUzZjU0NWI0LTM0Y2YtNDllNS1iM2UyLTU1YWIwODc2YTg0Y3w1YmJjNGQ3Mi0zMDAxLTQ2YmYtYWNkNy1jOTBkZmY0ZGM5ZmF8MjdlNTJlYWYtZmE1MS00NTgyLWJkNTktZWMzZWE1YWI2NjRifGU4YWMwNDYxLTZiZDktNDc3ZS1hOTViLTFkOTI0MzMyYzkxYnxMZXR0ZXIgdG8gQ3JlZGl0b3IuZG9jeHw%3D?AWSAccessKeyId=ASIA364TCXVMR4RXEVO5&Expires=1590117388&x-amz-security-token=IQoJb3JpZ2luX2VjEOL%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIFTtWItZ%2Bdjveha7XuP4a05FCTqJmEs0G4VawxdRSaQ1AiEAvi%2FCGd0kyF%2FdDugSrNbl1sMPWSOIgtD%2B4jEAHP3BPnAq3wEIOxAAGgw4MjIyNTc4MjcxNjEiDDEkwjUUF2iV7yoZVCq8AeptjefBs2u6Wn2hFiAdoPw%2F9rGsXkXGfsbyPCDKeJP2yBzpNLGsPiKZkrvrJNNY5t8eViRNqSw69qt2qH4I50Q3O5iwg8kYguCZmFRJ6Gu4g89Og5kdX5FfISdzzoz4zRyVqHUg8j1RkXvaw6o6hpBGjwyLZL24dKqtRvgylLY4faQixoZ2hWYRkT87cuxwj2BOTTt6SNpKze0Atqh6QOV2LokwpIiQo1%2Bd5Ua0nC0Xl39P4pej17W43bDmMOzUnPYFOuABSZPF2G1tnIhP%2BuLtK9HvMobUUPk5cFLcKN5QxIW2hjwlwTZF3IPsvUOVq0AO0UnJd%2By4NdfwCcpm2fUulDFl8y5wKh3%2B0BifQDfsclANHL4Bb6na0Qpp8076HWiN6kbj7HRFNW4mTtsga%2BhK4kYHwAVhS6JR9bm46bz%2FsylzvuhLnIR1eG%2BUpZLJos6LJONIn9MNK78CXY6HJxaDLaewoQ3tAhU8CF%2F6mT3Oel2ZXeY40wm3xh2aqZS%2F9nze94RpJr%2Bf2U%2FHPH8tkB8tsAjflFIA4rGX%2B0BEfqJEWWalQVo%3D&Signature=sQ%2BUezLoeweLtLhyCDK%2Fy1a6naY%3D",
-  "expiry": "2020-05-22T03:16:28.3870695Z"
-}
-```
+### Guarding against replay attacks
+A replay attack is when an attacker intercepts a valid payload and its signature, then re-transmits them. To mitigate such attacks Smokeball provides a `Timestamp` header which is the ticks representation (.NET format) of when the request was sent. It is also part of the verification signature so an attacker can not change the timestamp without invalidating the signature.
 
-You will get back an `uploadUrl` that you can use to upload the new version to AWS S3 with a PUT request. The uploadUrl will be valid up until the time specified in the `expiry` field.
+If the signature is valid but the timestamp is too old, you may choose to reject the request.
 
-> For detailed instructions on uploading files using pre-signed S3 URLs, see the [AWS documentation on using presigned URLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html). The documentation covers request headers, content types, and example code in multiple languages.
+## Limitations
 
----
+### API
+Not all Plugin API fields are currently in use. For now, please assume these fields are not in use by Smokeball and may be supported in future:
 
-## Downloading a File
+-  `endpoint` field has been deprecated. Use `RequestEndpointUrl` for all new plugins. You can migrate an existing app to the new field by updating the `endpoint` field to null, and set `RequestEndpointUrl` to your new url.
+-  `availability` - availability settings are currently not supported.
 
-To download a file you need to make a request to the files endpoint to get a temporary `downloadUrl`:
-
-``` html
-GET https://api.smokeball.com/matters/5bbc4d72-3001-46bf-acd7-c90dff4dc9fa/documents/files/95df25eb-dc99-45dd-881f-4608e00f551b/download
-```
-
-**Response**
-``` json
-{
-  "fileId": "95df25eb-dc99-45dd-881f-4608e00f551b",
-  "downloadUrl": "https://s3.amazonaws.com/MatterManagement.Staging/managefiles3/8528d063-2663-41c0-94f4-7ba33ea4a6d4/AC8/AC83F922D6C7912EF74A9CA025C14526?AWSAccessKeyId=ASIA364TCXVM7BWHXPON&Expires=1590130239&response-content-disposition=attachment%3B%20filename%3D%221.%20Agenda.docx%22&x-amz-security-token=IQoJb3JpZ2luX2VjEOb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJIMEYCIQCRB6GR88g1BrLlsEkCBB6Dp2VwKkWZ7mqzRZ9mQj5%2FgwIhAK%2BP28pVL4rmsvILpGq%2BM9oLwIS8Xvuy2DfbwKkZ6EXbKt8BCD8QABoMODIyMjU3ODI3MTYxIgzsM8IXTaCCGbfc90MqvAFI7iuN%2F9EVCgBTR0x4mMDoBH0beid591RJ0zsrpAGBwJ4QTYHLYzwMWRGPgAu39oDK0bUyrX5WIb6iq8G5XrBB5K0IkgEuGMSX7U0Yf8xu8QjdtusV6YbbS4hQ3L5NrDpcbZMJ12cpF3hn65hXIBSwzRMhYN4iSumxDUiGmTDNwpH83fXmvLBoPkzxUHEYlBJzLR7VqxA1G0AGQGdLNwLf29Riry84%2BpsSANNuiYh1eQSf95Rsnqc%2BiU62ZDDQyZ32BTrfAcJpfDz6Y%2Ft3GPK0sEXQHZT6%2BbnvqZC8IJFbJdkkCNQBRF5YAaE6b3NKAilCeq2gb81BQW3fEYjud9wYmRcKIpTcMAAI90JLYAkPcgNO0wTouslW5yuiqnKG%2FZZ8dCDNm%2FocBzwGRR7%2B%2Fro9sTBrT1L1%2FM%2B1eeZNiFKa45aovAZ1AnkcigFej9oIZKmkOPuEFSuP8tUFQ5IblTKxsNoipRe1LbknxF008t5x8Yb%2Bskn7jBRO6OlYzgsddaOPDD0giMjh4KwuVDAI4PQCSx1CMmq2xT9wtlG2BNHD5eT%2FKpc%3D&Signature=e0pmX3UMd%2FrZN%2FJrLswk2y7NG40%3D",
-  "expiry": "2020-05-22T06:50:39.4054085Z",
-  "sizeBytes": 44775
-}
-```
-
-> The `downloadUrl` will be valid up until the time specified in the `expiry` field.
+### Web App
+Plugins are currently not supported in the Smokeball web app.
