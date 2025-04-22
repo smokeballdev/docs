@@ -1,5 +1,6 @@
 ---
 title: "Authorization Code Grant"
+description: "Use the Authorization Code Grant to authenticate and authorize users"
 ---
 The Authorization Code Grant is a standard OAuth 2.0 flow that enables secure user authentication and authorization. This flow allows applications to obtain an **access_token** by first receiving an authorization code after the user logs in. The process works as follows:
 
@@ -402,6 +403,30 @@ You can use the **refresh_token** returned in the previous request to continuous
   }
   ```
 </CodeGroup>
+
+<ParamField path="Authorization" type="string" required="true">
+  Basic Authentication header containing base64-encoded `client_id:client_secret`.
+
+  Example: `Basic Y2xpZW50X2lkOmNsaWVudF9zZWNyZXQ=`
+</ParamField>
+<ParamField path="Content-Type" type="string" required="true">
+  Must be `application/x-www-form-urlencoded` for token endpoints.
+</ParamField>
+<ParamField path="grant_type" type="string" required="true">
+  Must be `refresh_token` for this flow.
+
+  Determines the OAuth2 grant type being used.
+</ParamField>
+<ParamField path="client_id" type="string" required="true">
+  The client identifier issued during registration.
+
+  Must match the client ID used in the Basic Auth header.
+</ParamField>
+<ParamField path="refresh_token" type="string" required="true">
+  Previously issued refresh token.
+
+  Used to obtain new access tokens without re-authentication.
+</ParamField>
 
 **Sample Response**
 

@@ -1,5 +1,6 @@
 ---
 title: "Layouts"
+icon: "book"
 ---
 
 Layouts are User Interfaces that look different from each other, and are designed for a specific/unique purpose. They are designed and maintained by our product team. Each user interface has different fields pertinent to their unique purpose.
@@ -7,13 +8,13 @@ Layouts are User Interfaces that look different from each other, and are designe
 For example, we have a **Property Details** Layout for **Conveyancing** Matter Types:
 
 <Frame>
-<img src="/images/image-1.png"/>
+<img src="/images/layouts/image-1.png"/>
 </Frame>
 
 Or, **Case Details** Layout for some **Litigation** Matter Types:
 
 <Frame>
-<img src="/images/image-2.png"/>
+<img src="/images/layouts/image-2.png"/>
 </Frame>
 
 ## Data Mapping
@@ -34,41 +35,23 @@ Example response:
   "href": "https://api.smokeball.com.au/mattertypes/9c6f59b6-3871-4fbd-a508-8fc43f03c6b4",
 
   "items": [
-
     {
-
       "href": "https://api.smokeball.com.au/layouts/b571beb4-9175-436c-a70e-e70acb0f4ed2",
-
       "rel": "layouts",
-
       "id": "b571beb4-9175-436c-a70e-e70acb0f4ed2",
-
       "providerId": "LayoutProvider",
-
       "name": "Workers Comp Details"
-
     }
-
   ],
-
   "id": "9c6f59b6-3871-4fbd-a508-8fc43f03c6b4",
-
   "versionId": "1bd57eaa-089c-4a92-8136-aed74bf5c389",
-
   "name": "Workers Compensation",
-
   "category": "Personal Injury",
-
   "representativeOptions": [
-
     "Worker",
-
     "Employer"
-
   ],
-
   "location": "NSW"
-
 }
 ```
 
@@ -84,41 +67,23 @@ Example response:
 
 ```json
 {
-
   "id": "b571beb4-9175-436c-a70e-e70acb0f4ed2",
-
   "href": "https://api.smokeball.com.au/layouts/b571beb4-9175-436c-a70e-e70acb0f4ed2",
-
   "fields": [
-
     {
-
       "name": "Matter/WorkersCompDetails/BodyPartInjured",
-
       "type": "Text"
-
     },
-
     {
-
       "name": "Matter/WorkersCompDetails/DateOfInjury",
-
       "type": "DateTime"
-
     },
-
     {
-
       "name": "Matter/WorkersCompDetails/DescriptionOfInjury",
-
       "type": "Text"
-
     }
-
   ],
-
   "name": "Workers Comp Details"
-
 }
 ```
 

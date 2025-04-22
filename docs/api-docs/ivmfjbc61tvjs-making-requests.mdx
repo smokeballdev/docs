@@ -1,5 +1,6 @@
 ---
 title: "Making Requests"
+description: "Make requests to the API"
 icon: "globe"
 ---
 
@@ -7,20 +8,44 @@ All requests to the API require a valid `api-key` issued by Smokeball and `acces
 
 ## Example Request
 
-```json http
-{
-  "method": "get",
-  "url": "https://api.smokeball.com/contacts/",
-  "headers": {
-    "x-api-key": "Y2xpZW50X2lkOmNsaWV",
-    "Authorization": "Bearer Y2xpZW50X2lkOmNsaWV"
+<CodeGroup>
+  ```bash curl
+  curl --request GET "https://api.smokeball.com/contacts/" \
+    --header "x-api-key: Y2xpZW50X2lkOmNsaWV" \
+    --header "Authorization: Bearer Y2xpZW50X2lkOmNsaWV"
+  ```
+  ```json http
+  {
+    "method": "get",
+    "url": "https://api.smokeball.com/contacts/",
+    "headers": {
+      "x-api-key": "Y2xpZW50X2lkOmNsaWV",
+      "Authorization": "Bearer Y2xpZW50X2lkOmNsaWV"
+    }
   }
-}
-```
+  ```
+</CodeGroup>
+
+<ParamField path="x-api-key" type="string" required="true">
+  Client authentication key issued by Smokeball.
+
+  Used to identify the application making the request.
+  Example: `Y2xpZW50X2lkOmNsaWV`
+</ParamField>
+<ParamField path="Authorization" type="string" required="true">
+  Bearer token for user authentication.
+
+  Must be prefixed with `Bearer`.
+
+  Example: `Bearer Y2xpZW50X2lkOmNsaWV`
+</ParamField>
 
 **Response**
 
 ``` json
+HTTP/1.1 200 OK
+Content-Type: application/json
+
 {
   "href": "https://api.smokeball.com/contacts",
   "offset": 0,
@@ -71,7 +96,11 @@ You will notice that some requests will have the optional parameters `limit` and
 In the response above, you can see the details of the paging properties in the first section of the response:
 
 ``` json
-"href": "https://api.smokeball.com/contacts",
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "href": "https://api.smokeball.com/contacts",
   "offset": 0,
   "limit": 500,
   "size": 761,
@@ -86,6 +115,7 @@ In the response above, you can see the details of the paging properties in the f
     "href": "https://api.smokeball.com/contacts?limit=500&offset=500",
     "rel": "collection"
   }
+}
 ```
 
 **Paging Properties**
@@ -110,9 +140,15 @@ When using the [Client Credentials Grant](1-Authentication.md#2-client-credentia
 Using the above contacts request as an example, the url is https://api.smokeball.com/contacts/
 For a server-to-server request using the `accountId: ea4ca7b9-b826-4840-a8k5-94e6c6937c65` the request would be:
 
-```json http
-{
-  "method": "get",
+<CodeGroup>
+  ```bash curl
+  curl --request GET "https://api.smokeball.com/ea4ca7b9-b826-4840-a8k5-94e6c6937c65/contacts/" \
+    --header "x-api-key: Y2xpZW50X2lkOmNsaWV" \
+    --header "Authorization: Bearer Y2xpZW50X2lkOmNsaWV"
+  ```
+  ```json http
+  {
+    "method": "get",
   "url": "https://api.smokeball.com/ea4ca7b9-b826-4840-a8k5-94e6c6937c65/contacts/",
   "headers": {
     "x-api-key": "Y2xpZW50X2lkOmNsaWV",
@@ -120,12 +156,16 @@ For a server-to-server request using the `accountId: ea4ca7b9-b826-4840-a8k5-94e
   }
 }
 ```
+</CodeGroup>
 
 **Response**
 
 > Note: all links in the repsonse will include the accountId prefix:
 
 ``` json
+HTTP/1.1 200 OK
+Content-Type: application/json
+
 {
   "href": "https://api.smokeball.com/ea4ca7b9-b826-4840-a8k5-94e6c6937c65/contacts",
   "offset": 0,

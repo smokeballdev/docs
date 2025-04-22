@@ -1,6 +1,7 @@
 ---
 title: "Leads"
 description: "Create and update leads"
+icon: "book"
 ---
 
 ## Lead Matter Types
@@ -11,27 +12,38 @@ A lead matter type is used to assign the lead being created to a relevant area o
 
 > The matter types used when creating a 'Lead' are different from the one's used to create a 'Matter'.
 
-![Lead Matter Types](../../assets/images/leadmattertypes.png)
+<Frame>
+  <img src="/images/matters/leadmattertypes.png" alt="Lead Matter Types" />
+</Frame>
 
 When creating a lead in Smokeball we can see a list of lead Matter Types. Here, _Company Formation_ is a lead matter type, under the _Business_ category.
 
-#### API - Getting a Lead Matter Type
+### Getting a Lead Matter Type
 
-```json http
-{
-  "method": "get",
-  "url": "https://api.smokeball.com/mattertypes",
-  "query": {
-    "Location": "IL",
-    "Category": "Real Estate",
-    "Type": 1   // use this parameter to get lead specific matter types - where 1=LeadType
+<CodeGroup>
+  ```bash curl
+  curl --request GET "https://api.smokeball.com/mattertypes?location=IL&type=1" \
+    --header "x-api-key: Y2xpZW50X2lkOmNsaWV" \
+    --header "Authorization: Bearer Y2xpZW50X2lkOmNsaWV"
+  ```
+  ```json http
+  {
+    "method": "get",
+    "url": "https://api.smokeball.com/mattertypes",
+    "query": {
+      "Location": "IL",
+      "Type": 1   // Use this parameter to get lead specific matter types - where 1=LeadType
+    }
   }
-}
-```
+  ```
+</CodeGroup>
 
 **Response**
 
 ```json
+HTTP/1.1 200 OK
+Content-Type: application/json
+
 {
   "href": "https://api.smokeball.com/mattertypes",
   "offset": 0,
@@ -82,17 +94,27 @@ When creating a lead in Smokeball we can see a list of lead Matter Types. Here, 
 In order to successfully create a lead, we're going to need to provide a contact that is the potential client.
 
 In Smokeball's desktop app you can create a contact as a Person, Firm/Business/Organization or Trust.
-Right now, the API supports the following contact types
+Currently, the API supports the following contact types:
 
 - Person
 - Company
 
-![New Contact](../../assets/images/newcontact.png)
+<Frame>
+  <img src="/images/matters/newcontact.png" alt="New Contact" />
+</Frame>
 
-#### API - Creating a Contact
+### Creating a Contact
 
 To create a contact you can make the following request which would create a person called 'Test Contact'.
 
+<CodeGroup>
+```bash curl
+curl --request POST "https://api.smokeball.com/contacts" \
+    --header "x-api-key: Y2xpZW50X2lkOmNsaWV" \
+    --header "Authorization: Bearer Y2xpZW50X2lkOmNsaWV" \
+    --header "Content-Type: application/json" \
+    --data-raw '{"person":{"firstName":"Test","lastName":"Contact","email":"test@gmail.com"}}'
+```
 ```json http
 {
   "method": "POST",
@@ -103,11 +125,13 @@ To create a contact you can make the following request which would create a pers
   "body": "{\n  \"person\": {\n    \"firstName\": \"Test\",\n    \"lastName\": \"Contact\",    \n    \"email\": \"test@gmail.com\",\n  }\n}\n\n"
 }
 ```
+</CodeGroup>
 
 **Response**
 
 ```json
-202 Accepted
+HTTP/1.1 202 ACCEPTED
+Content-Type: application/json
 
 {
   "id": "9a9ce552-6bee-45e4-8eb1-afe2c18c489f",
@@ -128,20 +152,32 @@ Alternatively, if the contact already exists in Smokeball, you can query it to f
 
 In Smokeball, staff can be assigned to a lead as the **Attorney Responsible** or the **Person Assisting**. The lead list can then be filtered by Attorney responsible, etc.
 
-![Staff](../../assets/images/staff.png)
+<Frame>
+  <img src="/images/matters/staff.png" alt="Staff" />
+</Frame>
 
 If you want to specify the Attorney Responsible or Person Assisting when creating a lead via the API, then we will first need to retrieve the staff member's id.
 
+<CodeGroup>
+```bash curl
+curl --request GET "https://api.smokeball.com/staff" \
+    --header "x-api-key: Y2xpZW50X2lkOmNsaWV" \
+    --header "Authorization: Bearer Y2xpZW50X2lkOmNsaWV"
+```
 ```json http
 {
   "method": "get",
   "url": "https://api.smokeball.com/staff"
 }
 ```
+</CodeGroup>
 
 **Response**
 
 ```json
+HTTP/1.1 200 OK
+Content-Type: application/json
+
 {
   "href": "https://api.smokeball.com/staff",
   "size": 28,
@@ -186,47 +222,100 @@ If you want to specify the Attorney Responsible or Person Assisting when creatin
 
 Now we have everything we need to create a lead.
 
-```json http
-{
-  "method": "POST",
-  "url": "https://api.smokeball.com/matters",
-  "headers": {
-    "Content-Type": "application/json"
-  },
-  "body": {
-    "matterTypeId": "8aca3574-aecb-4a6f-991d-680861bece1d_IL",
-    "clientIds": [
-      "9a9ce552-6bee-45e4-8eb1-afe2c18c489f"
-    ],
-    "clientRole": "Borrower",
-    "description": "Created via API",
-    "status": "Open",
-    "dateOpened": "2020-05-20T04:20:55.035Z",
-    "personResponsibleStaffId": "c85d28cb-a760-4627-aa59-0a853c2e65ed",
-    "personAssistingStaffId": "66f7fa24-bb03-4d89-ac28-e19620cc1e45",
-    "isLead": true
+<CodeGroup>
+  ```bash
+  curl --request POST "https://api.smokeball.com/matters" \
+    --header "x-api-key: Y2xpZW50X2lkOmNsaWV" \
+    --header "Authorization: Bearer Y2xpZW50X2lkOmNsaWV" \
+    --header "Content-Type: application/json" \
+    --data-raw '{"matterTypeId":"8aca3574-aecb-4a6f-991d-680861bece1d_IL","clientIds":["9a9ce552-6bee-45e4-8eb1-afe2c18c489f"],"clientRole":"Borrower","description":"Created via API","status":"Open","dateOpened":"2020-05-20T04:20:55.035Z","personResponsibleStaffId":"c85d28cb-a760-4627-aa59-0a853c2e65ed","personAssistingStaffId":"66f7fa24-bb03-4d89-ac28-e19620cc1e45","isLead":true}'
+  ```
+  ```json
+  {
+    "method": "POST",
+    "url": "https://api.smokeball.com/matters",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "matterTypeId": "8aca3574-aecb-4a6f-991d-680861bece1d_IL",
+      "clientIds": [
+        "9a9ce552-6bee-45e4-8eb1-afe2c18c489f"
+      ],
+      "clientRole": "Borrower",
+      "description": "Created via API",
+      "status": "Open",
+      "dateOpened": "2020-05-20T04:20:55.035Z",
+      "personResponsibleStaffId": "c85d28cb-a760-4627-aa59-0a853c2e65ed",
+      "personAssistingStaffId": "66f7fa24-bb03-4d89-ac28-e19620cc1e45",
+      "isLead": true
+    }
   }
-}
-```
+  ```
+</CodeGroup>
 
-Here we have used:
+<ParamField path="Authorization" type="string" required>
+  Bearer token for user authentication.
+  Format: `Bearer YOUR_ACCESS_TOKEN`
+</ParamField>
+<ParamField path="Content-Type" type="string" required>
+  Must be `application/json` for this endpoint.
+</ParamField>
+<ParamField path="matterTypeId" type="string" required>
+  The lead type identifier.
 
-Parameter | Description
----------|----------
- `matterTypeId` | We're using the id for `Financing` which we retrieved earlier 
- `clientIds` | An array containing the id of the `Test Contact` we created 
- `clientRole` |  Set to _Borrower_ which is one of the lead matter type's representativeOptions retrieved earlier
- `personResponsibleStaffId`| Id of a staff member we retrieved from the GET Staff call
- `personAssistingStaffId` | Id of a staff member we retrieved from the GET Staff call
- `description` | A free text entry field for the description of the lead
- `status` | Can be `Open`, `Pending`, `Closed`, `Deleted` or `Cancelled`
- `isLead` | This is a boolean flag to indicate that the matter is being created as a `Lead`. This must be set to `true` when creating a `Lead`
- `dateOpened` | when the lead was opened (this can be backdated if required)
+  Example: `8aca3574-aecb-4a6f-991d-680861bece1d_IL` (the id we found earlier).
+</ParamField>
+<ParamField path="clientIds" type="array[string]" required="true">
+  Contact Ids associated with the lead.
+  Minimum: 1 client required.
+
+  Example: `["9a9ce552-6bee-45e4-8eb1-afe2c18c489f"]`
+</ParamField>
+<ParamField path="clientRole" type="string">
+  The client's role in the lead (e.g., "Borrower", "Seller").
+
+  If left blank, the default role associated to the lead type will be used.
+
+  Example: `"Borrower"`
+</ParamField>
+<ParamField path="description" type="string">
+  Description of the lead.
+
+  Example: `"Created via API"`
+</ParamField>
+<ParamField path="status" type="string">
+  Initial lead status (typically "Open").
+
+  Can be `Open`, `Pending`, `Closed`, `Deleted` or `Cancelled`
+
+  Example: `"Open"`
+</ParamField>
+<ParamField path="dateOpened" type="string">
+  Lead creation date in ISO 8601 format (this can be backdated).
+
+  Example: `"2020-05-20T04:20:55.035Z"`
+</ParamField>
+<ParamField path="personResponsibleStaffId" type="string">
+  Staff Id of the primary responsible staff member (optional).
+
+  Example: `"c85d28cb-a760-4627-aa59-0a853c2e65ed"`
+</ParamField>
+<ParamField path="personAssistingStaffId" type="string">
+  Staff Id of the assisting staff member (optional).
+
+  Example: `"66f7fa24-bb03-4d89-ac28-e19620cc1e45"`
+</ParamField>
+<ParamField path="isLead" type="boolean">
+  Whether the matter is marked as a lead (default: false).
+  Example: `true`
+</ParamField>
 
 **Response**
 
 ```json
-202 Accepted
+HTTP/1.1 202 ACCEPTED
+Content-Type: application/json
 
 {
   "id": "51cefb72-6247-4ca2-8926-5d14d65f7cb9",

@@ -74,9 +74,9 @@
                 "group": "Getting Started",
                 "icon": "hand-wave",
                 "pages": [
-                  "docs/api-docs/1e13a13124aee-overview",
-                  "docs/api-docs/1e13a13124aee-base-urls",
-                  "docs/api-docs/1e13a13124aee-rate-limits"
+                  "docs/api-docs/mqg3g5dwyqcc3-overview",
+                  "docs/api-docs/z2q8vla6b77g8-base-urls",
+                  "docs/api-docs/vj4jovpoopdov-rate-limits"
                 ]
               },
               {
@@ -89,17 +89,20 @@
                   "docs/api-docs/9de98u0xqsckx-logout-endpoint"
                 ]
               },
-              "docs/api-docs/voyymdyjn5yp3-making-requests",
+              "docs/api-docs/ivmfjbc61tvjs-making-requests",
               "docs/api-docs/xevfrndwy7o2b-resource-creation",
               "docs/api-docs/272770a37d359-searching",
-              {
-                "group": "Matters and Leads",
-                "icon": "folder",
-                "pages": [
-                  "docs/api-docs/voyymdyjn5yp3-leads",
-                  "docs/api-docs/0d3adba1494ce-layouts"
-                ]
-              }
+              "docs/api-docs/scmo7vmtln5hm-plugins",
+              "docs/api-docs/wivbkstcwngb5-webhooks"
+            ]
+          },
+          {
+            "group": "Tutorials",
+            "pages": [
+              "docs/api-docs/voyymdyjn5yp3-matters",
+              "docs/api-docs/plu740klph0ho-leads",
+              "docs/api-docs/wivbkstcwngb5-files-folders",
+              "docs/api-docs/0d3adba1494ce-layouts"
             ]
           },
           {

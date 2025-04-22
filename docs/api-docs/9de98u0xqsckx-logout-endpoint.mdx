@@ -1,5 +1,6 @@
 ---
 title: "Logout Endpoint"
+description: "Use the logout endpoint to securely end user sessions"
 ---
 
 The `/logout` endpoint is a redirection endpoint. It signs the user out and redirects either to an authorized sign-out URL for your app client, or to the /login endpoint. The available parameters in a GET request to the `/logout` endpoint are tailored to Amazon Cognito hosted UI use cases.
@@ -26,6 +27,29 @@ Make a GET request to `https://auth.smokeball.com/oauth2/logout` with the follow
   }
   ```
 </CodeGroup>
+
+<ParamField path="Authorization" type="string" optional="true">
+  Optional: Bearer token for authenticated logout requests.
+
+  Example: `"Bearer dmcxd329ujdmkemkd349r"`
+</ParamField>
+<ParamField path="response_type" type="string" required="true">
+  Must be set to `"code"` for OAuth2 logout redirection.
+
+  Ensures the authorization server returns an authorization code.
+</ParamField>
+<ParamField path="client_id" type="string" required="true">
+  The client identifier issued during application registration.
+
+  Used to verify the application initiating logout.
+  Example: `"xxxxx"`
+</ParamField>
+<ParamField path="redirect_uri" type="string" required="true">
+  The URI where the user will be redirected after logout.
+
+  Must match a pre-registered logout redirect URI.
+  Example: `"https://xxxxxxxx"`
+</ParamField>
 
 ## Request Headers
 
