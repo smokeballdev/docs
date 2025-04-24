@@ -1,0 +1,32 @@
+name: Update Swagger Docs
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *' # Every day at midnight
+
+jobs:
+  job1:
+    name: Update Swagger Docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Get latest swagger JSON and update it for prod display.
+        run: |
+          curl -H 'Cache-Control: no-cache, no-store' https://stagingapi.smokeball.com/swagger/docs/swagger.json > ./openapi.json
+          sed -i 's/stagingapi.smokeball.com/api.smokeball.com/g' ./openapi.json
+          sed -i 's/Staging API/API/g' ./openapi.json ./openapi.json
+
+      - name: actionsx/prettier
+        uses: actionsx/prettier@v2
+        with:
+          args: --write ./openapi.json
+
+      - name: Commit and push if any changes
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add -A
+          git commit -m "Update Swagger Docs" || exit 0
+          git push
