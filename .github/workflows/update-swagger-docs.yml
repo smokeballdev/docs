@@ -12,13 +12,26 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Get latest swagger JSON and update it for prod display.
+      - name: Get latest swagger JSON
         run: |
           curl -H 'Cache-Control: no-cache, no-store' https://stagingapi.smokeball.com/swagger/docs/swagger.json > ./openapi.json
-          sed -i 's/stagingapi.smokeball.com/api.smokeball.com/g' ./openapi.json
-          sed -i 's/Staging API/API/g' ./openapi.json ./openapi.json
 
-      - name: actionsx/prettier
+      - name: Replace servers field in openapi.json
+        run: |
+          jq '.servers = [
+            { "url": "https://api.smokeball.com" },
+            { "url": "https://api.smokeball.com.au" },
+            { "url": "https://api.smokeball.co.uk" },
+            { "url": "https://stagingapi.smokeball.com" },
+            { "url": "https://stagingapi.smokeball.com.au" },
+            { "url": "https://stagingapi.smokeball.co.uk" }
+          ]' ./openapi.json > tmp.json && mv tmp.json ./openapi.json
+
+      - name: Replace title (optional)
+        run: |
+          sed -i 's/Staging API/API/g' ./openapi.json
+
+      - name: Prettify JSON
         uses: actionsx/prettier@v2
         with:
           args: --write ./openapi.json
