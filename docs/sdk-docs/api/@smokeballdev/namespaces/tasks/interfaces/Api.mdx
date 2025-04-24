@@ -1,7 +1,7 @@
 ---
 title: Tasks
 ---
-[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+[**@smokeballdev/smokeball-client-sdk**](./../../../../README)
 
 ***
 
@@ -13,7 +13,7 @@ Entry point for task to Smokeball.
 
 ### all()
 
-> **all**(`matterId?`): `Promise`\<[`Task`](Task.md)[]\>
+> **all**(`matterId?`): `Promise`\<[`Task`](./Task)[]\>
 
 Gets the tasks associated with the matter in the current context or the specified matter id if provided.
 
@@ -25,7 +25,7 @@ Gets the tasks associated with the matter in the current context or the specifie
 
 #### Returns
 
-`Promise`\<[`Task`](Task.md)[]\>
+`Promise`\<[`Task`](./Task)[]\>
 
 the tasks associated with the matter in the current context or the specified matter id.
 
@@ -40,7 +40,7 @@ const tasks = await sdk.tasks.all('e9b9084b-c9b4-4f3c-9f5a-4c83ed3ac265');
 
 ### create()
 
-> **create**(`request`): `Promise`\<[`Task`](Task.md)\>
+> **create**(`request`): `Promise`\<[`Task`](./Task)\>
 
 Creates a new task for the specified matter id and returns the newly created task.
 
@@ -48,13 +48,13 @@ Creates a new task for the specified matter id and returns the newly created tas
 
 ##### request
 
-[`CreateTaskRequest`](CreateTaskRequest.md)
+[`CreateTaskRequest`](./CreateTaskRequest)
 
 the create request.
 
 #### Returns
 
-`Promise`\<[`Task`](Task.md)\>
+`Promise`\<[`Task`](./Task)\>
 
 #### Example
 
@@ -79,7 +79,7 @@ const response = await sdk.tasks.create(request);
 
 ### delete()
 
-> **delete**(`id`): `Promise`\<[`Task`](Task.md)\>
+> **delete**(`id`): `Promise`\<[`Task`](./Task)\>
 
 Marks task with the specified task id as deleted and returns the deleted task.
 
@@ -91,7 +91,7 @@ Marks task with the specified task id as deleted and returns the deleted task.
 
 #### Returns
 
-`Promise`\<[`Task`](Task.md)\>
+`Promise`\<[`Task`](./Task)\>
 
 #### Example
 
@@ -103,7 +103,7 @@ const response = await sdk.tasks.delete('e9b9084b-c9b4-4f3c-9f5a-4c83ed3ac265');
 
 ### get()
 
-> **get**(`id`): `Promise`\<[`Task`](Task.md)\>
+> **get**(`id`): `Promise`\<[`Task`](./Task)\>
 
 Gets the task associated with the specified task id.
 
@@ -115,7 +115,7 @@ Gets the task associated with the specified task id.
 
 #### Returns
 
-`Promise`\<[`Task`](Task.md)\>
+`Promise`\<[`Task`](./Task)\>
 
 the task associated with the specified task id.
 
@@ -165,7 +165,7 @@ Opens pre-populated task window.
 
 ##### request
 
-[`OpenNewRequest`](OpenNewRequest.md)
+[`OpenNewRequest`](./OpenNewRequest)
 
 the add task request.
 
@@ -192,7 +192,7 @@ await sdk.tasks.openNew(request);
 
 ### update()
 
-> **update**(`request`): `Promise`\<[`Task`](Task.md)\>
+> **update**(`request`): `Promise`\<[`Task`](./Task)\>
 
 Updates a task with the specified task id and returns the updated task.
 
@@ -200,13 +200,13 @@ Updates a task with the specified task id and returns the updated task.
 
 ##### request
 
-[`UpdateTaskRequest`](UpdateTaskRequest.md)
+[`UpdateTaskRequest`](./UpdateTaskRequest)
 
 the update request.
 
 #### Returns
 
-`Promise`\<[`Task`](Task.md)\>
+`Promise`\<[`Task`](./Task)\>
 
 #### Example
 

@@ -1,7 +1,7 @@
 ---
 title: Matters
 ---
-[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+[**@smokeballdev/smokeball-client-sdk**](./../../../../README)
 
 ***
 
@@ -13,7 +13,7 @@ Entry point for matters to Smokeball.
 
 ### create()
 
-> **create**(`request`): `Promise`\<[`Matter`](Matter.md)\>
+> **create**(`request`): `Promise`\<[`Matter`](./Matter)\>
 
 Opens a matter window with a newly created matter or lead and returns the matter.
 
@@ -21,13 +21,13 @@ Opens a matter window with a newly created matter or lead and returns the matter
 
 ##### request
 
-[`CreateMatterRequest`](CreateMatterRequest.md)
+[`CreateMatterRequest`](./CreateMatterRequest)
 
 the create request.
 
 #### Returns
 
-`Promise`\<[`Matter`](Matter.md)\>
+`Promise`\<[`Matter`](./Matter)\>
 
 the created matter.
 
@@ -44,7 +44,7 @@ const matter = await sdk.matters.create(request);
 
 ### get()
 
-> **get**(`matterId?`): `Promise`\<[`Matter`](Matter.md)\>
+> **get**(`matterId?`): `Promise`\<[`Matter`](./Matter)\>
 
 Gets the matter associated to the current context or the specified matter id if provided.
 
@@ -58,7 +58,7 @@ the matter to retrieve, use null for the matter in the current context.
 
 #### Returns
 
-`Promise`\<[`Matter`](Matter.md)\>
+`Promise`\<[`Matter`](./Matter)\>
 
 the specified matter.
 
@@ -75,7 +75,7 @@ const matter = await sdk.matters.get('d2e8aea9-e201-4be7-bbe6-a4f64cc491ab');
 
 ### getMany()
 
-> **getMany**(`request`): `Promise`\<[`GetMattersResponse`](GetMattersResponse.md)\>
+> **getMany**(`request`): `Promise`\<[`GetMattersResponse`](./GetMattersResponse)\>
 
 Get matters associated with matter ids provided.
 
@@ -83,13 +83,13 @@ Get matters associated with matter ids provided.
 
 ##### request
 
-[`GetMattersRequest`](GetMattersRequest.md)
+[`GetMattersRequest`](./GetMattersRequest)
 
 the matters to retrieve.
 
 #### Returns
 
-`Promise`\<[`GetMattersResponse`](GetMattersResponse.md)\>
+`Promise`\<[`GetMattersResponse`](./GetMattersResponse)\>
 
 specified matters.
 

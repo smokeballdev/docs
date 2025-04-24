@@ -1,7 +1,7 @@
 ---
 title: Files
 ---
-[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+[**@smokeballdev/smokeball-client-sdk**](./../../../../README)
 
 ***
 
@@ -13,7 +13,7 @@ Entry point for files in Smokeball.
 
 ### getMany()
 
-> **getMany**(`request`): `Promise`\<[`GetMatterFilesResponse`](GetMatterFilesResponse.md)\>
+> **getMany**(`request`): `Promise`\<[`GetMatterFilesResponse`](./GetMatterFilesResponse)\>
 
 Returns a page of files from the given Matter and Folder.
 
@@ -21,11 +21,11 @@ Returns a page of files from the given Matter and Folder.
 
 ##### request
 
-[`GetMatterFilesRequest`](GetMatterFilesRequest.md)
+[`GetMatterFilesRequest`](./GetMatterFilesRequest)
 
 #### Returns
 
-`Promise`\<[`GetMatterFilesResponse`](GetMatterFilesResponse.md)\>
+`Promise`\<[`GetMatterFilesResponse`](./GetMatterFilesResponse)\>
 
 #### Example
 
@@ -52,7 +52,7 @@ Opens the specified file in the native app.
 
 ##### request
 
-[`FileRequest`](FileRequest.md)
+[`FileRequest`](./FileRequest)
 
 #### Returns
 
@@ -72,7 +72,7 @@ sdk.files.open(request);
 
 ### select()
 
-> **select**(`request`): `Promise`\<[`File`](File.md)[]\>
+> **select**(`request`): `Promise`\<[`File`](./File)[]\>
 
 Opens a file picker to select files from a matter.
 Returns the selected files.
@@ -81,11 +81,11 @@ Returns the selected files.
 
 ##### request
 
-[`SelectFilesRequest`](SelectFilesRequest.md)
+[`SelectFilesRequest`](./SelectFilesRequest)
 
 #### Returns
 
-`Promise`\<[`File`](File.md)[]\>
+`Promise`\<[`File`](./File)[]\>
 
 #### Example
 

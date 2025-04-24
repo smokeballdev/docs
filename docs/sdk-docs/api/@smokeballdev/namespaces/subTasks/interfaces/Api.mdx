@@ -1,7 +1,7 @@
 ---
 title: SubTasks
 ---
-[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+[**@smokeballdev/smokeball-client-sdk**](./../../../../README)
 
 ***
 
@@ -13,7 +13,7 @@ Entry point for task to Smokeball.
 
 ### all()
 
-> **all**(`taskId`): `Promise`\<[`SubTask`](SubTask.md)[]\>
+> **all**(`taskId`): `Promise`\<[`SubTask`](./SubTask)[]\>
 
 Gets the subTasks associated with the specified task id.
 
@@ -25,7 +25,7 @@ Gets the subTasks associated with the specified task id.
 
 #### Returns
 
-`Promise`\<[`SubTask`](SubTask.md)[]\>
+`Promise`\<[`SubTask`](./SubTask)[]\>
 
 the subTasks associated with the specified task id.
 
@@ -40,7 +40,7 @@ const subTasks = await sdk.subTasks.all('e9b9084b-c9b4-4f3c-9f5a-4c83ed3ac265');
 
 ### create()
 
-> **create**(`request`): `Promise`\<[`SubTask`](SubTask.md)\>
+> **create**(`request`): `Promise`\<[`SubTask`](./SubTask)\>
 
 Creates a new subTask for the specified task id and returns the newly created subTask.
 
@@ -48,13 +48,13 @@ Creates a new subTask for the specified task id and returns the newly created su
 
 ##### request
 
-[`CreateSubTaskRequest`](CreateSubTaskRequest.md)
+[`CreateSubTaskRequest`](./CreateSubTaskRequest)
 
 the create request.
 
 #### Returns
 
-`Promise`\<[`SubTask`](SubTask.md)\>
+`Promise`\<[`SubTask`](./SubTask)\>
 
 #### Example
 
@@ -74,7 +74,7 @@ const response = await sdk.subTasks.create(request);
 
 ### delete()
 
-> **delete**(`id`, `taskId`): `Promise`\<[`SubTask`](SubTask.md)\>
+> **delete**(`id`, `taskId`): `Promise`\<[`SubTask`](./SubTask)\>
 
 Marks subTask with the specified id and parent task id as deleted and returns the deleted subTask.
 
@@ -90,7 +90,7 @@ Marks subTask with the specified id and parent task id as deleted and returns th
 
 #### Returns
 
-`Promise`\<[`SubTask`](SubTask.md)\>
+`Promise`\<[`SubTask`](./SubTask)\>
 
 #### Example
 
@@ -102,7 +102,7 @@ const response = await sdk.subTasks.delete('e9b9084b-c9b4-4f3c-9f5a-4c83ed3ac265
 
 ### get()
 
-> **get**(`id`, `taskId`): `Promise`\<[`SubTask`](SubTask.md)\>
+> **get**(`id`, `taskId`): `Promise`\<[`SubTask`](./SubTask)\>
 
 Gets the subTask associated with the specified id and parent task id.
 
@@ -118,7 +118,7 @@ Gets the subTask associated with the specified id and parent task id.
 
 #### Returns
 
-`Promise`\<[`SubTask`](SubTask.md)\>
+`Promise`\<[`SubTask`](./SubTask)\>
 
 the subTask associated with the specified id and parent task id.
 
@@ -133,7 +133,7 @@ const subTask = await sdk.subTasks.get('e9b9084b-c9b4-4f3c-9f5a-4c83ed3ac265','7
 
 ### update()
 
-> **update**(`request`): `Promise`\<[`SubTask`](SubTask.md)\>
+> **update**(`request`): `Promise`\<[`SubTask`](./SubTask)\>
 
 Updates a subTask with the specified id and returns the updated subTask.
 
@@ -141,13 +141,13 @@ Updates a subTask with the specified id and returns the updated subTask.
 
 ##### request
 
-[`UpdateSubTaskRequest`](UpdateSubTaskRequest.md)
+[`UpdateSubTaskRequest`](./UpdateSubTaskRequest)
 
 the update request.
 
 #### Returns
 
-`Promise`\<[`SubTask`](SubTask.md)\>
+`Promise`\<[`SubTask`](./SubTask)\>
 
 #### Example
 

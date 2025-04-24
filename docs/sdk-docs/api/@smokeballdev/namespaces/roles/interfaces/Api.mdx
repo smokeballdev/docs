@@ -1,7 +1,7 @@
 ---
 title: Roles
 ---
-[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+[**@smokeballdev/smokeball-client-sdk**](./../../../../README)
 
 ***
 
@@ -13,7 +13,7 @@ Entry point for roles to Smokeball.
 
 ### add()
 
-> **add**(`request`): `Promise`\<[`Role`](Role.md)\>
+> **add**(`request`): `Promise`\<[`Role`](./Role)\>
 
 Adds a new role with the specified contactId to the current context and returns the role.
 
@@ -21,13 +21,13 @@ Adds a new role with the specified contactId to the current context and returns 
 
 ##### request
 
-[`AddRoleRequest`](AddRoleRequest.md)
+[`AddRoleRequest`](./AddRoleRequest)
 
 the create request.
 
 #### Returns
 
-`Promise`\<[`Role`](Role.md)\>
+`Promise`\<[`Role`](./Role)\>
 
 #### Example
 
@@ -43,13 +43,13 @@ const roles = await sdk.roles.add(request);
 
 ### get()
 
-> **get**(): `Promise`\<[`Roles`](Roles.md)\>
+> **get**(): `Promise`\<[`Roles`](./Roles)\>
 
 Gets the roles associated to the current context.
 
 #### Returns
 
-`Promise`\<[`Roles`](Roles.md)\>
+`Promise`\<[`Roles`](./Roles)\>
 
 the roles for the current context.
 
@@ -98,7 +98,7 @@ sdk.roles.observe(roles => {
 
 ### remove()
 
-> **remove**(`id`): `Promise`\<[`Roles`](Roles.md)\>
+> **remove**(`id`): `Promise`\<[`Roles`](./Roles)\>
 
 Removes the specified role from the current context.
 
@@ -110,7 +110,7 @@ Removes the specified role from the current context.
 
 #### Returns
 
-`Promise`\<[`Roles`](Roles.md)\>
+`Promise`\<[`Roles`](./Roles)\>
 
 #### Example
 
@@ -122,7 +122,7 @@ const roles = await sdk.roles.remove(id);
 
 ### update()
 
-> **update**(`request`): `Promise`\<[`Role`](Role.md)\>
+> **update**(`request`): `Promise`\<[`Role`](./Role)\>
 
 Updates the role associated to the specified role id and returns the role.
 
@@ -130,13 +130,13 @@ Updates the role associated to the specified role id and returns the role.
 
 ##### request
 
-[`UpdateRoleRequest`](UpdateRoleRequest.md)
+[`UpdateRoleRequest`](./UpdateRoleRequest)
 
 the update request.
 
 #### Returns
 
-`Promise`\<[`Role`](Role.md)\>
+`Promise`\<[`Role`](./Role)\>
 
 #### Example
 

@@ -1,7 +1,7 @@
 ---
 title: Layouts
 ---
-[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+[**@smokeballdev/smokeball-client-sdk**](./../../../../README)
 
 ***
 
@@ -13,7 +13,7 @@ Entry point for layouts to Smokeball.
 
 ### add()
 
-> **add**(`request`): `Promise`\<[`LayoutMatter`](LayoutMatter.md)\>
+> **add**(`request`): `Promise`\<[`LayoutMatter`](./LayoutMatter)\>
 
 Adds a new layout matter item to a matter.
 
@@ -21,13 +21,13 @@ Adds a new layout matter item to a matter.
 
 ##### request
 
-[`AddLayoutMatterItemRequest`](AddLayoutMatterItemRequest.md)
+[`AddLayoutMatterItemRequest`](./AddLayoutMatterItemRequest)
 
 the update request.
 
 #### Returns
 
-`Promise`\<[`LayoutMatter`](LayoutMatter.md)\>
+`Promise`\<[`LayoutMatter`](./LayoutMatter)\>
 
 #### Example
 
@@ -46,7 +46,7 @@ const layout = await sdk.layouts.add(request);
 
 ### get()
 
-> **get**(`matterId?`): `Promise`\<[`LayoutMatter`](LayoutMatter.md)\>
+> **get**(`matterId?`): `Promise`\<[`LayoutMatter`](./LayoutMatter)\>
 
 Gets the layout associated to the current context or the specified matter id if provided.
 
@@ -60,7 +60,7 @@ the layout to retrieve, use null for the matter in the current context.
 
 #### Returns
 
-`Promise`\<[`LayoutMatter`](LayoutMatter.md)\>
+`Promise`\<[`LayoutMatter`](./LayoutMatter)\>
 
 the specified layout.
 
@@ -75,7 +75,7 @@ const matter = await sdk.layouts.get('e9b9084b-c9b4-4f3c-9f5a-4c83ed3ac265');
 
 ### getContacts()
 
-> **getContacts**(`itemId`): `Promise`\<[`GetLayoutMatterItemContactsResponse`](GetLayoutMatterItemContactsResponse.md)\>
+> **getContacts**(`itemId`): `Promise`\<[`GetLayoutMatterItemContactsResponse`](./GetLayoutMatterItemContactsResponse)\>
 
 Gets the contacts associated to the provided item id and matter id of the current context.
 
@@ -89,7 +89,7 @@ the layout item with contacts.
 
 #### Returns
 
-`Promise`\<[`GetLayoutMatterItemContactsResponse`](GetLayoutMatterItemContactsResponse.md)\>
+`Promise`\<[`GetLayoutMatterItemContactsResponse`](./GetLayoutMatterItemContactsResponse)\>
 
 the contacts associated with the layout item.
 
@@ -103,7 +103,7 @@ const layoutContacts = await sdk.layouts.getContacts('e9b9084b-c9b4-4f3c-9f5a-4c
 
 ### getItem()
 
-> **getItem**(`itemId`): `Promise`\<[`LayoutMatterItem`](LayoutMatterItem.md)\>
+> **getItem**(`itemId`): `Promise`\<[`LayoutMatterItem`](./LayoutMatterItem)\>
 
 Gets a layout item associated to the current context.
 
@@ -117,7 +117,7 @@ the layout item to retrieve.
 
 #### Returns
 
-`Promise`\<[`LayoutMatterItem`](LayoutMatterItem.md)\>
+`Promise`\<[`LayoutMatterItem`](./LayoutMatterItem)\>
 
 the specified layout item.
 
@@ -168,7 +168,7 @@ sdk.layouts.observe(layouts => {
 
 ### remove()
 
-> **remove**(`request`): `Promise`\<[`LayoutMatter`](LayoutMatter.md)\>
+> **remove**(`request`): `Promise`\<[`LayoutMatter`](./LayoutMatter)\>
 
 Removes a layout matter item from a matter.
 
@@ -176,13 +176,13 @@ Removes a layout matter item from a matter.
 
 ##### request
 
-[`RemoveLayoutMatterItemRequest`](RemoveLayoutMatterItemRequest.md)
+[`RemoveLayoutMatterItemRequest`](./RemoveLayoutMatterItemRequest)
 
 the update request.
 
 #### Returns
 
-`Promise`\<[`LayoutMatter`](LayoutMatter.md)\>
+`Promise`\<[`LayoutMatter`](./LayoutMatter)\>
 
 #### Example
 
@@ -198,7 +198,7 @@ const layout = await sdk.layouts.remove(request);
 
 ### update()
 
-> **update**(`request`): `Promise`\<[`LayoutMatter`](LayoutMatter.md)\>
+> **update**(`request`): `Promise`\<[`LayoutMatter`](./LayoutMatter)\>
 
 Updates the layout associated to the specified matter id and returns the layout.
 
@@ -206,13 +206,13 @@ Updates the layout associated to the specified matter id and returns the layout.
 
 ##### request
 
-[`UpdateLayoutMatterItemRequest`](UpdateLayoutMatterItemRequest.md)
+[`UpdateLayoutMatterItemRequest`](./UpdateLayoutMatterItemRequest)
 
 the update request.
 
 #### Returns
 
-`Promise`\<[`LayoutMatter`](LayoutMatter.md)\>
+`Promise`\<[`LayoutMatter`](./LayoutMatter)\>
 
 #### Example
 

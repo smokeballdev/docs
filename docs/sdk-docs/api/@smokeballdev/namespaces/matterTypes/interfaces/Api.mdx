@@ -1,7 +1,7 @@
 ---
 title: MatterTypes
 ---
-[**@smokeballdev/smokeball-client-sdk**](../../../../README.md)
+[**@smokeballdev/smokeball-client-sdk**](./../../../../README)
 
 ***
 
@@ -13,7 +13,7 @@ Entry point for matter types to Smokeball.
 
 ### get()
 
-> **get**(`matterTypeId?`): `Promise`\<[`MatterType`](MatterType.md)\>
+> **get**(`matterTypeId?`): `Promise`\<[`MatterType`](./MatterType)\>
 
 Gets the matter type of the matter associated to the current context or the specified matter type id if provided.
 
@@ -27,7 +27,7 @@ the matter to retrieve, use null to get matter type of the matter in the current
 
 #### Returns
 
-`Promise`\<[`MatterType`](MatterType.md)\>
+`Promise`\<[`MatterType`](./MatterType)\>
 
 the specified matter type.
 
@@ -44,7 +44,7 @@ const matterType = await sdk.matterTypes.get('027fc73d-fcc6-4769-953e-9a11aaf9c7
 
 ### getMany()
 
-> **getMany**(`request`): `Promise`\<[`GetMatterTypesResponse`](GetMatterTypesResponse.md)\>
+> **getMany**(`request`): `Promise`\<[`GetMatterTypesResponse`](./GetMatterTypesResponse)\>
 
 Get matter types associated with matter type ids provided.
 
@@ -52,13 +52,13 @@ Get matter types associated with matter type ids provided.
 
 ##### request
 
-[`GetMatterTypesRequest`](GetMatterTypesRequest.md)
+[`GetMatterTypesRequest`](./GetMatterTypesRequest)
 
 set optional filters for matter types to retrieve.
 
 #### Returns
 
-`Promise`\<[`GetMatterTypesResponse`](GetMatterTypesResponse.md)\>
+`Promise`\<[`GetMatterTypesResponse`](./GetMatterTypesResponse)\>
 
 specified matter types.
 
@@ -88,7 +88,7 @@ Returns the selected matter type ids.
 
 ##### request
 
-[`SelectMatterTypesRequest`](SelectMatterTypesRequest.md)
+[`SelectMatterTypesRequest`](./SelectMatterTypesRequest)
 
 set default location for matter types picker.
 
