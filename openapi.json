@@ -17764,19 +17764,19 @@
             "type": "number",
             "description": "All fees (written off + non written off).",
             "format": "double",
-            "example": 250
+            "example": 100
           },
           "writtenOffFeeTotal": {
             "type": "number",
             "description": "Written off fees.",
             "format": "double",
-            "example": 120
+            "example": 100
           },
           "expenseTotal": {
             "type": "number",
             "description": "All expenses (written off + non written off).",
             "format": "double",
-            "example": 300
+            "example": 100
           },
           "writtenOffExpenseTotal": {
             "type": "number",
