@@ -4,7 +4,9 @@ description: "Make requests to the API"
 icon: "globe"
 ---
 
-All requests to the API require a valid `api-key` issued by Smokeball and `access_token` (see [Authentication](c-Authentication.md)).
+All requests to the API require a valid `api-key` issued by Smokeball and `access_token` (see [Authentication](/docs/api-docs/c916c683c136e-authentication-overview)).
+
+Make sure to include the appropriate scopes in your app settings before attempting any API requests.
 
 ## Example Request
 
@@ -12,7 +14,7 @@ All requests to the API require a valid `api-key` issued by Smokeball and `acces
   ```bash curl
   curl --request GET "https://api.smokeball.com/contacts/" \
     --header "x-api-key: Y2xpZW50X2lkOmNsaWV" \
-    --header "Authorization: Bearer Y2xpZW50X2lkOmNsaWV"
+    --header "Authorization: Bearer eyJraWQiOiJseVpBaHdjSW5UdVl6U"
   ```
   ```json http
   {
@@ -213,10 +215,10 @@ Content-Type: application/json
 
 Because server-to-server requests are not performed using a user token there is no `userId` associated with each request. A `userId` is necessary for permission checking or ensuring that the UI reflects the change done by the specified user.
 
-To act on behalf of a certain user simply supply the `UserId` header with your requests. The value must be that of a [User](https://smokeball.stoplight.io/docs/api-docs/87fac16a57c87-get-firm-staff-user-mappings) in the firm.
+To act on behalf of a certain user simply supply the `UserId` header with your requests. The value must be that of a [User](/api-reference/firm-users/get-firm-staffuser-mappings) in the firm.
 
 ## Tracking your requests
 
-Since all POST/PUT requests are handled asynchronously by the Smokeball API, it is useful to be able to track the changes especially when using [Webhooks](6-Webhooks.md). This is acheived by supplying the `RequestId` header with your requests. 
+Since all POST/PUT requests are handled asynchronously by the Smokeball API, it is useful to be able to track the changes especially when using [Webhooks](/docs/api-docs/wivbkstcwngb5-webhooks). This is acheived by supplying the `RequestId` header with your requests. 
 
 If the `RequestId` header is supplied, it will be returned as a response header for every request you make. It will also be included in all webhook callbacks so you can track what data was impacted by your request. 
