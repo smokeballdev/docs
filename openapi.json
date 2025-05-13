@@ -12704,6 +12704,7 @@
                 "$ref": "#/components/schemas/Trust"
               }
             ],
+            "description": "Contact trust details (if applicable).\r\n\r\nNote that Trust is only supported in the US. It is not available in other regions.",
             "nullable": true
           },
           "groupOfPeople": {
