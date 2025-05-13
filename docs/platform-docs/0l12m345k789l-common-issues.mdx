@@ -83,3 +83,12 @@ Rate limits help maintain platform stability and ensure fair access for all inte
 <Warning>
 Rate limit increases are only granted in exceptional circumstances. Design your integration to work efficiently within the standard limits.
 </Warning>
+
+## Handling 401 Unauthorized Errors
+If you encounter a 401 Unauthorized error when calling the API, it typically indicates an authentication or permission issue. Here are the most common causes and how to resolve them:
+
+- **Insufficient Permissions**: The access token being used does not have the necessary permissions to access the requested resource. Ensure the authenticated user or application has the correct roles or access levels.
+
+- **Incorrect or Missing Scopes**: The token was generated without the required scopes. Double-check your app’s configuration to make sure you've requested the appropriate scopes. For more information, refer to [Building your app](/docs/platform-docs/867hiv3k5bt1u-build-app#scopes).
+
+- **Invalid Account or User ID (Server-to-Server Requests)**: If you're making server-to-server API calls, verify that the AccountId or UserId you're passing is correct and valid for your environment.
