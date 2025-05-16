@@ -21804,22 +21804,12 @@
             "nullable": true,
             "example": "Summer Sale 2024"
           },
-          "durationType": {
-            "type": "string",
-            "description": "Type of duration for this promotion.\r\n\r\n* None - Duration cannot be determined.\r\n\r\n* Forever - Promotion applies indefinitely.\r\n\r\n* Once - Promotion applies once then expires.\r\n\r\n* Repeating - Promotion applies for a specified number of months."
-          },
-          "durationMonths": {
+          "durationDays": {
             "type": "integer",
-            "description": "Number of months the promotion applies for if DurationType is Repeating.",
+            "description": "Number of days the promotion applies for.\r\n\r\nFor example, if the promotion is a trial promotion, how many days the associated tier or add-on will be trialed for.",
             "format": "int64",
             "nullable": true,
-            "example": 3
-          },
-          "trialPeriodDays": {
-            "type": "integer",
-            "description": "If the promotion is a trial promotion, how many days the associated tier or add-on will be trialed for.\r\n\r\nNote: This will return null or 0 if the promotion is not trialable.",
-            "format": "int64",
-            "nullable": true
+            "example": 7
           },
           "amountOff": {
             "type": "integer",
