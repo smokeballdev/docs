@@ -21641,6 +21641,13 @@
             "format": "int64",
             "example": 200
           },
+          "quantity": {
+            "type": "integer",
+            "description": "The number of users on the subscription.",
+            "format": "int64",
+            "nullable": true,
+            "example": 3
+          },
           "lineItems": {
             "type": "array",
             "items": {
@@ -22192,7 +22199,7 @@
           },
           "status": {
             "type": "string",
-            "description": "The subscription status."
+            "description": "Represents the current status of a subscription."
           },
           "interval": {
             "type": "string",
