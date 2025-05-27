@@ -149,8 +149,8 @@
         "pages": ["docs/platform-docs/e8rdxqzugb5zf-status"]
       },
       {
-        "tab": "Changelog",
-        "pages": ["docs/api-docs/98439555e1d41-changelog"]
+        "tab": "Release Notes",
+        "pages": ["docs/api-docs/98439555e1d41-release-notes"]
       }
     ],
     "global": {
