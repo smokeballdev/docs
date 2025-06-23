@@ -15,14 +15,6 @@ Address details.
 
 ## Properties
 
-### buildingLevel?
-
-> `optional` **buildingLevel**: `string`
-
-Building level in address (if applicable).
-
-***
-
 ### careOf?
 
 > `optional` **careOf**: `string`
@@ -31,67 +23,11 @@ Care of the addressee (if applicable).
 
 ***
 
-### city?
+### buildingLevel?
 
-> `optional` **city**: `string`
+> `optional` **buildingLevel**: `string`
 
-City, district, suburb, town, or village.
-
-***
-
-### country?
-
-> `optional` **country**: `string`
-
-Country.
-
-***
-
-### county?
-
-> `optional` **county**: `string`
-
-County (if applicable).
-
-***
-
-### poBoxType?
-
-> `optional` **poBoxType**: `string`
-
-PO box type in address (if applicable).
-
-***
-
-### poxBoxNumber?
-
-> `optional` **poxBoxNumber**: `string`
-
-PO box number in address (if applicable).
-
-***
-
-### state?
-
-> `optional` **state**: `string`
-
-State, province, or region.
-
-***
-
-### streetName?
-
-> `optional` **streetName**: `string`
-
-Street name in address.
-
-***
-
-### streetNumber?
-
-> `optional` **streetNumber**: `string`
-
-Street number in address.
+Building level in address (if applicable).
 
 ***
 
@@ -111,8 +47,138 @@ Unit type (e.g. Unit, Flat, Villa, Suite, etc.) in address (if applicable).
 
 ***
 
+### streetNumber?
+
+> `optional` **streetNumber**: `string`
+
+Street number in address.
+
+***
+
+### streetName?
+
+> `optional` **streetName**: `string`
+
+Street name in address.
+
+***
+
+### streetType?
+
+> `optional` **streetType**: `string`
+
+Street type in address.
+
+***
+
+### addressLine1?
+
+> `optional` **addressLine1**: `string`
+
+First address line (if applicable).
+
+***
+
+### addressLine2?
+
+> `optional` **addressLine2**: `string`
+
+Second address line (if applicable).
+
+***
+
+### city?
+
+> `optional` **city**: `string`
+
+City, district, suburb, town, or village.
+
+***
+
+### state?
+
+> `optional` **state**: `string`
+
+State, province, or region.
+
+***
+
 ### zipCode?
 
 > `optional` **zipCode**: `string`
 
 Zip or post code.
+
+***
+
+### county?
+
+> `optional` **county**: `string`
+
+County (if applicable).
+
+***
+
+### country?
+
+> `optional` **country**: `string`
+
+Country.
+
+***
+
+### poBox?
+
+> `optional` **poBox**: [`PoBoxAddress`](./PoBoxAddress)
+
+PO Box address details (if applicable).
+
+***
+
+## PoBoxAddress
+
+### careOf?
+
+> `optional` **careOf**: `string`
+
+Care of the addressee (if applicable).
+
+***
+
+### poBoxType?
+
+> `optional` **poBoxType**: `string`
+
+PO box type.
+
+***
+
+### poBoxNumber?
+
+> `optional` **poBoxNumber**: `string`
+
+PO box number.
+
+***
+
+### city?
+
+> `optional` **city**: `string`
+
+City for the PO box.
+
+***
+
+### state?
+
+> `optional` **state**: `string`
+
+State for the PO box.
+
+***
+
+### zipCode?
+
+> `optional` **zipCode**: `string`
+
+Zip or post code for the PO box.

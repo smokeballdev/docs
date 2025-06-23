@@ -15,18 +15,6 @@ Address details.
 
 ## Properties
 
-### buildingLevel?
-
-> `optional` **buildingLevel**: `string`
-
-Building level in address (if applicable).
-
-#### Inherited from
-
-[`Address`](./Address).[`buildingLevel`](Address.md#buildinglevel)
-
-***
-
 ### careOf?
 
 > `optional` **careOf**: `string`
@@ -39,107 +27,15 @@ Care of the addressee (if applicable).
 
 ***
 
-### city?
+### buildingLevel?
 
-> `optional` **city**: `string`
+> `optional` **buildingLevel**: `string`
 
-City, district, suburb, town, or village.
-
-#### Inherited from
-
-[`Address`](./Address).[`city`](Address.md#city)
-
-***
-
-### country?
-
-> `optional` **country**: `string`
-
-Country.
+Building level in address (if applicable).
 
 #### Inherited from
 
-[`Address`](./Address).[`country`](Address.md#country)
-
-***
-
-### county?
-
-> `optional` **county**: `string`
-
-County (if applicable).
-
-#### Inherited from
-
-[`Address`](./Address).[`county`](Address.md#county)
-
-***
-
-### dxAddress?
-
-> `optional` **dxAddress**: [`DxAddress`](./DxAddress)
-
-DX address (if applicable).
-
-***
-
-### poBoxType?
-
-> `optional` **poBoxType**: `string`
-
-PO box type in address (if applicable).
-
-#### Inherited from
-
-[`Address`](./Address).[`poBoxType`](Address.md#poboxtype)
-
-***
-
-### poxBoxNumber?
-
-> `optional` **poxBoxNumber**: `string`
-
-PO box number in address (if applicable).
-
-#### Inherited from
-
-[`Address`](./Address).[`poxBoxNumber`](Address.md#poxboxnumber)
-
-***
-
-### state?
-
-> `optional` **state**: `string`
-
-State, province, or region.
-
-#### Inherited from
-
-[`Address`](./Address).[`state`](Address.md#state)
-
-***
-
-### streetName?
-
-> `optional` **streetName**: `string`
-
-Street name in address.
-
-#### Inherited from
-
-[`Address`](./Address).[`streetName`](Address.md#streetname)
-
-***
-
-### streetNumber?
-
-> `optional` **streetNumber**: `string`
-
-Street number in address.
-
-#### Inherited from
-
-[`Address`](./Address).[`streetNumber`](Address.md#streetnumber)
+[`Address`](./Address).[`buildingLevel`](Address.md#buildinglevel)
 
 ***
 
@@ -167,6 +63,90 @@ Unit type (e.g. Unit, Flat, Villa, Suite, etc.) in address (if applicable).
 
 ***
 
+### streetNumber?
+
+> `optional` **streetNumber**: `string`
+
+Street number in address.
+
+#### Inherited from
+
+[`Address`](./Address).[`streetNumber`](Address.md#streetnumber)
+
+***
+
+### streetName?
+
+> `optional` **streetName**: `string`
+
+Street name in address.
+
+#### Inherited from
+
+[`Address`](./Address).[`streetName`](Address.md#streetname)
+
+***
+
+### streetType?
+
+> `optional` **streetType**: `string`
+
+Street type in address.
+
+#### Inherited from
+
+[`Address`](./Address).[`streetType`](Address.md#streettype)
+
+***
+
+### addressLine1?
+
+> `optional` **addressLine1**: `string`
+
+First address line (if applicable).
+
+#### Inherited from
+
+[`Address`](./Address).[`addressLine1`](Address.md#addressline1)
+
+***
+
+### addressLine2?
+
+> `optional` **addressLine2**: `string`
+
+Second address line (if applicable).
+
+#### Inherited from
+
+[`Address`](./Address).[`addressLine2`](Address.md#addressline2)
+
+***
+
+### city?
+
+> `optional` **city**: `string`
+
+City, district, suburb, town, or village.
+
+#### Inherited from
+
+[`Address`](./Address).[`city`](Address.md#city)
+
+***
+
+### state?
+
+> `optional` **state**: `string`
+
+State, province, or region.
+
+#### Inherited from
+
+[`Address`](./Address).[`state`](Address.md#state)
+
+***
+
 ### zipCode?
 
 > `optional` **zipCode**: `string`
@@ -176,3 +156,49 @@ Zip or post code.
 #### Inherited from
 
 [`Address`](./Address).[`zipCode`](Address.md#zipcode)
+
+***
+
+### county?
+
+> `optional` **county**: `string`
+
+County (if applicable).
+
+#### Inherited from
+
+[`Address`](./Address).[`county`](Address.md#county)
+
+***
+
+### country?
+
+> `optional` **country**: `string`
+
+Country.
+
+#### Inherited from
+
+[`Address`](./Address).[`country`](Address.md#country)
+
+***
+
+### poBox?
+
+> `optional` **poBox**: [`PoBoxAddress`](./PoBoxAddress)
+
+PO Box address details (if applicable).
+
+#### Inherited from
+
+[`Address`](./Address).[`poBox`](Address.md#pobox)
+
+***
+
+### dxAddress?
+
+> `optional` **dxAddress**: [`DxAddress`](./DxAddress)
+
+DX address (if applicable).
+
+***
