@@ -1,0 +1,80 @@
+---
+title: Expenses
+---
+[**@smokeballdev/smokeball-client-sdk**](./../../../../README)
+
+***
+
+# Interface: Api
+
+Entry point for expenses in Smokeball.
+
+## Methods
+
+### create()
+
+> **create**(`request`): `Promise`\<[`Expense`](./Expense)\>
+
+Creates a new expense and returns the newly created expense.
+
+#### Parameters
+
+##### request
+
+[`CreateExpenseRequest`](./CreateExpenseRequest)
+
+the create request.
+
+#### Returns
+
+`Promise`\<[`Expense`](./Expense)\>
+
+#### Example
+
+```
+const request = {
+  staffId: '47efff74-3e4b-45b3-bddf-affc6649db0b',
+  invoiceId: 'fdb766bc-eb20-4bc1-9417-08b51a7b2286',
+  expenseDate: '2025-04-23T00:00:00+10:00',
+  activityCode: 'PRT',
+  subject: 'Review contract',
+  description: 'Print documents',
+  quantity: 3,
+  price: 350.32,
+  tax: 90,
+  taxInclusive: false,
+  finalized: false,
+  isWrittenOff: false,
+  isBillable: true,
+  isInvoicedExternally: false
+};
+const response = await sdk.expenses.create(request);
+```
+
+***
+
+### get()
+
+> **get**(`request`): `Promise`\<[`Expense`](./Expense)\>
+
+Gets the expense associated with the specified id.
+
+#### Parameters
+
+##### request
+
+[`GetExpenseRequest`](./GetExpenseRequest)
+
+#### Returns
+
+`Promise`\<[`Expense`](./Expense)\>
+
+the expense associated with the specified id.
+
+#### Example
+
+```
+const expense = await sdk.expenses.get({
+  id: 'e9b9084b-c9b4-4f3c-9f5a-4c83ed3ac265'
+});
+```

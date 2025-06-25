@@ -11,6 +11,37 @@ Entry point for files in Smokeball.
 
 ## Methods
 
+### download()
+
+> **download**(`request`): `Promise`\<[`MatterFileDownloadDetails`](./MatterFileDownloadDetails)[]\>
+
+Returns download details including download URL for the specified files. Limit of 10 files per request.
+
+#### Parameters
+
+##### request
+
+[`DownloadMatterFilesRequest`](./DownloadMatterFilesRequest)
+
+#### Returns
+
+`Promise`\<[`MatterFileDownloadDetails`](./MatterFileDownloadDetails)[]\>
+
+#### Example
+
+```
+const downloadUrls = await sdk.files.download({
+  files: [
+    {
+      matterId: matterId,
+      id: fileId
+    }
+  ]
+});
+```
+
+***
+
 ### getMany()
 
 > **getMany**(`request`): `Promise`\<[`GetMatterFilesResponse`](./GetMatterFilesResponse)\>

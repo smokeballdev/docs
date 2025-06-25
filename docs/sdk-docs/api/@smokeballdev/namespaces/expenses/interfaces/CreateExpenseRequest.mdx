@@ -1,0 +1,120 @@
+---
+title: Expenses
+---
+[**@smokeballdev/smokeball-client-sdk**](./../../../../README)
+
+***
+
+# Interface: CreateExpenseRequest
+
+## Properties
+
+### activityCode?
+
+> `optional` **activityCode**: `string`
+
+Activity code for the expense
+
+***
+
+### description?
+
+> `optional` **description**: `string`
+
+Detailed description of the expense
+
+***
+
+### expenseDate
+
+> **expenseDate**: `string`
+
+Date of the expense
+
+***
+
+### finalized
+
+> **finalized**: `boolean`
+
+Whether expense is finalized
+
+***
+
+### invoiceId?
+
+> `optional` **invoiceId**: `string`
+
+Associated invoice ID
+
+***
+
+### isBillable
+
+> **isBillable**: `boolean`
+
+Whether expense is billable
+
+***
+
+### isInvoicedExternally
+
+> **isInvoicedExternally**: `boolean`
+
+Whether expense is invoiced externally
+
+***
+
+### isWrittenOff
+
+> **isWrittenOff**: `boolean`
+
+Whether expense is written off. Only allowed if isBillable is true
+
+***
+
+### price
+
+> **price**: `number`
+
+Price of the expense in dollars (limited to 2 decimal places)
+
+***
+
+### quantity
+
+> **quantity**: `number`
+
+Quantity of the expense in units (if not applicable, use 1)
+
+***
+
+### staffId?
+
+> `optional` **staffId**: `string`
+
+Associated staff member ID. When not provided, SDK will match to logged-in Staff Id automatically
+
+***
+
+### subject?
+
+> `optional` **subject**: `string`
+
+Short description of the expense
+
+***
+
+### tax?
+
+> `optional` **tax**: `number`
+
+GST amount in dollars (AU only)
+
+***
+
+### taxInclusive
+
+> **taxInclusive**: `boolean`
+
+Whether amount is GST inclusive (AU only)

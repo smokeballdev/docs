@@ -15,6 +15,22 @@ Address details.
 
 ## Properties
 
+### addressLine1?
+
+> `optional` **addressLine1**: `string`
+
+Address line 1.
+
+***
+
+### addressLine2?
+
+> `optional` **addressLine2**: `string`
+
+Address line 2.
+
+***
+
 ### buildingLevel?
 
 > `optional` **buildingLevel**: `string`
@@ -55,19 +71,11 @@ County (if applicable).
 
 ***
 
-### poBoxType?
+### poBox?
 
-> `optional` **poBoxType**: `string`
+> `optional` **poBox**: [`PoBoxAddress`](./PoBoxAddress)
 
-PO box type in address (if applicable).
-
-***
-
-### poxBoxNumber?
-
-> `optional` **poxBoxNumber**: `string`
-
-PO box number in address (if applicable).
+PO Box address (if applicable).
 
 ***
 
@@ -92,6 +100,14 @@ Street name in address.
 > `optional` **streetNumber**: `string`
 
 Street number in address.
+
+***
+
+### streetType?
+
+> `optional` **streetType**: `string`
+
+Street type in address (if applicable).
 
 ***
 

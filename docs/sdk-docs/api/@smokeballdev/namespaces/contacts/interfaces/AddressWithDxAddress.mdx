@@ -15,6 +15,30 @@ Address details.
 
 ## Properties
 
+### addressLine1?
+
+> `optional` **addressLine1**: `string`
+
+Address line 1.
+
+#### Inherited from
+
+[`Address`](./Address).[`addressLine1`](Address.md#addressline1)
+
+***
+
+### addressLine2?
+
+> `optional` **addressLine2**: `string`
+
+Address line 2.
+
+#### Inherited from
+
+[`Address`](./Address).[`addressLine2`](Address.md#addressline2)
+
+***
+
 ### buildingLevel?
 
 > `optional` **buildingLevel**: `string`
@@ -83,27 +107,15 @@ DX address (if applicable).
 
 ***
 
-### poBoxType?
+### poBox?
 
-> `optional` **poBoxType**: `string`
+> `optional` **poBox**: [`PoBoxAddress`](./PoBoxAddress)
 
-PO box type in address (if applicable).
-
-#### Inherited from
-
-[`Address`](./Address).[`poBoxType`](Address.md#poboxtype)
-
-***
-
-### poxBoxNumber?
-
-> `optional` **poxBoxNumber**: `string`
-
-PO box number in address (if applicable).
+PO Box address (if applicable).
 
 #### Inherited from
 
-[`Address`](./Address).[`poxBoxNumber`](Address.md#poxboxnumber)
+[`Address`](./Address).[`poBox`](Address.md#pobox)
 
 ***
 
@@ -140,6 +152,18 @@ Street number in address.
 #### Inherited from
 
 [`Address`](./Address).[`streetNumber`](Address.md#streetnumber)
+
+***
+
+### streetType?
+
+> `optional` **streetType**: `string`
+
+Street type in address (if applicable).
+
+#### Inherited from
+
+[`Address`](./Address).[`streetType`](Address.md#streettype)
 
 ***
 
