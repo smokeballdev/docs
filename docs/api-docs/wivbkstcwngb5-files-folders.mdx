@@ -94,6 +94,92 @@ Content-Type: application/json
 
 ---
 
+## Creating a Folder
+
+You can create new folders within a matter to organize your files. Creating a folder is done by making a POST request to the folders endpoint.
+
+<CodeGroup>
+```bash curl
+curl --request POST "https://api.smokeball.com/matters/5bbc4d72-3001-46bf-acd7-c90dff4dc9fa/documents/folders" \
+    --header "x-api-key: Y2xpZW50X2lkOmNsaWV" \
+    --header "Authorization: Bearer Y2xpZW50X2lkOmNsaWV" \
+    --header "Content-Type: application/json" \
+    --data '{
+      "name": "Legal Documents",
+      "parentFolderId": "27e52eaf-fa51-4582-bd59-ec3ea5ab664b"
+    }'
+```
+```json http
+{
+  "method": "post",
+  "url": "https://api.smokeball.com/matters/5bbc4d72-3001-46bf-acd7-c90dff4dc9fa/documents/folders",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "name": "Legal Documents",
+    "parentFolderId": "27e52eaf-fa51-4582-bd59-ec3ea5ab664b"
+  }
+}
+```
+</CodeGroup>
+
+**Response**
+```json
+HTTP/1.1 202 Accepted
+Content-Type: application/json
+
+{
+  "href": "https://api.smokeball.com/matters/5bbc4d72-3001-46bf-acd7-c90dff4dc9fa/documents/folders/new-folder-id"
+}
+```
+
+### Request Parameters
+
+- **name** (required): The name of the folder to create. Must be between 1-256 characters.
+- **parentFolderId** (optional): The unique identifier of the parent folder where the new folder should be created.
+- **userId** (optional): The unique identifier of the user creating the folder. If not provided, defaults to the authenticated user.
+
+### Parent Folder Behavior
+
+- **Root Folder Creation**: When `parentFolderId` is `null` or not provided, the folder will be created in the root directory of the matter.
+- **Subfolder Creation**: When `parentFolderId` is specified with a valid folder ID, the new folder will be created as a subdirectory of that parent folder.
+
+### Duplicate Folder Names
+
+The API allows multiple folders with the same name to exist within the same parent directory. If you attempt to create a folder with a name that already exists in the target location, the API will create a new folder with the same name rather than returning an error or the existing folder. This gives you flexibility in organizing your folder structure as needed.
+
+### Example: Creating a Root Folder
+
+To create a folder in the root directory, omit the `parentFolderId` or set it to `null`:
+
+<CodeGroup>
+```bash curl
+curl --request POST "https://api.smokeball.com/matters/5bbc4d72-3001-46bf-acd7-c90dff4dc9fa/documents/folders" \
+    --header "x-api-key: Y2xpZW50X2lkOmNsaWV" \
+    --header "Authorization: Bearer Y2xpZW50X2lkOmNsaWV" \
+    --header "Content-Type: application/json" \
+    --data '{
+      "name": "Case Files"
+    }'
+```
+```json http
+{
+  "method": "post",
+  "url": "https://api.smokeball.com/matters/5bbc4d72-3001-46bf-acd7-c90dff4dc9fa/documents/folders",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "name": "Case Files",
+    "parentFolderId": null
+  }
+}
+```
+</CodeGroup>
+
+---
+
 ## Adding a File
 
 Adding a File to a Matter is a two-step process involving creating the meta-data for the File by POSTing to the files endpoint and then using the response to upload the actual file to the provided URL.
