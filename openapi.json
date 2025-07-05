@@ -16823,6 +16823,22 @@
         },
         "additionalProperties": false
       },
+      "OutOfOffice": {
+        "type": "object",
+        "properties": {
+          "startDate": {
+            "type": "string",
+            "description": "Out-of-office start date.",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "description": "Out-of-office end date.",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
       "Staff": {
         "type": "object",
         "properties": {
@@ -16966,6 +16982,15 @@
               "$ref": "#/components/schemas/LicenceNumber"
             },
             "description": "Licence numbers of the staff member.",
+            "nullable": true
+          },
+          "outOfOffice": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OutOfOffice"
+              }
+            ],
+            "description": "Staff member's Out-of-office period, if enabled.",
             "nullable": true
           }
         },
