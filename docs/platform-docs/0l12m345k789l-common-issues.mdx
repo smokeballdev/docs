@@ -96,14 +96,16 @@ If you encounter a 401 Unauthorized error when calling the API, it typically ind
 ## Unable to request Access Token
 A common issue occurs when attempting to exchange the authorization code for an access token and receiving a `400 Bad Request` response from the token endpoint. This often happens when developers reuse an old or already-used authorization code.
 
-#### 1. **Authorization Code Can Only Be Used Once**
+It is likely one of the following has occurred:
+
+#### **Authorization Code Can Only Be Used Once**
 Each authorization code is single-use only. If the first request to exchange the code for an access token fails (even due to an invalid parameter or network issue), the code becomes invalid and **cannot be reused**.
 
 <Note>
 If you're not sure whether the token request succeeded, assume the code is no longer valid and initiate the flow again to get a fresh code.
 </Note>
 
-#### 2. **Authorization Code Has a Short Expiry**
+#### **Authorization Code Has a Short Expiry**
 Authorization codes are time-sensitive. Most providers (including ours) only allow a few minutes between issuing the code and redeeming it for an access token. After that, the code **expires and is rejected**, even if it hasn’t been used yet.
 
 <Note>
