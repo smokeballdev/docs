@@ -99,6 +99,7 @@ A common issue occurs when attempting to exchange the authorization code for an 
 It is likely one of the following has occurred:
 
 **Authorization Code Can Only Be Used Once**
+
 Each authorization code is single-use only. If the first request to exchange the code for an access token fails (even due to an invalid parameter or network issue), the code becomes invalid and **cannot be reused**.
 
 <Note>
@@ -106,6 +107,7 @@ If you're not sure whether the token request succeeded, assume the code is no lo
 </Note>
 
 **Authorization Code Has a Short Expiry**
+
 Authorization codes are time-sensitive. Most providers (including ours) only allow a few minutes between issuing the code and redeeming it for an access token. After that, the code **expires and is rejected**, even if it hasn’t been used yet.
 
 <Note>
