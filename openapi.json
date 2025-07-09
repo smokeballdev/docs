@@ -10504,7 +10504,7 @@
       "get": {
         "tags": ["Users"],
         "summary": "Get a user",
-        "description": "Retrieves a specified user. Only accessible using client credentials grant.",
+        "description": "Retrieves a specified user.",
         "operationId": "GetUserByIdAsync",
         "parameters": [
           {
@@ -10539,7 +10539,7 @@
             }
           },
           "403": {
-            "description": "When user with specified id is not associated with authenticated client.\r\n\r\nWhen the request is not made using client credentials grant.",
+            "description": "When user with specified id is not associated with authenticated client.",
             "content": {
               "application/json": {
                 "schema": {
@@ -10563,7 +10563,7 @@
       "delete": {
         "tags": ["Users"],
         "summary": "Remove a user",
-        "description": "Removes a user. Only accessible using client credentials grant.\r\n            \r\nUser must belong to the specified account.",
+        "description": "Removes a user.\r\n            \r\nUser must belong to the specified account.",
         "operationId": "DeleteUserAsync",
         "parameters": [
           {
@@ -10591,7 +10591,7 @@
             }
           },
           "400": {
-            "description": "When user does not exist or is not associated to the specified account",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -10601,7 +10601,7 @@
             }
           },
           "403": {
-            "description": "When the request is not made using client credentials grant."
+            "description": "When the user is not associated to the specified account."
           }
         }
       }
@@ -10610,7 +10610,7 @@
       "post": {
         "tags": ["Users"],
         "summary": "Create a user",
-        "description": "Creates a user. Only accessible using client credentials grant.\r\n            \r\nSends an email with a generated password if the password is missing.",
+        "description": "Creates a user.\r\n\r\nSends an email with a generated password if the password is missing.",
         "operationId": "CreateUserAsync",
         "requestBody": {
           "content": {
@@ -10666,9 +10666,6 @@
                 }
               }
             }
-          },
-          "403": {
-            "description": "When the request is not made using client credentials grant."
           }
         }
       }
@@ -10677,7 +10674,7 @@
       "post": {
         "tags": ["Users"],
         "summary": "Resend a user invitation",
-        "description": "Resends an invitation email with a temporary password for the specified user.\r\nOnly accessible using client credentials grant.\r\n\r\nThe user must exist and belong to the specified account.",
+        "description": "Resends an invitation email with a temporary password for the specified user.\r\n\r\nThe user must exist and belong to the specified account.",
         "operationId": "InviteUserAsync",
         "parameters": [
           {
@@ -10705,7 +10702,7 @@
             }
           },
           "400": {
-            "description": "When user does not exist or is not associated to the specified account",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -10715,7 +10712,7 @@
             }
           },
           "403": {
-            "description": "When the request is not made using client credentials grant."
+            "description": "When the user is not associated to the specified account."
           }
         }
       }
