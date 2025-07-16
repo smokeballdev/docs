@@ -3,6 +3,15 @@ title: "API"
 description: "We improve the Smokeball API all the time by releasing new features, fixing bugs and updating the documentation. This changelog accounts for all of the changes as they are released, in chronological order."
 ---
 
+<Update label="July 2025">
+- **Contacts**: Added additional validation to contact relations.
+- **Events**: `organizer` field has been removed as it is no longer required.
+- **Files**: File extension renames are now supported using the PATCH endpoint.
+- **Invoices**: Surcharge information added to invoices.
+- **Staff**: `outOfOffice` field added to staff members, this field contains `startDate` and `endDate`.
+- **Users**: Users can now be registered using Authorization Code Grant using the users/write scope.
+</Update>
+
 <Update label="June 2025">
 - **Layouts**: Dates are returned in ISO format.
 - **MatterTypes**: Matter types with multiple categories are now searchable.
@@ -22,12 +31,12 @@ description: "We improve the Smokeball API all the time by releasing new feature
 
 <Update label="February 2025">
 - **Matters**: Add ability to clear referal type using matter PATCH and PUT endpoints.
-- **Tasks**: Added `IsCompleted` query parameter to GET endpoint.
+- **Tasks**: Added `isCompleted` query parameter to GET endpoint.
 </Update>
 
 <Update label="December 2024">
 - Performance improvements to all API endpoints.
-- **Files**: Added `IsDuplicate` field to GET endpoints.
+- **Files**: Added `isDuplicate` field to GET endpoints.
 </Update>
 
 <Update label="October 2024">
