@@ -3163,7 +3163,7 @@
         },
         "responses": {
           "202": {
-            "description": "When request is accepted.",
+            "description": "When request is accepted. Returns an 'UploadFileInfo' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3173,7 +3173,7 @@
             }
           },
           "400": {
-            "description": "When the file name does not contain valid XML characters or an unsupported request is made.",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3299,7 +3299,7 @@
         },
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a 'UploadFileInfo' object.",
+            "description": "When request is accepted. Returns an 'UploadFileInfo' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3309,7 +3309,7 @@
             }
           },
           "400": {
-            "description": "When the file name does not contain valid XML characters or an unsupported request is made.",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3374,7 +3374,7 @@
         },
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a 'UploadFileInfo' object.",
+            "description": "When request is accepted. Returns an 'UploadFileInfo' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3384,7 +3384,7 @@
             }
           },
           "400": {
-            "description": "When the file name does not contain valid XML characters or an unsupported request is made.",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3432,7 +3432,7 @@
         ],
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a hypermedia 'Link' object of the file to be deleted.",
+            "description": "When request is accepted. Returns a 'Link' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3442,7 +3442,7 @@
             }
           },
           "400": {
-            "description": "When the requested file does not belong to the specified matter.",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3507,7 +3507,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3565,7 +3565,7 @@
         ],
         "responses": {
           "200": {
-            "description": "When request is successful. Returns a 'UploadFileInfo' object.",
+            "description": "When request is successful. Returns an 'UploadFileInfo' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3692,7 +3692,7 @@
         },
         "responses": {
           "202": {
-            "description": "When request is accepted.",
+            "description": "When request is accepted. Returns an array of 'UploadFileInfo' objects.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3705,7 +3705,7 @@
             }
           },
           "400": {
-            "description": "When a file name does not contain valid XML characters or an unsupported request is made.",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3720,13 +3720,13 @@
     "/matters/{matterId}/documents/files/{fileId}/preview": {
       "get": {
         "tags": ["Files"],
-        "summary": "Returns info to preview a file",
+        "summary": "Get preview info for a file",
+        "description": "Returns info to preview a file.",
         "operationId": "GetPreview",
         "parameters": [
           {
             "name": "matterId",
             "in": "path",
-            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -3735,7 +3735,6 @@
           {
             "name": "fileId",
             "in": "path",
-            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -3744,7 +3743,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "When request is successful. Returns a 'PreviewFileInfo' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3754,7 +3753,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3764,7 +3763,7 @@
             }
           },
           "403": {
-            "description": "Forbidden",
+            "description": "When the file is not associated with the authenticated client.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3774,7 +3773,7 @@
             }
           },
           "404": {
-            "description": "Not Found",
+            "description": "When the file name does not exist or isn't uploaded yet.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3787,7 +3786,7 @@
       },
       "post": {
         "tags": ["Files"],
-        "summary": "Creates a preview request",
+        "summary": "Create a preview request",
         "description": "Creates a preview for the specified file.",
         "operationId": "CreatePreview",
         "parameters": [
@@ -3810,7 +3809,7 @@
         ],
         "responses": {
           "202": {
-            "description": "When request is accepted.",
+            "description": "When request is accepted. Returns a 'PreviewFileInfo' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3820,7 +3819,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3830,7 +3829,7 @@
             }
           },
           "403": {
-            "description": "Forbidden",
+            "description": "When the file is not associated with the authenticated client.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3855,13 +3854,13 @@
     "/matters/{matterId}/documents/files/{fileId}/preview/{documentVersionId}": {
       "get": {
         "tags": ["Files"],
-        "summary": "Returns info to preview a file",
+        "summary": "Get preview info for a file by document version",
+        "description": "Returns info to preview a file by document version.",
         "operationId": "GetPreviewById",
         "parameters": [
           {
             "name": "matterId",
             "in": "path",
-            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -3870,7 +3869,6 @@
           {
             "name": "fileId",
             "in": "path",
-            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -3879,7 +3877,6 @@
           {
             "name": "documentVersionId",
             "in": "path",
-            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -3888,7 +3885,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "When request is successful. Returns a 'PreviewFileInfo' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3898,7 +3895,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3908,7 +3905,7 @@
             }
           },
           "403": {
-            "description": "Forbidden",
+            "description": "When the file is not associated with the authenticated client.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3918,7 +3915,7 @@
             }
           },
           "404": {
-            "description": "Not Found",
+            "description": "When the file name does not exist or isn't uploaded yet.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4216,7 +4213,7 @@
       "get": {
         "tags": ["Folders"],
         "summary": "Get folders/files under root folder",
-        "description": "Returns a list of sub folders and files under the root folder of a matter",
+        "description": "Returns a list of sub folders and files under the root folder of a matter.",
         "operationId": "GetFolders",
         "parameters": [
           {
@@ -4255,6 +4252,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/FolderListingPagedCollection"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "When the requested matter does not belong to the account making the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -4335,7 +4342,7 @@
       "get": {
         "tags": ["Folders"],
         "summary": "Get folders/files under a folder",
-        "description": "Returns a list of sub folders and files under a specified folder of a matter",
+        "description": "Returns a list of sub folders and files under a specified folder of a matter.",
         "operationId": "GetFolderById",
         "parameters": [
           {
@@ -4382,6 +4389,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/FolderListingPagedCollection"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "When the requested matter does not belong to the account making the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -15107,12 +15124,6 @@
         },
         "additionalProperties": false
       },
-      "FileFolderChangeType": {
-        "enum": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-        "type": "integer",
-        "description": "Type of change that occurred.",
-        "format": "int32"
-      },
       "FileFolderLogEntry": {
         "type": "object",
         "properties": {
@@ -15144,20 +15155,14 @@
             "example": "3f2b1f2a-1d5f-48a4-8f3c-7a7a3c2b5e1a"
           },
           "type": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/FileFolderLogEntryType"
-              }
-            ],
-            "description": "The type of entity this log entry refers to."
+            "type": "string",
+            "description": "The type of entity this log entry refers to.",
+            "example": "File"
           },
           "changeType": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/FileFolderChangeType"
-              }
-            ],
-            "description": "The type of change that occurred."
+            "type": "string",
+            "description": "The type of change that occurred.",
+            "example": "Move"
           },
           "timestamp": {
             "type": "string",
@@ -15171,7 +15176,7 @@
                 "$ref": "#/components/schemas/Link"
               }
             ],
-            "description": "Link to the file affected by this entry (only populated when MatterManagement.ManageFiles2.Api.Resources.FileFolderLogEntry.Type is File).",
+            "description": "Link to the file affected by this entry (only populated when Type is File).",
             "nullable": true
           },
           "folder": {
@@ -15180,7 +15185,7 @@
                 "$ref": "#/components/schemas/Link"
               }
             ],
-            "description": "Link to the folder affected by this entry (only populated when MatterManagement.ManageFiles2.Api.Resources.FileFolderLogEntry.Type is Folder).",
+            "description": "Link to the folder affected by this entry (only populated when Type is Folder).",
             "nullable": true
           },
           "oldName": {
@@ -15283,12 +15288,6 @@
           }
         },
         "additionalProperties": false
-      },
-      "FileFolderLogEntryType": {
-        "enum": [0, 1],
-        "type": "integer",
-        "description": "Type of log entry.",
-        "format": "int32"
       },
       "FilePagedCollection": {
         "type": "object",
