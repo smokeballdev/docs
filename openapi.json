@@ -1053,7 +1053,7 @@
         ],
         "responses": {
           "200": {
-            "description": "When request is successful. Returns a list of 'Link' objects.",
+            "description": "When request is successful. Returns a paged collection of 'Link' objects.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1063,10 +1063,24 @@
             }
           },
           "403": {
-            "description": "When contact with specified id is not associated with authenticated client."
+            "description": "When contact with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
-            "description": "When contact with specified id does not exist."
+            "description": "When contact with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
@@ -1118,7 +1132,7 @@
         },
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a hypermedia 'Link' object of the contact relation to be created.",
+            "description": "When request is accepted. Returns a 'Link' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1128,11 +1142,31 @@
             }
           },
           "400": {
-            "description": "When related contact id is not provided",
+            "description": "When related contact id is not provided.",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "When contact with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When contact with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -1177,10 +1211,24 @@
             }
           },
           "403": {
-            "description": "When contact with specified id is not associated with authenticated client."
+            "description": "When contact with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
-            "description": "When contact with specified id does not exist."
+            "description": "When contact with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
@@ -1241,7 +1289,7 @@
         },
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a hypermedia 'Link' object of the contact relation to be updated.",
+            "description": "When request is accepted. Returns a 'Link' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1251,7 +1299,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1261,10 +1309,24 @@
             }
           },
           "403": {
-            "description": "When contact with specified id is not associated with authenticated client."
+            "description": "When contact with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
-            "description": "When contact with specified id does not exist."
+            "description": "When contact with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
@@ -1294,7 +1356,7 @@
         ],
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a hypermedia 'Link' object of the contact relation to be deleted.",
+            "description": "When request is accepted. Returns a 'Link' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1304,10 +1366,24 @@
             }
           },
           "403": {
-            "description": "When contact with specified id is not associated with authenticated client."
+            "description": "When contact with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
-            "description": "When contact with specified id does not exist."
+            "description": "When contact with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
@@ -1399,7 +1475,7 @@
         ],
         "responses": {
           "200": {
-            "description": "When request is successful. Returns a list of 'Contact' objects.",
+            "description": "When request is successful. Returns a paged collection of 'Contact' objects.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1448,11 +1524,31 @@
         },
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a hypermedia 'Link' object of the contact to be created.",
+            "description": "When request is accepted. Returns a 'Link' object.",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Link"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "When the authenticated account does not have access to create contacts.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -1489,10 +1585,24 @@
             }
           },
           "403": {
-            "description": "When contact with specified id is not associated with authenticated client."
+            "description": "When contact with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
-            "description": "When contact with specified id does not exist."
+            "description": "When contact with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
@@ -1545,7 +1655,7 @@
         },
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a hypermedia 'Link' object of the contact to be updated.",
+            "description": "When request is accepted. Returns a 'Link' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1554,11 +1664,35 @@
               }
             }
           },
+          "400": {
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
           "403": {
-            "description": "When contact with specified id is not associated with authenticated client."
+            "description": "When contact with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
-            "description": "When contact with specified id does not exist."
+            "description": "When contact with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
@@ -1580,7 +1714,7 @@
         ],
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a hypermedia 'Link' object of the contact to be deleted.",
+            "description": "When request is accepted. Returns a 'Link' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1590,10 +1724,24 @@
             }
           },
           "403": {
-            "description": "When contact with specified id is not associated with authenticated client."
+            "description": "When contact with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
-            "description": "When contact with specified id does not exist."
+            "description": "When contact with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
@@ -1601,8 +1749,8 @@
     "/contacts/{id}/tags": {
       "get": {
         "tags": ["Contacts"],
-        "summary": "Get a contact",
-        "description": "Retrieves a specified contact.",
+        "summary": "Get contact tags",
+        "description": "Retrieves a specified contacts tags.",
         "operationId": "GetContactTagsById",
         "parameters": [
           {
@@ -1617,7 +1765,7 @@
         ],
         "responses": {
           "200": {
-            "description": "When request is successful. Returns a collection of 'Tag' object.",
+            "description": "When request is successful. Returns a collection of 'Tag' objects.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1627,16 +1775,31 @@
             }
           },
           "403": {
-            "description": "When contact with specified id is not associated with authenticated client."
+            "description": "When contact with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
-            "description": "When contact with specified id does not exist."
+            "description": "When contact with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
       "post": {
         "tags": ["Contacts"],
-        "summary": "Add custom tag(s) to a contact",
+        "summary": "Add tags to a contact",
+        "description": "Adds tags to a contact.",
         "operationId": "AddContactTags",
         "parameters": [
           {
@@ -1681,7 +1844,7 @@
         },
         "responses": {
           "201": {
-            "description": "When request is successful.",
+            "description": "When request is successful. Returns a hypermedia 'Link' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1706,7 +1869,8 @@
     "/contacts/{id}/tags/{tagId}": {
       "delete": {
         "tags": ["Contacts"],
-        "summary": "Remove custom tag(s) from a contact",
+        "summary": "Remove tags from a contact",
+        "description": "Removes tags from a contact.",
         "operationId": "RemoveContactTags",
         "parameters": [
           {
@@ -1760,12 +1924,22 @@
           }
         },
         "responses": {
-          "204": {
-            "description": "When request is accepted.",
+          "202": {
+            "description": "When request is accepted. Returns a hypermedia 'Link' object of the contact tags.",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Link"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -2282,7 +2456,7 @@
       "get": {
         "tags": ["Expenses"],
         "summary": "Get expenses",
-        "description": "Returns a list of expenses.",
+        "description": "Returns a list of expenses for the specified matter.",
         "operationId": "GetExpenses",
         "parameters": [
           {
@@ -2325,11 +2499,21 @@
         ],
         "responses": {
           "200": {
-            "description": "When request is successful. Returns a list of 'Expense' objects.",
+            "description": "When request is successful. Returns a paged collection of 'Expense' objects.",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ExpensePagedCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -2338,8 +2522,8 @@
       },
       "post": {
         "tags": ["Expenses"],
-        "summary": "Create an expense on the matter",
-        "description": "Creates an expense.",
+        "summary": "Create an expense",
+        "description": "Creates an expense for the specified matter.",
         "operationId": "CreateExpense",
         "parameters": [
           {
@@ -2394,7 +2578,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2409,7 +2593,7 @@
     "/matters/{matterId}/expenses/{id}": {
       "get": {
         "tags": ["Expenses"],
-        "summary": "Get a expense",
+        "summary": "Get an expense",
         "description": "Retrieves a specified expense.",
         "operationId": "GetExpenseById",
         "parameters": [
@@ -2432,11 +2616,21 @@
         ],
         "responses": {
           "200": {
-            "description": "When request is successful. Returns a 'Expense' object.",
+            "description": "When request is successful. Returns an 'Expense' object.",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Expense"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -2465,8 +2659,8 @@
       },
       "put": {
         "tags": ["Expenses"],
-        "summary": "Update an expense on a matter",
-        "description": "Updates a specified expense.",
+        "summary": "Update an expense",
+        "description": "Updates an expense for the specified matter.",
         "operationId": "UpdateExpense",
         "parameters": [
           {
@@ -2529,7 +2723,7 @@
             }
           },
           "400": {
-            "description": "When expense is not assigned to firm owner and a userId header is invalid.",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2539,14 +2733,31 @@
             }
           },
           "403": {
-            "description": "When expense with specified id is not associated with authenticated client."
+            "description": "When expense with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When expense with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
       "patch": {
         "tags": ["Expenses"],
-        "summary": "Patch an expense on a matter",
-        "description": "Updates a specified expense with patch operations.",
+        "summary": "Patch an expense",
+        "description": "Patches an expense for the specified matter.",
         "operationId": "PatchExpense",
         "parameters": [
           {
@@ -2587,7 +2798,7 @@
         },
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a hypermedia 'Link' object of the expense to be updated.",
+            "description": "When request is accepted. Returns a hypermedia 'Link' object of the expense to be patched.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2597,7 +2808,7 @@
             }
           },
           "400": {
-            "description": "When expense is not assigned to firm owner and a userId header is invalid.",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2615,13 +2826,23 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "When expense with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
       "delete": {
         "tags": ["Expenses"],
         "summary": "Delete an expense",
-        "description": "Deletes a specified expense.",
+        "description": "Deletes an expense.",
         "operationId": "DeleteExpense",
         "parameters": [
           {
@@ -2653,7 +2874,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2663,7 +2884,24 @@
             }
           },
           "403": {
-            "description": "When expense with specified id is not associated with authenticated client."
+            "description": "When expense with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When expense with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
@@ -2672,7 +2910,7 @@
       "get": {
         "tags": ["Fees"],
         "summary": "Get fees",
-        "description": "Returns a list of fees.",
+        "description": "Returns a list of fees for the specified matter.",
         "operationId": "GetFees",
         "parameters": [
           {
@@ -2715,11 +2953,21 @@
         ],
         "responses": {
           "200": {
-            "description": "When request is successful. Returns a list of 'Fee' objects.",
+            "description": "When request is successful. Returns a paged collection of 'Fee' objects.",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/FeePagedCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -2729,7 +2977,7 @@
       "post": {
         "tags": ["Fees"],
         "summary": "Create a fee",
-        "description": "Creates a fee.",
+        "description": "Creates a fee for the specified matter.",
         "operationId": "CreateFee",
         "parameters": [
           {
@@ -2784,7 +3032,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2831,6 +3079,16 @@
               }
             }
           },
+          "400": {
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
           "403": {
             "description": "When fee with specified id is not associated with authenticated client.",
             "content": {
@@ -2855,8 +3113,8 @@
       },
       "put": {
         "tags": ["Fees"],
-        "summary": "Update a fee on a matter",
-        "description": "Updates a specified fee.",
+        "summary": "Update a fee",
+        "description": "Updates a fee for the specified matter.",
         "operationId": "UpdateFee",
         "parameters": [
           {
@@ -2919,7 +3177,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2929,14 +3187,31 @@
             }
           },
           "403": {
-            "description": "When fee with specified id is not associated with authenticated client."
+            "description": "When fee with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When fee with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
       "patch": {
         "tags": ["Fees"],
-        "summary": "Patch a fee on a matter",
-        "description": "Updates a specified fee.",
+        "summary": "Patch a fee",
+        "description": "Patches a fee for the specified matter.",
         "operationId": "PatchFee",
         "parameters": [
           {
@@ -2977,11 +3252,21 @@
         },
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a hypermedia 'Link' object of the fee to be updated.",
+            "description": "When request is accepted. Returns a hypermedia 'Link' object of the fee to be patched.",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Link"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -2995,13 +3280,23 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "When fee with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
       "delete": {
         "tags": ["Fees"],
         "summary": "Delete a fee",
-        "description": "Deletes a specified fee.",
+        "description": "Deletes a fee.",
         "operationId": "DeleteFee",
         "parameters": [
           {
@@ -3033,7 +3328,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3043,7 +3338,24 @@
             }
           },
           "403": {
-            "description": "When fee with specified id is not associated with authenticated client."
+            "description": "When fee with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When fee with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
@@ -5854,7 +6166,7 @@
         ],
         "responses": {
           "200": {
-            "description": "When request is successful. Returns a list of `Matter` objects.",
+            "description": "When request is successful. Returns a paged collection of 'Matter' objects.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5903,7 +6215,7 @@
         },
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a hypermedia `Link` object of the matter to be created.",
+            "description": "When request is accepted. Returns a hypermedia 'Link' object of the matter to be created.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5944,7 +6256,7 @@
         ],
         "responses": {
           "200": {
-            "description": "When request is successful. Returns a `Matter` object.",
+            "description": "When request is successful. Returns a 'Matter' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5954,10 +6266,24 @@
             }
           },
           "403": {
-            "description": "When the authenticated account does not have access to the matter."
+            "description": "When the authenticated account does not have access to the matter.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
-            "description": "When matter with specified id does not exist."
+            "description": "When matter with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
@@ -6010,7 +6336,7 @@
         },
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a hypermedia `Link` object of the matter to be updated.",
+            "description": "When request is accepted. Returns a hypermedia 'Link' object of the matter to be updated.",
             "content": {
               "application/json": {
                 "schema": {
@@ -6030,10 +6356,24 @@
             }
           },
           "403": {
-            "description": "When the authenticated account does not have access to the matter."
+            "description": "When the authenticated account does not have access to the matter.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
-            "description": "When matter with specified id does not exist."
+            "description": "When matter with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
@@ -6074,7 +6414,7 @@
         },
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a hypermedia `Link` object of the matter to be patched.",
+            "description": "When request is accepted. Returns a hypermedia 'Link' object of the matter to be patched.",
             "content": {
               "application/json": {
                 "schema": {
@@ -6094,10 +6434,24 @@
             }
           },
           "403": {
-            "description": "When the authenticated account does not have access to the matter."
+            "description": "When the authenticated account does not have access to the matter.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
-            "description": "When matter with specified id does not exist."
+            "description": "When matter with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
@@ -6119,7 +6473,7 @@
         ],
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a hypermedia `Link` object of the matter to be deleted.",
+            "description": "When request is accepted. Returns a hypermedia 'Link' object of the matter to be deleted.",
             "content": {
               "application/json": {
                 "schema": {
@@ -6129,7 +6483,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -6139,10 +6493,248 @@
             }
           },
           "403": {
-            "description": "When the authenticated account does not have access to the matter."
+            "description": "When the authenticated account does not have access to the matter.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
-            "description": "When matter with specified id does not exist."
+            "description": "When matter with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/matters/{matterId}/tags": {
+      "get": {
+        "tags": ["Matters"],
+        "summary": "Get matter tags",
+        "operationId": "GetMatterTagsByMatterId",
+        "parameters": [
+          {
+            "name": "matterId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "When request is successful. Returns a collection of 'MatterTag' objects.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatterTagCollection"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "When matter with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When matter with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Matters"],
+        "summary": "Add tags to a matter",
+        "operationId": "AddMatterTags",
+        "parameters": [
+          {
+            "name": "matterId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/MatterTagDto"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/MatterTagDto"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/MatterTagDto"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "When request is successful. Returns a 'Link' object.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Link"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When matter with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/matters/{matterId}/tags/{tagId}": {
+      "delete": {
+        "tags": ["Matters"],
+        "summary": "Remove tags from a matter",
+        "description": "Removes the tag from the matter without deleting from the account.",
+        "operationId": "DeleteMatterTag",
+        "parameters": [
+          {
+            "name": "matterId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "tagId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/MatterTagDto"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/MatterTagDto"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/MatterTagDto"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "When request is accepted. Returns a 'Link' object.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Link"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "When matter with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When matter with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
@@ -7126,21 +7718,11 @@
         "operationId": "GetReferralTypes",
         "responses": {
           "200": {
-            "description": "When request is successful. Returns a list of `ReferralType` objects.",
+            "description": "When request is successful. Returns a collection of 'ReferralType' objects.",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ReferralTypeCollection"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -7166,7 +7748,7 @@
         ],
         "responses": {
           "200": {
-            "description": "When request is successful. Returns a `ReferralType` object.",
+            "description": "When request is successful. Returns a 'ReferralType' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7176,7 +7758,14 @@
             }
           },
           "404": {
-            "description": "When referral type with specified id does not exist."
+            "description": "When referral type with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
@@ -7477,6 +8066,7 @@
       "delete": {
         "tags": ["Relationships"],
         "summary": "Remove relationship from a role in a matter.",
+        "description": "Removes a relationship from a role in a matter.",
         "operationId": "RemoveRelationshipFromRole",
         "parameters": [
           {
@@ -9974,199 +10564,6 @@
           }
         },
         "x-excluded": true
-      }
-    },
-    "/matters/{matterId}/tags": {
-      "get": {
-        "tags": ["Tags"],
-        "summary": "Get matter tags",
-        "operationId": "GetMatterTagsByMatterId",
-        "parameters": [
-          {
-            "name": "matterId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "When request is successful. Returns a collection of 'Tag' object.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/MatterTagCollection"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "When matter with specified id is not associated with authenticated client."
-          },
-          "404": {
-            "description": "When matter with specified id does not exist."
-          }
-        }
-      },
-      "post": {
-        "tags": ["Tags"],
-        "summary": "Add custom tag(s) to a matter",
-        "operationId": "AddMatterTags",
-        "parameters": [
-          {
-            "name": "matterId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/MatterTagDto"
-                }
-              }
-            },
-            "application/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/MatterTagDto"
-                }
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/MatterTagDto"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "When request is successful.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Link"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "When adding staff that does not exist.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/matters/{matterId}/tags/{tagId}": {
-      "delete": {
-        "tags": ["Tags"],
-        "summary": "Remove a tag from a matter",
-        "description": "Removes the tag from the matter without deleting from the account.",
-        "operationId": "DeleteMatterTag",
-        "parameters": [
-          {
-            "name": "matterId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "tagId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/MatterTagDto"
-                }
-              }
-            },
-            "application/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/MatterTagDto"
-                }
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/MatterTagDto"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
       }
     },
     "/tasks/{taskId}/subtasks/{id}": {
