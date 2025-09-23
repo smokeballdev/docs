@@ -296,7 +296,7 @@
         ],
         "responses": {
           "200": {
-            "description": "When request is successful. Returns the specified archive.",
+            "description": "When request is successful. Returns an 'Archive' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -358,7 +358,7 @@
         },
         "responses": {
           "202": {
-            "description": "When request is successful. The archive update has been accepted and will be updated shortly.",
+            "description": "When request is accepted. Returns a 'Link' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -368,7 +368,7 @@
             }
           },
           "400": {
-            "description": "Bad request."
+            "description": "When an unsupported request is made."
           }
         }
       },
@@ -408,7 +408,7 @@
         },
         "responses": {
           "202": {
-            "description": "When request is successful. The archive patch has been accepted and will be updated shortly.",
+            "description": "When request is accepted. Returns a 'Link' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -416,6 +416,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "When an unsupported request is made."
           }
         }
       }
