@@ -23046,6 +23046,7 @@
         "additionalProperties": false
       },
       "PortalTaskDto": {
+        "required": ["contactId", "externalUserId", "title", "url"],
         "type": "object",
         "properties": {
           "contactId": {
@@ -23055,19 +23056,19 @@
             "example": "93421c6f-40bd-465d-bb95-3b3b5e200e30"
           },
           "externalUserId": {
+            "minLength": 1,
             "type": "string",
-            "description": "The optional external user identifier of the external system.",
-            "nullable": true
+            "description": "The optional external user identifier of the external system."
           },
           "title": {
+            "minLength": 1,
             "type": "string",
             "description": "The title of the task to be displayed in the UI.",
-            "nullable": true,
             "example": "Sign: Verification of Identity"
           },
           "url": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "requireMFA": {
             "type": "boolean",
