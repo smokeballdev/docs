@@ -7790,7 +7790,7 @@
     "/matters/{matterId}/portal/tasks": {
       "post": {
         "tags": ["Portal"],
-        "summary": "Creates a new portal task",
+        "summary": "Creates a portal task",
         "description": "Creates a new client portal task associated with the specified matter.",
         "operationId": "CreatePortalTaskAsync",
         "parameters": [
@@ -16754,6 +16754,15 @@
             "description": "The matter associated to the expense.",
             "nullable": true
           },
+          "invoice": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ],
+            "description": "The invoice associated to the expense.",
+            "nullable": true
+          },
           "staffId": {
             "type": "string",
             "description": "Deprecated, use Staff.",
@@ -16804,6 +16813,11 @@
             "description": "The date of the expense.",
             "format": "date-time",
             "example": "2022-07-01"
+          },
+          "costType": {
+            "type": "string",
+            "description": "The cost type of the expense",
+            "example": "Hard"
           },
           "quantity": {
             "type": "number",
@@ -16940,6 +16954,11 @@
             "nullable": true,
             "example": "Print documents"
           },
+          "costType": {
+            "type": "string",
+            "description": "The cost type of the expense.",
+            "example": "Hard"
+          },
           "quantity": {
             "type": "number",
             "description": "The quantity of the expense in units (if not applicable, use 1).\r\n\r\nThe expense amount will be calculated as Quantity * Price.",
@@ -17008,7 +17027,7 @@
           },
           "assignToFirmOwner": {
             "type": "boolean",
-            "description": "Assigns expense to a firm owner if true. Ignored if a StaffId is provided.\r\n\r\nNote: It is not guaranteed that the same firm owner will be assigned everytime."
+            "description": "Assigns expense to a firm owner if true. Ignored if a StaffId is provided.\r\n\r\nNote: If there are multiple firm owners, it is not guaranteed that the same firm owner will be assigned everytime."
           }
         },
         "additionalProperties": false
