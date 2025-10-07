@@ -26178,7 +26178,7 @@
             "description": "Returns true if the user is flagged as an internal user.",
             "example": true
           },
-          "bypassMFA": {
+          "bypassMfa": {
             "type": "boolean",
             "description": "Returns true if multi-factor authentication is bypassed for the user.",
             "example": true
@@ -26213,7 +26213,7 @@
             "description": "Creates the user as an internal user.\r\n\r\nInternal users are excluded from billing and license counts.\r\n\r\nUse this option for testing, background services, or other non-customer-facing purposes.",
             "example": true
           },
-          "bypassMFA": {
+          "bypassMfa": {
             "type": "boolean",
             "description": "Bypasses multi-factor authentication for the user.\r\n\r\nWhen enabled, the user will not be prompted for two factor authentication during login.",
             "example": true
