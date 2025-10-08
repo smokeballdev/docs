@@ -16852,7 +16852,7 @@
           },
           "costType": {
             "type": "string",
-            "description": "The cost type of the expense",
+            "description": "The cost type of the expense.\r\n\r\n* Hard - Direct cost such as travel, accommodation, or materials.\r\n\r\n* Soft - Indirect cost such as administrative fees or overhead.",
             "example": "Hard"
           },
           "quantity": {
@@ -16992,7 +16992,7 @@
           },
           "costType": {
             "type": "string",
-            "description": "The cost type of the expense.",
+            "description": "The cost type of the expense.\r\n\r\n* Hard - Direct cost such as travel, accommodation, or materials.\r\n\r\n* Soft - Indirect cost such as administrative fees or overhead.",
             "example": "Hard"
           },
           "quantity": {
