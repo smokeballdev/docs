@@ -73,6 +73,14 @@ Whether expense is written off. Only allowed if isBillable is true
 
 ***
 
+### outputTax?
+
+> `optional` **outputTax**: `number`
+
+Output tax amount in dollars (AU and UK only)
+
+***
+
 ### price
 
 > **price**: `number`
@@ -109,7 +117,15 @@ Short description of the expense
 
 > `optional` **tax**: `number`
 
-GST amount in dollars (AU only)
+Tax amount in dollars (AU and UK only)
+
+***
+
+### taxExempt
+
+> **taxExempt**: `boolean`
+
+Whether tax is exempt
 
 ***
 
@@ -117,4 +133,20 @@ GST amount in dollars (AU only)
 
 > **taxInclusive**: `boolean`
 
-Whether amount is GST inclusive (AU only)
+Whether amount is Tax inclusive (AU and UK only)
+
+***
+
+### taxOutOfScope
+
+> **taxOutOfScope**: `boolean`
+
+Whether tax is out of scope (UK only)
+
+***
+
+### taxZeroRated
+
+> **taxZeroRated**: `boolean`
+
+Whether tax is zero rated (UK only)
