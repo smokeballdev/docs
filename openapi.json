@@ -5941,6 +5941,16 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
@@ -5972,6 +5982,16 @@
               }
             }
           },
+          "400": {
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
           "404": {
             "description": "When matter type with specified id does not exist.",
             "content": {
@@ -5993,11 +6013,21 @@
         "operationId": "GetCategories",
         "responses": {
           "200": {
-            "description": "When request is successful. Returns all 'Categories'.",
+            "description": "When request is successful. Returns a collection of 'Categories'.",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/StringCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
