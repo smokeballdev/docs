@@ -68,6 +68,28 @@ Webhook subscriptions can be managed using the `/webhooks` endpoint. To see a li
 
 The `/webhooks` endpoint will also allow you to list, edit and delete any subscriptions that you have created.
 
+### System event types
+
+Some event types are considered system events and have special behavior:
+
+``` json
+"mattertype.created"
+"mattertype.deleted"
+"mattertype.restored"
+"mattertype.updated"
+```
+
+**System event behavior**
+
+- System events are notified to all subscriptions regardless of the account ID
+- This means you will receive these events even if they don't belong to your specific account
+
+**Client Credentials Grant subscriptions**
+
+For integrations using Client Credentials Grant, you can create a system subscription using the special account ID `00000000-0000-0000-0000-000000000000`. 
+
+This allows you to manage system events on a single Subscription without receiving notifications for all accounts.
+
 ### Creating a subscription
 
 <Warning>
