@@ -103,7 +103,16 @@ To create a subscription, make a POST request to the `/webhooks` endpoint:
 ```bash curl
 curl --request POST 'https://api.smokeball.com/webhooks' \
   --header 'Content-Type: application/json' \
-  --data-raw '{  \r\n  \"name\": \"MyContactsWebhook\",\r\n  \"eventTypes\": [\r\n    \"contact.created\",\r\n    \"contact.updated\",\r\n    \"contact.deleted\",\r\n    \"contact.restored\"\r\n  ],    \r\n  \"eventNotificationUrl\": \"https:\/\/mydomain.com\/webhooks\/contacts\",  \r\n}'
+  --data-raw '{
+  "name": "MyContactsWebhook",
+  "eventTypes": [
+    "contact.created",
+    "contact.updated",
+    "contact.deleted",
+    "contact.restored"
+  ],
+  "eventNotificationUrl": "https://mydomain.com/webhooks/contacts"
+}'
 ```
 ```json http
 {
@@ -112,7 +121,16 @@ curl --request POST 'https://api.smokeball.com/webhooks' \
   "headers": {
     "Content-Type": "application/json"
   },
-  "body": "{  \r\n  \"name\": \"MyContactsWebhook\",\r\n  \"eventTypes\": [\r\n    \"contact.created\",\r\n    \"contact.updated\",\r\n    \"contact.deleted\",\r\n    \"contact.restored\"\r\n  ],    \r\n  \"eventNotificationUrl\": \"https:\/\/mydomain.com\/webhooks\/contacts\",  \r\n}"
+  "body": {
+    "name": "MyContactsWebhook",
+    "eventTypes": [
+      "contact.created",
+      "contact.updated",
+      "contact.deleted",
+      "contact.restored"
+    ],
+    "eventNotificationUrl": "https://mydomain.com/webhooks/contacts"
+  }
 }
 ```
 </CodeGroup>
