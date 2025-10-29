@@ -9150,7 +9150,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Returns the matter stage mappings.",
+            "description": "When request is successful. Returns a paged collection of 'MatterStage' objects.",
             "content": {
               "application/json": {
                 "schema": {
@@ -9192,6 +9192,16 @@
           },
           "400": {
             "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "When the matter stage is not associated with the authenticated client.",
             "content": {
               "application/json": {
                 "schema": {
@@ -9261,7 +9271,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Returns the stage sets",
+            "description": "When request is successful. Returns a paged collection of 'StageSet' objects.",
             "content": {
               "application/json": {
                 "schema": {
@@ -9361,7 +9371,14 @@
             }
           },
           "400": {
-            "description": "When an unsupported request is made."
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
             "description": "When stage or stage set with specified id does not exist.",
@@ -11041,10 +11058,24 @@
             }
           },
           "403": {
-            "description": "When subtask with specified id is not associated with authenticated client."
+            "description": "When subtask with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
-            "description": "When subtask with specified task id and subtask id does not exist."
+            "description": "When subtask with specified task id and subtask id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
@@ -11117,6 +11148,36 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "When subtask with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When subtask with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
@@ -11155,6 +11216,36 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "When subtask with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When subtask with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
@@ -11188,10 +11279,24 @@
             }
           },
           "403": {
-            "description": "When task with specified id is not associated with authenticated client."
+            "description": "When subtask with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
-            "description": "When task with specified id does not exist."
+            "description": "When subtask with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
@@ -11252,6 +11357,26 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Link"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "When a subtask cannot be created for the authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -11483,8 +11608,8 @@
               }
             }
           },
-          "400": {
-            "description": "Bad Request",
+          "403": {
+            "description": "When task with specified id is not associated with authenticated client.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11492,9 +11617,6 @@
                 }
               }
             }
-          },
-          "403": {
-            "description": "When task with specified id is not associated with authenticated client."
           },
           "404": {
             "description": "When task with specified id does not exist.",
@@ -11567,7 +11689,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11577,10 +11699,17 @@
             }
           },
           "403": {
-            "description": "When task with specified id is not associated with authenticated client."
+            "description": "When task with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Not Found",
+            "description": "When task with specified id does not exist.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11618,8 +11747,18 @@
               }
             }
           },
-          "400": {
-            "description": "Bad Request",
+          "403": {
+            "description": "When task with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When task with specified id does not exist.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11681,7 +11820,7 @@
           {
             "name": "UpdatedSince",
             "in": "query",
-            "description": "Filter by tasks updated since a specified time (.net ticks representation of the UTC datetime). Cannot be used in conjunction with `LastUpdated`.",
+            "description": "Filter by tasks updated since a specified time (.net ticks representation of the UTC datetime). Cannot be used in conjunction with `LastUpdated`.\r\n\r\nThis field will not be supported in future, please use LastUpdated instead.",
             "schema": {
               "type": "integer",
               "format": "int64",
@@ -11708,6 +11847,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/TaskPagedCollection"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "When tasks cannot be returned for the authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -11762,7 +11911,17 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "When a task cannot be created for the authenticated client.",
             "content": {
               "application/json": {
                 "schema": {
@@ -12031,7 +12190,7 @@
       "get": {
         "tags": ["Webhooks"],
         "summary": "Get event types",
-        "description": "Returns the available event types.",
+        "description": "Returns the available webhook event types.",
         "operationId": "GetEventTypes",
         "responses": {
           "200": {
@@ -12097,7 +12256,14 @@
             }
           },
           "400": {
-            "description": "When an unsupported request is made."
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
@@ -12303,6 +12469,16 @@
           },
           "400": {
             "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
