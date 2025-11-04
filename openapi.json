@@ -2068,7 +2068,7 @@
         ],
         "responses": {
           "200": {
-            "description": "When request is successful. Returns a list of `Event` objects.",
+            "description": "When request is successful. Returns a paged collection of 'Event' objects.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2125,9 +2125,6 @@
                 }
               }
             }
-          },
-          "404": {
-            "description": "When event does not exist."
           }
         }
       }
@@ -2151,7 +2148,7 @@
         ],
         "responses": {
           "200": {
-            "description": "When request is successful. Returns a `Event` object.",
+            "description": "When request is successful. Returns an 'Event' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2161,10 +2158,24 @@
             }
           },
           "403": {
-            "description": "When the authenticated account does not access to the event."
+            "description": "When the authenticated account does not access to the event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
-            "description": "When event with specified id does not exist."
+            "description": "When event with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
@@ -2226,7 +2237,14 @@
             }
           },
           "404": {
-            "description": "When event does not exist."
+            "description": "When event does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
@@ -2257,7 +2275,14 @@
             }
           },
           "404": {
-            "description": "When 'Event' does not exist."
+            "description": "When 'Event' does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
@@ -2293,17 +2318,31 @@
             }
           },
           "403": {
-            "description": "When the authenticated account does not have access to the event."
+            "description": "When the authenticated account does not have access to the event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
-            "description": "When event with specified id does not exist."
+            "description": "When event with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
       "post": {
         "tags": ["Events"],
         "summary": "Create reminder for an event",
-        "description": "Create new reminder for an event.",
+        "description": "Creates a new reminder for an event.",
         "operationId": "CreateReminder",
         "parameters": [
           {
@@ -2348,7 +2387,7 @@
         },
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a hypermedia 'Link' object of the event reminders.",
+            "description": "When request is accepted. Returns a 'Link' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2358,10 +2397,24 @@
             }
           },
           "403": {
-            "description": "When the authenticated account does not have access to the event."
+            "description": "When the authenticated account does not have access to the event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
-            "description": "When event with specified id does not exist."
+            "description": "When event with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
@@ -2423,7 +2476,7 @@
         },
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a hypermedia 'Link' object of the event reminders.",
+            "description": "When request is accepted. Returns a 'Link' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2433,10 +2486,24 @@
             }
           },
           "403": {
-            "description": "When the authenticated account does not have access to the event."
+            "description": "When the authenticated account does not have access to the event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
-            "description": "When event with specified id does not exist."
+            "description": "When event with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
@@ -2465,7 +2532,7 @@
         ],
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a hypermedia 'Link' object of the event reminders.",
+            "description": "When request is accepted. Returns a 'Link' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2475,10 +2542,24 @@
             }
           },
           "403": {
-            "description": "When the authenticated account does not have access to the event."
+            "description": "When the authenticated account does not have access to the event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
-            "description": "When event with specified id does not exist."
+            "description": "When event with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
@@ -6942,7 +7023,7 @@
         ],
         "responses": {
           "200": {
-            "description": "When request is successful. Returns a list of 'Memo' objects.",
+            "description": "When request is successful. Returns a paged collection of 'Memo' objects.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7001,7 +7082,7 @@
         },
         "responses": {
           "202": {
-            "description": "When request is successful. The memo has been accepted and will be created shortly.",
+            "description": "When request is accepted. Returns a hypermedia 'Link' object of the memo to be created.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7011,7 +7092,7 @@
             }
           },
           "400": {
-            "description": "Bad request."
+            "description": "When an unsupported request is made."
           }
         }
       }
@@ -7042,7 +7123,7 @@
         ],
         "responses": {
           "200": {
-            "description": "When request is successful. Returns the specified memo.",
+            "description": "When request is successful. Returns a 'Memo' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7112,7 +7193,7 @@
         },
         "responses": {
           "202": {
-            "description": "When request is successful. The memo has been accepted and will be updated shortly.",
+            "description": "When request is accepted. Returns a hypermedia 'Link' object of the memo to be updated.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7122,7 +7203,7 @@
             }
           },
           "400": {
-            "description": "Bad request."
+            "description": "When an unsupported request is made."
           },
           "404": {
             "description": "When the specified memo does not exist."
@@ -7154,7 +7235,7 @@
         ],
         "responses": {
           "202": {
-            "description": "When request is successful. The request has been accepted and the memo will be deleted shortly.",
+            "description": "When request is accepted. Returns a hypermedia 'Link' object of the memo to be deleted.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7164,7 +7245,7 @@
             }
           },
           "400": {
-            "description": "Bad request."
+            "description": "When an unsupported request is made."
           },
           "404": {
             "description": "When the specified memo does not exist."
@@ -7200,7 +7281,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7210,7 +7291,14 @@
             }
           },
           "403": {
-            "description": "When notification with specified id is not associated with authenticated client."
+            "description": "When notification with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "404": {
             "description": "When notification with specified id does not exist.",
@@ -7264,7 +7352,7 @@
         },
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a hypermedia 'Link' object of the notification to be created.",
+            "description": "When request is accepted. Returns a 'Link' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7274,7 +7362,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7305,7 +7393,7 @@
         ],
         "responses": {
           "200": {
-            "description": "When request is successful. Returns the plugin.",
+            "description": "When request is successful. Returns a 'Plugin' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7315,7 +7403,7 @@
             }
           },
           "404": {
-            "description": "When a plugin is not found.",
+            "description": "When plugin with specified id does not exist.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7375,7 +7463,7 @@
         },
         "responses": {
           "202": {
-            "description": "When request is successful. Returns a link to the plugin.",
+            "description": "When request is accepted. Returns a 'Link' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7395,7 +7483,7 @@
             }
           },
           "403": {
-            "description": "Forbidden",
+            "description": "When the authenticated account does not have access to update plugins.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7405,7 +7493,7 @@
             }
           },
           "404": {
-            "description": "When a plugin is not found.",
+            "description": "When plugin with specified id does not exist.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7434,7 +7522,7 @@
         ],
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a hypermedia 'Link' object of the plugin to be deleted.",
+            "description": "When request is accepted. Returns a 'Link' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7444,7 +7532,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7454,7 +7542,7 @@
             }
           },
           "403": {
-            "description": "Forbidden",
+            "description": "When the authenticated account does not have access to delete plugins.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7464,7 +7552,7 @@
             }
           },
           "404": {
-            "description": "When a plugin is not found.",
+            "description": "When plugin with specified id does not exist.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7506,7 +7594,7 @@
         ],
         "responses": {
           "200": {
-            "description": "When request is successful. Returns existing plugins.",
+            "description": "When request is successful. Returns a paged collection of 'Plugin' objects.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7555,7 +7643,7 @@
         },
         "responses": {
           "202": {
-            "description": "When request is successful. Returns a link to the plugin.",
+            "description": "When request is accepted. Returns a 'Link' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7575,7 +7663,7 @@
             }
           },
           "403": {
-            "description": "Forbidden",
+            "description": "When the authenticated account does not have access to create plugins.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7585,7 +7673,7 @@
             }
           },
           "404": {
-            "description": "Not Found",
+            "description": "When required resources are not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7625,7 +7713,7 @@
         ],
         "responses": {
           "200": {
-            "description": "When request is successful. Returns the plugin.",
+            "description": "When request is successful. Returns a 'PluginSubscription' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7635,7 +7723,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7645,7 +7733,7 @@
             }
           },
           "403": {
-            "description": "Forbidden",
+            "description": "When the authenticated account does not have access to the plugin subscription.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7655,7 +7743,7 @@
             }
           },
           "404": {
-            "description": "When a plugin is not found.",
+            "description": "When plugin subscription with specified id does not exist.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7693,7 +7781,7 @@
         ],
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a hypermedia 'Link' object of the plugin subscription to be deleted.",
+            "description": "When request is accepted. Returns a 'Link' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7703,7 +7791,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7713,7 +7801,7 @@
             }
           },
           "403": {
-            "description": "Forbidden",
+            "description": "When the authenticated account does not have access to unsubscribe from plugins.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7723,7 +7811,7 @@
             }
           },
           "404": {
-            "description": "When a plugin is not found.",
+            "description": "When plugin subscription with specified id does not exist.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7774,7 +7862,7 @@
         ],
         "responses": {
           "200": {
-            "description": "When request is successful. Returns plugin subscriptions for the account.",
+            "description": "When request is successful. Returns a paged collection of 'PluginSubscription' objects.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7784,7 +7872,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7794,7 +7882,7 @@
             }
           },
           "403": {
-            "description": "Forbidden",
+            "description": "When the authenticated account does not have access to plugin subscriptions.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7804,7 +7892,7 @@
             }
           },
           "404": {
-            "description": "Not Found",
+            "description": "When required resources are not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7833,7 +7921,7 @@
         ],
         "responses": {
           "202": {
-            "description": "When request is successful. Returns a link to the plugin subscription.",
+            "description": "When request is accepted. Returns a 'Link' object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7853,7 +7941,7 @@
             }
           },
           "403": {
-            "description": "Forbidden",
+            "description": "When the authenticated account does not have access to subscribe to plugins.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7863,7 +7951,7 @@
             }
           },
           "404": {
-            "description": "Not Found",
+            "description": "When plugin with specified id does not exist.",
             "content": {
               "application/json": {
                 "schema": {
