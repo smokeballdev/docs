@@ -34,7 +34,10 @@ the current OAuth token response.
 #### Example
 
 ```
-const token = await sdk.auth.connect(jwt);
+const request: ConnectRequest = {
+ jwt
+};
+const contact = await sdk.auth.connect(request);
 ```
 
 ***
