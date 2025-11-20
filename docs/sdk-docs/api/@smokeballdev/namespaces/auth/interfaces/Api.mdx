@@ -11,18 +11,51 @@ Entry point for auth to Smokeball.
 
 ## Methods
 
-### idToken()
+### connect()
+
+> **connect**(`request`): `Promise`\<[`OAuthTokenResponse`](./OAuthTokenResponse)\>
+
+Generates fresh OAuth tokens for the current session. 
+
+Uses the client id passed in the SDK init request to generate the OAuth tokens.
+
+#### Parameters
+
+##### request
+
+`ConnectRequest`
+
+#### Returns
+
+`Promise`\<[`OAuthTokenResponse`](./OAuthTokenResponse)\>
+
+the current OAuth token response.
+
+#### Example
+
+```
+const token = await sdk.auth.connect(jwt);
+```
+
+***
+
+### ~~idToken()~~
 
 > **idToken**(): `Promise`\<`string`\>
-
-Retrieves the id token. This token can be used to access the api.
-Only available to trusted clients.
 
 #### Returns
 
 `Promise`\<`string`\>
 
 the current id token.
+
+#### Deprecated
+
+Use connect() instead.
+
+Retrieves the id token. This token can be used to access the api.
+
+Only available to trusted clients.
 
 #### Example
 
@@ -32,18 +65,23 @@ const token = await sdk.auth.idToken();
 
 ***
 
-### token()
+### ~~token()~~
 
 > **token**(): `Promise`\<`string`\>
-
-Retrieves the access token.
-Only available to trusted clients.
 
 #### Returns
 
 `Promise`\<`string`\>
 
 the current access token.
+
+#### Deprecated
+
+Use connect() instead.
+
+Retrieves the access token.
+
+Only available to trusted clients.
 
 #### Example
 

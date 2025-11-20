@@ -1,0 +1,158 @@
+---
+title: "Authentication"
+icon: "lock"
+---
+<Note>
+The <code>connect</code> function and related authentication flow are scheduled to be released in a future version of the SDK.
+
+This documentation describes features that may not yet be available in your current version.
+</Note>
+
+The [`connect` function](./api/@smokeballdev/namespaces/auth/interfaces/Api) is used to authenticate with Smokeball and generate OAuth tokens for your application session.
+
+The access token can be used to make API requests to the Smokeball API with the scopes you have configured in your Smokeball App.
+
+## Prerequisites
+
+### 1. Initialize the SDK with Client ID
+
+Before using the `connect` function, you must initialize the SDK with your **Client ID**. The Client ID is obtained from your Smokeball App configuration. 
+
+<Note>
+Only applications that have been configured and approved by Smokeball can utilize this authentication functionality. 
+
+If your application does not have a Client ID and Signing Secret provided by Smokeball, you will not be able to use the `connect` function.
+</Note>
+```javascript
+import { SmokeballClientSdk } from '@smokeballdev/smokeball-client-sdk';
+
+const sdk = SmokeballClientSdk.get();
+
+// Initialize with your Client ID
+await sdk.init({ clientId: 'your-client-id-here' });> 
+```
+
+### 2. Create a Signed JWT
+
+You need to create a JWT (JSON Web Token) that is signed using the **Signing Secret** from your Smokeball App. 
+
+<Warning>
+<strong>Never expose your Signing Secret!</strong>
+
+The Signing Secret is highly sensitive and must <em>never</em> be exposed to the client or included in frontend code.
+
+<span style={{fontWeight: 600}}>The JWT must always be generated on your backend server, never on the client. Provide it to your client application securely (for example, via an authenticated API endpoint).</span> 
+
+This is necessary to keep your Signing Secret secure.
+
+</Warning>
+
+Example using a JWT library (server-side):
+
+<CodeGroup>
+``` csharp c#
+var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your-signing-secret-from-smokeball-app"));
+var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+var now = DateTime.UtcNow;
+var tokenDescriptor = new SecurityTokenDescriptor
+{
+    IssuedAt = now,
+    Expires = now.AddMinutes(5), // Set token to expire in 5 minutes
+    SigningCredentials = credentials
+};
+
+var tokenHandler = new JwtSecurityTokenHandler();
+var token = tokenHandler.CreateToken(tokenDescriptor);
+return tokenHandler.WriteToken(token);
+```
+``` javascript javascript
+import jwt from 'jsonwebtoken';
+
+const signingSecret = 'your-signing-secret-from-smokeball-app';
+const jwtToken = jwt.sign(
+  {
+    // Nothing to add here for now
+  },
+  signingSecret,
+  {
+    algorithm: 'HS256',
+    expiresIn: '5m', // Set token to expire in 5 minutes
+  }
+);
+```
+</CodeGroup>
+
+## Using the Connect Function
+
+Once you have:
+1. Initialized the SDK with your Client ID
+2. Created a signed JWT using your Signing Secret
+
+You can call the `connect` function:
+```javascript
+const response = await sdk.auth.connect({
+  jwt: jwtToken
+});
+```
+The `connect` function accepts a request object with the following structure:
+```javascript
+{
+  jwt: string  // The signed JWT token created using your Signing Secret
+}
+```
+### Response
+
+The `connect` function returns an `OAuthTokenResponse` object similar to a traditional OAuth 2.0 token response, this response contains:
+
+```javascript
+{
+  access_token: string;    // OAuth access token
+  id_token: string;        // OAuth ID token
+  refresh_token: string;   // OAuth refresh token
+  token_type: string;      // Token type (typically "Bearer")
+  expires_in: number;      // Token expiration time in seconds
+}
+```
+
+### Complete Example
+
+```javascript
+import { SmokeballClientSdk } from '@smokeballdev/smokeball-client-sdk';
+import jwt from 'jsonwebtoken';
+
+// Get the SDK instance
+const sdk = SmokeballClientSdk.get();
+
+// Step 1: Initialize with Client ID
+await sdk.init({ 
+  clientId: 'your-client-id-here' 
+});
+
+// Step 2: Create signed JWT using Signing Secret
+// Obtain the signed JWT from your backend. 
+// The backend should securely create and sign the JWT using your app's Signing Secret.
+const jwtToken = await fetch('/api/generate-jwt')
+  .then(res => res.text());
+
+// Step 3: Connect using the signed JWT
+try {
+  const response = await sdk.auth.connect({
+    jwt: jwtToken
+  });
+  
+  console.log('Access Token:', response.access_token);
+  console.log('ID Token:', response.id_token);
+  console.log('Refresh Token:', response.refresh_token);
+  console.log('Token Type:', response.token_type);
+  console.log('Expires In:', response.expires_in, 'seconds');
+} catch (error) {
+  console.error('Connect failed:', error);
+}
+```
+
+## Notes
+- The Client ID and Signing Secret are obtained from your Smokeball App configuration in the Developer Console.
+- The JWT must be properly signed with your Signing Secret for authentication to succeed.
+- The `connect` function replaces the deprecated `token()` and `idToken()` functions.
+
