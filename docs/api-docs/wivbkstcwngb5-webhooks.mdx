@@ -176,6 +176,7 @@ Below is a sample notification for a `matter.updated` event:
 ``` json
 {    
     "accountId": "1e53979d-9269-4159-b104-2e603670f59d",
+    "userId": "526670af-acd8-401e-bc64-6d4cafb4a12a",
     "subscriptionId": "6543c46b-d1d5-4a00-8732-36a63a20c3b4",
     "type": "matter.updated",
     "source": "API",
@@ -202,6 +203,9 @@ Below is a sample notification for a `matter.updated` event:
 ```  
 <ResponseField name="accountId" type="string">
   Identifies the specific account associated with the subscription.
+</ResponseField>
+<ResponseField name="userId" type="string">
+  Identifies the user that triggered the event. This may not always be present.
 </ResponseField>
 <ResponseField name="subscriptionId" type="string">
   Represents the unique identifier for the subscription.
