@@ -5395,6 +5395,14 @@
               "type": "string",
               "format": "uuid"
             }
+          },
+          {
+            "name": "skipFieldValidation",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
           }
         ],
         "requestBody": {
@@ -5562,6 +5570,15 @@
               "type": "string",
               "format": "uuid"
             }
+          },
+          {
+            "name": "skipFieldValidation",
+            "in": "query",
+            "description": "Used to skip the field validation, may be needed for Smokeball data split migrations",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
           }
         ],
         "requestBody": {
@@ -5598,7 +5615,7 @@
         },
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a hypermedia 'Link' object of the layout item to be updated.",
+            "description": "When the request is accepted. Returns a hypermedia 'Link' object of the layout item to be updated.",
             "content": {
               "application/json": {
                 "schema": {
