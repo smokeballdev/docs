@@ -23,7 +23,7 @@ When creating an App, you will need to specify several parameters.
   <img src="/images/apps/create-app-modal.png"/>
 </Frame>
 
-### App Name and Description
+### App Name
 
 The App name and description help identify your app within the Developer Console and internal systems. While these are important for development and administration purposes, they are separate from your marketplace listing details which are managed through our Partnerships team. 
 
@@ -32,9 +32,34 @@ Choose a clear, descriptive name and provide a concise description that accurate
 
 ### App Type
 
-**Public Apps** are intended to be listed in the Smokeball marketplace. These are only available to Partners.
+There are important considerations to make when selecting an App Type. Smokeball supports two options: **Public App** and **Private App**.
 
-**Private Apps** are intended for private usage, typically developed by firms for their own internal use.
+#### Choosing an App Type
+
+| App Type      | Availability            | Typical Use Case                | Required OAuth Flow(s)                             |
+|---------------|------------------------|---------------------------------|----------------------------------------------------|
+| **Public App**   | Partners only           | Listed on the Smokeball marketplace and used by multiple firms   | [Authorization Code Grant](/docs/api-docs/2t26gcuuqf1wk-authorization-code-grant) (required)  |
+| **Private App**  | Partners & Firms        | Not listed on marketplace for internal use by a single firm      | [Authorization Code Grant](/docs/api-docs/2t26gcuuqf1wk-authorization-code-grant) or [Client Credentials Grant](/docs/api-docs/h72024p76i8e1-client-credentials-grant) |
+
+
+#### What is a **Public App**?
+
+**Public Apps** are designed to be listed and distributed in the Smokeball marketplace. They are intended for broad use across multiple firms and must meet our review and approval requirements.
+
+- Public apps must use the [Authorization Code Grant](/docs/api-docs/2t26gcuuqf1wk-authorization-code-grant) flow for authentication.
+- This option is available **only to Partners**.
+
+#### What is a **Private App**?
+
+**Private Apps** are intended for private/internal use within a single firm and are not distributed through the marketplace.
+
+- Private apps can be used by firms building their own integrations, or by partners developing an app specifically for a firm's use.
+- Private apps can use either the [Authorization Code Grant](/docs/api-docs/2t26gcuuqf1wk-authorization-code-grant) flow or the [Client Credentials Grant](/docs/api-docs/h72024p76i8e1-client-credentials-grant) for authentication.
+    - The **Client Credentials Grant** is recommended for server-to-server apps tied to only one firm.
+- This option is available to **both Partners and Firms**.
+
+---
+
 
 ### Public Client
 

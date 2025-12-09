@@ -69,6 +69,10 @@ For security, we recommend:
 
 You can add multiple callback URLs to support different environments (development, staging, production) or application components.
 
+<Note>
+Callback URLs are not required for apps utilising the [Client Credentials Grant](/docs/api-docs/h72024p76i8e1-client-credentials-grant) type.
+</Note>
+
 ## Logout URLs
 Logout URLs specify where users will be redirected after signing out of your application. These URLs serve several important purposes:
 
@@ -85,6 +89,10 @@ Configuration requirements:
 Your logout request will fail if the provided url doesn't exactly match one of your registered logout URLs.
 </Warning>
 
+<Note>
+Callback URLs are not required for apps utilising the [Client Credentials Grant](/docs/api-docs/h72024p76i8e1-client-credentials-grant) type.
+</Note>
+
 ## Credentials
 Your app's OAuth 2.0 credentials consist of a client ID and client secret that are used to authenticate API requests and obtain access tokens through the OAuth 2.0 authorization flow
 
@@ -97,10 +105,10 @@ The client ID uniquely identifies your application when making requests to the S
 - Contact our partners team immediately if you suspect your client secret has been compromised so it can be rotated
 
 ### Client Grant
-There are 2 different types of client grants
-- **Authorization Code Grant**: The standard OAuth 2.0 flow for applications that can securely store client secrets. Uses PKCE (Proof Key for Code Exchange) if configured as a Public Client during app creation, otherwise requires client secrets. Provides the highest level of security.
+There are 2 different types of grants
+- **[Authorization Code Grant](/docs/api-docs/2t26gcuuqf1wk-authorization-code-grant)t**: The standard OAuth 2.0 flow for applications that can securely store client secrets. Uses PKCE (Proof Key for Code Exchange) if configured as a Public Client during app creation, otherwise requires client secrets. Provides the highest level of security.
 
-- **Client Credentials Grant**: For server-to-server applications that need to access resources without user context. Currently not supported via the Developer Console and not provided to partners.
+- **[Client Credentials Grant](/docs/api-docs/h72024p76i8e1-client-credentials-grant)**: For server-to-server applications that need to access resources without user context. Only supported for [Private Apps](/docs/platform-docs/4f56d789e123f-creating-app#app-type).
 
 For detailed implementation guides and examples, see our [API Documentation](/docs/api-docs).
 

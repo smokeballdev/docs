@@ -135,12 +135,21 @@ Property | Description
 
 ## Server-to-Server requests
 
-When using the [Client Credentials Grant](1-Authentication.md#2-client-credentials-grant) to perform server-to-server requests, you must explicitly specify which account you are using by prefixing the url with the `accountId` in this format:
+<Note>
+The details below apply **only** if your Client Credentials Grant allows access to multiple accounts
+
+It does not apply for [Private Apps](/docs/platform-docs/4f56d789e123f-creating-app#app-type) created via the Developer Console, which are restricted to a single account.
+
+If your app was created from the Developer Console, you can ignore this section.
+</Note>
+
+When using the [Client Credentials Grant](1-Authentication.md#2-client-credentials-grant) to perform server-to-server requests, and your credentials are authorized to access more than one account, you must explicitly specify which account you are targeting by prefixing the URL with the `accountId` in this format:
 
 > https://api.smokeball.com/{accountId}/{resource-path}
 
-Using the above contacts request as an example, the url is https://api.smokeball.com/contacts/
-For a server-to-server request using the `accountId: ea4ca7b9-b826-4840-a8k5-94e6c6937c65` the request would be:
+For example, using the contacts resource, a typical URL would be:  
+https://api.smokeball.com/contacts/  
+But for a server-to-server request specifying the `accountId: ea4ca7b9-b826-4840-a8k5-94e6c6937c65`, the URL becomes:
 
 <CodeGroup>
   ```bash curl
@@ -151,18 +160,18 @@ For a server-to-server request using the `accountId: ea4ca7b9-b826-4840-a8k5-94e
   ```json http
   {
     "method": "get",
-  "url": "https://api.smokeball.com/ea4ca7b9-b826-4840-a8k5-94e6c6937c65/contacts/",
-  "headers": {
-    "x-api-key": "Y2xpZW50X2lkOmNsaWV",
-    "Authorization": "Bearer Y2xpZW50X2lkOmNsaWV"
+    "url": "https://api.smokeball.com/ea4ca7b9-b826-4840-a8k5-94e6c6937c65/contacts/",
+    "headers": {
+      "x-api-key": "Y2xpZW50X2lkOmNsaWV",
+      "Authorization": "Bearer Y2xpZW50X2lkOmNsaWV"
+    }
   }
-}
-```
+  ```
 </CodeGroup>
 
 **Response**
 
-> Note: all links in the repsonse will include the accountId prefix:
+> Note: All links in the response will include the accountId prefix:
 
 ``` json
 HTTP/1.1 200 OK
