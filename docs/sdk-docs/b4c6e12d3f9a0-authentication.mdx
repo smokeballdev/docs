@@ -117,7 +117,7 @@ try {
   
   // Step 4: Use the token session to get access tokens
   // The token session lasts for 1 day
-  const accessToken = await tokenSession.token();
+  const accessToken = await tokenSession.accessToken();
   
   console.log('Access Token:', accessToken);
   
@@ -129,7 +129,7 @@ try {
   });
   
   // Get a new access token when needed (the SDK handles refresh automatically)
-  const newAccessToken = await tokenSession.token();
+  const newAccessToken = await tokenSession.accessToken();
   
 } catch (error) {
   console.error('Connect failed:', error);
@@ -141,6 +141,6 @@ try {
 - The embed token is received by your backend from Smokeball (for example, through a plugin pre-flight request).
 - The embed token has a 1-minute lifetime and must be used promptly.
 - The token session created by `connect` lasts for exactly 1 day, after which you must generate a new session.
-- Access tokens obtained via `token()` are short-lived and scoped to your app's Client ID and configured scopes.
+- Access tokens obtained via `accessToken()` are short-lived and scoped to your app's Client ID and configured scopes.
 - Refresh token management is handled automatically by the SDK.
 
