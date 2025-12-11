@@ -8,7 +8,7 @@
     "/activitycodes/{id}": {
       "get": {
         "tags": ["Activity Codes"],
-        "summary": "Get activity code",
+        "summary": "Get an activity code",
         "description": "Retrieves a specified activity code.",
         "operationId": "GetActivityCodeById",
         "parameters": [
@@ -23,11 +23,21 @@
         ],
         "responses": {
           "200": {
-            "description": "When request is successful. Returns a 'ActivityCode' object.",
+            "description": "When request is successful. Returns an 'Activity' object.",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Activity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -57,7 +67,7 @@
       "put": {
         "tags": ["Activity Codes"],
         "summary": "Update an activity code",
-        "description": "Updates a specified activity code.",
+        "description": "Updates an activity code.",
         "operationId": "UpdateActivityCode",
         "parameters": [
           {
@@ -112,7 +122,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -122,14 +132,31 @@
             }
           },
           "403": {
-            "description": "When activity code with specified id is not associated with authenticated client."
+            "description": "When activity code with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When activity code with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
       "delete": {
         "tags": ["Activity Codes"],
         "summary": "Delete an activity code",
-        "description": "Deletes a specified activity code.",
+        "description": "Deletes an activity code.",
         "operationId": "DeleteActivityCode",
         "parameters": [
           {
@@ -153,7 +180,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -163,7 +190,24 @@
             }
           },
           "403": {
-            "description": "When activity code with specified id is not associated with authenticated client."
+            "description": "When activity code with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When activity code with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
@@ -207,11 +251,21 @@
         ],
         "responses": {
           "200": {
-            "description": "When request is successful. Returns a list of 'ActivityCode' objects.",
+            "description": "When request is successful. Returns a paged collection of 'ActivityCode' objects.",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ActivityPagedCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -266,7 +320,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "When an unsupported request is made.",
             "content": {
               "application/json": {
                 "schema": {
@@ -14909,6 +14963,11 @@
           "medicareNumber": {
             "type": "string",
             "description": "Medicare number",
+            "nullable": true
+          },
+          "nhsNumber": {
+            "type": "string",
+            "description": "NHS (National Health Service) number\r\nOnly supported in UK.",
             "nullable": true
           }
         },
