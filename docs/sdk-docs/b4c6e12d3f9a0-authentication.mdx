@@ -2,11 +2,11 @@
 title: "Authentication"
 icon: "lock"
 ---
-<Note>
+<Warning>
 The <code>connect</code> function and related authentication flow are scheduled to be released in a future version of the SDK.
 
 This documentation describes features that may not yet be available in your current version.
-</Note>
+</Warning>
 
 The [`connect` function](./api/@smokeballdev/namespaces/auth/interfaces/Api) is used to authenticate with Smokeball and generate a token session for your application.
 
@@ -16,13 +16,8 @@ The token session provides access to short-lived access tokens that can be used 
 
 ### 1. Initialize the SDK
 
-Before using the `connect` function, you must initialize the SDK. The Client ID is obtained from your Smokeball App configuration. 
+Before using the `connect` function, you must initialize the SDK. 
 
-<Note>
-Only applications that have been configured and approved by Smokeball can utilize this authentication functionality. 
-
-If your application does not have a Client ID provided by Smokeball, you will not be able to use the `connect` function.
-</Note>
 ```javascript
 import { SmokeballClientSdk } from '@smokeballdev/smokeball-client-sdk';
 
@@ -34,7 +29,7 @@ await sdk.init();
 
 ### 2. Obtain an Embed Token from your Backend
 
-Your backend will receive a **nonce embed token** from Smokeball (for example, through a plugin pre-flight request). This embed token:
+Your backend will receive an **embed token** from Smokeball (for example, through a plugin pre-flight request). This embed token:
 
 - Has a lifetime of **1 minute**
 - Is tied to the logged-in user ID
@@ -45,6 +40,8 @@ Your backend should provide this token to your client application.
 </Note>
 
 ## Using the Connect function
+
+Only applications that have been configured and approved by Smokeball are able to use the `connect` function.
 
 Once you have:
 1. Initialized the SDK
@@ -137,10 +134,7 @@ try {
 ```
 
 ## Notes
-- The Client ID is obtained from your Smokeball App configuration in the Developer Console.
-- The embed token is received by your backend from Smokeball (for example, through a plugin pre-flight request).
-- The embed token has a 1-minute lifetime and must be used promptly.
+- The embed token is provided to your backend by Smokeball - typically via a secure pre-flight request, or similar integration flow. Your backend is responsible for securely receiving and passing this token to your client for SDK authentication.
+- The embed token is valid for only 1 minute and can be used a single time. Be sure to use it immediately after receiving it, as it will expire quickly and cannot be reused.
 - The token session created by `connect` lasts for exactly 1 day, after which you must generate a new session.
 - Access tokens obtained via `token()` are short-lived and scoped to your app's Client ID and configured scopes.
-- Refresh token management is handled automatically by the SDK.
-
