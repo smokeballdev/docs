@@ -901,11 +901,7 @@
             "name": "type",
             "in": "query",
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/AccountTypes"
-                }
-              ]
+              "type": "string"
             }
           },
           {
@@ -12687,11 +12683,6 @@
         "type": "integer",
         "format": "int32"
       },
-      "AccountTypes": {
-        "enum": [0, 1, 2, 3],
-        "type": "integer",
-        "format": "int32"
-      },
       "ApiError": {
         "type": "object",
         "properties": {
@@ -12737,12 +12728,9 @@
             "example": "b471682e-fa17-4e46-b7fe-9b2b8fdcb3c2"
           },
           "type": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/AccountTypes"
-              }
-            ],
-            "description": "The type of the bank account (Operating, Trust, Credit, ControlledMoney)."
+            "type": "string",
+            "description": "The type of the bank account (Operating, Trust, Credit, ControlledMoney).",
+            "example": "Trust"
           },
           "status": {
             "allOf": [
