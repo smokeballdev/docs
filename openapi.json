@@ -5154,9 +5154,20 @@
             }
           },
           {
-            "name": "updatedSince",
+            "name": "LastUpdated",
             "in": "query",
-            "description": "Timestamp in ticks. Use this to only get invoices which have been updated",
+            "description": "Returns items updated since the specified date and time.",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2022-04-23T14:00:00Z"
+            },
+            "example": "2022-04-23T14:00:00Z"
+          },
+          {
+            "name": "UpdatedSince",
+            "in": "query",
+            "description": "Returns items updated since a specified time (.net ticks representation of the UTC datetime).",
             "schema": {
               "type": "integer",
               "format": "int64"
@@ -5196,6 +5207,74 @@
           },
           "400": {
             "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/matters/{matterId}/invoices/{invoiceId}": {
+      "get": {
+        "tags": ["Invoices"],
+        "summary": "Get an invoice",
+        "description": "Retrieves a specified invoice.",
+        "operationId": "GetInvoiceById",
+        "parameters": [
+          {
+            "name": "matterId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "invoiceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "When request is successful. Returns a 'Invoice' object.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invoice"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "When invoice with specified id is not associated with authenticated client or matter.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
