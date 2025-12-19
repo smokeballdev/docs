@@ -936,21 +936,13 @@
         }
       }
     },
-    "/bankaccounts/{bankAccountId}/transactions/{id}": {
+    "/bankaccounts/{bankAccountId}/transactions": {
       "get": {
         "tags": ["Bank Accounts"],
-        "summary": "Get a transaction",
-        "description": "Retrieves a specified bank account transaction.",
-        "operationId": "GetTransactionById",
+        "summary": "Get transactions",
+        "description": "Retrieves a specified bank accounts transaction.",
+        "operationId": "GetTransactions",
         "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "name": "bankAccountId",
             "in": "path",
@@ -958,6 +950,37 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 500,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "LastUpdated",
+            "in": "query",
+            "description": "Returns items updated since the specified date and time.",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2022-04-23T14:00:00Z"
+            },
+            "example": "2022-04-23T14:00:00Z"
           }
         ],
         "responses": {
@@ -1002,9 +1025,7 @@
             }
           }
         }
-      }
-    },
-    "/bankaccounts/{bankAccountId}/transactions": {
+      },
       "post": {
         "tags": ["Bank Accounts"],
         "summary": "Create a transaction",
@@ -1068,6 +1089,74 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bankaccounts/{bankAccountId}/transactions/{id}": {
+      "get": {
+        "tags": ["Bank Accounts"],
+        "summary": "Get a transaction",
+        "description": "Retrieves a specified bank account transaction.",
+        "operationId": "GetTransactionById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "bankAccountId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "When request is successful. Returns a 'Transaction' object.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Transaction"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "When transaction with specified id is not associated with authenticated client.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When transaction with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -13082,15 +13171,31 @@
             "nullable": true,
             "example": "64818ee0-c7b4-46ec-862e-514d8b29540a"
           },
-          "matterId": {
-            "type": "string",
-            "description": "Unique identifier of the associated matter.",
-            "nullable": true,
-            "example": "da4e7fd1-5394-4ca9-b1c6-e18c4e2bf262"
+          "matter": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ],
+            "description": "The associated matter.",
+            "nullable": true
           },
-          "payorId": {
-            "type": "string",
-            "description": "Unique identifier of the associated contact.",
+          "payor": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ],
+            "description": "The associated contact that paid the funds.",
+            "nullable": true
+          },
+          "bankAccount": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ],
+            "description": "The bank account where the transaction took place.",
             "nullable": true
           },
           "type": {
@@ -13105,9 +13210,14 @@
             "format": "double",
             "example": 102.65
           },
+          "enteredDate": {
+            "type": "string",
+            "description": "Date the transaction was entered.",
+            "format": "date-time"
+          },
           "effectiveDate": {
             "type": "string",
-            "description": "Date of the transaction.",
+            "description": "Date the transaction took effect.",
             "format": "date-time"
           },
           "reference": {
@@ -13128,6 +13238,29 @@
           "note": {
             "type": "string",
             "description": "Note for the transaction (for internal use).",
+            "nullable": true
+          },
+          "reversed": {
+            "type": "boolean",
+            "description": "True if this transaction has been reversed.",
+            "example": true
+          },
+          "reversedToTransaction": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ],
+            "description": "The transaction that was created as a result of reversing this transaction.",
+            "nullable": true
+          },
+          "reversedFromTransaction": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ],
+            "description": "The transaction that was recversed to create this transaction.",
             "nullable": true
           }
         },
