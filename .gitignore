@@ -1,0 +1,97 @@
+# --------------------
+# Dependencies
+# --------------------
+node_modules/
+.pnp/
+.pnp.js
+
+# --------------------
+# Build / Output
+# --------------------
+dist/
+build/
+out/
+coverage/
+.tmp/
+.cache/
+
+# --------------------
+# Logs
+# --------------------
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --------------------
+# Environment variables
+# --------------------
+.env
+.env.*
+!.env.example
+
+# --------------------
+# Runtime data
+# --------------------
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# --------------------
+# Testing
+# --------------------
+coverage/
+.nyc_output/
+
+# --------------------
+# IDEs & Editors
+# --------------------
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# --------------------
+# OS files
+# --------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --------------------
+# Package manager files
+# --------------------
+.npmrc
+.yarnrc
+.yarnrc.yml
+.pnpm-debug.log*
+
+# --------------------
+# Optional: TypeScript
+# --------------------
+*.tsbuildinfo
+
+# --------------------
+# Optional: Next.js / Remix / Vite
+# --------------------
+.next/
+.vercel/
+.vite/
+.turbo/
+
+# --------------------
+# Optional: Docker
+# --------------------
+docker-compose.override.yml
+
+# --------------------
+# JIRA Configuration
+# --------------------
+**/jira-config.json
