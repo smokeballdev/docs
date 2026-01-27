@@ -1,26 +1,135 @@
 ---
-title: "Overview"
+title: "Apps Overview"
+description: "Understanding Smokeball apps and how they integrate with the platform"
 ---
 
-Welcome to Smokeball's app development platform. This guide covers everything you need to know about building powerful integrations and applications that extend Smokeball's capabilities.
+## What are Smokeball Apps?
 
-## What are Apps?
+Smokeball apps are self-contained applications that extend Smokeball's functionality by integrating with firm data and workflows. Apps provide a secure, standardized way for third-party developers and firms to build custom solutions on top of the Smokeball platform.
 
-Apps are self-contained applications that can be developed and deployed on our platform. They provide specific functionality and can be integrated with other services.
+## App Architecture
+
+### Components
+
+A Smokeball app typically consists of:
+
+1. **Client Application** - Your web, desktop, or mobile application
+2. **API Integration** - Calls to Smokeball API endpoints to access firm data
+3. **Webhook Subscriptions** (optional) - Real-time notifications for events
+4. **Authentication Flow** - OAuth 2.0 implementation for secure access
+
+### Integration Patterns
+
+Apps can integrate with Smokeball in different ways:
+
+- **API-only apps** - Cloud-based applications that interact via REST API
+- **Webhook-driven apps** - Event-driven integrations that respond to real-time notifications
+- **Plugin apps** (coming soon) - Native integrations using the Smokeball Client SDK
+- **Hybrid apps** - Combination of API, webhooks, and SDK
+
+## App Types
+
+Smokeball supports two types of apps, each designed for different use cases:
+
+### Public Apps
+
+Public apps are designed to be used by multiple Smokeball firms:
+
+- **Use Case**: SaaS products, marketplace integrations, third-party services
+- **Distribution**: Available through the Smokeball App Marketplace
+- **Credentials**: Single set of client credentials for all firms
+- **Authentication**: Authorization Code Grant
+- **Ideal For**: Software vendors, integration partners, marketplace apps
+
+**Example Use Cases:**
+- Document automation platforms
+- Client portal solutions
+- Legal practice management integrations
+- Billing and accounting integrations
+
+### Private Apps
+
+Private apps are designed for single-firm use only:
+
+- **Use Case**: Custom internal integrations, firm-specific workflows
+- **Distribution**: Private to your firm only
+- **Credentials**: Unique credentials for your firm
+- **Authentication**: Client Credentials Grant or Authorization Code Grant (OAuth 2.0)
+- **Ideal For**: Individual firms, custom internal tools, proof-of-concept projects
+
+**Example Use Cases:**
+- Custom reporting dashboards
+- Internal automation workflows
+- Legacy system integrations
+- Data migration tools
 
 ## Authorization and Access
 
-Apps provide the necessary authentication and authorization mechanisms to securely access firm data through the Smokeball API:
+All apps use OAuth 2.0 to securely access firm data through the Smokeball API:
 
-- When you create an app, you receive API keys and credentials
-- Firms explicitly authorize your app to access their data
-- OAuth 2.0 flows ensure secure authentication
-- Access tokens are scoped to specific permissions
-- Firms can revoke access at any time
+### How Authorization Works
 
-This secure authorization model ensures:
-- Firms maintain control over their data
-- Access is properly authenticated
-- Permissions are clearly defined
+1. **App Registration** - Create an app in the [Developer Console](https://console.smokeball.com)
+2. **Credentials** - Receive client ID and client secret
+3. **Firm Authorization** - Firms explicitly authorize your app
+4. **Access Tokens** - Obtain scoped access tokens via OAuth 2.0
+5. **API Calls** - Use tokens to make authenticated API requests
 
-You can manage your app's settings and API credentials through the [Developer Console](https://console.smokeball.com).
+### Security Features
+
+- **Scoped Permissions**: Apps request only the data they need
+- **Secure Authentication**: OAuth 2.0 industry standard
+- **Token Expiration**: Access tokens expire and must be refreshed
+- **Audit Trail**: All API access is logged
+
+## App Lifecycle
+
+### 1. Development
+
+- Create app in Developer Console
+- Configure authentication settings
+- Set up development environment
+- Build and test in staging environment
+
+### 2. Testing
+
+- Test OAuth flow
+- Verify API integrations
+- Test webhook handling
+- Validate error handling
+
+### 3. Deployment
+
+- **Private Apps**: Deploy and use immediately
+- **Public Apps**: Submit for review, then publish to marketplace
+
+### 4. Maintenance
+
+- Monitor API usage
+- Handle version updates
+- Respond to firm support requests
+- Track error rates and performance
+
+## Managing Your Apps
+
+Use the [Developer Console](https://console.smokeball.com) to:
+
+- Create and configure apps
+- Manage API credentials
+- Set OAuth redirect URIs
+- Configure webhook subscriptions
+- Monitor app usage and performance
+- View error logs and analytics
+
+## Next Steps
+
+Ready to build your app? Here's how to get started:
+
+1. **[Creating an App](/docs/platform-docs/4f56d789e123f-creating-app)** - Step-by-step guide to creating your first app
+2. **[Building Your App](/docs/platform-docs/867hiv3k5bt1u-build-app)** - Development best practices and patterns
+3. **[API Documentation](/docs/api-docs/1e13a13124aee-introduction)** - Complete API reference
+4. **[SDK Documentation](/docs/sdk-docs/675c9816cdaf6-getting-started)** - Client SDK guides (for plugin apps)
+
+<Info>
+Need help deciding between Public and Private apps? Choose Private for single-firm use and simpler setup. Choose Public to distribute to multiple firms via the marketplace.
+</Info>

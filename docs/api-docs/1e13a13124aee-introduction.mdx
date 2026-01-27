@@ -8,48 +8,28 @@ If you've developed a software solution for the Legal Industry, an opportunity m
 
 To start your integration journey with Smokeball, please follow this [link](https://smokeball.atlassian.net/servicedesk/customer/portal/3/create/13) to complete the registration of interest form, and a member from our Partnerships or Product Teams will be in touch.
 
-## 1\. Base URLs
+## Getting Started
 
-Refer to the below base urls for different environments and regions.
+The Smokeball API provides a comprehensive set of endpoints for integrating with Smokeball's practice management platform. Whether you're building custom integrations, automating workflows, or extending Smokeball's functionality, this API documentation will guide you through the process.
+
+### Key Concepts
+
+Before you begin, familiarize yourself with these essential concepts:
+
+- **Base URLs**: Different URLs for authentication and API requests, varying by region and environment
+- **Authentication**: OAuth 2.0-based authentication flow for secure access
+- **Rate Limits**: Request throttling to ensure consistent platform performance
+- **Request Format**: JSON request/response format with standard HTTP methods
+
+## Next Steps
+
+Follow these steps to get started with the Smokeball API:
+
+1. **[Base URLs](/docs/api-docs/z2q8vla6b77g8-base-urls)** - Configure the correct endpoints for your region and environment
+2. **[Authentication](/docs/api-docs/c916c683c136e-authentication-overview)** - Set up OAuth 2.0 authentication to access the API
+3. **[Rate Limits](/docs/api-docs/vj4jovpoopdov-rate-limits)** - Understand throttling policies and best practices
+4. **[Making Requests](/docs/api-docs/ivmfjbc61tvjs-making-requests)** - Learn how to structure and send API requests
 
 <Info>
- You **MUST** use the URLs for the region you are targeting with your integration.*
+Make sure to use the correct base URLs for your target region (US, AU, or UK) and environment (Production or Staging).
 </Info>
-
-### 1.1 Authentication
-
-Use this base URL for [authentication](/docs/api-docs/c916c683c136e-authentication).
-
-| Region | Production | Staging/Test |
-| --- | --- | --- |
-| US | [https://auth.smokeball.com](https://auth.smokeball.com/) | [https://datastaging-auth.smokeball.com](https://datastaging-auth.smokeball.com/) |
-| AU | [https://auth.smokeball.com.au](https://auth.smokeball.com.au/) | [https://datastaging-auth.smokeball.com.au](https://datastaging-auth.smokeball.com.au/) |
-| UK | [https://auth.smokeball.co.uk](https://auth.smokeball.co.uk/) | [https://datastaging-auth.smokeball.co.uk](https://datastaging-auth.smokeball.co.uk/) |
-
-### 1.2 API
-
-Use this base URL for [making api requests](/docs/api-docs/91f30a1eaee08-making-requests).
-
-| Region | Production | Staging/Test |
-| --- | --- | --- |
-| US | [https://api.smokeball.com](https://api.smokeball.com/) | [https://stagingapi.smokeball.com](https://stagingapi.smokeball.com/) |
-| AU | [https://api.smokeball.com.au](https://api.smokeball.com.au/) | [https://stagingapi.smokeball.com.au](https://stagingapi.smokeball.com.au/) |
-| UK | [https://api.smokeball.co.uk](https://api.smokeball.co.uk/) | [https://stagingapi.smokeball.co.uk](https://stagingapi.smokeball.co.uk/) |
-
-## 2\. Throttling & Limits
-
-Throttling and limiting is a policy that affects the frequency an API can be called. They are put in place to protect server infrastructure from abuse or misuse. Smokeball employs rate limits to enable consistent load allocation across our platform.
-
-The Smokeball API uses the [token bucket algorithm](https://en.wikipedia.org/wiki/Token_bucket). Smokeball API partners are assigned a "Burst" and "Rate" Limit.
-
-The **burst** limit defines the number of requests the API can handle concurrently.
-
-The **rate** limit defines the number of allowed requests per second.
-
-Unless otherwise specified, Smokeball API partners are assigned the limits below:
-
-| Region | Rate (requests per second) | Burst (concurrent requests) |
-| :--- | :---: | :---: |
-| US | 5 | 5 |
-| AU | 5 | 5 | 
-| UK | 5 | 5 |
