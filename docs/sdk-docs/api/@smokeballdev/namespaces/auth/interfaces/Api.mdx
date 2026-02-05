@@ -13,11 +13,9 @@ Entry point for auth to Smokeball.
 
 ### connect()
 
-> **connect**(`request`): `Promise`\<[`OAuthTokenResponse`](./OAuthTokenResponse)\>
+> **connect**(`request`): `Promise`\<[`TokenSession`](./TokenSession)\>
 
-Generates fresh OAuth tokens for the current session. 
-
-Uses the client id passed in the SDK init request to generate the OAuth tokens.
+Establishes a new token session that can be used to generate fresh OAuth tokens.
 
 #### Parameters
 
@@ -27,9 +25,9 @@ Uses the client id passed in the SDK init request to generate the OAuth tokens.
 
 #### Returns
 
-`Promise`\<[`OAuthTokenResponse`](./OAuthTokenResponse)\>
+`Promise`\<[`TokenSession`](./TokenSession)\>
 
-the current OAuth token response.
+a token session.
 
 #### Example
 
@@ -37,7 +35,8 @@ the current OAuth token response.
 const request: ConnectRequest = {
  jwt
 };
-const contact = await sdk.auth.connect(request);
+const session = await sdk.auth.connect(request);
+const token = await session.accessToken();
 ```
 
 ***

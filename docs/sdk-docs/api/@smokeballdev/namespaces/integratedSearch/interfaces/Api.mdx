@@ -1,0 +1,78 @@
+---
+title: IntegratedSearch
+---
+[**@smokeballdev/smokeball-client-sdk**](./../../../../README)
+
+***
+
+# Interface: Api
+
+Entry point for integrated search to Smokeball.
+
+## Methods
+
+### mapping()
+
+> **mapping**(`matterId?`): `Promise`\<[`Mapping`](./../type-aliases/Mapping)\>
+
+Gets the mapping for the current context or the specified matter id if provided.
+
+#### Parameters
+
+##### matterId?
+
+`string`
+
+the matter to retrieve, use null for the matter in the current context.
+
+#### Returns
+
+`Promise`\<[`Mapping`](./../type-aliases/Mapping)\>
+
+the mapping object.
+
+#### Example
+
+```
+// Returns the mapping for the current context.
+const mapping = await sdk.integratedSearch.mapping();
+// Returns the mapping for the specified matter id.
+const mapping = await sdk.integratedSearch.mapping('d2e8aea9-e201-4be7-bbe6-a4f64cc491ab');
+```
+
+***
+
+### observeMapping()
+
+> **observeMapping**(`callback`, `matterId?`): `void`
+
+Creates a subscription for the mapping associated to the current context or the specified matter id if provided.
+
+Only one subscription will be made per session. Regardless of how many times this function is called, the last registered callback will be used.
+
+#### Parameters
+
+##### callback
+
+(`mapping`) => `void`
+
+the function to execute when a change is made to the mapping in Smokeball.
+
+##### matterId?
+
+`string`
+
+the matter to subscribe to.
+
+#### Returns
+
+`void`
+
+#### Example
+
+```
+sdk.integratedSearch.observeMapping(mapping => {
+  // Perform syncing code here.
+  console.log(mapping);
+});
+```

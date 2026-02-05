@@ -1,0 +1,40 @@
+---
+title: Auth
+---
+[**@smokeballdev/smokeball-client-sdk**](./../../../../README)
+
+***
+
+# Interface: TokenSession
+
+Token session.
+
+## Properties
+
+### id
+
+> **id**: `string`
+
+Session ID.
+
+## Methods
+
+### token()
+
+> **token**(): `Promise`\<[`TokenResponse`](./TokenResponse)\>
+
+Generates fresh OAuth tokens for the current session.
+
+#### Returns
+
+`Promise`\<[`TokenResponse`](./TokenResponse)\>
+
+the access, id token (if applicable) and expiry.
+
+#### Example
+
+```
+const session = await sdk.auth.connect(request);
+const token = await session.accessToken();
+console.log(token);
+```

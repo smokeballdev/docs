@@ -11,6 +11,36 @@ Entry point for files in Smokeball.
 
 ## Methods
 
+### add()
+
+> **add**(`request`): `Promise`\<[`UploadMatterFileResponse`](./UploadMatterFileResponse)\>
+
+Adds a new file to the specified Matter.
+Returns upload details including upload URL.
+
+#### Parameters
+
+##### request
+
+[`AddMatterFileRequest`](./AddMatterFileRequest)
+
+#### Returns
+
+`Promise`\<[`UploadMatterFileResponse`](./UploadMatterFileResponse)\>
+
+#### Example
+
+```
+const request: AddMatterFileRequest = {
+ matterId: '410f2b2b-7adf-436e-a5fd-dab1733d3fba',
+ fileName: 'New Document.docx',
+ folderPath: '/Folder/Subfolder'
+}
+const uploadDetails = await sdk.files.add(request);
+```
+
+***
+
 ### download()
 
 > **download**(`request`): `Promise`\<[`MatterFileDownloadDetails`](./MatterFileDownloadDetails)[]\>
@@ -38,6 +68,34 @@ const downloadUrls = await sdk.files.download({
     }
   ]
 });
+```
+
+***
+
+### get()
+
+> **get**(`request`): `Promise`\<[`FileDetails`](./FileDetails)\>
+
+Returns a file from the given Matter and File Id.
+
+#### Parameters
+
+##### request
+
+[`GetMatterFileRequest`](./GetMatterFileRequest)
+
+#### Returns
+
+`Promise`\<[`FileDetails`](./FileDetails)\>
+
+#### Example
+
+```
+const request: GetMatterFileRequest = {
+ matterId: '410f2b2b-7adf-436e-a5fd-dab1733d3fba',
+ fileId: 'da06e491-3a68-4da1-be1c-7e734491bbe6'
+}
+const fileDetails = sdk.files.get(request);
 ```
 
 ***
@@ -127,4 +185,34 @@ const request: SelectFilesRequest = {
  showEmails: false,
 }
 sdk.files.select(request);
+```
+
+***
+
+### update()
+
+> **update**(`request`): `Promise`\<[`UploadMatterFileResponse`](./UploadMatterFileResponse)\>
+
+Updates an existing file in the specified Matter.
+Returns upload details including upload URL.
+
+#### Parameters
+
+##### request
+
+[`UpdateMatterFileRequest`](./UpdateMatterFileRequest)
+
+#### Returns
+
+`Promise`\<[`UploadMatterFileResponse`](./UploadMatterFileResponse)\>
+
+#### Example
+
+```
+const request: UpdateMatterFileRequest = {
+ matterId: '410f2b2b-7adf-436e-a5fd-dab1733d3fba',
+ fileId: 'da06e491-3a68-4da1-be1c-7e734491bbe6',
+ fileName: 'Updated Document.docx'
+}
+const uploadDetails = await sdk.files.update(request);
 ```
