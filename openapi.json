@@ -9889,6 +9889,26 @@
         "operationId": "GetStaff",
         "parameters": [
           {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 500,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
             "name": "Search",
             "in": "query",
             "description": " Available fields: email, name",
@@ -13906,7 +13926,7 @@
         "additionalProperties": {}
       },
       "ProtectFundsDto": {
-        "required": ["amount", "matterId"],
+        "required": ["amount", "effectiveDate", "matterId"],
         "type": "object",
         "properties": {
           "matterId": {
