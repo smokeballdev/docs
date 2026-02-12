@@ -3,6 +3,14 @@ title: "API"
 description: "We improve the Smokeball API all the time by releasing new features, fixing bugs and updating the documentation. This changelog accounts for all of the changes as they are released, in chronological order."
 ---
 
+<Update label="February 2026">
+- **BankAccounts**: Added requisition and fund protection functionality to request payment from trust.
+- **Fees/Expenses**: Removed PATCH validation check for existing fee/expense records in API endpoints.
+- **Invoices**: Added GET endpoint to retrieve individual invoices.
+- **Staff**: Fixed missing `userId` field in webhook payloads.
+- **Transactions**: Added create functionality for Trust accounts as well as ability to list transactions.
+</Update>
+
 <Update label="December 2025">
   - **Expenses**: Fix `outputTax` backwards compatibility issue for AU and UK regions. `outputTax` will now be set if missing from POST payload.
 </Update>
