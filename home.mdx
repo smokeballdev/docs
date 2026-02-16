@@ -10,31 +10,18 @@ export function openSearch() {
   document.getElementById('search-bar-entry').click();
 }
 
-<div className="relative w-full flex items-center justify-center" style={{ height: '24rem', overflow: 'hidden'}}>
-  <div className="absolute inset-0 bg-primary dark:bg-primary-light" style={{opacity: 0.05 }}></div>
-  <div style={{ position: 'absolute', textAlign: 'center', padding: '0 1rem' }}>
+<div id="hero-container" className="relative w-full flex items-center justify-center">
+  <div id="hero-background" className="absolute inset-0 bg-primary dark:bg-primary-light"></div>
+  <div id="hero-content">
     <div
+      id="hero-title"
       className="text-gray-900 dark:text-gray-200"
-      style={{
-       fontWeight: '800',
-       fontSize: '36px',
-       margin: '0',
-       fontFamily: 'Poppins'
-      }}
     >
       Build better legal software with Smokeball
     </div>
     <p
+      id="hero-description"
       className="prose prose-gray dark:prose-invert text-center justify-center"
-      style={{
-        marginTop: '1rem',
-        fontWeight: '400',
-        fontSize: '16px',
-        maxWidth: '42rem',
-        textAlign: 'center',
-        margin: '1rem auto',
-        fontFamily: 'Poppins'
-      }}
     >
     Explore our comprehensive documentation to get started with Smokeball's APIs, Webhooks, and the Smokeball Client SDK.
     </p>
@@ -42,64 +29,25 @@ export function openSearch() {
     <button
       type="button"
       className="hidden w-full lg:flex items-center justify-center text-sm leading-6 rounded-full py-3 px-8 text-white bg-primary relative"
-      id="home-search-entry" 
-      style={{
-        marginTop: '2rem',
-        maxWidth: '24rem',
-        fontFamily: 'Poppins',
-        fontWeight: '700',
-        fontSize: '1.1rem',
-        letterSpacing: '0.02em',
-        border: '2px solid transparent',
-        cursor: 'pointer',
-        transition: 'all 0.2s ease-in-out',
-        outline: 'none',
-        backgroundColor: '#FF5C00',
-        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.backgroundColor = '#FF7A33';
-        e.currentTarget.style.transform = 'scale(1.02)';
-        e.currentTarget.style.boxShadow = '0 6px 8px -1px rgba(0, 0, 0, 0.15), 0 3px 6px -1px rgba(0, 0, 0, 0.08)';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.backgroundColor = '#FF5C00';
-        e.currentTarget.style.transform = 'scale(1)';
-        e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
-      }}
+      id="home-search-entry"
       onClick={openSearch}
     >
       <svg
+        id="search-icon"
         className="h-6 w-6 flex-none text-white"
-        style={{
-          marginRight: '0.75rem',
-          maskImage:
-            'url("https://mintlify.b-cdn.net/v6.5.1/solid/magnifying-glass.svg")',
-          maskRepeat: 'no-repeat',
-          maskPosition: 'center center',
-          backgroundColor: 'currentColor'
-        }}    
       />
       SEARCH OR ASK
     </button>
     </div>
   </div>
 </div>
-<div
-  style={{marginTop: '2rem', marginBottom: '8rem', maxWidth: '70rem', marginLeft: 'auto',
-  marginRight: 'auto', paddingLeft: '1.25rem',
-  paddingRight: '1.25rem' }}
->
+<div id="main-content-container">
 
 
-<div className="flex flex-col w-full " style={{ marginTop: '2rem', marginBottom: '2rem' }}>
+<div id="documentation-section" className="flex flex-col w-full">
   <h2
+    id="documentation-title"
     className="text-gray-900 dark:text-gray-200"
-    style={{
-      fontSize: '2rem',
-      fontWeight: '800',
-      fontFamily: 'Poppins'
-    }}
   >
   Documentation
   </h2>
@@ -128,14 +76,10 @@ export function openSearch() {
   Learn how to leverage the Smokeball Client SDK to enhance your integration.
 </Card>
 </CardGroup>
-<div className="flex flex-col w-full " style={{ marginTop: '2rem', marginBottom: '2rem' }}>
+<div id="partner-section" className="flex flex-col w-full">
   <h2
+    id="partner-title"
     className="text-gray-900 dark:text-gray-200"
-    style={{
-      fontSize: '2rem',
-      fontWeight: '800',
-      fontFamily: 'Poppins'
-    }}
   >
   Become a Smokeball integration partner
   </h2>
@@ -143,11 +87,8 @@ export function openSearch() {
 </div>
 
 <p
+    id="partner-description"
     className="text-gray-700 dark:text-gray-300"
-    style={{
-      fontSize: '1.05rem',
-      marginBottom: '1rem'
-    }}
   >
   If you've developed a software solution tailored to the Legal Industry, we'd love to hear from you! Collaborate with Smokeball to help our clients "run their best firm."
   <br/>

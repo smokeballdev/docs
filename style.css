@@ -1,0 +1,98 @@
+/* Hero Section */
+#hero-container {
+  height: 24rem;
+  overflow: hidden;
+}
+
+#hero-background {
+  opacity: 0.05;
+}
+
+#hero-content {
+  position: absolute;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+#hero-title {
+  font-weight: 800;
+  font-size: 36px;
+  margin: 0;
+  font-family: Poppins;
+}
+
+#hero-description {
+  margin-top: 1rem;
+  font-weight: 400;
+  font-size: 16px;
+  max-width: 42rem;
+  text-align: center;
+  margin: 1rem auto;
+  font-family: Poppins;
+}
+
+#home-search-entry {
+  margin-top: 2rem;
+  max-width: 24rem;
+  font-family: Poppins;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+  background-color: #FF5C00;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+#home-search-entry:hover {
+  background-color: #FF7A33;
+  transform: scale(1.02);
+  box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.15), 0 3px 6px -1px rgba(0, 0, 0, 0.08);
+}
+
+#search-icon {
+  margin-right: 0.75rem;
+  mask-image: url("https://mintlify.b-cdn.net/v6.5.1/solid/magnifying-glass.svg");
+  mask-repeat: no-repeat;
+  mask-position: center center;
+  background-color: currentColor;
+}
+
+#main-content-container {
+  margin-top: 2rem;
+  margin-bottom: 8rem;
+  max-width: 70rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+#documentation-section {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+#documentation-title {
+  font-size: 2rem;
+  font-weight: 800;
+  font-family: Poppins;
+}
+
+#partner-section {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+#partner-title {
+  font-size: 2rem;
+  font-weight: 800;
+  font-family: Poppins;
+}
+
+#partner-description {
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
