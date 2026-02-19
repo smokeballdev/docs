@@ -64,9 +64,7 @@ Content-Type: application/problem+json
 
 The `errors` field is a Smokeball extension to the ProblemDetails standard.
 
-The ProblemDetails standard leaves the shape of `errors` loosely defined. A common implementation uses a **dictionary** keyed by field name, where each key maps to a list of messages:
-
-Smokeball returns `errors` as an **array of objects** instead. There are two reasons for this:
+The ProblemDetails standard leaves the shape of `errors` loosely defined. Smokeball returns `errors` as an **array of objects** instead. There are two reasons for this:
 
 1. **Multiple errors per field**: a dictionary approach typically collapses all messages for a field into a string array, losing any structured metadata (such as error codes) attached to each individual error.
 2. **Preserved ordering**: an array guarantees that errors are returned in a stable, meaningful order (e.g. the order fields appear in the request body), whereas dictionary key ordering is not guaranteed across all languages and runtimes.
