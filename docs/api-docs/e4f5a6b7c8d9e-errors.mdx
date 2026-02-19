@@ -1,0 +1,72 @@
+---
+title: "Errors"
+description: "Understanding API error responses"
+icon: "circle-exclamation"
+---
+
+All error responses from the Smokeball API follow [Microsoft's ProblemDetails standard](https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.problemdetails) (RFC 7807), with one extension described below.
+
+## ProblemDetails
+
+<ParamField path="type" type="string">
+  A URI reference that identifies the problem type. When dereferenced, it provides human-readable documentation for the problem.
+
+  Example: `https://tools.ietf.org/html/rfc7231#section-6.5.1`
+</ParamField>
+
+<ParamField path="title" type="string">
+  A short, human-readable summary of the problem type. Does not change between occurrences of the same problem.
+
+  Example: `"One or more validation errors occurred."`
+</ParamField>
+
+<ParamField path="status" type="integer">
+  The HTTP status code for this occurrence.
+
+  Example: `400`
+</ParamField>
+
+<ParamField path="detail" type="string">
+  A human-readable explanation specific to this occurrence of the problem.
+
+  Example: `"See the errors field for details."`
+</ParamField>
+
+<ParamField path="instance" type="string">
+  A URI reference that identifies the specific occurrence. May or may not yield more information when dereferenced.
+</ParamField>
+
+<ParamField path="errors" type="array">
+  An array of error objects describing individual validation or field-level errors. See [the errors field](#the-errors-field) below.
+</ParamField>
+
+## Example Response
+
+```json
+HTTP/1.1 400 Bad Request
+Content-Type: application/problem+json
+
+{
+  "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+  "title": "One or more validation errors occurred.",
+  "status": 400,
+  "detail": "See the errors field for details.",
+  "instance": "/contacts",
+  "errors": [
+    { ... }
+  ]
+}
+```
+
+## Extensions
+
+### errors
+
+The `errors` field is a Smokeball extension to the ProblemDetails standard.
+
+The ProblemDetails standard leaves the shape of `errors` loosely defined. A common implementation uses a **dictionary** keyed by field name, where each key maps to a list of messages:
+
+Smokeball returns `errors` as an **array of objects** instead. There are two reasons for this:
+
+1. **Multiple errors per field**: a dictionary approach typically collapses all messages for a field into a string array, losing any structured metadata (such as error codes) attached to each individual error.
+2. **Preserved ordering**: an array guarantees that errors are returned in a stable, meaningful order (e.g. the order fields appear in the request body), whereas dictionary key ordering is not guaranteed across all languages and runtimes.
