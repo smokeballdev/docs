@@ -33,7 +33,7 @@ All error responses from the Smokeball API follow [Microsoft's ProblemDetails st
 </ParamField>
 
 <ParamField path="instance" type="string">
-  A URI reference that identifies the specific occurrence. May or may not yield more information when dereferenced.
+  A URI reference that identifies the specific occurrence.
 </ParamField>
 
 <ParamField path="errors" type="array">
@@ -51,7 +51,7 @@ Content-Type: application/problem+json
   "title": "One or more validation errors occurred.",
   "status": 400,
   "detail": "See the errors field for details.",
-  "instance": "GET /contacts",
+  "instance": "/contacts",
   "errors": [
     { ... }
   ]
