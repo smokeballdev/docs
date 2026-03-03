@@ -374,7 +374,7 @@
       "put": {
         "tags": ["Archive"],
         "summary": "Update an archive for a matter.",
-        "description": "Updates a specified matter's archive.",
+        "description": "Updates a specified matter's archive",
         "operationId": "UpdateArchive",
         "parameters": [
           {
@@ -442,7 +442,7 @@
       },
       "patch": {
         "tags": ["Archive"],
-        "summary": "Patch an archive for a matter.",
+        "summary": "Patch an archive for a matter",
         "description": "Updates a specified matter's archive with patch operations.",
         "operationId": "PatchArchive",
         "parameters": [
@@ -23362,7 +23362,7 @@
           },
           "contactId": {
             "type": "string",
-            "description": "Unique identifier of the associated contact.\r\n\r\nOnly applicable for 'role' matter items.",
+            "description": "Unique identifier of the associated contact.\r\n            \r\nOnly applicable for 'role' matter items.",
             "nullable": true,
             "example": "c85d28cb-a760-4627-aa59-0a853c2e65ed"
           },
@@ -23372,7 +23372,17 @@
                 "$ref": "#/components/schemas/MatterItemContactDto"
               }
             ],
-            "description": "Associated contact.\r\n\r\nOnly applicable for 'role' matter items.",
+            "description": "Associated contact.\r\n            \r\nOnly applicable for 'role' matter items.",
+            "nullable": true
+          },
+          "roleDescription": {
+            "type": "string",
+            "description": "Displayed name for the matter item.\r\n            \r\nOnly applicable for 'role' matter items.",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Description for the matter item.\r\n            \r\nOnly applicable for 'role' matter items.",
             "nullable": true
           },
           "subItems": {
@@ -23384,7 +23394,7 @@
               },
               "nullable": true
             },
-            "description": "SubItems associated with the matter item.\r\n\r\nNot applicable for matter sub items.",
+            "description": "SubItems associated with the matter item.\r\n            \r\nNot applicable for matter sub items.",
             "nullable": true
           }
         },
@@ -23900,6 +23910,18 @@
             "description": "Name of the role.",
             "nullable": true,
             "example": "Client"
+          },
+          "roleDescription": {
+            "type": "string",
+            "description": "Name of the role (user editable).",
+            "nullable": true,
+            "example": "Head Honcho"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the role.",
+            "nullable": true,
+            "example": "The person for whom I am working"
           },
           "contact": {
             "allOf": [
