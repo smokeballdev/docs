@@ -14,9 +14,9 @@ Smokeball offers two implementations of a Plugin - Button or Tab. Partners can c
 
 Plugins are managed through two resources:
 
-[Plugins](https://smokeball.stoplight.io/docs/api-docs/1f775a2b8e24d-create-a-new-plugin) for creating or managing Plugins
+[Plugins](/api-reference/plugins/create-a-new-plugin) for creating or managing Plugins
 
-[PluginSubscriptions](https://smokeball.stoplight.io/docs/api-docs/e451fe7575947-subscribe-account-to-plugin) for assigning a Plugin to one or many Smokeball firms.
+[PluginSubscriptions](/api-reference/plugins/subscribe-account-to-plugin) for assigning a Plugin to one or many Smokeball firms.
 
 ## Placement Keys
 One of the most important fields of a plugin is its `placement` key, which defines where the plugin appears in Smokeball.
@@ -51,13 +51,13 @@ Below are the supported Main window zones:
 
 ## SDK Support
 All browsers opened by Plugins support integration with the Smokeball SDK as long as the internal browser is used, when `attributes.page.useDefaultBrowser` is `true`.
-See [SDK Documentation](https://smokeball.stoplight.io/docs/sdk-docs/) for usage information.
+See [SDK Documentation](/docs/sdk-docs/675c9816cdaf6-getting-started) for usage information.
 
 ## Creating a Plugin
 Currently, Plugins can only be created and maintained by select partners. Smokeball is currently controlling the process of which accounts can access plugins.
 
 ## Subscribing Smokeball Firms to Plugins
-Smokeball firms are subscribed to plugins through the [PluginSubscriptions](https://smokeball.stoplight.io/docs/api-docs/e451fe7575947-subscribe-account-to-plugin) resource. Partners authorized through the Client Credentials Grant can then subscribe accounts to their plugins. Available plugins are scoped to API client ids, meaning that you can only subscribe to plugins that were created using the same API client id.
+Smokeball firms are subscribed to plugins through the [PluginSubscriptions](/api-reference/plugins/subscribe-account-to-plugin) resource. Partners authorized through the Client Credentials Grant can then subscribe accounts to their plugins. Available plugins are scoped to API client ids, meaning that you can only subscribe to plugins that were created using the same API client id.
 
 Smokeball firms that have subscribed to plugins will always receive the latest version of your plugins, and would be automatically updated to the latest changes.
 
@@ -69,10 +69,10 @@ For more detailed usage documentation, please refer to the information below.
 ### Requesting your URL
 Plugins support two fields which help load your view into Smokeball.
 
-Field | Description
+Field    | Description
 ---------|----------
- `requestEndpointUrl` | Used to request a URL from your backend.
- `key` | Used to calculate a signature which must be used by your backend to verify that the request is from Smokeball.
+ `requestEndpointUrl`  | Used to request a URL from your backend.
+ `key`  | Used to calculate a signature which must be used by your backend to verify that the request is from Smokeball.
  
 When a Plugin view is loaded, a `POST` request is made to the supplied `requestEndpointUrl` url with a payload similar to below:
 ``` json
@@ -91,10 +91,24 @@ When a Plugin view is loaded, a `POST` request is made to the supplied `requestE
     "accountId": "a58f2f17-f138-4432-9965-d2cb539cde4d",
     "userId": "b3d70217-791f-4d82-9fb8-2fcff5c04e58",
     "userEmail": "user@organization.com",
-    "matterId": "86375bb7-0720-4dc6-b584-458bd7865d9e"
+    "matterId": "86375bb7-0720-4dc6-b584-458bd7865d9e",
+    "embedToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.KMUFsIDTnFmyG3nMiGM6H9FNFUROf3wh7SmqJp-QV30"
   }
 }
 ```
+
+The body of the request contains the following fields:
+
+Field | Description
+------|------------
+`accountId` | The unique identifier of the Smokeball firm (account) that the user belongs to.
+`userId` | The unique identifier of the user who triggered the plugin.
+`userEmail` | The email address of the user who triggered the plugin.
+`matterId` | Optional unique identifier of the matter currently open. Only present when the plugin is opened within the context of a matter.
+`embedToken` | Optional JWT token that can be exchanged for a [Smokeball access token via the SDK](/docs/sdk-docs/b4c6e12d3f9a0-authentication). Only present if the plugin is associated to an app ClientId.
+
+Additional fields may also be added to this payload, depending on the source of the plugin.
+
 Your endpoint should use this information to generate a URL to be viewed by the user. This url should be returned in the JSON response like so:
 ``` json
 {
