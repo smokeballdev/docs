@@ -58,6 +58,41 @@ Content-Type: application/problem+json
 }
 ```
 
+## Common Error Types
+
+Here are some common HTTP error responses you may encounter when working with the Smokeball API:
+
+### 400 Bad Request
+
+This means there is something wrong with the request you sent.
+
+Common examples:
+
+- A required field is missing
+- A field value is in the wrong format
+- You sent a value the API does not accept
+
+### 403 Forbidden
+
+This means the request was valid, but you are not allowed to do it.
+
+Common examples:
+
+- Your API key, client ID, or client secret is wrong
+- Your credentials have expired or were revoked
+- Your app does not have the scope needed for this endpoint
+- The signed-in user does not have access to that record or action
+
+### 404 Not Found
+
+This means the API could not find what you asked for.
+
+Common examples:
+
+- The URL or endpoint is wrong
+- The record ID does not exist
+- You are calling the right endpoint in the wrong environment
+
 ## Extensions
 
 ### errors
