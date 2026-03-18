@@ -119,3 +119,20 @@ Make sure you are exchanging the code for a token as soon as it’s issued—ide
    - Redirect URI matches exactly (including trailing slashes).
    - Client ID and Client Secret are correct.
    - Headers and content type are properly set (`application/x-www-form-urlencoded`).
+
+## Adding scopes to your app
+
+If you need to add new scopes (permissions) to your app, they must first be configured and tested in the staging environment before they can be used in production.
+
+1. Navigate to your app settings in the Developer Console and add the required scopes to your **staging** app configuration.
+2. Test your app thoroughly in the staging environment to ensure the new scopes are being used correctly.
+3. Once verified, click the **Publish** button to submit your app for review. This will notify our team to review the changes, including the new scopes.
+4. After approval, the new scopes will be available in your production app.
+
+<Note>
+New scopes are not automatically available in production. They must go through the review process each time you update your app's scope requirements. For more details on the review process, see [Publishing your app](/docs/platform-docs/5g67h890f234g-publishing-app).
+</Note>
+
+<Warning>
+Only request scopes that your app genuinely needs. Requesting excessive or unnecessary scopes may result in your submission being rejected during review.
+</Warning>
