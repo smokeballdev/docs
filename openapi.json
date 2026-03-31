@@ -1088,7 +1088,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BankAccountMatterBalanceCollection"
+                  "$ref": "#/components/schemas/BankAccountMatterBalancePagedCollection"
                 }
               }
             }
@@ -14042,7 +14042,7 @@
         },
         "additionalProperties": false
       },
-      "BankAccountMatterBalanceCollection": {
+      "BankAccountMatterBalancePagedCollection": {
         "type": "object",
         "properties": {
           "id": {
@@ -14075,6 +14075,52 @@
             "items": {
               "$ref": "#/components/schemas/BankAccountMatterBalance"
             },
+            "nullable": true
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "limit": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "first": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ],
+            "nullable": true
+          },
+          "previous": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ],
+            "nullable": true
+          },
+          "next": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ],
+            "nullable": true
+          },
+          "last": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ],
             "nullable": true
           }
         },
