@@ -1025,6 +1025,87 @@
         }
       }
     },
+    "/bankaccounts/{id}/matter-balances": {
+      "get": {
+        "tags": ["Bank Accounts"],
+        "summary": "Get bank account matter balances",
+        "description": "Returns a list of bank account matter balances.",
+        "operationId": "GetBankAccountMatterBalances",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 500,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "LastUpdated",
+            "in": "query",
+            "description": "Returns items updated since the specified date and time.",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2022-04-23T14:00:00Z"
+            },
+            "example": "2022-04-23T14:00:00Z"
+          },
+          {
+            "name": "MatterId",
+            "in": "query",
+            "description": "Filters transactions by the associated matter ID.",
+            "schema": {
+              "type": "string",
+              "example": "da4e7fd1-5394-4ca9-b1c6-e18c4e2bf262"
+            },
+            "example": "da4e7fd1-5394-4ca9-b1c6-e18c4e2bf262"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "When request is successful. Returns a collection of 'BankAccountMatterBalance' objects.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BankAccountMatterBalanceCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When an unsupported request is made.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/bankaccounts/{id}/protected-balances/{protectionId}": {
       "get": {
         "tags": ["Bank Accounts"],
@@ -13906,6 +13987,12 @@
             "description": "The available balance for the specified matter and contact.\r\n            \r\nThis value is calculated as the total balance minus the protected balance.",
             "format": "double",
             "example": 1000
+          },
+          "lastUpdated": {
+            "type": "string",
+            "description": "Date and time that the balance was last updated.",
+            "format": "date-time",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -13945,6 +14032,50 @@
             "description": "Balance of the unpresented cheques for this matter. A cheque is considered \r\nunpresented if the related transaction has not been reconciled. If this balance is not zero,\r\nsome actions on the matter are restricted (e.g. closing or cancelling the matter).",
             "format": "double",
             "example": 0
+          },
+          "lastUpdated": {
+            "type": "string",
+            "description": "Date and time that the balance was last updated.",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BankAccountMatterBalanceCollection": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relation": {
+            "type": "string",
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "self": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ],
+            "nullable": true
+          },
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BankAccountMatterBalance"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
