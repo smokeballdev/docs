@@ -1074,7 +1074,7 @@
           {
             "name": "MatterId",
             "in": "query",
-            "description": "Filters transactions by the associated matter ID.",
+            "description": "Filters items by the specified matter ID.",
             "schema": {
               "type": "string",
               "example": "da4e7fd1-5394-4ca9-b1c6-e18c4e2bf262"
@@ -1504,7 +1504,7 @@
           {
             "name": "MatterId",
             "in": "query",
-            "description": "Filters transactions by the associated matter ID.",
+            "description": "Filters items by the specified matter ID.",
             "schema": {
               "type": "string",
               "example": "da4e7fd1-5394-4ca9-b1c6-e18c4e2bf262"
