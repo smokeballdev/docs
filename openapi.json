@@ -7155,7 +7155,7 @@
         "tags": ["Matters"],
         "summary": "Update matter billing configuration",
         "description": "Updates the billing configuration for the specified matter.",
-        "operationId": "UpdateBillingConfiguration",
+        "operationId": "UpdateBillingConfigurationAsync",
         "parameters": [
           {
             "name": "matterId",
