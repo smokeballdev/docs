@@ -4172,7 +4172,7 @@
           {
             "name": "Search",
             "in": "query",
-            "description": " Available fields: fileExtension",
+            "description": " Available fields: query, fileExtension",
             "schema": {
               "type": "array",
               "items": {
@@ -4422,7 +4422,7 @@
       },
       "patch": {
         "tags": ["Files"],
-        "summary": "Patch version or metadata of a file",
+        "summary": "Patch a file",
         "description": "Updates the metadata for a file or uploads a new version of the file",
         "operationId": "PatchFile",
         "parameters": [
