@@ -10120,6 +10120,28 @@
         "tags": ["Search"],
         "summary": "Search files with advanced filters.",
         "operationId": "SearchFilesAsync",
+        "parameters": [
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 500,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -25996,37 +26018,9 @@
             "items": {
               "type": "string"
             },
-            "description": "File extensions to exclude from the results. Applied after ItOps.Search.Api.Models.FileSearchFilters.IncludeFileExtensions.",
+            "description": "File extensions to exclude from the results. Applied after IncludeFileExtensions.",
             "nullable": true,
             "example": ["tmp", "bak"]
-          },
-          "createdAfter": {
-            "type": "string",
-            "description": "Lower bound (inclusive) on the file's creation timestamp. When combined with ItOps.Search.Api.Models.FileSearchFilters.CreatedBefore, results fall within the range.",
-            "format": "date-time",
-            "nullable": true,
-            "example": "2024-01-01T00:00:00Z"
-          },
-          "createdBefore": {
-            "type": "string",
-            "description": "Upper bound (exclusive) on the file's creation timestamp.",
-            "format": "date-time",
-            "nullable": true,
-            "example": "2024-12-31T23:59:59Z"
-          },
-          "modifiedAfter": {
-            "type": "string",
-            "description": "Lower bound (inclusive) on the file's last-modified timestamp. When combined with ItOps.Search.Api.Models.FileSearchFilters.ModifiedBefore, results fall within the range.",
-            "format": "date-time",
-            "nullable": true,
-            "example": "2024-06-01T00:00:00Z"
-          },
-          "modifiedBefore": {
-            "type": "string",
-            "description": "Upper bound (exclusive) on the file's last-modified timestamp.",
-            "format": "date-time",
-            "nullable": true,
-            "example": "2024-12-31T23:59:59Z"
           },
           "authorIds": {
             "type": "array",
@@ -26059,15 +26053,6 @@
             "description": "Full-text search expression. Required and non-empty.",
             "example": "contract"
           },
-          "paging": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PagingOptions"
-              }
-            ],
-            "description": "Pagination options. Defaults to offset 0 and size 50.",
-            "nullable": true
-          },
           "filters": {
             "allOf": [
               {
@@ -26075,26 +26060,6 @@
               }
             ],
             "description": "Filters narrowing the search to specific extensions, date ranges, authors, contacts, and which fields to match against.",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "PagingOptions": {
-        "type": "object",
-        "properties": {
-          "offset": {
-            "maximum": 2147483647,
-            "minimum": 0,
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "limit": {
-            "maximum": 500,
-            "minimum": 1,
-            "type": "integer",
-            "format": "int32",
             "nullable": true
           }
         },
