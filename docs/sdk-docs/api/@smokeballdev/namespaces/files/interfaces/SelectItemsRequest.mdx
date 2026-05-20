@@ -5,11 +5,11 @@ title: Files
 
 ***
 
-# Interface: SelectFilesRequest
+# Interface: SelectItemsRequest
 
-## Extended by
+## Extends
 
-- [`SelectItemsRequest`](./SelectItemsRequest)
+- [`SelectFilesRequest`](./SelectFilesRequest)
 
 ## Properties
 
@@ -19,6 +19,10 @@ title: Files
 
 Flag indicating whether to allow combining files into a single PDF document. Defaults to true if unset
 
+#### Inherited from
+
+[`SelectFilesRequest`](./SelectFilesRequest).[`allowCombiningAsPdf`](SelectFilesRequest.md#allowcombiningaspdf)
+
 ***
 
 ### allowConversionToPdf?
@@ -26,6 +30,18 @@ Flag indicating whether to allow combining files into a single PDF document. Def
 > `optional` **allowConversionToPdf**: `boolean`
 
 Flag indicating whether to allow conversion of individual files to PDF format. Defaults to true if unset
+
+#### Inherited from
+
+[`SelectFilesRequest`](./SelectFilesRequest).[`allowConversionToPdf`](SelectFilesRequest.md#allowconversiontopdf)
+
+***
+
+### allowFolderSelection?
+
+> `optional` **allowFolderSelection**: `boolean`
+
+Whether folders can be also selected in the picker. Defaults to false if unset.
 
 ***
 
@@ -35,6 +51,10 @@ Flag indicating whether to allow conversion of individual files to PDF format. D
 
 Confirmation text to display. Defaults to 'SELECT' if unset.
 
+#### Inherited from
+
+[`SelectFilesRequest`](./SelectFilesRequest).[`confirmationText`](SelectFilesRequest.md#confirmationtext)
+
 ***
 
 ### existingFileSelectedCount?
@@ -42,6 +62,10 @@ Confirmation text to display. Defaults to 'SELECT' if unset.
 > `optional` **existingFileSelectedCount**: `number`
 
 The number of files already selected. Leave unset or set to 0 for no existing selected files.
+
+#### Inherited from
+
+[`SelectFilesRequest`](./SelectFilesRequest).[`existingFileSelectedCount`](SelectFilesRequest.md#existingfileselectedcount)
 
 ***
 
@@ -51,6 +75,10 @@ The number of files already selected. Leave unset or set to 0 for no existing se
 
 Array of file extensions that will display in the file picker. Leaving unset will display all file types
 
+#### Inherited from
+
+[`SelectFilesRequest`](./SelectFilesRequest).[`fileExtensions`](SelectFilesRequest.md#fileextensions)
+
 ***
 
 ### fileSelectionLimit?
@@ -58,6 +86,10 @@ Array of file extensions that will display in the file picker. Leaving unset wil
 > `optional` **fileSelectionLimit**: `number`
 
 Maximum number of files that can be attached. Leave unset or set to 0 for no limit.
+
+#### Inherited from
+
+[`SelectFilesRequest`](./SelectFilesRequest).[`fileSelectionLimit`](SelectFilesRequest.md#fileselectionlimit)
 
 ***
 
@@ -67,6 +99,10 @@ Maximum number of files that can be attached. Leave unset or set to 0 for no lim
 
 Heading of the selection component. Default used if unset
 
+#### Inherited from
+
+[`SelectFilesRequest`](./SelectFilesRequest).[`heading`](SelectFilesRequest.md#heading)
+
 ***
 
 ### matterId?
@@ -74,6 +110,10 @@ Heading of the selection component. Default used if unset
 > `optional` **matterId**: `string`
 
 Matter id.
+
+#### Inherited from
+
+[`SelectFilesRequest`](./SelectFilesRequest).[`matterId`](SelectFilesRequest.md#matterid)
 
 ***
 
@@ -83,6 +123,10 @@ Matter id.
 
 Show emails by default. Defaults to false if unset.
 
+#### Inherited from
+
+[`SelectFilesRequest`](./SelectFilesRequest).[`showEmails`](SelectFilesRequest.md#showemails)
+
 ***
 
 ### title?
@@ -90,3 +134,7 @@ Show emails by default. Defaults to false if unset.
 > `optional` **title**: `string`
 
 Title of the selection window. Default used if unset
+
+#### Inherited from
+
+[`SelectFilesRequest`](./SelectFilesRequest).[`title`](SelectFilesRequest.md#title)

@@ -44,6 +44,40 @@ const layout = await sdk.layouts.add(request);
 
 ***
 
+### addContact()
+
+> **addContact**(`request`): `Promise`\<`boolean`\>
+
+Adds a contact to a layout matter item.
+
+#### Parameters
+
+##### request
+
+[`AddLayoutMatterItemContactRequest`](./AddLayoutMatterItemContactRequest)
+
+the add contact request.
+
+#### Returns
+
+`Promise`\<`boolean`\>
+
+true if the contact was added successfully.
+
+#### Example
+
+```
+const request: AddLayoutMatterItemContactRequest = {
+  itemId: 'f6dd87bf-0266-40cf-b256-fdbc3ffbac66',
+  key: 'contactRole',
+  roleName: 'Contact Role',
+  contactId: '7250a634-4d67-4054-8f07-5b6c8a9dcfa8',
+};
+const success = await sdk.layouts.addContact(request);
+```
+
+***
+
 ### get()
 
 > **get**(`matterId?`): `Promise`\<[`LayoutMatter`](./LayoutMatter)\>
@@ -192,6 +226,38 @@ const request: RemoveLayoutMatterItemRequest = {
   parentItemId: '7250a634-4d67-4054-8f07-5b6c8a9dcfa8',
 };
 const layout = await sdk.layouts.remove(request);
+```
+
+***
+
+### removeContact()
+
+> **removeContact**(`request`): `Promise`\<`boolean`\>
+
+Removes a contact from a layout matter item.
+
+#### Parameters
+
+##### request
+
+[`RemoveLayoutMatterItemContactRequest`](./RemoveLayoutMatterItemContactRequest)
+
+the remove contact request.
+
+#### Returns
+
+`Promise`\<`boolean`\>
+
+true if the contact was removed successfully.
+
+#### Example
+
+```
+const request: RemoveLayoutMatterItemContactRequest = {
+  itemId: 'f6dd87bf-0266-40cf-b256-fdbc3ffbac66',
+  key: 'contactRole',
+};
+const success = await sdk.layouts.removeContact(request);
 ```
 
 ***

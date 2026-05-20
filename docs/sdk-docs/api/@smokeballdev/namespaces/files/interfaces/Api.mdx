@@ -189,6 +189,39 @@ sdk.files.select(request);
 
 ***
 
+### selectItems()
+
+> **selectItems**(`request`): `Promise`\<[`SelectItemsResponse`](./SelectItemsResponse)\>
+
+Opens a file and/or folder picker to select files and folders from a matter.
+Folders can be selected in addition to files if the allowFolderSelection flag is set to true in the request. 
+If allowFolderSelection is false or unset, only files can be selected and the picker will function the same as the select method.
+Returns the selected files and folders.
+
+#### Parameters
+
+##### request
+
+[`SelectItemsRequest`](./SelectItemsRequest)
+
+#### Returns
+
+`Promise`\<[`SelectItemsResponse`](./SelectItemsResponse)\>
+
+#### Example
+
+```
+const request: SelectItemsRequest = {
+ confirmationText: 'SELECT',
+ fileSelectionLimit: 2,
+ showEmails: false,,
+ allowFolderSelection: true
+}
+sdk.files.selectItems(request);
+```
+
+***
+
 ### update()
 
 > **update**(`request`): `Promise`\<[`UploadMatterFileResponse`](./UploadMatterFileResponse)\>

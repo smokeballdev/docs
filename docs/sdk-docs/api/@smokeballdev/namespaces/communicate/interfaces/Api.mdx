@@ -78,6 +78,8 @@ const request: CreateMessageRequest = {
  staffIds: ['0346b537-8f4f-405a-a29c-d0f9864f1783']
  // Optional plain text message. The example below shows how to use markdown links in message.
  message: 'Hi this is a communicate message, click [here](https://www.some-test-link.com) to look at stuff'
+ // Optional flag to require multi-factor authentication.
+ requireMFA: true
 };
 // Send the communicate message.
 sdk.communicate.sendMessage(request);
