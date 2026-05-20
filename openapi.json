@@ -5904,7 +5904,7 @@
     "/intake/forms": {
       "get": {
         "tags": ["Intake"],
-        "summary": "List intake forms for a matter type.",
+        "summary": "Get intake forms for a matter type",
         "operationId": "GetFormsAsync",
         "parameters": [
           {
@@ -5973,7 +5973,7 @@
     "/intake/{matterId}/submissions": {
       "get": {
         "tags": ["Intake"],
-        "summary": "List intake submissions for a matter.",
+        "summary": "Get intake submissions for a matter",
         "operationId": "GetSubmissionsAsync",
         "parameters": [
           {
@@ -6041,7 +6041,7 @@
       },
       "post": {
         "tags": ["Intake"],
-        "summary": "Create an intake submission for a matter and form.",
+        "summary": "Create an intake submission for a matter",
         "operationId": "CreateSubmissionAsync",
         "parameters": [
           {
@@ -6123,7 +6123,7 @@
     "/intake/{matterId}/submissions/{submissionId}": {
       "get": {
         "tags": ["Intake"],
-        "summary": "Get an intake submission by id.",
+        "summary": "Get an intake submission",
         "operationId": "GetSubmissionAsync",
         "parameters": [
           {
