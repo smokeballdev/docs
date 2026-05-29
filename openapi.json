@@ -20423,9 +20423,20 @@
                 "$ref": "#/components/schemas/EventType"
               }
             ],
-            "description": "The type of the event.\r\n\r\nWe currently support create and updates requests for non recurring events (Type = Normal).",
+            "description": "The type of the event.\r\n\r\nWe currently support create and updates requests for non recurring events (type = Normal).",
             "nullable": true,
             "example": "Normal"
+          },
+          "eventType": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EventType"
+              }
+            ],
+            "description": "**Deprecated.** Use `type` instead.\n\nThis field has been deprecated and will be removed in a future release. Use `type` instead.\r\n\r\nThe type of the event.\r\n\r\nWe currently support create and updates requests for non recurring events (EventType = 0).",
+            "nullable": true,
+            "example": "0",
+            "deprecated": true
           },
           "attendees": {
             "type": "array",
