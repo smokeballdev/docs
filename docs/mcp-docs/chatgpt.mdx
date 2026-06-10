@@ -1,0 +1,52 @@
+---
+title: "ChatGPT"
+description: "Connect ChatGPT to Smokeball"
+---
+
+<Warning>
+  The Smokeball MCP server is currently **in development**. The server URL below is a placeholder and subject to change before release.
+</Warning>
+
+Add Smokeball to [ChatGPT](https://chatgpt.com) as a connector.
+
+<Info>
+  Custom MCP connectors in ChatGPT may require a paid plan and enabling **Developer Mode** (under **Settings → Connectors → Advanced**). Availability varies by plan and region — check OpenAI's documentation for current requirements.
+</Info>
+
+## Prerequisites
+
+- A ChatGPT plan that supports custom connectors
+- An active Smokeball account
+
+## Setup
+
+<Steps>
+  <Step title="Open connector settings">
+    In ChatGPT, go to **Settings → Connectors** and click **Create** (you may need to enable Developer Mode first).
+  </Step>
+  <Step title="Add the Smokeball connector">
+    Enter:
+
+    - **Name**: `Smokeball`
+    - **MCP server URL**: `https://mcp.smokeball.com/mcp`
+    - **Authentication**: OAuth
+  </Step>
+  <Step title="Sign in to Smokeball">
+    ChatGPT opens a browser window asking you to sign in to your Smokeball account and authorise the connection.
+  </Step>
+  <Step title="Enable the connector in a chat">
+    In a new chat, enable the Smokeball connector from the tools menu.
+  </Step>
+</Steps>
+
+## Verify it works
+
+Ask ChatGPT something that uses your Smokeball data:
+
+```text
+What are my open matters?
+```
+
+## Having trouble?
+
+See [Troubleshooting](/docs/mcp-docs/troubleshooting) for common issues.

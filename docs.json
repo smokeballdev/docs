@@ -149,6 +149,33 @@
         ]
       },
       {
+        "tab": "MCP",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "docs/mcp-docs/overview",
+              "docs/mcp-docs/quickstart"
+            ]
+          },
+          {
+            "group": "Client Setup",
+            "pages": [
+              "docs/mcp-docs/chatgpt",
+              "docs/mcp-docs/claude"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              "docs/mcp-docs/tools",
+              "docs/mcp-docs/security",
+              "docs/mcp-docs/troubleshooting"
+            ]
+          }
+        ]
+      },
+      {
         "tab": "Status",
         "pages": ["docs/platform-docs/e8rdxqzugb5zf-status"]
       },

@@ -1,0 +1,53 @@
+---
+title: "Security & Permissions"
+description: "How authentication and data access work with the Smokeball MCP server"
+---
+
+<Warning>
+  The Smokeball MCP server is currently **in development**. Details on this page are subject to change before release.
+</Warning>
+
+## How authentication works
+
+The Smokeball MCP server uses **OAuth 2.0**, the same secure sign-in used by the Smokeball app and [API](/docs/api-docs/c916c683c136e-authentication-overview):
+
+1. When you connect, your AI client opens a browser window on Smokeball's sign-in page.
+2. You sign in with your Smokeball credentials and authorise the connection.
+3. Your client receives a time-limited access token. It never sees your password.
+
+{/* TODO: Document token lifetime, refresh behaviour, and how to revoke a connected client once confirmed */}
+
+## What data can my assistant access?
+
+Your AI assistant acts **as you**. Every tool call resolves to a Smokeball API call scoped to your user account — tools never accept an account or user ID as an argument, so your assistant can only see and change what you can see and change. Matter security, staff permissions, and firm settings all apply exactly as they do in the Smokeball app.
+
+The MCP server itself does not store your legal data — it is a thin, audited surface over the Smokeball API.
+
+<Info>
+  Connecting an AI client does not grant it standing access to your firm's database. Every request goes through the same permission checks as the Smokeball app.
+</Info>
+
+## Write actions require confirmation
+
+Tools that change data in Smokeball — creating matters or contacts, adding tasks, memos, or calendar events — require your explicit confirmation before they run. Read tools never change anything. See [Available Tools](/docs/mcp-docs/tools) for which is which.
+
+## Limiting what your assistant can do
+
+If you want to grant only a narrow capability — for example, read-only access — connect to one of the [scoped endpoints](/docs/mcp-docs/tools#scoped-endpoints) instead of the main endpoint. Tools outside the scope aren't visible to your assistant at all.
+
+## Disconnecting
+
+You can disconnect at any time by removing the Smokeball server/connector from your AI client's settings.
+
+{/* TODO: Add instructions for revoking access from the Smokeball side (e.g. via Smokeball settings or the Developer Console) once available */}
+
+## Best practices
+
+<Warning>
+  AI assistants can make mistakes. Always review what your assistant is about to do — especially tool calls that **create or modify** data like tasks or time entries — before confirming them.
+</Warning>
+
+- Keep your client's tool-confirmation prompts enabled for write actions.
+- Only connect AI clients you trust, on devices you control.
+- Be mindful that matter data surfaced into an AI chat is visible to anyone with access to that chat.
+- If you suspect a connection has been compromised, disconnect the client and contact [Smokeball Support](https://support.smokeball.com).

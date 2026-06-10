@@ -1,0 +1,63 @@
+---
+title: "Quickstart"
+description: "Connect your AI assistant to Smokeball in a few minutes"
+---
+
+<Warning>
+  The Smokeball MCP server is currently **in development**. The server URL below is a placeholder and subject to change before release.
+</Warning>
+
+This guide walks through the general flow for connecting your AI assistant to Smokeball. For exact steps, see the setup guides for [ChatGPT](/docs/mcp-docs/chatgpt) and [Claude](/docs/mcp-docs/claude).
+
+## Prerequisites
+
+- An active Smokeball account
+- A supported AI client — currently **ChatGPT** or **Claude** {/* TODO: Update as new clients are supported */}
+
+## Server URL
+
+The Smokeball MCP server is a remote server using the streamable HTTP transport:
+
+```text
+https://mcp.smokeball.com/mcp
+```
+
+{/* TODO: Confirm the public hostname. The server is deployed per region (AU/US/UK) — document regional URLs before launch */}
+
+The `/mcp` endpoint serves the full set of tools. If you only want to grant your assistant a subset — for example, read-only access — use one of the [scoped endpoints](/docs/mcp-docs/tools#scoped-endpoints) instead, such as `/mcp/readonly`.
+
+## Connect your client
+
+<Steps>
+  <Step title="Add the Smokeball MCP server to your client">
+    In your AI client, add a new MCP server (sometimes called a "connector" or "integration") using the server URL above. See the [ChatGPT](/docs/mcp-docs/chatgpt) or [Claude](/docs/mcp-docs/claude) setup guide for exact steps.
+  </Step>
+  <Step title="Sign in with your Smokeball account">
+    Your client opens a browser window asking you to sign in to Smokeball and authorise the connection. This uses the same secure OAuth 2.0 sign-in as the Smokeball app — your client never sees your password.
+  </Step>
+  <Step title="Verify the connection">
+    Back in your client, the Smokeball server should show as connected, with its tools available. Most clients list connected servers and their tools in a settings or integrations panel.
+  </Step>
+  <Step title="Try a prompt">
+    Ask something that uses your Smokeball data, for example:
+
+    ```text
+    List my open matters and any tasks due this week.
+    ```
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+If the connection fails or tools don't appear, see [Troubleshooting](/docs/mcp-docs/troubleshooting).
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Available tools" icon="wrench" href="/docs/mcp-docs/tools">
+    See what your assistant can do once connected.
+  </Card>
+  <Card title="Security & permissions" icon="shield-check" href="/docs/mcp-docs/security">
+    Understand how authentication and data access work.
+  </Card>
+</CardGroup>

@@ -1,0 +1,46 @@
+---
+title: "Troubleshooting"
+description: "Fixes for common issues when connecting AI clients to the Smokeball MCP server"
+---
+
+<Warning>
+  The Smokeball MCP server is currently **in development**. Details on this page are subject to change before release.
+</Warning>
+
+Common issues when connecting an AI client to Smokeball, and how to fix them.
+
+<AccordionGroup>
+  <Accordion title="The connection fails or the server shows as disconnected">
+    - Double-check the server URL: `https://mcp.smokeball.com/mcp` (no trailing slash). {/* TODO: confirm final URL */}
+    - Make sure you're connecting from a supported client — currently **ChatGPT** or **Claude**. See the [ChatGPT](/docs/mcp-docs/chatgpt) and [Claude](/docs/mcp-docs/claude) setup guides. {/* TODO: Update as new clients are supported */}
+    - Check the [Smokeball status page](https://status.smokeball.com) for any ongoing incidents. {/* TODO: confirm status page URL */}
+    - Restart your client after changing MCP configuration — many clients only read it on startup.
+  </Accordion>
+
+  <Accordion title="I'm stuck in a sign-in loop, or authentication keeps failing">
+    - Complete the sign-in in the browser window your client opens; if no window appears, check for a blocked pop-up.
+    - Make sure you're signing in with the Smokeball account you intend to connect, especially if your browser is signed in to multiple accounts.
+    - Remove the Smokeball server from your client and add it again to restart the authorisation flow.
+  </Accordion>
+
+  <Accordion title="The server connects but no tools appear">
+    - Check your client's MCP/connector settings — some clients require you to enable a server's tools per-chat or per-project.
+    - Re-authenticate: an expired session can leave the server connected but unable to list tools.
+    - Update your client to the latest version; MCP support is evolving quickly.
+  </Accordion>
+
+  <Accordion title="My assistant can't find a matter or contact I know exists">
+    - Your assistant can only access what your Smokeball user can access. Check the matter's security settings in Smokeball — see [Security & Permissions](/docs/mcp-docs/security).
+    - Try giving your assistant more specific details (full matter name, file number, or contact email) to help it search.
+  </Accordion>
+
+  <Accordion title="I'm in Australia or the UK and the connection or data looks wrong">
+    Smokeball runs regional environments (see [Base URLs](/docs/api-docs/z2q8vla6b77g8-base-urls)). Make sure you're using the MCP server URL for your region.
+
+    {/* TODO: Document regional MCP server URLs once confirmed */}
+  </Accordion>
+</AccordionGroup>
+
+## Still stuck?
+
+Contact [Smokeball Support](https://support.smokeball.com) with the name of your AI client, the error message you're seeing, and roughly when it occurred.
