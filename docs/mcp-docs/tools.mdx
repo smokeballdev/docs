@@ -14,37 +14,37 @@ The server exposes **twelve tools** in two categories:
 - **Read tools** retrieve your Smokeball data. They never change anything.
 - **Write tools** create or modify data in Smokeball, and require your explicit confirmation before they run.
 
-Every tool call is scoped to you — tools act as your Smokeball user and can only access what you can access. See [Security & Permissions](/docs/mcp-docs/security).
+Every tool call is scoped to you. Tools act as your Smokeball user and can only access what you can access. See [Security & Permissions](/docs/mcp-docs/security).
 
 ## Read tools
 
 | Tool | Purpose |
 | --- | --- |
-| `search_matters` | Find matters in the firm — free-text search, with status filtering and pagination. |
-| `get_matter` | Full context for one matter in a single call — the matter record, contacts, open tasks, upcoming events, recent memos, and recent files. |
+| `search_matters` | Find matters in the firm using free-text search, with status filtering and pagination. |
+| `get_matter` | Full context for one matter in a single call: the matter record, contacts, open tasks, upcoming events, recent memos, and recent files. |
 | `list_matter_types` | List matter types, optionally filtered by jurisdiction (e.g. "NSW", "California"). |
-| `list_contacts` | Search or list contacts — clients, parties, opposing counsel. |
-| `search_files` | Find files by natural-language query — hybrid full-text and semantic search, within a matter or firm-wide. |
+| `list_contacts` | Search or list contacts, including clients, parties, and opposing counsel. |
+| `search_files` | Find files by natural-language query using hybrid full-text and semantic search, within a matter or firm-wide. |
 | `read_file` | A file's extracted text (when available) plus a download link. |
-| `analyze_document` | Extract structured hints from document text — parties, jurisdiction, dates. Nothing is created. |
-| `list_staff` | List firm staff — for example, to resolve who a task or event should be assigned to. |
-| `draft_correspondence` | Draft an email, letter, or memo grounded in a matter's context. Returns draft text only — it never sends, files, or schedules anything. |
+| `analyze_document` | Extract structured hints (parties, jurisdiction, dates) from document text. Nothing is created. |
+| `list_staff` | List firm staff, for example to resolve who a task or event should be assigned to. |
+| `draft_correspondence` | Draft an email, letter, or memo grounded in a matter's context. Returns draft text only. It never sends, files, or schedules anything. |
 
 ## Write tools
 
 <Warning>
-  Write tools change data in Smokeball. They require your explicit confirmation before they run — keep your client's confirmation prompts enabled. See [best practices](/docs/mcp-docs/security#best-practices).
+  Write tools change data in Smokeball. They require your explicit confirmation before they run, so keep your client's confirmation prompts enabled. See [best practices](/docs/mcp-docs/security#best-practices).
 </Warning>
 
 | Tool | Purpose |
 | --- | --- |
-| `create_matter` | Create a matter — client, matter type, other side. |
+| `create_matter` | Create a matter with a client, matter type, and other side. |
 | `update_matter` | Add a memo, task, or calendar event to a matter. |
 | `create_contact` | Create a person or company contact. |
 
 ## Scoped endpoints
 
-The full set of twelve tools is served at the main endpoint, but the server also offers scoped endpoints that expose only a subset. Connecting to a scoped endpoint limits which tools your assistant can see and call — useful if you only want to grant a narrow capability, such as read-only access.
+The full set of twelve tools is served at the main endpoint, but the server also offers scoped endpoints that expose only a subset. Connecting to a scoped endpoint limits which tools your assistant can see and call. This is useful if you only want to grant a narrow capability, such as read-only access.
 
 | Endpoint | Tools served |
 | --- | --- |
@@ -57,5 +57,5 @@ The full set of twelve tools is served at the main endpoint, but the server also
 {/* TODO: Confirm the public hostname for these endpoints, including regional (AU/US/UK) variants */}
 
 <Info>
-  A tool outside an endpoint's scope isn't just blocked — it isn't listed at all, so your assistant won't attempt to use it.
+  A tool outside an endpoint's scope isn't just blocked. It isn't listed at all, so your assistant won't attempt to use it.
 </Info>

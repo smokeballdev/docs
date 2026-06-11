@@ -12,9 +12,9 @@ Common issues when connecting an AI client to Smokeball, and how to fix them.
 <AccordionGroup>
   <Accordion title="The connection fails or the server shows as disconnected">
     - Double-check the server URL: `https://mcp.smokeball.com/mcp` (no trailing slash). {/* TODO: confirm final URL */}
-    - Make sure you're connecting from a supported client — currently **ChatGPT** or **Claude**. See the [ChatGPT](/docs/mcp-docs/chatgpt) and [Claude](/docs/mcp-docs/claude) setup guides. {/* TODO: Update as new clients are supported */}
+    - Make sure you're connecting from a supported client (currently **ChatGPT** or **Claude**). See the [ChatGPT](/docs/mcp-docs/chatgpt) and [Claude](/docs/mcp-docs/claude) setup guides. {/* TODO: Update as new clients are supported */}
     - Check the [Smokeball status page](https://status.smokeball.com) for any ongoing incidents. {/* TODO: confirm status page URL */}
-    - Restart your client after changing MCP configuration — many clients only read it on startup.
+    - Restart your client after changing MCP configuration, since many clients only read it on startup.
   </Accordion>
 
   <Accordion title="I'm stuck in a sign-in loop, or authentication keeps failing">
@@ -24,13 +24,13 @@ Common issues when connecting an AI client to Smokeball, and how to fix them.
   </Accordion>
 
   <Accordion title="The server connects but no tools appear">
-    - Check your client's MCP/connector settings — some clients require you to enable a server's tools per-chat or per-project.
+    - Check your client's MCP/connector settings, as some clients require you to enable a server's tools per-chat or per-project.
     - Re-authenticate: an expired session can leave the server connected but unable to list tools.
     - Update your client to the latest version; MCP support is evolving quickly.
   </Accordion>
 
   <Accordion title="My assistant can't find a matter or contact I know exists">
-    - Your assistant can only access what your Smokeball user can access. Check the matter's security settings in Smokeball — see [Security & Permissions](/docs/mcp-docs/security).
+    - Your assistant can only access what your Smokeball user can access. Check the matter's security settings in Smokeball, and see [Security & Permissions](/docs/mcp-docs/security).
     - Try giving your assistant more specific details (full matter name, file number, or contact email) to help it search.
   </Accordion>
 

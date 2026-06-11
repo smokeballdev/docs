@@ -19,9 +19,9 @@ The Smokeball MCP server uses **OAuth 2.0**, the same secure sign-in used by the
 
 ## What data can my assistant access?
 
-Your AI assistant acts **as you**. Every tool call resolves to a Smokeball API call scoped to your user account — tools never accept an account or user ID as an argument, so your assistant can only see and change what you can see and change. Matter security, staff permissions, and firm settings all apply exactly as they do in the Smokeball app.
+Your AI assistant acts **as you**. Every tool call resolves to a Smokeball API call scoped to your user account. Tools never accept an account or user ID as an argument, so your assistant can only see and change what you can see and change. Matter security, staff permissions, and firm settings all apply exactly as they do in the Smokeball app.
 
-The MCP server itself does not store your legal data — it is a thin, audited surface over the Smokeball API.
+The MCP server itself does not store your legal data. It is a thin, audited surface over the Smokeball API.
 
 <Info>
   Connecting an AI client does not grant it standing access to your firm's database. Every request goes through the same permission checks as the Smokeball app.
@@ -29,11 +29,11 @@ The MCP server itself does not store your legal data — it is a thin, audited s
 
 ## Write actions require confirmation
 
-Tools that change data in Smokeball — creating matters or contacts, adding tasks, memos, or calendar events — require your explicit confirmation before they run. Read tools never change anything. See [Available Tools](/docs/mcp-docs/tools) for which is which.
+Tools that change data in Smokeball (creating matters or contacts, or adding tasks, memos, or calendar events) require your explicit confirmation before they run. Read tools never change anything. See [Available Tools](/docs/mcp-docs/tools) for which is which.
 
 ## Limiting what your assistant can do
 
-If you want to grant only a narrow capability — for example, read-only access — connect to one of the [scoped endpoints](/docs/mcp-docs/tools#scoped-endpoints) instead of the main endpoint. Tools outside the scope aren't visible to your assistant at all.
+If you want to grant only a narrow capability, such as read-only access, connect to one of the [scoped endpoints](/docs/mcp-docs/tools#scoped-endpoints) instead of the main endpoint. Tools outside the scope aren't visible to your assistant at all.
 
 ## Disconnecting
 
@@ -44,7 +44,7 @@ You can disconnect at any time by removing the Smokeball server/connector from y
 ## Best practices
 
 <Warning>
-  AI assistants can make mistakes. Always review what your assistant is about to do — especially tool calls that **create or modify** data like tasks or time entries — before confirming them.
+  AI assistants can make mistakes. Always review what your assistant is about to do before confirming it, especially tool calls that **create or modify** data like matters, contacts, or tasks.
 </Warning>
 
 - Keep your client's tool-confirmation prompts enabled for write actions.

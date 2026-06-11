@@ -12,7 +12,7 @@ This guide walks through the general flow for connecting your AI assistant to Sm
 ## Prerequisites
 
 - An active Smokeball account
-- A supported AI client — currently **ChatGPT** or **Claude** {/* TODO: Update as new clients are supported */}
+- A supported AI client (currently **ChatGPT** or **Claude**) {/* TODO: Update as new clients are supported */}
 
 ## Server URL
 
@@ -22,9 +22,9 @@ The Smokeball MCP server is a remote server using the streamable HTTP transport:
 https://mcp.smokeball.com/mcp
 ```
 
-{/* TODO: Confirm the public hostname. The server is deployed per region (AU/US/UK) — document regional URLs before launch */}
+{/* TODO: Confirm the public hostname. The server is deployed per region (AU/US/UK), so document regional URLs before launch */}
 
-The `/mcp` endpoint serves the full set of tools. If you only want to grant your assistant a subset — for example, read-only access — use one of the [scoped endpoints](/docs/mcp-docs/tools#scoped-endpoints) instead, such as `/mcp/readonly`.
+The `/mcp` endpoint serves the full set of tools. If you only want to grant your assistant a subset, such as read-only access, use one of the [scoped endpoints](/docs/mcp-docs/tools#scoped-endpoints) instead, like `/mcp/readonly`.
 
 ## Connect your client
 
@@ -33,7 +33,7 @@ The `/mcp` endpoint serves the full set of tools. If you only want to grant your
     In your AI client, add a new MCP server (sometimes called a "connector" or "integration") using the server URL above. See the [ChatGPT](/docs/mcp-docs/chatgpt) or [Claude](/docs/mcp-docs/claude) setup guide for exact steps.
   </Step>
   <Step title="Sign in with your Smokeball account">
-    Your client opens a browser window asking you to sign in to Smokeball and authorise the connection. This uses the same secure OAuth 2.0 sign-in as the Smokeball app — your client never sees your password.
+    Your client opens a browser window asking you to sign in to Smokeball and authorise the connection. This uses the same secure OAuth 2.0 sign-in as the Smokeball app, so your client never sees your password.
   </Step>
   <Step title="Verify the connection">
     Back in your client, the Smokeball server should show as connected, with its tools available. Most clients list connected servers and their tools in a settings or integrations panel.
