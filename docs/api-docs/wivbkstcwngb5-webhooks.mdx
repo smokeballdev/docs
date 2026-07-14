@@ -165,6 +165,17 @@ Webhook subscriptions will be automatically removed if:
 Ensure your integration follows this workflow to maintain Webhook functionality. If you have any questions, please contact **support@smokeball.com.au**.
 </Warning>
 
+### Maintaining a single subscription
+
+We recommend maintaining a single webhook subscription per firm. A subscription can include as many event types as you need (edit it via the `/webhooks` endpoint to add or remove event types), so there is no need to create separate subscriptions for different events.
+
+Maintaining one subscription per firm:
+- Avoids duplicate notifications for the same event
+- Reduces load on your event notification endpoint
+- Makes it simpler to check for an existing subscription after a user re-authenticates (see the warning above)
+
+Before creating a subscription, list your existing subscriptions with a GET request to `/webhooks` and update the existing subscription instead of creating a new one.
+
 ## Event handling
 
 ### Notification schema
