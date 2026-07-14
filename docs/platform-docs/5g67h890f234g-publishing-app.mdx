@@ -20,8 +20,12 @@ When preparing your app details:
 You must demonstrate the use of all the permissions (scopes) you are requesting within the staging environment. This helps us verify that your app is using the scopes appropriately.
 
 #### Minimize Excessive Polling
-- Avoid repeatedly querying our APIs at frequent intervals. Instead, leverage webhooks to be notified when changes occur.
+- Avoid repeatedly querying our APIs at frequent intervals. Instead, leverage [webhooks](/docs/api-docs/wivbkstcwngb5-webhooks) to be notified when changes occur.
 - Polling should only be used when absolutely necessary, and with appropriate intervals.
+
+#### Webhook Usage
+- Maintain a single webhook subscription per firm. A subscription can include all the event types you need, and multiple subscriptions lead to duplicate notifications and unnecessary load. See [Maintaining a single subscription](/docs/api-docs/wivbkstcwngb5-webhooks#maintaining-a-single-subscription).
+- Check for existing subscriptions after a user re-authenticates and update them rather than creating new ones.
 
 #### Efficient API Usage
 - **Pagination**: Handle API responses with pagination to manage large datasets and prevent overload.
