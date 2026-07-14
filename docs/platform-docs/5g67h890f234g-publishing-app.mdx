@@ -38,6 +38,7 @@ You must demonstrate the use of all the permissions (scopes) you are requesting 
 #### Security & Data Privacy
 - Request only the scopes you truly need for your app's functionality. Excessive permission requests might lead to rejection.
 - Follow OAuth2 best practices for authentication and refresh tokens properly to avoid unnecessary login requests.
+- Cache Client Credentials access tokens and reuse them until they expire rather than requesting a new token for every API request. See [Caching Access Tokens](/docs/api-docs/h72024p76i8e1-client-credentials-grant#caching-access-tokens).
 
 #### Testing & Monitoring
 - Thoroughly test your app in a staging environment that mimics production.
