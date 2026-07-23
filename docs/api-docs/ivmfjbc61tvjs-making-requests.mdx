@@ -143,7 +143,7 @@ It does not apply for [Private Apps](/docs/platform-docs/4f56d789e123f-creating-
 If your app was created from the Developer Console, you can ignore this section.
 </Note>
 
-When using the [Client Credentials Grant](1-Authentication.md#2-client-credentials-grant) to perform server-to-server requests, and your credentials are authorized to access more than one account, you must explicitly specify which account you are targeting by prefixing the URL with the `accountId` in this format:
+When using the [Client Credentials Grant](/docs/api-docs/h72024p76i8e1-client-credentials-grant) to perform server-to-server requests, and your credentials are authorized to access more than one account, you must explicitly specify which account you are targeting by prefixing the URL with the `accountId` in this format:
 
 > https://api.smokeball.com/{accountId}/{resource-path}
 
@@ -224,7 +224,7 @@ Content-Type: application/json
 
 Because server-to-server requests are not performed using a user token there is no `userId` associated with each request. A `userId` is necessary for permission checking or ensuring that the UI reflects the change done by the specified user.
 
-To act on behalf of a certain user simply supply the `UserId` header with your requests. The value must be that of a [User](/api-reference/firm-users/get-firm-staffuser-mappings) in the firm.
+To act on behalf of a certain user simply supply the `UserId` header with your requests. The value must be that of a [User](/api-reference/firm/get-firm-user-mappings) in the firm.
 
 ## Tracking your requests
 

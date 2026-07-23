@@ -208,7 +208,7 @@ description: "We improve the Smokeball API all the time by releasing new feature
 
 <Update label="January 2023">
 - **Activities**: Fixed issues with activity code(s) not being deleted.
-- **BillingConfiguration**: Added `BillingConfiguration` [GET](22c98d537baca-get-matter-billing-configuration) and [PUT](0878ea1284fa5-update-matter-billing-configuration) endpoints. Billing configurations are set on the matter level.
+- **BillingConfiguration**: Added `BillingConfiguration` [GET](/api-reference/matters/get-matter-billing-configuration) and [PUT](/api-reference/matters/update-matter-billing-configuration) endpoints. Billing configurations are set on the matter level.
 - **Contacts**: Added `Locality` and `County` fields.
 - **Contacts**: GroupOfPeople are no longer permitted in the UK.
 - **Files**: Added `DateModified` field to GET responses.
@@ -225,33 +225,33 @@ description: "We improve the Smokeball API all the time by releasing new feature
 <Update label="November 2022">
 - **Activities**: Added additional validation for activity codes. Codes can no longer be more than 20 characters long.
 - **Contacts**: Added `Name` field to GET response for `GroupOfPeople` contacts. This returns the combined names of the contacts in the group, saving you needing to retrieve the individual contacts.
-- **Files**: Added [PATCH](89218c51253ef-patch-version-or-metadata-of-a-file) endpoint
+- **Files**: Added [PATCH](/api-reference/files/patch-a-file) endpoint
 - **Firm**: Added `Owner` field to GET responses. This can be used to determine the whitelabel product linked to the firm.
 - **MatterTypes**: Added `Type` field to GET responses. This can be used to determine if the type is for a Lead or Matter.
 - **Tasks**: Added `Duration` field. This follows the `ISO 8601` duration format (e.g. `PT4H33M`)
 - **Tasks**: Fixed categories not saving when adding or updating tasks.
-- **Webhooks**: Added `error` event type. This can be used to listen to errors when your API requests fail, see [Error Handling](3d812ecec78d9-webhooks#34-error-handling).
+- **Webhooks**: Added `error` event type. This can be used to listen to errors when your API requests fail, see [Error Handling](/docs/api-docs/wivbkstcwngb5-webhooks#error-handling).
 </Update>
 
 <Update label="September 2022">
-- **Contacts**: Added ability to exclude deleted contacts from GET response (see `ExcludeDeletedContacts` [query parameter](0d6f4aba1a214-get-contacts)).
+- **Contacts**: Added ability to exclude deleted contacts from GET response (see `ExcludeDeletedContacts` [query parameter](/api-reference/contacts/get-contacts)).
 - **Contacts**: Added `BirthFirstName`, `BirthMiddleName`, `BirthLastName` fields.
 - **Contacts**: Added `PreviousNames` field.
 - **Contacts**: Added `LanguageOfInterpreter` field.
 - **Contacts**: Added free text option for `Gender` field.
 - **Contacts**: Fixed validation issues when creating new contacts.
-- **Matters**: Added ability to filter matters by contact id (see `ContactId` [query parameter](40aa708f63ce3-get-matters)).
-- **Matters**: Matter access can now be restricted by `UserId` when using Client Credentials grant (see [Acting on behalf of a user](ivmfjbc61tvjs-making-requests#31-acting-on-behalf-of-a-user)).
+- **Matters**: Added ability to filter matters by contact id (see `ContactId` [query parameter](/api-reference/matters/get-matters)).
+- **Matters**: Matter access can now be restricted by `UserId` when using Client Credentials grant (see [Acting on behalf of a user](/docs/api-docs/ivmfjbc61tvjs-making-requests#acting-on-behalf-of-a-user)).
 - **Leads**: Restricted leads API to Grow and Prosper tiered clients.
-- **Files**: File access can now be restricted by `UserId` when using Client Credentials grant (see [Acting on behalf of a user](ivmfjbc61tvjs-making-requests#31-acting-on-behalf-of-a-user)).
+- **Files**: File access can now be restricted by `UserId` when using Client Credentials grant (see [Acting on behalf of a user](/docs/api-docs/ivmfjbc61tvjs-making-requests#acting-on-behalf-of-a-user)).
 </Update>
 
 <Update label="July 2022">
 - **Activities**: Fix `TaxInclusive` field returning incorrect value.
-- **Files**: Added ability to add additional data on creation of a file (see [Files](4b58c83cc952a-add-file-to-a-matter)).
-- **Roles**: Fix some [DELETE](64a5101608c79-remove-role-from-a-matter) endpoint issues.
-- **Relationships**: Added [DELETE](36c4ce83b182f-remove-relationship-from-a-role-in-a-matter) relationship endpoint.
-- **Tasks**: Added ability to link files and memos to tasks (see [TaskDocuments](3f91dd0d2662f-get-task-documents)).
+- **Files**: Added ability to add additional data on creation of a file (see [Files](/api-reference/files/add-file-to-a-matter)).
+- **Roles**: Fix some [DELETE](/api-reference/roles/remove-role-from-a-matter) endpoint issues.
+- **Relationships**: Added [DELETE](/api-reference/relationships/remove-relationship-from-a-role-in-a-matter) relationship endpoint.
+- **Tasks**: Added ability to link files and memos to tasks (see [TaskDocuments](/api-reference/tasks/get-task-documents)).
 - **Webhooks**: Added `MatterItems` webhooks.
 - **Webhooks**: Fixed `MatterTypeId` field missing in some `matter.updated` event payloads.
 </Update>
