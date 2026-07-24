@@ -45,7 +45,7 @@ node scripts/update-release-notes.js --file "docs/api-docs/98439555e1d41-release
 - `--file, -f`: Release notes file path (default: `docs/api-docs/98439555e1d41-release-notes.mdx`)
 - `--config, -c`: JIRA config file path (default: `jira-config.json`)
 - `--months, -m`: Number of months to look back (default: `2`)
-- `--model`: Claude model to use (default: `claude-sonnet-4-20250514`)
+- `--model`: Claude model to use (default: `claude-sonnet-5`)
 
 ## How It Works
 
@@ -54,7 +54,7 @@ node scripts/update-release-notes.js --file "docs/api-docs/98439555e1d41-release
    - Status: `Dev Live Testing`, `Live QA`, or `Completed`
    - Updated or resolved within the specified number of months
 
-2. For each ticket, uses Claude CLI (Sonnet 4.5) to generate one or more one-line summaries in the format:
+2. For each ticket, uses Claude CLI (Sonnet 5) to generate one or more one-line summaries in the format:
    ```
    - **API Name**: description
    ```

@@ -4,7 +4,7 @@ import { execa } from 'execa';
  * Claude CLI client wrapper for generating summaries
  */
 export class ClaudeClient {
-  constructor(model = 'claude-sonnet-4-20250514') {
+  constructor(model = 'claude-sonnet-5') {
     this.model = model;
     // Set environment variable as fallback if model flag doesn't work
     if (!process.env.ANTHROPIC_MODEL) {

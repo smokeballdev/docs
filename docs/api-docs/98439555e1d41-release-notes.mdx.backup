@@ -3,14 +3,6 @@ title: "API"
 description: "We improve the Smokeball API all the time by releasing new features, fixing bugs and updating the documentation. This changelog accounts for all of the changes as they are released, in chronological order."
 ---
 
-<Update label="July 2026">
-- **Events**: Deprecated `eventType` field in favor of new `type` field.
-- **Files**: Added `matter`, `folder`, and download information to file search results.
-- **Matters**: Added support for hidden items on the patch endpoint.
-- **Tasks**: Fixed pagination `href` links on the `/tasks` endpoint to include all applied filters.
-- **Tasks**: Added `dueDateOnly` and `completedDateOnly` fields; deprecated the previous date/time fields 'dueDate' and 'completedDate'.
-</Update>
-
 <Update label="May 2026">
 - **Contacts**: Added `website` field.
 - **Files**: Fixed intermittennt error when posting files to document sub-folders.

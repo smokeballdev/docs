@@ -21,7 +21,7 @@ program
   .option('-f, --file <path>', 'Release notes file path', '../docs/api-docs/98439555e1d41-release-notes.mdx')
   .option('-c, --config <path>', 'JIRA config file path', 'jira-config.json')
   .option('-m, --months <number>', 'Number of months to look back', '3')
-  .option('--model <model>', 'Claude model to use', 'claude-sonnet-4-20250514')
+  .option('--model <model>', 'Claude model to use', 'claude-sonnet-5')
   .parse(process.argv);
 
 const options = program.opts();
