@@ -1,0 +1,116 @@
+---
+title: "Scopes"
+description: "OAuth 2.0 scopes used to limit access to the Smokeball API"
+---
+
+Scopes are used to limit access to your Smokeball App. Each API resource has a pair of scopes:
+
+- **Write scopes** permit updates (e.g. POST, PUT, PATCH requests)
+- **Read scopes** permit reads (e.g. GET requests)
+
+<Info>
+  Multiple scopes may be needed in order to perform actions on child resources. For example, `matters/write` and `documents/write` are both needed for adding files to a matter.
+</Info>
+
+## Requesting scopes
+
+Scopes are requested via the `scope` parameter (space-delimited) when authorizing with the [Authorization Code Grant](/docs/api-docs/2t26gcuuqf1wk-authorization-code-grant). Leaving the `scope` parameter empty will ensure that all assigned scopes are automatically included in the access token.
+
+<Warning>
+  You may grant yourself access to any scope in **Staging**, but scopes must be approved for usage in **Production** when your app is [submitted for approval](/docs/platform-docs/5g67h890f234g-publishing-app).
+</Warning>
+
+## Scope reference
+
+### Matters
+
+| Scope | Description |
+| --- | --- |
+| `matters/read` | Read matters |
+| `matters/write` | Write matters |
+| `mattertypes/read` | Read matter types |
+| `items/read` | Read matter items |
+| `layouts/read` | Read layout matter items |
+| `layouts/write` | Write layout matter items |
+| `layoutdesigns/read` | Read layout designs |
+| `layoutdesigns/write` | Write layout designs |
+| `roles/read` | Read matter roles |
+| `roles/write` | Write matter roles |
+| `stages/read` | Read matter stages across the entire firm |
+| `stages/write` | Write matter stages across the entire firm |
+| `stagesets/read` | Read matter stage sets |
+| `stagesets/write` | Write matter stage sets |
+| `memos/read` | Read matter memos |
+| `memos/write` | Write matter memos |
+| `documents/read` | Read matter files |
+| `documents/write` | Write matter files |
+| `archive/read` | Read matter archives |
+| `archive/write` | Write matter archives |
+| `referraltypes/read` | Read referral types |
+| `referraltypes/write` | Write referral types |
+
+### Billing & Accounting
+
+| Scope | Description |
+| --- | --- |
+| `bankaccounts/read` | Read your bank accounts and transactions |
+| `bankaccounts/write` | Write your bank accounts and transactions |
+| `activitycodes/read` | Read activity codes |
+| `activitycodes/write` | Write activity codes |
+| `billingconfiguration/read` | Read matter billing configurations |
+| `billingconfiguration/write` | Write matter billing configurations |
+| `expenses/read` | Read matter expenses |
+| `expenses/write` | Write matter expenses |
+| `fees/read` | Read matter fees |
+| `fees/write` | Write matter fees |
+| `invoices/read` | Read matter invoices |
+| `invoices/write` | Write matter invoices |
+
+### Contacts, Firm & Users
+
+| Scope | Description |
+| --- | --- |
+| `contacts/read` | Read contacts |
+| `contacts/write` | Write contacts |
+| `firm/read` | Read firm details |
+| `firm/write` | Write firm details |
+| `firmusers/read` | Read firm users |
+| `firmusers/write` | Write firm users |
+| `staff/read` | Read staff |
+| `staff/write` | Write staff |
+| `users/read` | Read users |
+| `groups/read` | Read authorization groups |
+| `groups/write` | Write authorization groups |
+| `policies/read` | Read authorization policies |
+| `policies/write` | Write authorization policies |
+
+### Communication & Events
+
+| Scope | Description |
+| --- | --- |
+| `events/read` | Read events |
+| `events/write` | Write events |
+| `notifications/read` | Read notifications |
+| `notifications/write` | Write notifications |
+
+### Tasks
+
+| Scope | Description |
+| --- | --- |
+| `tasks/read` | Read tasks |
+| `tasks/write` | Write tasks |
+
+### Platform & Integration
+
+<Note>
+  [Plugins](/docs/api-docs/scmo7vmtln5hm-plugins) are not yet available for partners. They will be supported in a future developer console version, so the `plugins/read` and `plugins/write` scopes cannot be used yet.
+</Note>
+
+| Scope | Description |
+| --- | --- |
+| `webhooks/read` | Read webhook subscriptions |
+| `webhooks/write` | Write webhook subscriptions |
+| `plugins/read` | Read plugins |
+| `plugins/write` | Write plugins |
+| `search/write` | Search your files |
+| `odata/read` | Read reporting data (fees, expenses, activity codes, bank accounts, contacts, matters, payments, roles, staff, transactions, invoices) |
