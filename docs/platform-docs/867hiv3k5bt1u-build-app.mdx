@@ -127,7 +127,12 @@ Access tokens have a default expiry of 1 hour for security. When an access token
 - API requests will return 401 Unauthorized errors
 - Your application should obtain a new access token using the refresh token
 
-Refresh tokens are valid for 30 days by default.
+Refresh tokens are valid for 180 days by default.
+
+<Note>
+The 180-day expiry took effect on **24 August 2026** and applies to refresh tokens issued on or after that date.
+Refresh tokens issued before then remain valid for 30 days, so your users will get the longer expiry the next time they re-authenticate.
+</Note>
 
 <Note>
 You can request a longer refresh token expiry period when submitting your app for production approval. Include this request in the submission notes when publishing your app and our team will review based on your use case.

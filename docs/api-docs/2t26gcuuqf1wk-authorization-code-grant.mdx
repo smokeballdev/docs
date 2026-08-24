@@ -124,7 +124,12 @@ Content-Type: application/json
 <ResponseField name="refresh_token" type="string">
   A token used to obtain a new access token when the current one expires.
 
-  By default, the returned **refresh_token** is valid for 30 days. If you require a longer expiration period, please contact us to discuss your specific needs.
+  By default, the returned **refresh_token** is valid for 180 days. If you require a longer expiration period, please contact us to discuss your specific needs.
+
+  <Note>
+  The 180-day expiry took effect on **24 August 2026** and applies to refresh tokens issued on or after that date.
+  Refresh tokens issued before then remain valid for 30 days.
+  </Note>
 </ResponseField>
 <ResponseField name="access_token" type="string">
   The access token used to authenticate API requests.
