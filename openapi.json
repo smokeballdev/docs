@@ -4264,7 +4264,7 @@
       "put": {
         "tags": ["Files"],
         "summary": "Upload/update version or metadata of a file",
-        "description": "Replaces all editable fields of a file with the supplied values. Use PATCH to change only some fields.\r\n            \r\nBecause this is a full replace, omitting 'folderId' (or setting it to null) moves the file to the root folder.\r\nThe destination folder is not validated for existence.\r\n'fileName' is required (maximum 256 characters). 'userId' falls back to the authenticated user when omitted.\r\nAdditional data values are merged with existing keys; null or empty additional data is a no-op.\r\n'isFavorite' is ignored when null.\r\n            \r\nThe change is processed asynchronously; the returned Link may 404 until it is applied.\r\nThe response always includes a presigned PUT URL (valid for 1 hour) that can optionally be used to upload a new\r\nversion of the file. Every call records a new upload request whether or not the URL is used.",
+        "description": "Replaces all editable fields of a file with the supplied values. Use PATCH to change only some fields.\r\n            \r\nBecause this is a full replace, omitting 'folderId' (or setting it to null) moves the file to the root folder.\r\nThe destination folder is not validated for existence.\r\n'fileName' is required (maximum 256 characters). 'userId' falls back to the authenticated user when omitted.\r\nAdditional data values are merged with existing keys; null or empty additional data is a no-op.\r\n'isFavorite' is ignored when null.\r\n            \r\nThe response always includes a presigned PUT URL (valid for 1 hour) that can optionally be used to upload a new\r\nversion of the file. Every call records a new upload request whether or not the URL is used.",
         "operationId": "UpdateFile",
         "parameters": [
           {
@@ -4355,7 +4355,7 @@
       "patch": {
         "tags": ["Files"],
         "summary": "Patch a file",
-        "description": "Partially updates a file's metadata. Only the fields supplied in the request are changed; all other fields keep\r\ntheir current values. Use PUT to replace all fields.\r\n            \r\nAccepted media types:\r\n- 'application/json': an object containing only the properties to change (merge style), e.g. { \"fileName\": \"new name.pdf\" }.\r\n- 'application/json-patch+json': a JSON Patch document (RFC 6902).\r\n            \r\nSupported paths: '/fileName', '/folderId', '/fileAdditionalData', '/userId', '/isFavorite'. Path matching is case-sensitive.\r\nThe file is moved only when '/folderId' is present in the request; setting it to null moves the file to the root folder.\r\nThe destination folder is not validated for existence.\r\nThe 'EditFileDto' data annotations ([Required], maximum length) are not enforced on PATCH.\r\nAdditional data values are merged with existing keys; null or empty additional data is a no-op.\r\n            \r\nThe change is processed asynchronously; the returned Link may 404 until it is applied.\r\nThe response always includes a presigned PUT URL (valid for 1 hour) that can optionally be used to upload a new\r\nversion of the file. Every call records a new upload request whether or not the URL is used.",
+        "description": "Partially updates a file's metadata. Only the fields supplied in the request are changed; all other fields keep\r\ntheir current values. Use PUT to replace all fields.\r\n            \r\nThe response always includes a presigned PUT URL (valid for 1 hour) that can optionally be used to upload a new\r\nversion of the file. Every call records a new upload request whether or not the URL is used.",
         "operationId": "PatchFile",
         "parameters": [
           {
@@ -4433,7 +4433,7 @@
       "delete": {
         "tags": ["Files"],
         "summary": "Delete a file",
-        "description": "Deletes a specified matter file. The change is processed asynchronously; the returned Link may 404 until it is applied.\r\n            \r\nAn unknown file id, or a file that has been created but not yet processed, is still accepted with 202 rather than 404.",
+        "description": "Deletes a specified matter file.",
         "operationId": "DeleteFile",
         "parameters": [
           {
@@ -4573,7 +4573,7 @@
       "get": {
         "tags": ["Files"],
         "summary": "Get upload url for a file",
-        "description": "Returns a presigned PUT URL for uploading a new version of an existing file. The URL is valid for 1 hour.\r\n            \r\nAlthough this is a GET, every call records a new upload request for the file. The upload is only applied once the\r\ncontent has been PUT to the URL and confirmed by the storage callback; until then the new version is not visible\r\nand a newly created file will still return 404 from 'GetFileById'.",
+        "description": "Returns a presigned PUT URL for uploading a new version of an existing file. The URL is valid for 1 hour.",
         "operationId": "UploadFile",
         "parameters": [
           {
@@ -4643,7 +4643,7 @@
       "get": {
         "tags": ["Files"],
         "summary": "Get file history on a matter",
-        "description": "Returns the full list of history entries for the specified file. The result is not paged.\r\nAn unknown file id returns an empty collection with 200 rather than 404.",
+        "description": "Returns the full list of history entries for the specified file. The result is not paged.",
         "operationId": "GetFileHistory",
         "parameters": [
           {
@@ -4905,7 +4905,7 @@
       "get": {
         "tags": ["Files"],
         "summary": "Get preview info for a file by document version",
-        "description": "Returns a presigned URL to the PDF preview of a specific document version of the file.\r\nThe URL is valid for 1 day from the time of the request.\r\n            \r\nThis is the endpoint referenced by the 'Location' header of CreatePreview and is intended for polling until the\r\nrequested preview is available. GetPreview is equivalent to calling this endpoint with the file's current\r\n'versionId'. This endpoint never creates a preview; it returns 404 until the conversion has completed.",
+        "description": "Returns a presigned URL to the PDF preview of a specific document version of the file.\r\nThe URL is valid for 1 day from the time of the request.",
         "operationId": "GetPreviewById",
         "parameters": [
           {
@@ -5414,7 +5414,7 @@
       "post": {
         "tags": ["Folders"],
         "summary": "Create a folder",
-        "description": "Creates a new folder under the specified matter.\r\n            \r\nWhen `parentFolderId` is null or omitted the folder is created under the matter root. When supplied, the parent\r\nfolder is not validated for existence or for belonging to the specified matter.\r\nIf `userId` is omitted the authenticated user is recorded as the creator.\r\n            \r\nThe change is processed asynchronously; the returned Link may 404 until it is applied.",
+        "description": "Creates a new folder under the specified matter.\r\n            \r\nWhen `parentFolderId` is null or omitted the folder is created under the matter root.",
         "operationId": "CreateRootFolder",
         "parameters": [
           {
@@ -5575,7 +5575,7 @@
       "put": {
         "tags": ["Folders"],
         "summary": "Update a folder",
-        "description": "Replaces the editable fields of a folder belonging to the specified matter. All fields are applied, not only the ones\r\nthat changed: `name` is required, and omitting `parentFolderId` (or setting it to null) moves the folder to the matter root.\r\nUse PATCH to change individual fields.\r\n            \r\nThe destination folder must be on the same matter (400 otherwise); a destination that does not exist is not rejected.\r\nIf `userId` is omitted the authenticated user is recorded. A deleted folder cannot be updated with PUT; use PATCH with `isDeleted: false` to restore it.\r\n            \r\nThe change is processed asynchronously; the returned Link may 404 until it is applied.",
+        "description": "Replaces the editable fields of a folder belonging to the specified matter. All fields are applied, not only the ones\r\nthat changed: `name` is required, and omitting `parentFolderId` (or setting it to null) moves the folder to the matter root.\r\nUse PATCH to change individual fields.\r\n            \r\nThe destination folder must be on the same matter (400 otherwise); a destination that does not exist is not rejected.\r\nIf `userId` is omitted the authenticated user is recorded. A deleted folder cannot be updated with PUT; use PATCH with `isDeleted: false` to restore it.",
         "operationId": "UpdateFolder",
         "parameters": [
           {
@@ -5665,7 +5665,7 @@
       "patch": {
         "tags": ["Folders"],
         "summary": "Patch a folder",
-        "description": "Partially updates a folder belonging to the specified matter. Only the fields supplied in the request are applied.\r\n            \r\nA deleted folder can be restored by setting `isDeleted` to `false`. Only the folder itself is restored;\r\nsubfolders and files that were deleted remain deleted. Other fields supplied in the same request are applied after the restore.\r\n            \r\nAccepted media types: `application/json` (a merge-style object whose properties are converted to `replace` operations)\r\nand `application/json-patch+json` (a JSON Patch document). Supported paths: `/name`, `/parentFolderId`, `/userId`, `/isDeleted`.\r\nSetting `/parentFolderId` to null moves the folder to the matter root. The destination folder must be on the same matter (400 otherwise);\r\na destination that does not exist is not rejected. If `userId` is omitted the authenticated user is recorded.\r\n            \r\nThe change is processed asynchronously; the returned Link may 404 until it is applied.",
+        "description": "Partially updates a folder belonging to the specified matter. Only the fields supplied in the request are applied.\r\n            \r\nA deleted folder can be restored by setting `isDeleted` to `false`. Only the folder itself is restored;\r\nsubfolders and files that were deleted remain deleted. Other fields supplied in the same request are applied after the restore.",
         "operationId": "PatchFolder",
         "parameters": [
           {
