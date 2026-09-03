@@ -31,10 +31,10 @@ jobs:
         run: |
           sed -i 's/Staging API/API/g' ./openapi.json
 
-      - name: Prettify JSON
-        uses: actionsx/prettier@v2
+      - name: Prettier Action
+        uses: creyD/prettier_action@v4.6
         with:
-          args: --write ./openapi.json
+          prettier_options: --write ./openapi.json
 
       - name: Commit and push if any changes
         run: |
