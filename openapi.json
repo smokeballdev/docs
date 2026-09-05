@@ -22484,6 +22484,12 @@
             "description": "Fax number of the firm.",
             "nullable": true
           },
+          "archieProductId": {
+            "type": "string",
+            "description": "Optional Archie tier the firm is subscribed to.",
+            "nullable": true,
+            "example": "ARCH003"
+          },
           "isInternal": {
             "type": "boolean",
             "description": "Whether firm is being created for internal use. Internal firms will not be subscribed for payment processing and will not be charged.",
@@ -23543,6 +23549,12 @@
             ],
             "description": "Fax number of the firm.",
             "nullable": true
+          },
+          "archieProductId": {
+            "type": "string",
+            "description": "Optional Archie tier the firm is subscribed to. Omit to preserve the existing Archie tier.",
+            "nullable": true,
+            "example": "ARCH003"
           },
           "status": {
             "allOf": [
