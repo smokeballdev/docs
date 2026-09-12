@@ -12279,6 +12279,89 @@
         "x-excluded": true
       }
     },
+    "/subscriptions/archie-tiers": {
+      "get": {
+        "tags": ["Subscriptions"],
+        "summary": "Get all available Archie tiers",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ArchieTier"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-excluded": true
+      }
+    },
+    "/subscriptions/archie-tiers/{id}": {
+      "get": {
+        "tags": ["Subscriptions"],
+        "summary": "Get an Archie tier",
+        "operationId": "GetArchieTierAsync",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArchieTier"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-excluded": true
+      }
+    },
     "/subscriptions/{subscriptionId}/charges": {
       "get": {
         "tags": ["Subscriptions"],
@@ -13636,6 +13719,61 @@
         "x-excluded": true
       }
     },
+    "/subscriptions/{id}/archie-tier": {
+      "delete": {
+        "tags": ["Subscriptions"],
+        "summary": "Remove the Archie tier from a subscription",
+        "description": "The removal is scheduled for the end of the current billing period.\r\nCalling this endpoint when the subscription has no Archie tier is a no-op.",
+        "operationId": "RemoveArchieTierAsync",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique identifier of the subscription",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "When request is accepted. Returns a 'Link' object.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Link"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When the subscription cannot be updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When the subscription does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "x-excluded": true
+      }
+    },
     "/subscriptions/tiers": {
       "get": {
         "tags": ["Subscriptions"],
@@ -13941,6 +14079,49 @@
           },
           "404": {
             "description": "When usage product with specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-excluded": true
+      }
+    },
+    "/subscriptions/usages/{usageId}/charge-permission": {
+      "get": {
+        "tags": ["Subscriptions"],
+        "summary": "Get usage charge permission",
+        "description": "Determines whether the current user is authorized to create usage charges for the usage product.\r\nThis does not evaluate subscription status, payment method, price, or other create-charge validation.",
+        "operationId": "GetUsageChargePermissionAsync",
+        "parameters": [
+          {
+            "name": "usageId",
+            "in": "path",
+            "description": "The unique identifier of the usage product.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "When the usage product exists.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsageChargePermission"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When the usage product does not exist.",
             "content": {
               "application/json": {
                 "schema": {
@@ -29303,6 +29484,87 @@
         },
         "additionalProperties": false
       },
+      "ArchieTier": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the tier.",
+            "format": "uuid",
+            "example": "b471682e-fa17-4e46-b7fe-9b2b8fdcb3c2"
+          },
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relation": {
+            "type": "string",
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "self": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ],
+            "nullable": true
+          },
+          "smokeballId": {
+            "type": "string",
+            "description": "Unique Smokeball identifier of the tier. \r\n\r\nThis identifier convenience purposes only and should not be used to interact with the subscriptions API.",
+            "nullable": true
+          },
+          "productSuite": {
+            "type": "string",
+            "description": "The product suite that this tier belongs to.",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The display name of the tier.",
+            "nullable": true,
+            "example": "Intake"
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the tier.\r\n\r\nCan be used to describe the tier to a customer.",
+            "nullable": true
+          },
+          "trialPeriodDays": {
+            "type": "integer",
+            "description": "The number of days the tier can be trialed for.\r\n\r\nCannot be trialed if zero or missing.",
+            "format": "int32",
+            "nullable": true
+          },
+          "prices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Price"
+            },
+            "description": "The price options for the tier.",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "description": "The created date of the tier.",
+            "format": "date-time",
+            "example": "2022-04-23T14:00:00Z"
+          },
+          "updatedDate": {
+            "type": "string",
+            "description": "The updated date of the tier.",
+            "format": "date-time",
+            "example": "2022-04-23T14:00:00Z"
+          }
+        },
+        "additionalProperties": false,
+        "description": "An Archie product tier that can be attached to a platform subscription."
+      },
       "CancelSubscriptionRequest": {
         "type": "object",
         "properties": {
@@ -30417,7 +30679,7 @@
         "additionalProperties": false
       },
       "SmokeballProductType": {
-        "enum": [0, 1, 2, 3],
+        "enum": [0, 1, 2, 3, 4],
         "type": "integer",
         "format": "int32"
       },
@@ -30483,6 +30745,15 @@
               }
             ],
             "description": "'Tier' product that the subscription is subscribed to.",
+            "nullable": true
+          },
+          "archieTier": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ArchieTier"
+              }
+            ],
+            "description": "Archie tier attached to this platform subscription, or null when Archie is not selected.",
             "nullable": true
           },
           "trialingTier": {
@@ -31619,6 +31890,12 @@
             "nullable": true,
             "example": "8d074e85-4d95-4d9a-8a63-187719470d49"
           },
+          "archieTierId": {
+            "type": "string",
+            "description": "Optional Archie tier id to subscribe to. Omit or supply null to preserve the current Archie tier.\r\nUse DELETE /subscriptions/{id}/archie-tier to remove it.",
+            "format": "uuid",
+            "nullable": true
+          },
           "addOnIds": {
             "type": "array",
             "items": {
@@ -31723,6 +32000,17 @@
           }
         },
         "additionalProperties": false
+      },
+      "UsageChargePermission": {
+        "type": "object",
+        "properties": {
+          "canCreateUsageCharge": {
+            "type": "boolean",
+            "description": "Whether the current user is authorized to create a usage charge for the product."
+          }
+        },
+        "additionalProperties": false,
+        "description": "The current user's ability to create a charge for a usage product."
       },
       "UsageCollection": {
         "type": "object",
