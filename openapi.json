@@ -15359,7 +15359,7 @@
       "post": {
         "tags": ["Users"],
         "summary": "Create a user",
-        "description": "Creates a user.\r\n\r\nSends an email with a generated password if the password is missing.",
+        "description": "Creates a user.\r\n            \r\nProvider decides where the user is created. When omitted, Default is used.\r\n- Default (the service's default identity provider for new users)\r\n- Auth0\r\n            \r\nInitialPassword decides how the user gets their first password. When omitted, a missing\r\npassword means Invitation (the identity provider emails the user the way to set their own)\r\nand a supplied password is Permanent. Temporary must be changed at first sign-in. Nothing\r\nis emailed for Permanent or Temporary - the caller delivers the password.",
         "operationId": "CreateUserAsync",
         "requestBody": {
           "content": {
@@ -15393,18 +15393,18 @@
           }
         },
         "responses": {
-          "202": {
-            "description": "When request is accepted. Returns a hypermedia 'Link' object of the user to be created.",
+          "200": {
+            "description": "When the user was created. Returns the created 'User' object.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Link"
+                  "$ref": "#/components/schemas/User"
                 }
               }
             }
           },
           "400": {
-            "description": "When user or password validation fails.",
+            "description": "When user or password validation fails, or the requested provider is unknown or not available.",
             "content": {
               "application/json": {
                 "schema": {
@@ -32806,6 +32806,11 @@
         "required": ["email"],
         "type": "object",
         "properties": {
+          "provider": {
+            "type": "string",
+            "description": "Where the user is created: Default or Auth0.\r\n            \r\nWhen omitted: Default.",
+            "example": "Auth0"
+          },
           "email": {
             "minLength": 1,
             "type": "string",
@@ -32833,6 +32838,12 @@
             "type": "boolean",
             "description": "Bypasses multi-factor authentication for the user.\r\n\r\nWhen enabled, the user will not be prompted for two factor authentication during login.",
             "example": true
+          },
+          "initialPassword": {
+            "type": "string",
+            "description": "How the user gets their first password: Permanent (the supplied password is final),\r\nTemporary (the supplied password must be changed at first sign-in) or Invitation (the\r\nuser is emailed the way to set their own; any supplied password is ignored).\r\n            \r\nPermanent and Temporary require a password; nothing is emailed for them, the caller\r\ndelivers the password.\r\n            \r\nWhen omitted: Invitation if no password is supplied, otherwise Permanent.",
+            "nullable": true,
+            "example": "Temporary"
           }
         },
         "additionalProperties": false
