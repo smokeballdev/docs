@@ -45,6 +45,18 @@ You should request only the minimum scopes necessary for your app's functionalit
 Requesting unnecessary scopes may cause users to be hesitant to authorize your app. Only select scopes that are essential for your app's core functionality.
 </Warning>
 
+### Install URL
+Apps using the [Authorization Code Grant](/docs/api-docs/2t26gcuuqf1wk-authorization-code-grant) show an **Installation Instructions** panel with a ready-made install URL.
+This is the `/oauth2/authorize` URL a user visits to authorize your app, built from the client ID, the first callback URL and the app's scopes.
+
+The URL always includes a `scope` parameter listing every scope assigned to the app, sorted alphabetically, and it updates as you add or remove scopes.
+Copy the URL after you have saved your scope changes so that it matches what the authorization server will accept.
+
+<Note>
+OAuth 2.0 expects a client to request its scopes explicitly, so the `scope` parameter is always included.
+If you build the URL yourself, include it too. See [Requesting scopes](/docs/api-docs/qf83nz2scopes-scopes#requesting-scopes).
+</Note>
+
 
 ## Callback URLs
 Callback URLs (or redirect URLs) are essential endpoints that handle the OAuth 2.0 authorization flow. They specify where users will be redirected after authorizing your application:

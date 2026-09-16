@@ -18,7 +18,7 @@ Example:
 
 <CodeGroup>
   ```bash curl
-  curl -X GET 'https://auth.smokeball.com/oauth2/authorize?response_type=code&client_id=xxxxx&redirect_uri=https://xxxxxxxx'
+  curl -X GET 'https://auth.smokeball.com/oauth2/authorize?response_type=code&client_id=xxxxx&redirect_uri=https://xxxxxxxx&scope=contacts%2Fread%20matters%2Fread%20matters%2Fwrite'
   ```
   ```json http
   {
@@ -27,7 +27,8 @@ Example:
     "query": {
       "response_type": "code",
       "client_id": "xxxxx",
-      "redirect_uri": "https://xxxxxxxx"
+      "redirect_uri": "https://xxxxxxxx",
+      "scope": "contacts/read matters/read matters/write"
     }
   }
   ```
@@ -51,11 +52,13 @@ Example:
 
   This parameter is optional.
 </ParamField>
-<ParamField path="scope" type="string">
-  The requested [scope](/docs/api-docs/qf83nz2scopes-scopes) of access (space-delimited strings).
-  Defines the permissions being requested by the application.
+<ParamField path="scope" type="string" required>
+  The [scopes](/docs/api-docs/qf83nz2scopes-scopes) of access being requested, as a space-delimited list (for example `contacts/read matters/read matters/write`).
+  Every scope requested must be assigned to your app in the Developer Console.
 
-  This parameter is optional. Leaving it empty will ensure that all assigned scopes are automatically included in the access token.
+  OAuth 2.0 expects a client to state the scopes it wants, so always include this parameter.
+  The install URL shown on your app's page in the Developer Console already includes every scope assigned to the app, sorted alphabetically, and updates as scopes are added or removed.
+  If the parameter is omitted the authorization server currently falls back to issuing a token with all scopes assigned to the app, but you should not rely on this behaviour.
 </ParamField>
 
 The user will be directed to a login page where they will need to use their Smokeball credentials to login.
@@ -253,7 +256,7 @@ Direct the user to `https://auth.smokeball.com/oauth2/authorize` with the follow
 <CodeGroup>
   ```bash curl
   curl --request GET \
-    --url "https://auth.smokeball.com/oauth2/authorize?response_type=code&client_id=xxxxx&redirect_uri=https://your_redirect_uri&code_challenge_method=S256&code_challenge=your_code_challenge"
+    --url "https://auth.smokeball.com/oauth2/authorize?response_type=code&client_id=xxxxx&redirect_uri=https://your_redirect_uri&scope=contacts%2Fread%20matters%2Fread%20matters%2Fwrite&code_challenge_method=S256&code_challenge=your_code_challenge"
   ```
   ```json http
   {
@@ -263,6 +266,7 @@ Direct the user to `https://auth.smokeball.com/oauth2/authorize` with the follow
       "response_type": "code",
       "client_id": "xxxxx",
       "redirect_uri": "https://your_redirect_uri",
+      "scope": "contacts/read matters/read matters/write",
       "code_challenge_method": "S256",
       "code_challenge": "your_code_challenge"
     }
@@ -302,11 +306,13 @@ Direct the user to `https://auth.smokeball.com/oauth2/authorize` with the follow
 
   This parameter is optional.
 </ParamField>
-<ParamField path="scope" type="string">
-  The requested [scope](/docs/api-docs/qf83nz2scopes-scopes) of access (space-delimited strings).
-  Defines the permissions being requested by the application.
+<ParamField path="scope" type="string" required>
+  The [scopes](/docs/api-docs/qf83nz2scopes-scopes) of access being requested, as a space-delimited list (for example `contacts/read matters/read matters/write`).
+  Every scope requested must be assigned to your app in the Developer Console.
 
-    This parameter is optional. Leaving it empty will ensure that all assigned scopes are automatically included in the access token.
+  OAuth 2.0 expects a client to state the scopes it wants, so always include this parameter.
+  The install URL shown on your app's page in the Developer Console already includes every scope assigned to the app, sorted alphabetically, and updates as scopes are added or removed.
+  If the parameter is omitted the authorization server currently falls back to issuing a token with all scopes assigned to the app, but you should not rely on this behaviour.
 </ParamField>
 
 For Smokeball API, only `S256` method is allowed for `code_challenge_method`
@@ -469,4 +475,4 @@ We will be phasing out issuing an **id_token** when you request a **token** in t
 
 If you have been using an **id_token** for your API requests, **no immediate action is required**. You will be contacted with instructions for transitioning to the **access_token**. You can also [contact us via this link](https://marketplace.smokeball.com/application_forms/api-scope-request-form/partner_applications/new) and provide us with a list of endpoints that you need access to so we can verify that your **access_token** is appropriately configured with the necessary permissions.
 
-> Note: When you transition to **access_token** you will no longer require to include the `scope` query parameter in your user authorization requests. Please **remember to omit** `scope=openid` from your requests to `https://auth.smokeball.com/oauth2/authorize`, to ensure seamless operation. 
+> Note: When you transition to **access_token**, the `scope` query parameter should list only the API scopes your app needs (for example `matters/read`). Please **remember to remove** `openid` from the `scope` parameter in your requests to `https://auth.smokeball.com/oauth2/authorize`, to ensure seamless operation. 
