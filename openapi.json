@@ -16755,7 +16755,7 @@
                 "$ref": "#/components/schemas/EntryType"
               }
             ],
-            "description": "Type of the activity.\r\n\r\nPossible values: Fixed = '0', Time = '1', Expense = '2', Surcharge = '3'",
+            "description": "Type of the activity.\r\n\r\nPossible values: Fixed = '0', Time = '1', Expense = '2'",
             "example": 0
           },
           "description": {
@@ -17256,7 +17256,7 @@
                 "$ref": "#/components/schemas/BillingTypeEnum"
               }
             ],
-            "description": "The billing type.\r\n\r\nPossible values: \r\nNone = 0, \r\nFixed Fee = 1, \r\nFixed Fee per Appearance = 2, \r\nTime Based = 3, \r\nContingency Dollars = 4, \r\nContingency Percent = 5, \r\nNot Billable = 6,\r\nConditionalFeeAgreement = 7",
+            "description": "The billing type.\r\n\r\nPossible values: None = 0, Fixed Fee = 1, Fixed Fee per Appearance = 2, Time Based = 3, Contingency Dollars = 4, Contingency Percent = 5, Not Billable = 6",
             "example": 1
           },
           "amount": {
@@ -28195,7 +28195,7 @@
                 "$ref": "#/components/schemas/PluginType"
               }
             ],
-            "description": "The type of component the plugin should represent."
+            "description": "The type of component the plugin should render."
           },
           "version": {
             "allOf": [
@@ -28314,7 +28314,7 @@
                 "$ref": "#/components/schemas/PluginType"
               }
             ],
-            "description": "The type of component the plugin should represent."
+            "description": "The type of component the plugin should render."
           },
           "version": {
             "allOf": [
@@ -29570,7 +29570,7 @@
         "properties": {
           "cancellationType": {
             "type": "string",
-            "description": "Optional type of cancellation.\r\n\r\n* PeriodEnd - Cancel subscription at the end of the billing cycle\r\n\r\n* Immediate - Cancel subscription immediately. \r\n\r\n* Date - Cancel at specified date, 'CancelAt' must be supplied.\r\n\r\nDefaults to cancel at period end (end of the billing cycle).\r\n\r\nPossible values: PeriodEnd, Immediate, Date."
+            "description": "The subscription cancellation type.\r\n\r\n* None - No cancellation type has been set.\r\n\r\n* PeriodEnd - Cancel subscription at the end of the billing cycle.\r\n\r\n* Immediate - Cancel subscription immediately.\r\n\r\n* Date - Cancel at specified date - see 'CancelAt'."
           },
           "cancelAt": {
             "type": "string",
@@ -29615,11 +29615,11 @@
           },
           "cancellationType": {
             "type": "string",
-            "description": "The cancellation type."
+            "description": "The subscription cancellation type.\r\n\r\n* None - No cancellation type has been set.\r\n\r\n* PeriodEnd - Cancel subscription at the end of the billing cycle.\r\n\r\n* Immediate - Cancel subscription immediately.\r\n\r\n* Date - Cancel at specified date - see 'CancelAt'."
           },
           "cancellationBehaviour": {
             "type": "string",
-            "description": "The cancellation behaviour."
+            "description": "The subscription cancellation behaviour.\r\n\r\n* Cancel - Standard behaviour. The subscription will be canceled as normal.\r\n\r\n* CancelTrials - Any trials applied to the subscription will be canceled."
           },
           "cancelAt": {
             "type": "string",
@@ -29765,7 +29765,7 @@
           },
           "status": {
             "type": "string",
-            "description": "Current status of the usage charge.\r\n\r\nPossible values: Pending, Succeeded, Failed, Canceled, Refunded."
+            "description": "The usage charge status.\r\n\r\n* Pending\r\n\r\n* Succeeded\r\n\r\n* Failed\r\n\r\n* Canceled\r\n\r\n* Refunded"
           },
           "failureReason": {
             "type": "string",
@@ -29983,7 +29983,7 @@
           },
           "interval": {
             "type": "string",
-            "description": "Billing interval associated to this line item. \r\n\r\nPossible values: None, Daily, Weekly, Monthly, Yearly."
+            "description": "Recurring payment interval type."
           },
           "amount": {
             "type": "integer",
@@ -30063,7 +30063,7 @@
           },
           "type": {
             "type": "string",
-            "description": "Type of payment method (currently only CREDIT_CARD is supported).",
+            "description": "The payment type.\r\n\r\n* None - The payment type is missing or unknown.\r\n\r\n* CreditCard - Credit Card payment type.\r\n\r\n* DirectDeposit - Direct Deposit payment type. (not currently supported)",
             "example": "CreditCard"
           },
           "isDefault": {
@@ -30082,7 +30082,7 @@
           },
           "lastPaymentState": {
             "type": "string",
-            "description": "Last transaction state.",
+            "description": "The status of a payment.\r\n\r\n* None: The payment status is unknown.\r\n\r\n* Succeeded: The payment was successful.\r\n\r\n* Processing: The payment is being processed.\r\n\r\n* Canceled: The payment was canceled.\r\n\r\n* Failed: The payment requires a payment method to be provided, the provided payment method failed or other action is required (e.g. confirmation or other action by the customer)",
             "example": "Succeeded"
           },
           "createdDate": {
@@ -30348,7 +30348,7 @@
           },
           "type": {
             "type": "string",
-            "description": "The type of the pricing option.",
+            "description": "The type of price.",
             "example": "Recurring"
           },
           "name": {
@@ -30366,7 +30366,7 @@
           },
           "interval": {
             "type": "string",
-            "description": "The interval of the price.",
+            "description": "Recurring payment interval type.",
             "example": "Monthly"
           }
         },
@@ -30879,7 +30879,7 @@
         "properties": {
           "type": {
             "type": "string",
-            "description": "The type of the change."
+            "description": "The subscription change type.\r\n\r\n* Updated\r\n\r\n* AddOnAdded\r\n\r\n* AddOnRemoved\r\n\r\n* PromotionApplied\r\n\r\n* PromotionRemoved\r\n\r\n* Canceled\r\n\r\n* Resumed\r\n\r\n* PaymentMethodAdded\r\n\r\n* PaymentMethodRemoved\r\n\r\n* PaymentMethodSetAsDefault\r\n\r\n* QuantityUpdated\r\n\r\n* Created\r\n\r\n* Advanced"
           },
           "accountId": {
             "type": "string",
@@ -31074,7 +31074,7 @@
           },
           "status": {
             "type": "string",
-            "description": "The invoice status.\r\n\r\nPossible values: Draft, Open, Paid, Unpaid, Void, Closed",
+            "description": "The invoice status.",
             "example": "Paid"
           },
           "description": {
@@ -31180,7 +31180,7 @@
           },
           "interval": {
             "type": "string",
-            "description": "Billing interval associated to this line item. \r\n\r\nPossible values: None, Daily, Weekly, Monthly, Yearly."
+            "description": "Recurring payment interval type."
           },
           "amount": {
             "type": "integer",
@@ -31602,7 +31602,7 @@
           },
           "usageAccessPermission": {
             "type": "string",
-            "description": "Controls which staff at the firm can access Usage-based Products."
+            "description": "Controls which staff at a firm can use Usage-based Products.\r\nMissing settings should be treated as Finance.Subscriptions.Entities.UsageAccessPermission.All."
           },
           "usageAccessSelectedUserIds": {
             "type": "array",
@@ -31636,7 +31636,7 @@
           },
           "usageAccessPermission": {
             "type": "string",
-            "description": "Controls which users at the firm can access usage-based Products."
+            "description": "Controls which staff at a firm can use Usage-based Products.\r\nMissing settings should be treated as Finance.Subscriptions.Entities.UsageAccessPermission.All."
           },
           "usageAccessSelectedUserIds": {
             "type": "array",
@@ -32552,7 +32552,7 @@
                 "$ref": "#/components/schemas/DocumentType"
               }
             ],
-            "description": "The type of the document.\r\n\r\nPossible values: File = 0, FormTemplate = 1, Memo = 2.\r\n\r\nThe FormTemplate (1) document type is not currently supported for task document creation.",
+            "description": "Available document types: \"File = 0\", \"FormTemplate = 1\", \"Memo = 2\" \r\n\r\nThe FormTemplate (1) document type is not currently supported for task document creation.",
             "example": 0
           }
         },
