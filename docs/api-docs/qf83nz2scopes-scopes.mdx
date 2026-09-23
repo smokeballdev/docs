@@ -14,7 +14,7 @@ Scopes are used to limit access to your Smokeball App. Each API resource has a p
 
 ## Requesting scopes
 
-Scopes are requested via the `scope` parameter (space-delimited) when authorizing with the [Authorization Code Grant](/docs/api-docs/2t26gcuuqf1wk-authorization-code-grant), or when requesting a token with the [Client Credentials Grant](/docs/api-docs/h72024p76i8e1-client-credentials-grant).
+Scopes are requested via the `scope` parameter (space-delimited) when authorizing with the [Authorization Code Grant](/docs/api-docs/2t26gcuuqf1wk-authorization-code-grant).
 Always include the `scope` parameter and list every scope your app needs, for example `scope=contacts%2Fread%20matters%2Fread%20matters%2Fwrite`.
 Each requested scope must be assigned to your app in the Developer Console.
 
@@ -25,6 +25,11 @@ Copy it from the console rather than building it by hand.
 <Note>
   If the `scope` parameter is omitted, the authorization server currently falls back to issuing a token with all scopes assigned to the app.
   OAuth 2.0 expects clients to request their scopes explicitly, so do not rely on this fallback.
+</Note>
+
+<Note>
+  The [Client Credentials Grant](/docs/api-docs/h72024p76i8e1-client-credentials-grant) does not take a `scope` parameter.
+  Tokens issued by that grant carry every scope assigned to the app in the Developer Console.
 </Note>
 
 <Warning>
