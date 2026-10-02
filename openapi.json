@@ -6234,6 +6234,439 @@
         }
       }
     },
+    "/invitations": {
+      "get": {
+        "tags": ["Invitations"],
+        "summary": "Search invitations",
+        "description": "Lists the firm's invitations, most recently expiring first. Only pending invitations are\r\nreturned unless `status` says otherwise.",
+        "operationId": "GetInvitations",
+        "parameters": [
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 500,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Status",
+            "in": "query",
+            "description": "Pending (when omitted), Accepted, Expired or Cancelled; repeat the parameter for more than one.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "Search",
+            "in": "query",
+            "description": "Filter by invitations whose email address contains the specified text, ignoring case.",
+            "schema": {
+              "type": "string",
+              "example": "jane"
+            },
+            "example": "jane"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "When the request is successful. Returns a paged collection of 'Invitation' objects.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvitationPagedCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When paging is out of range or a `status` value is not one of Pending, Accepted, Expired or Cancelled.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "When the authenticated client carries no firm account (bodyless).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Invitations"],
+        "summary": "Invite a person to join the firm",
+        "description": "Invites a person who has no login yet to the firm associated with the authenticated client;\r\naccepting the invitation creates their login. The invitation is recorded asynchronously, so\r\nthe returned link answers 404 for a few seconds. Set `sendEmail` to false to deliver it yourself.",
+        "operationId": "CreateInvitationAsync",
+        "requestBody": {
+          "description": "The person to invite.",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/InvitationDto"
+                  }
+                ],
+                "description": "An invitation to create."
+              }
+            },
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/InvitationDto"
+                  }
+                ],
+                "description": "An invitation to create."
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/InvitationDto"
+                  }
+                ],
+                "description": "An invitation to create."
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "When the request is accepted. Returns a hypermedia 'Link' object of the invitation.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Link"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When the email address is invalid, the authenticated client carries no user id ('Inviting user is required'), a login for the email address already belongs to this firm ('Already registered with this firm') or to another firm ('Registered with another firm'), or an invitation for it has not expired yet ('An unexpired invitation already exists for this email address').",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "When the inviting user is not a member of the firm ('User is not associated to the specified account'), or the authenticated client carries no firm account (bodyless).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/invitations/{id}": {
+      "get": {
+        "tags": ["Invitations"],
+        "summary": "Get an invitation",
+        "description": "A newly created invitation answers 404 for a few seconds after `POST /invitations` returns.",
+        "operationId": "GetInvitationById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique identifier of the invitation.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "When the request is successful. Returns an 'Invitation' object.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invitation"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When the specified id is not a valid identifier.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "When the authenticated client carries no firm account (bodyless).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When no invitation with the specified id exists for this account ('Invitation not found').",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Invitations"],
+        "summary": "Cancel an invitation",
+        "description": "A cancelled invitation can no longer be accepted. Cancelling is asynchronous: the invitation\r\nreads Cancelled once the cancellation is applied.",
+        "operationId": "CancelInvitation",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique identifier of the invitation to cancel.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "When the request is accepted. Returns a hypermedia 'Link' object of the cancelled invitation.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Link"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When the invitation was already accepted, or is already cancelled everywhere ('Invitation is no longer valid').",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "When the authenticated client carries no firm account (bodyless).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When no invitation with the specified id exists for this account ('Invitation not found').",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/invitations/{id}/resend": {
+      "post": {
+        "tags": ["Invitations"],
+        "summary": "Resend an invitation",
+        "description": "Sends no email — the authenticated client delivers the invitation link itself. Resending is\r\nasynchronous: once applied, a pending or expired invitation reads Pending and expires seven days later.",
+        "operationId": "ResendInvitation",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique identifier of the invitation to resend.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "When the request is accepted. Returns a hypermedia 'Link' object of the resent invitation.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Link"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When the invitation was already accepted or was cancelled ('Invitation is no longer valid').",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "When the authenticated client carries no firm account (bodyless).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When no invitation with the specified id exists for this account ('Invitation not found').",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/invitations/{id}/accept": {
+      "post": {
+        "tags": ["Invitations"],
+        "summary": "Accept an invitation",
+        "description": "Server-to-server clients only. Creates the invited person's login under the invited email\r\naddress, with a user id derived from the invitation, and registers it with the firm; omit\r\n`password` to have the identity provider email them a way to set one. Repeating the request,\r\neven after the invitation's expiry, answers the same reply and creates the login once.",
+        "operationId": "AcceptInvitationAsync",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique identifier of the invitation to accept.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The credential to create the login with.",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/AcceptInvitationDto"
+                  }
+                ],
+                "description": "The credential the invited person's login is created with."
+              }
+            },
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/AcceptInvitationDto"
+                  }
+                ],
+                "description": "The credential the invited person's login is created with."
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/AcceptInvitationDto"
+                  }
+                ],
+                "description": "The credential the invited person's login is created with."
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "When the request is accepted. Returns a hypermedia 'Link' object of the user.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Link"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When the invitation expired or was cancelled ('Invitation is no longer valid'), was accepted by another login ('Invitation has already been accepted'), a login already exists for the invited email address ('Email address has already been registered'), the identity provider refused the credential ('Login could not be created'), or the login is already registered with the firm ('Already registered with this firm').",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "When the authenticated client is not a server-to-server client or carries no firm account (both bodyless).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When no invitation with the specified id exists for this account ('Invitation not found').",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/matters/{matterId}/invoices": {
       "get": {
         "tags": ["Invoices"],
@@ -15359,7 +15792,7 @@
       "post": {
         "tags": ["Users"],
         "summary": "Create a user",
-        "description": "Creates a user.\r\n            \r\nProvider decides where the user is created. When omitted, Default is used.\r\n- Default (the service's default identity provider for new users)\r\n- Auth0\r\n            \r\nInitialPassword decides how the user gets their first password. When omitted, a missing\r\npassword means Invitation (the identity provider emails the user the way to set their own)\r\nand a supplied password is Permanent. Temporary must be changed at first sign-in. Nothing\r\nis emailed for Permanent or Temporary - the caller delivers the password.",
+        "description": "Creates a user.\r\n            \r\nProvider decides where the user is created. When omitted, Default is used.\r\n- Default (the service's default identity provider for new users)\r\n- Auth0\r\n            \r\nInitialPassword decides how the user gets their first password. When omitted, a missing\r\npassword means Invitation (the identity provider emails the user the way to set their own)\r\nand a supplied password is Permanent. Temporary must be changed at first sign-in. Nothing\r\nis emailed for Permanent or Temporary - the caller delivers the password.\r\n            \r\nTo add an invited person, accept their invitation instead; creating the login here registers them without it.",
         "operationId": "CreateUserAsync",
         "requestBody": {
           "content": {
@@ -15419,8 +15852,8 @@
     "/users/{id}/invite": {
       "post": {
         "tags": ["Users"],
-        "summary": "Resend a user invitation",
-        "description": "Resends an invitation email with a temporary password for the specified user.\r\n\r\nThe user must exist and belong to the specified account when specifying id.\r\nOptionally invite a user using a email address instead of user id. Use a default id of all zeros when posting email address payload.\r\nEmail address invites are only available to client credential grants.",
+        "summary": "Resend sign-in credentials",
+        "description": "Sends a new temporary password to an existing login. It does not invite a person to join a firm.\r\n\r\nThe user must exist and belong to the specified account when specifying id.\r\nOptionally resend credentials using an email address instead of a user id. Use a default id of all zeros when posting an email address payload.\r\nEmail address credential resends are only available to client credential grants.",
         "operationId": "InviteUserAsync",
         "parameters": [
           {
@@ -15465,15 +15898,8 @@
           }
         },
         "responses": {
-          "202": {
-            "description": "When request is accepted. Returns a hypermedia 'Link' object of the user to be invited.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Link"
-                }
-              }
-            }
+          "200": {
+            "description": "When the credential resend is accepted. Returns no content."
           },
           "400": {
             "description": "When an unsupported request is made.",
@@ -24729,6 +25155,302 @@
         "type": "string",
         "description": "Submission response field type."
       },
+      "AcceptInvitationDto": {
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string",
+            "description": "Password with a lowercase, uppercase, numeric and special character; omit it to have the identity provider email the person a way to set one.",
+            "nullable": true
+          },
+          "provider": {
+            "type": "string",
+            "description": "Where the login is created: Default (when omitted) or Auth0.",
+            "example": "Auth0"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The credential the invited person's login is created with."
+      },
+      "Invitation": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relation": {
+            "type": "string",
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "self": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ],
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the invitation.",
+            "nullable": true,
+            "example": "750eb5c5-ac0b-7d11-4997-e0ce9d8896c8"
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address the invitation was sent to.",
+            "nullable": true,
+            "example": "jane.doe@example.com"
+          },
+          "status": {
+            "type": "string",
+            "description": "Pending, Accepted (the person registered with the firm), Expired or Cancelled.",
+            "example": "Pending"
+          },
+          "expiresOn": {
+            "type": "string",
+            "description": "When the invitation expires (UTC). A cancelled invitation expired when it was cancelled.",
+            "format": "date-time",
+            "example": "2026-10-01T04:31:00Z"
+          },
+          "createdOn": {
+            "type": "string",
+            "description": "When the invitation was created (UTC).",
+            "format": "date-time",
+            "example": "2026-09-24T04:31:00Z"
+          },
+          "invitedByUserId": {
+            "type": "string",
+            "description": "Unique identifier of the user who sent the invitation.",
+            "nullable": true,
+            "example": "b471682e-fa17-4e46-b7fe-9b2b8fdcb3c2"
+          }
+        },
+        "additionalProperties": false,
+        "description": "An invitation for a person to join a firm."
+      },
+      "InvitationDto": {
+        "required": ["email"],
+        "type": "object",
+        "properties": {
+          "email": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Email address of the person being invited to join the firm.",
+            "format": "email",
+            "example": "jane.doe@example.com"
+          },
+          "sendEmail": {
+            "type": "boolean",
+            "description": "Whether the platform emails the invitation (default true); false to deliver it yourself.",
+            "example": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "An invitation to create."
+      },
+      "InvitationPagedCollection": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relation": {
+            "type": "string",
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "self": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ],
+            "nullable": true
+          },
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Invitation"
+            },
+            "nullable": true
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "limit": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "first": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ],
+            "nullable": true
+          },
+          "previous": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ],
+            "nullable": true
+          },
+          "next": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ],
+            "nullable": true
+          },
+          "last": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "A page of invitations."
+      },
+      "InviteUserDto": {
+        "required": ["email"],
+        "type": "object",
+        "properties": {
+          "email": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Invite user by email address."
+          }
+        },
+        "additionalProperties": false
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relation": {
+            "type": "string",
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "self": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ],
+            "nullable": true
+          },
+          "userId": {
+            "type": "string",
+            "description": "Unique identifier of the user.",
+            "nullable": true,
+            "example": "23d2a4bc-8529-462e-8560-dfbf4fa24e49"
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address of the user.",
+            "nullable": true,
+            "example": "user@domain.com"
+          },
+          "isInternal": {
+            "type": "boolean",
+            "description": "Returns true if the user is flagged as an internal user.",
+            "example": true
+          },
+          "bypassMfa": {
+            "type": "boolean",
+            "description": "Returns true if multi-factor authentication is bypassed for the user.",
+            "example": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserDto": {
+        "required": ["email"],
+        "type": "object",
+        "properties": {
+          "provider": {
+            "type": "string",
+            "description": "Where the user is created: Default or Auth0.\r\n            \r\nWhen omitted: Default.",
+            "example": "Auth0"
+          },
+          "email": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Email address of the user.",
+            "example": "user@domain.com"
+          },
+          "password": {
+            "type": "string",
+            "description": "Password for the user.\r\n\r\nPassword must include atleast one lowercase character, uppercase character, numeric character as well as a special character.",
+            "nullable": true
+          },
+          "expireAfterDays": {
+            "type": "integer",
+            "description": "Expire after the specified days. Must be left blank for users that do not expire.",
+            "format": "int32",
+            "nullable": true,
+            "example": 7
+          },
+          "isInternal": {
+            "type": "boolean",
+            "description": "Creates the user as an internal user.\r\n\r\nInternal users are excluded from billing and license counts.\r\n\r\nUse this option for testing, background services, or other non-customer-facing purposes.",
+            "example": true
+          },
+          "bypassMfa": {
+            "type": "boolean",
+            "description": "Bypasses multi-factor authentication for the user.\r\n\r\nWhen enabled, the user will not be prompted for two factor authentication during login.",
+            "example": true
+          },
+          "initialPassword": {
+            "type": "string",
+            "description": "How the user gets their first password: Permanent (the supplied password is final),\r\nTemporary (the supplied password must be changed at first sign-in) or Invitation (the\r\nuser is emailed the way to set their own; any supplied password is ignored).\r\n            \r\nPermanent and Temporary require a password; nothing is emailed for them, the caller\r\ndelivers the password.\r\n            \r\nWhen omitted: Invitation if no password is supplied, otherwise Permanent.",
+            "nullable": true,
+            "example": "Temporary"
+          }
+        },
+        "additionalProperties": false
+      },
       "Debtor": {
         "type": "object",
         "properties": {
@@ -32733,117 +33455,6 @@
               }
             ],
             "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "InviteUserDto": {
-        "required": ["email"],
-        "type": "object",
-        "properties": {
-          "email": {
-            "minLength": 1,
-            "type": "string",
-            "description": "Invite user by email address."
-          }
-        },
-        "additionalProperties": false
-      },
-      "User": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "nullable": true
-          },
-          "href": {
-            "type": "string",
-            "nullable": true
-          },
-          "relation": {
-            "type": "string",
-            "nullable": true
-          },
-          "method": {
-            "type": "string",
-            "default": "GET",
-            "nullable": true
-          },
-          "self": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Link"
-              }
-            ],
-            "nullable": true
-          },
-          "userId": {
-            "type": "string",
-            "description": "Unique identifier of the user.",
-            "nullable": true,
-            "example": "23d2a4bc-8529-462e-8560-dfbf4fa24e49"
-          },
-          "email": {
-            "type": "string",
-            "description": "Email address of the user.",
-            "nullable": true,
-            "example": "user@domain.com"
-          },
-          "isInternal": {
-            "type": "boolean",
-            "description": "Returns true if the user is flagged as an internal user.",
-            "example": true
-          },
-          "bypassMfa": {
-            "type": "boolean",
-            "description": "Returns true if multi-factor authentication is bypassed for the user.",
-            "example": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "UserDto": {
-        "required": ["email"],
-        "type": "object",
-        "properties": {
-          "provider": {
-            "type": "string",
-            "description": "Where the user is created: Default or Auth0.\r\n            \r\nWhen omitted: Default.",
-            "example": "Auth0"
-          },
-          "email": {
-            "minLength": 1,
-            "type": "string",
-            "description": "Email address of the user.",
-            "example": "user@domain.com"
-          },
-          "password": {
-            "type": "string",
-            "description": "Password for the user.\r\n\r\nPassword must include atleast one lowercase character, uppercase character, numeric character as well as a special character.",
-            "nullable": true
-          },
-          "expireAfterDays": {
-            "type": "integer",
-            "description": "Expire after the specified days. Must be left blank for users that do not expire.",
-            "format": "int32",
-            "nullable": true,
-            "example": 7
-          },
-          "isInternal": {
-            "type": "boolean",
-            "description": "Creates the user as an internal user.\r\n\r\nInternal users are excluded from billing and license counts.\r\n\r\nUse this option for testing, background services, or other non-customer-facing purposes.",
-            "example": true
-          },
-          "bypassMfa": {
-            "type": "boolean",
-            "description": "Bypasses multi-factor authentication for the user.\r\n\r\nWhen enabled, the user will not be prompted for two factor authentication during login.",
-            "example": true
-          },
-          "initialPassword": {
-            "type": "string",
-            "description": "How the user gets their first password: Permanent (the supplied password is final),\r\nTemporary (the supplied password must be changed at first sign-in) or Invitation (the\r\nuser is emailed the way to set their own; any supplied password is ignored).\r\n            \r\nPermanent and Temporary require a password; nothing is emailed for them, the caller\r\ndelivers the password.\r\n            \r\nWhen omitted: Invitation if no password is supplied, otherwise Permanent.",
-            "nullable": true,
-            "example": "Temporary"
           }
         },
         "additionalProperties": false
