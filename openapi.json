@@ -1166,7 +1166,7 @@
             }
           },
           "400": {
-            "description": "When an unsupported request is made.",
+            "description": "When an unsupported request is made, or the funds are held by an approval request.",
             "content": {
               "application/json": {
                 "schema": {
@@ -6378,7 +6378,7 @@
             }
           },
           "403": {
-            "description": "When the inviting user is not a member of the firm ('User is not associated to the specified account'), or the authenticated client carries no firm account (bodyless).",
+            "description": "When the inviting user is not a member of the firm ('User is not associated to the specified account'), or the authenticated client lacks the `invitations/write` scope or carries no firm account (bodyless).",
             "content": {
               "application/json": {
                 "schema": {
@@ -6488,7 +6488,7 @@
             }
           },
           "403": {
-            "description": "When the authenticated client carries no firm account (bodyless).",
+            "description": "When the authenticated client lacks the `invitations/write` scope or carries no firm account (bodyless).",
             "content": {
               "application/json": {
                 "schema": {
@@ -6549,7 +6549,7 @@
             }
           },
           "403": {
-            "description": "When the authenticated client carries no firm account (bodyless).",
+            "description": "When the authenticated client lacks the `invitations/write` scope or carries no firm account (bodyless).",
             "content": {
               "application/json": {
                 "schema": {
@@ -6645,7 +6645,7 @@
             }
           },
           "403": {
-            "description": "When the authenticated client is not a server-to-server client or carries no firm account (both bodyless).",
+            "description": "When the authenticated client is not a server-to-server client, lacks the `invitations/write` scope or carries no firm account (all bodyless).",
             "content": {
               "application/json": {
                 "schema": {
@@ -18082,7 +18082,7 @@
                 "$ref": "#/components/schemas/DxAddress"
               }
             ],
-            "description": "DX address details (only applicable for AUS).",
+            "description": "DX address details.\r\n            \r\nOnly supported in AU and UK.",
             "nullable": true
           }
         },
@@ -18196,7 +18196,7 @@
                 "$ref": "#/components/schemas/DxAddressDto"
               }
             ],
-            "description": "DX address of the company (only applicable for AUS).",
+            "description": "DX address of the company.\r\n            \r\nOnly supported in AU and UK.",
             "nullable": true
           }
         },
@@ -18358,13 +18358,13 @@
           },
           "companyNumberType": {
             "type": "string",
-            "description": "Company's Australian company number type.\r\n\r\nAccepted values - ACN, ARBN\r\n\r\nOnly supported in AU.",
+            "description": "Company's Australian company number type.\r\n\r\nAccepted values - ACN, ARBN\r\n\r\nOnly supported in AU and UK.",
             "nullable": true,
             "example": "ACN"
           },
           "companyNumber": {
             "type": "string",
-            "description": "Company's Australian Company Number.\r\n            \r\nOnly supported in AU.",
+            "description": "Company's Australian Company Number.\r\n            \r\nOnly supported in AU and UK.",
             "nullable": true,
             "example": "234567890"
           },
@@ -18573,13 +18573,13 @@
           },
           "companyNumberType": {
             "type": "string",
-            "description": "Company's Australian company number type.\r\n\r\nPossible values: 'ACN', 'ARBN'\r\n\r\nOnly supported in AU.",
+            "description": "Company's Australian company number type.\r\n\r\nPossible values: 'ACN', 'ARBN'\r\n\r\nOnly supported in AU and UK.",
             "nullable": true,
             "example": "ACN"
           },
           "companyNumber": {
             "type": "string",
-            "description": "Company's Australian Company Number.\r\n\r\nOnly supported in AU.",
+            "description": "Company's Australian Company Number.\r\n\r\nOnly supported in AU and UK.",
             "nullable": true,
             "example": "234567890"
           },
@@ -30292,7 +30292,7 @@
         "properties": {
           "cancellationType": {
             "type": "string",
-            "description": "The subscription cancellation type.\r\n\r\n* None - No cancellation type has been set.\r\n\r\n* PeriodEnd - Cancel subscription at the end of the billing cycle.\r\n\r\n* Immediate - Cancel subscription immediately.\r\n\r\n* Date - Cancel at specified date - see 'CancelAt'."
+            "description": "Optional type of cancellation.\r\n\r\n* PeriodEnd - Cancel subscription at the end of the billing cycle\r\n\r\n* Immediate - Cancel subscription immediately. \r\n\r\n* Date - Cancel at specified date, 'CancelAt' must be supplied.\r\n\r\nDefaults to cancel at period end (end of the billing cycle).\r\n\r\nPossible values: PeriodEnd, Immediate, Date."
           },
           "cancelAt": {
             "type": "string",
@@ -30337,11 +30337,11 @@
           },
           "cancellationType": {
             "type": "string",
-            "description": "The subscription cancellation type.\r\n\r\n* None - No cancellation type has been set.\r\n\r\n* PeriodEnd - Cancel subscription at the end of the billing cycle.\r\n\r\n* Immediate - Cancel subscription immediately.\r\n\r\n* Date - Cancel at specified date - see 'CancelAt'."
+            "description": "The cancellation type."
           },
           "cancellationBehaviour": {
             "type": "string",
-            "description": "The subscription cancellation behaviour.\r\n\r\n* Cancel - Standard behaviour. The subscription will be canceled as normal.\r\n\r\n* CancelTrials - Any trials applied to the subscription will be canceled."
+            "description": "The cancellation behaviour."
           },
           "cancelAt": {
             "type": "string",
@@ -30487,7 +30487,7 @@
           },
           "status": {
             "type": "string",
-            "description": "The usage charge status.\r\n\r\n* Pending\r\n\r\n* Succeeded\r\n\r\n* Failed\r\n\r\n* Canceled\r\n\r\n* Refunded"
+            "description": "Current status of the usage charge.\r\n\r\nPossible values: Pending, Succeeded, Failed, Canceled, Refunded."
           },
           "failureReason": {
             "type": "string",
@@ -30705,7 +30705,7 @@
           },
           "interval": {
             "type": "string",
-            "description": "Recurring payment interval type."
+            "description": "Billing interval associated to this line item. \r\n\r\nPossible values: None, Daily, Weekly, Monthly, Yearly."
           },
           "amount": {
             "type": "integer",
@@ -30785,7 +30785,7 @@
           },
           "type": {
             "type": "string",
-            "description": "The payment type.\r\n\r\n* None - The payment type is missing or unknown.\r\n\r\n* CreditCard - Credit Card payment type.\r\n\r\n* DirectDeposit - Direct Deposit payment type. (not currently supported)",
+            "description": "Type of payment method (currently only CREDIT_CARD is supported).",
             "example": "CreditCard"
           },
           "isDefault": {
@@ -30804,7 +30804,7 @@
           },
           "lastPaymentState": {
             "type": "string",
-            "description": "The status of a payment.\r\n\r\n* None: The payment status is unknown.\r\n\r\n* Succeeded: The payment was successful.\r\n\r\n* Processing: The payment is being processed.\r\n\r\n* Canceled: The payment was canceled.\r\n\r\n* Failed: The payment requires a payment method to be provided, the provided payment method failed or other action is required (e.g. confirmation or other action by the customer)",
+            "description": "Last transaction state.",
             "example": "Succeeded"
           },
           "createdDate": {
@@ -31070,7 +31070,7 @@
           },
           "type": {
             "type": "string",
-            "description": "The type of price.",
+            "description": "The type of the pricing option.",
             "example": "Recurring"
           },
           "name": {
@@ -31088,7 +31088,7 @@
           },
           "interval": {
             "type": "string",
-            "description": "Recurring payment interval type.",
+            "description": "The interval of the price.",
             "example": "Monthly"
           }
         },
@@ -31601,7 +31601,7 @@
         "properties": {
           "type": {
             "type": "string",
-            "description": "The subscription change type.\r\n\r\n* Updated\r\n\r\n* AddOnAdded\r\n\r\n* AddOnRemoved\r\n\r\n* PromotionApplied\r\n\r\n* PromotionRemoved\r\n\r\n* Canceled\r\n\r\n* Resumed\r\n\r\n* PaymentMethodAdded\r\n\r\n* PaymentMethodRemoved\r\n\r\n* PaymentMethodSetAsDefault\r\n\r\n* QuantityUpdated\r\n\r\n* Created\r\n\r\n* Advanced"
+            "description": "The type of the change."
           },
           "accountId": {
             "type": "string",
@@ -31796,7 +31796,7 @@
           },
           "status": {
             "type": "string",
-            "description": "The invoice status.",
+            "description": "The invoice status.\r\n\r\nPossible values: Draft, Open, Paid, Unpaid, Void, Closed",
             "example": "Paid"
           },
           "description": {
@@ -31902,7 +31902,7 @@
           },
           "interval": {
             "type": "string",
-            "description": "Recurring payment interval type."
+            "description": "Billing interval associated to this line item. \r\n\r\nPossible values: None, Daily, Weekly, Monthly, Yearly."
           },
           "amount": {
             "type": "integer",
@@ -32324,7 +32324,7 @@
           },
           "usageAccessPermission": {
             "type": "string",
-            "description": "Controls which staff at a firm can use Usage-based Products.\r\nMissing settings should be treated as Finance.Subscriptions.Entities.UsageAccessPermission.All."
+            "description": "Controls which staff at the firm can access Usage-based Products."
           },
           "usageAccessSelectedUserIds": {
             "type": "array",
@@ -32358,7 +32358,7 @@
           },
           "usageAccessPermission": {
             "type": "string",
-            "description": "Controls which staff at a firm can use Usage-based Products.\r\nMissing settings should be treated as Finance.Subscriptions.Entities.UsageAccessPermission.All."
+            "description": "Controls which users at the firm can access usage-based Products."
           },
           "usageAccessSelectedUserIds": {
             "type": "array",
