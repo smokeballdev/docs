@@ -122,15 +122,34 @@ Make sure you are exchanging the code for a token as soon as it’s issued—ide
 
 ## Adding scopes to your app
 
-If you need to add new scopes (permissions) to your app, they must first be configured and tested in the staging environment before they can be used in production.
+How you add new scopes (permissions) to your app depends on whether you are a partner or a firm building an app for its own use.
+See the [Environment](/docs/platform-docs/867hiv3k5bt1u-build-app#environment) section of Building your app for the difference.
 
-1. Navigate to your app settings in the Developer Console and add the required scopes to your **staging** app configuration.
+**Partners**
+
+Partner apps must have new scopes configured and tested in the staging environment before they can be used in production.
+
+1. Navigate to your app settings in the Developer Console and add the required scopes to your **Staging** app configuration.
 2. Test your app thoroughly in the staging environment to ensure the new scopes are being used correctly.
 3. Once verified, click the **Publish** button to submit your app for review. This will notify our team to review the changes, including the new scopes.
 4. After approval, the new scopes will be available in your production app.
 
 <Note>
 New scopes are not automatically available in production. They must go through the review process each time you update your app's scope requirements. For more details on the review process, see [Publishing your app](/docs/platform-docs/5g67h890f234g-publishing-app).
+</Note>
+
+**Firms**
+
+Firms have direct access to the production environment, so there is no review step.
+
+1. Navigate to your app settings in the Developer Console and select the **Production** environment tab.
+2. Add the required scopes and save your changes.
+3. The new scopes are available to your app straight away.
+
+<Note>
+Existing tokens are not upgraded when you add scopes.
+If your app uses the Authorization Code Grant, the user must authorize the app again. The [Install URL](/docs/platform-docs/867hiv3k5bt1u-build-app#install-url) in the Developer Console already includes the new scopes.
+If your app uses the [Client Credentials Grant](/docs/api-docs/h72024p76i8e1-client-credentials-grant), request a new access token and it will include the new scopes.
 </Note>
 
 <Warning>
