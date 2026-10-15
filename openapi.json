@@ -6635,7 +6635,7 @@
             }
           },
           "400": {
-            "description": "When the invitation expired or was cancelled ('Invitation is no longer valid'), was accepted by another login ('Invitation has already been accepted'), a login already exists for the invited email address ('Email address has already been registered'), the identity provider refused the credential ('Login could not be created'), or the login is already registered with the firm ('Already registered with this firm').",
+            "description": "When the invitation expired or was cancelled ('Invitation is no longer valid'), was accepted by another login ('Invitation has already been accepted'), a login already exists for the invited email address ('Email address has already been registered'), the identity provider refused the credential or `mfaEnrollmentGraceDays` is outside 1 to 90 ('Login could not be created'), or the login is already registered with the firm ('Already registered with this firm').",
             "content": {
               "application/json": {
                 "schema": {
@@ -25167,6 +25167,13 @@
             "type": "string",
             "description": "Where the login is created: Default (when omitted) or Auth0.",
             "example": "Auth0"
+          },
+          "mfaEnrollmentGraceDays": {
+            "type": "integer",
+            "description": "Number of days after creation during which the user may sign in without setting up\r\nmulti-factor authentication. Once the period ends, enrolment is required at the next\r\nsign-in. Between 1 and 90. Auth0 users only; ignored for other providers.\r\n            \r\nWhen omitted: enrolment is required at the first sign-in.",
+            "format": "int32",
+            "nullable": true,
+            "example": 30
           }
         },
         "additionalProperties": false,
@@ -25447,6 +25454,13 @@
             "description": "How the user gets their first password: Permanent (the supplied password is final),\r\nTemporary (the supplied password must be changed at first sign-in) or Invitation (the\r\nuser is emailed the way to set their own; any supplied password is ignored).\r\n            \r\nPermanent and Temporary require a password; nothing is emailed for them, the caller\r\ndelivers the password.\r\n            \r\nWhen omitted: Invitation if no password is supplied, otherwise Permanent.",
             "nullable": true,
             "example": "Temporary"
+          },
+          "mfaEnrollmentGraceDays": {
+            "type": "integer",
+            "description": "Number of days after creation during which the user may sign in without setting up\r\nmulti-factor authentication. Once the period ends, enrolment is required at the next\r\nsign-in. Between 1 and 90. Auth0 users only; ignored for other providers.\r\n            \r\nWhen omitted: enrolment is required at the first sign-in.",
+            "format": "int32",
+            "nullable": true,
+            "example": 30
           }
         },
         "additionalProperties": false
