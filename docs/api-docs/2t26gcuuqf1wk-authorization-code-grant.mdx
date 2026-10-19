@@ -468,11 +468,26 @@ Content-Type: application/json
 
 > See [AWS Cognito User Pool OAuth 2.0 Grants](https://aws.amazon.com/blogs/mobile/understanding-amazon-cognito-user-pool-oauth-2-0-grants/) for more information
 
-## Migrating from Id Token to Access Token
+## Migrating from ID Tokens to Access Tokens
 
-The use of **id_token** to make API requests has been deprecated.
-We will be phasing out issuing an **id_token** when you request a **token** in the future.
+Using ID tokens (`id_token`) to make Smokeball API requests is deprecated. If your integration currently uses ID tokens for API requests, you must switch to access tokens (`access_token`) **before December 2026**.
 
-If you have been using an **id_token** for your API requests, **no immediate action is required**. You will be contacted with instructions for transitioning to the **access_token**. You can also [contact us via this link](https://marketplace.smokeball.com/application_forms/api-scope-request-form/partner_applications/new) and provide us with a list of endpoints that you need access to so we can verify that your **access_token** is appropriately configured with the necessary permissions.
+### What is changing?
 
-> Note: When you transition to **access_token**, the `scope` query parameter should list only the API scopes your app needs (for example `matters/read`). Please **remember to remove** `openid` from the `scope` parameter in your requests to `https://auth.smokeball.com/oauth2/authorize`, to ensure seamless operation. 
+Existing refresh tokens and ID tokens will continue to work, subject to their normal expiry and revocation conditions. However, **for accounts connecting to your integration from December 2026 onwards, newly issued ID tokens may no longer be accepted for API requests**.
+
+Complete the switch before December 2026 to avoid disruption for these accounts.
+
+### How to migrate
+
+1. **Confirm your API scopes.** Access tokens must include the permissions required by your integration. Review the [scopes documentation](https://docs.smokeball.com/docs/api-docs/qf83nz2scopes-scopes) and identify only the API scopes your integration needs.
+   - If your integration already has the required API scopes configured, you can proceed with the migration.
+   - If your scopes have not been configured, or you are unsure, [contact us using the API scope request form](https://marketplace.smokeball.com/application_forms/api-scope-request-form/partner_applications/new). Provide your required scopes, or a list of the API endpoints and HTTP methods you use, so we can confirm the necessary permissions before you switch.
+
+2. **Update your authorisation requests if you explicitly pass a `scope` query parameter.** If your requests to `https://auth.smokeball.com/oauth2/authorize` include `scope`, ensure it lists only the API scopes your integration requires, such as `matters/read`, and remove `openid`. If you do not pass a `scope` parameter, no change is required for this step.
+
+3. **Use the access token for API requests.** Update your integration to use the `access_token` returned by the token endpoint instead of the `id_token`.
+
+4. **Test your integration.** Confirm that your API requests work with access tokens and that the configured scopes cover all required functionality. Contact us if you encounter permission issues.
+
+> **Important:** Existing connections continuing to work does not mean your integration is ready for new connections from December 2026. Complete and test the switch to access tokens before then.
