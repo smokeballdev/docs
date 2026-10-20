@@ -15681,8 +15681,8 @@
     "/users/registrations": {
       "get": {
         "tags": ["Users"],
-        "summary": "List user registrations",
-        "description": "Lists the users actively registered with the authenticated client's firm, each with when their current\r\nregistration started. `registeredAt` moves if a user is removed from the firm and added again.\r\nUsers the identity provider cannot find are left out, as they are from the subscription seat count.\r\nOne batch identity lookup per call. The list is empty when the firm is unknown.",
+        "summary": "Get user registrations",
+        "description": "Lists the users actively registered with the authenticated client's firm, each with when their current\r\nregistration started. `registeredAt` moves if a user is removed from the firm and added again.",
         "operationId": "GetUserRegistrationsAsync",
         "responses": {
           "200": {
