@@ -15678,6 +15678,36 @@
         }
       }
     },
+    "/users/registrations": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "List user registrations",
+        "description": "Lists the users actively registered with the authenticated client's firm, each with when their current\r\nregistration started. `registeredAt` moves if a user is removed from the firm and added again.\r\nUsers the identity provider cannot find are left out, as they are from the subscription seat count.\r\nOne batch identity lookup per call. The list is empty when the firm is unknown.",
+        "operationId": "GetUserRegistrationsAsync",
+        "responses": {
+          "200": {
+            "description": "When request is successful. Returns a collection of 'UserRegistration' objects.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserRegistrationCollection"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "When the authenticated client is not associated with a firm.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/users/{id}": {
       "get": {
         "tags": ["Users"],
@@ -25461,6 +25491,99 @@
             "format": "int32",
             "nullable": true,
             "example": 30
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserRegistration": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relation": {
+            "type": "string",
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "self": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ],
+            "nullable": true
+          },
+          "userId": {
+            "type": "string",
+            "description": "Unique identifier of the user.",
+            "nullable": true,
+            "example": "23d2a4bc-8529-462e-8560-dfbf4fa24e49"
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address the user registered with, lower-cased.",
+            "nullable": true,
+            "example": "user@domain.com"
+          },
+          "isInternal": {
+            "type": "boolean",
+            "description": "Returns true if the user is flagged as an internal user.",
+            "example": false
+          },
+          "registeredAt": {
+            "type": "string",
+            "description": "When the user's current registration with the firm started (UTC).",
+            "format": "date-time",
+            "example": "2026-10-01T04:31:00Z"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A user's current registration with the firm."
+      },
+      "UserRegistrationCollection": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relation": {
+            "type": "string",
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "self": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ],
+            "nullable": true
+          },
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserRegistration"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
