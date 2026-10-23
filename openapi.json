@@ -4197,21 +4197,22 @@
       "get": {
         "tags": ["Files"],
         "summary": "Get a file",
-        "description": "Retrieves a specified file. The matterId in the route is used for authorisation only and is not cross-checked\r\nagainst the matter the file belongs to.",
+        "description": "Retrieves a specified file. The file must belong to the matter in the route.",
         "operationId": "GetFileById",
         "parameters": [
           {
-            "name": "fileId",
+            "name": "matterId",
             "in": "path",
-            "description": "Unique identifier (GUID) of the file.",
+            "description": "Unique identifier (GUID) of the matter.",
             "required": true,
             "schema": {
               "type": "string"
             }
           },
           {
-            "name": "matterId",
+            "name": "fileId",
             "in": "path",
+            "description": "Unique identifier (GUID) of the file.",
             "required": true,
             "schema": {
               "type": "string"
@@ -4240,7 +4241,7 @@
             }
           },
           "403": {
-            "description": "When the requested file does not belong to the account making the request.",
+            "description": "When the requested file does not belong to the account making the request, or does not belong to the specified matter.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4685,6 +4686,26 @@
                 }
               }
             }
+          },
+          "403": {
+            "description": "When the file does not belong to the specified matter.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When the file does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
@@ -4811,7 +4832,7 @@
             }
           },
           "403": {
-            "description": "When the file does not belong to the authenticated account or does not exist.",
+            "description": "When the file does not belong to the authenticated account or to the specified matter, or does not exist.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4879,7 +4900,7 @@
             }
           },
           "403": {
-            "description": "When the file does not belong to the authenticated account or does not exist.",
+            "description": "When the file does not belong to the authenticated account or to the specified matter, or does not exist.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4958,7 +4979,7 @@
             }
           },
           "403": {
-            "description": "When the file does not belong to the authenticated account or does not exist.",
+            "description": "When the file does not belong to the authenticated account or to the specified matter, or does not exist.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5551,7 +5572,7 @@
             }
           },
           "403": {
-            "description": "When the requested matter does not belong to the account making the request.",
+            "description": "When the requested matter does not belong to the account making the request, or the folder does not belong to the specified matter.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5865,7 +5886,7 @@
       "get": {
         "tags": ["Folders"],
         "summary": "Get folder history on a matter",
-        "description": "Returns a list of history entries for the specified folder.\r\n            \r\nThe response is not paged. An unknown folder id returns 200 with an empty collection rather than 404.",
+        "description": "Returns a list of history entries for the specified folder.\r\n            \r\nThe response is not paged.",
         "operationId": "GetFolderHistory",
         "parameters": [
           {
@@ -5904,6 +5925,26 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "When the folder does not belong to the specified matter.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When folder with the specified id does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
