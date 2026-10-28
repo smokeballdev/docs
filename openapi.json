@@ -12340,6 +12340,203 @@
         "x-excluded": true
       }
     },
+    "/subscriptions/paymentmethods/sessions": {
+      "post": {
+        "tags": ["Subscription Payments"],
+        "summary": "Create a payment method session",
+        "description": "Creates a hosted page where the user enters a card for the account, and returns its url.\r\n            \r\nAdding a card:\r\n* Call this endpoint and redirect the user to 'url'.\r\n* The user enters a card and is redirected to 'successUrl', or to 'cancelUrl' if they leave.\r\n* The card is added asynchronously once the user completes the page. Poll the payment methods endpoint to see it.",
+        "operationId": "CreatePaymentMethodSessionAsync",
+        "requestBody": {
+          "description": "Where to redirect the user afterwards and how to apply the new payment method",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreatePaymentMethodSessionRequest"
+                  }
+                ]
+              }
+            },
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreatePaymentMethodSessionRequest"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreatePaymentMethodSessionRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "When request is successful. Returns a 'PaymentMethodSessionResponse' object.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentMethodSessionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When a redirect url is not a valid absolute url.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When the account is not associated to a customer.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "When an error occurs while creating the session."
+          }
+        },
+        "x-excluded": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/paymentmethods/sessions": {
+      "post": {
+        "tags": ["Subscription Payments"],
+        "summary": "Create a payment method session",
+        "description": "Creates a hosted page where the user enters a card for the account, and returns its url. Once the user\r\ncompletes it, the card is also set as the default payment method for the specified subscription.\r\n            \r\nAdding a card:\r\n* Call this endpoint and redirect the user to 'url'.\r\n* The user enters a card and is redirected to 'successUrl', or to 'cancelUrl' if they leave.\r\n* The card is added asynchronously once the user completes the page. Poll the payment methods endpoint to see it.",
+        "operationId": "CreateSubscriptionPaymentMethodSessionAsync",
+        "parameters": [
+          {
+            "name": "subscriptionId",
+            "in": "path",
+            "description": "The unique identifier of the subscription",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Where to redirect the user afterwards and how to apply the new payment method",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreatePaymentMethodSessionRequest"
+                  }
+                ]
+              }
+            },
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreatePaymentMethodSessionRequest"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreatePaymentMethodSessionRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "When request is successful. Returns a 'PaymentMethodSessionResponse' object.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentMethodSessionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When a redirect url is not a valid absolute url.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When the subscription does not exist, or the account is not associated to a customer.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "When an error occurs while creating the session."
+          }
+        },
+        "x-excluded": true
+      }
+    },
+    "/subscriptions/paymentmethods/setup-intent": {
+      "post": {
+        "tags": ["Subscription Payments"],
+        "summary": "Create a setup intent",
+        "description": "Creates an unconfirmed, card-only setup intent for the account's payment customer and returns its id,\r\nclient secret and the publishable key of the payment system account it was created in.\r\n            \r\nAdding a card is a three-step flow:\r\n* Call this endpoint to create the setup intent.\r\n* In the browser, initialise the payment system's client library with 'publishableKey', collect the card and confirm the setup intent with 'clientSecret'.\r\n* Call the add payment method endpoint with 'setupIntentId' and 'clientSecret' as the payment information.",
+        "operationId": "CreateSetupIntentAsync",
+        "responses": {
+          "200": {
+            "description": "When request is successful. Returns a 'SetupIntentResponse' object.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SetupIntentResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "When the account is not associated to a customer.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "When an error occurs while creating the setup intent."
+          }
+        },
+        "x-excluded": true
+      }
+    },
     "/subscriptions/promotions": {
       "get": {
         "tags": ["Subscription Promotions"],
@@ -13180,6 +13377,16 @@
           },
           "404": {
             "description": "When the usage subscription, usage product, or price does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "When the service cannot resolve a billable price from the usage subscription configuration.",
             "content": {
               "application/json": {
                 "schema": {
@@ -30777,6 +30984,37 @@
         },
         "additionalProperties": false
       },
+      "CreatePaymentMethodSessionRequest": {
+        "required": ["cancelUrl", "successUrl"],
+        "type": "object",
+        "properties": {
+          "successUrl": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Absolute url the user is redirected to after entering a payment method.\r\n            \r\nThe payment method is added asynchronously, so it may not be listed yet when the user lands here.",
+            "example": "https://app.smokeball.com/billing/payment-methods?added=true"
+          },
+          "cancelUrl": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Absolute url the user is redirected to if they leave without entering a payment method.",
+            "example": "https://app.smokeball.com/billing/payment-methods"
+          },
+          "isDefault": {
+            "type": "boolean",
+            "description": "Optional: Whether to set the new payment method as the default for the entire account.\r\n            \r\nThis does not set the default payment method for the subscription.",
+            "nullable": true,
+            "example": true
+          },
+          "chargeImmediately": {
+            "type": "boolean",
+            "description": "Optional: Whether to charge immediately if subscription(s) are overdue. Defaults to true.\r\n            \r\nIf a subscription id is passed as a parameter to the request, only that subscription will be charged immediately if overdue.",
+            "nullable": true,
+            "example": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateUsageChargeRequest": {
         "type": "object",
         "properties": {
@@ -31128,6 +31366,25 @@
         },
         "additionalProperties": false
       },
+      "PaymentMethodSessionResponse": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "The hosted page to redirect the user to.",
+            "nullable": true,
+            "example": "https://checkout.stripe.com/c/pay/cs_test_1234567890"
+          },
+          "expiresAt": {
+            "type": "string",
+            "description": "When the url stops working. Create a new session after this time.",
+            "format": "date-time",
+            "example": "2026-10-27T01:00:00Z"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A hosted page where the user enters a payment method. Redirect the user to Finance.Subscriptions.Api.Models.PaymentMethodSessionResponse.Url."
+      },
       "PaymentSystem": {
         "type": "object",
         "properties": {
@@ -31196,6 +31453,12 @@
             "format": "uuid",
             "nullable": true,
             "example": "8d074e85-4d95-4d9a-8a63-187719470d49"
+          },
+          "archieTierId": {
+            "type": "string",
+            "description": "Optional Archie tier id subscription update to preview. Omit or supply null to preserve the current Archie tier.",
+            "format": "uuid",
+            "nullable": true
           },
           "addOnIds": {
             "type": "array",
@@ -31577,6 +31840,31 @@
           }
         },
         "additionalProperties": false
+      },
+      "SetupIntentResponse": {
+        "type": "object",
+        "properties": {
+          "setupIntentId": {
+            "type": "string",
+            "description": "The Stripe setup intent id.",
+            "nullable": true,
+            "example": "seti_1234567890"
+          },
+          "clientSecret": {
+            "type": "string",
+            "description": "The Stripe setup intent client secret.",
+            "nullable": true,
+            "example": "seti_1234567890_secret_5678901234"
+          },
+          "publishableKey": {
+            "type": "string",
+            "description": "The Stripe publishable key for the account the setup intent was created in. Use it to initialise Stripe.js.",
+            "nullable": true,
+            "example": "pk_test_1234567890"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A Stripe setup intent for collecting a card. The client confirms it with Stripe.js using the client secret and\r\npublishable key, then passes the id and client secret as Finance.Subscriptions.Api.Models.StripePaymentInformation to the add\r\npayment method endpoint."
       },
       "SmokeballProductType": {
         "enum": [0, 1, 2, 3, 4],
@@ -32070,7 +32358,7 @@
                 "$ref": "#/components/schemas/Link"
               }
             ],
-            "description": "The tier or add-on this item is associated to.\r\n\r\nReturns nothing if the product is not known by our system.",
+            "description": "The tier, Archie tier, add-on, or usage product this item is associated to.\r\n\r\nReturns nothing if the product is not known by our system.",
             "nullable": true
           },
           "description": {
@@ -32106,6 +32394,20 @@
             "format": "int64",
             "nullable": true,
             "example": 3
+          },
+          "periodStart": {
+            "type": "string",
+            "description": "The start of the billing period for this line item.",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2026-10-01T00:00:00Z"
+          },
+          "periodEnd": {
+            "type": "string",
+            "description": "The end of the billing period for this line item.",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2026-11-01T00:00:00Z"
           }
         },
         "additionalProperties": false
@@ -32275,7 +32577,15 @@
             "items": {
               "$ref": "#/components/schemas/Tier"
             },
-            "description": "List of tiers this promotion can be applied to.\r\nIf tiers and add-ons are both empty, the promotion can be applied to any tier or add-on.",
+            "description": "List of tiers this promotion can be applied to.\r\nIf tiers, Archie tiers, and add-ons are all empty, the promotion can be applied to any product.",
+            "nullable": true
+          },
+          "archieTiers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ArchieTier"
+            },
+            "description": "List of Archie tiers this promotion can be applied to.\r\nIf tiers, Archie tiers, and add-ons are all empty, the promotion can be applied to any product.",
             "nullable": true
           },
           "addOns": {
@@ -32283,7 +32593,7 @@
             "items": {
               "$ref": "#/components/schemas/AddOn"
             },
-            "description": "List of add-ons this promotion can be applied to.\r\nIf tiers and add-ons are both empty, the promotion can be applied to any tier or add-on.",
+            "description": "List of add-ons this promotion can be applied to.\r\nIf tiers, Archie tiers, and add-ons are all empty, the promotion can be applied to any product.",
             "nullable": true
           },
           "usage": {
@@ -32810,6 +33120,13 @@
             "description": "Optional billing interval/pricing option to use when setting subscription tier.\r\n\r\nIf an interval is not supplied then the default interval option will be used.\r\n\r\nIf an interval is supplied but a tier is not supplied, the existing tier is used and the interval is changed.",
             "nullable": true,
             "example": "Monthly"
+          },
+          "promotionId": {
+            "type": "string",
+            "description": "Optional promotion id to apply with the subscription change.\r\n            \r\nThe promotion is validated against the requested tier, Archie tier, and add-ons.",
+            "format": "uuid",
+            "nullable": true,
+            "example": "8d074e85-4d95-4d9a-8a63-187719470d49"
           },
           "reason": {
             "type": "string",
