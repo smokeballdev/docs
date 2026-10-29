@@ -31969,6 +31969,14 @@
             "description": "List of 'Usage' products that the subscription is subscribed to.",
             "nullable": true
           },
+          "prices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SubscriptionPrice"
+            },
+            "description": "Prices currently attached to the firm's subscription items.",
+            "nullable": true
+          },
           "discounts": {
             "type": "array",
             "items": {
@@ -32536,6 +32544,40 @@
           }
         },
         "additionalProperties": false
+      },
+      "SubscriptionPrice": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "string",
+            "description": "The internal product id attached to the subscription item.",
+            "nullable": true
+          },
+          "priceId": {
+            "type": "string",
+            "description": "The internal price id attached to the subscription item.",
+            "nullable": true
+          },
+          "externalPriceId": {
+            "type": "string",
+            "description": "The external price id attached to the subscription item.",
+            "nullable": true
+          },
+          "amount": {
+            "type": "number",
+            "description": "The unit amount the firm currently pays, in the currency's smallest unit.",
+            "format": "double",
+            "nullable": true
+          },
+          "currency": {
+            "type": "string",
+            "description": "The ISO 4217 currency code for the current price.",
+            "nullable": true,
+            "example": "USD"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A product price currently attached to a firm's subscription."
       },
       "SubscriptionPromotion": {
         "type": "object",
