@@ -2894,7 +2894,7 @@
       "post": {
         "tags": ["Events"],
         "summary": "Create reminder for an event",
-        "description": "Creates a new reminder for an event.",
+        "description": "Creates a new reminder for an event.\r\n\r\nOffset must be between 0 and 100. OffsetType must be one of: Minute, Hourly, Daily, Weekly, Monthly.\r\nDaily means working days only, not every calendar day. Non-working days (weekends) are skipped, so a Daily reminder is never sent on a non-working day.\r\nOffsetTypeId is deprecated, use OffsetType instead.\r\nIf OffsetTypeId is also supplied it must match OffsetType (1 = Minute, 2 = Hourly, 3 = Daily, 4 = Weekly, 5 = Monthly), otherwise the request is rejected.\r\nUserIds must contain at least one user id.",
         "operationId": "CreateReminder",
         "parameters": [
           {
@@ -2939,11 +2939,21 @@
         },
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a 'Link' object.",
+            "description": "When request is accepted. Returns a 'Link' object whose Id and href identify the new reminder.",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Link"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When Offset, OffsetType or UserIds is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -2975,7 +2985,7 @@
       "put": {
         "tags": ["Events"],
         "summary": "Update a reminder for an event",
-        "description": "Updates an existing reminder for an event.",
+        "description": "Updates an existing reminder for an event.\r\n\r\nOffset must be between 0 and 100. OffsetType must be one of: Minute, Hourly, Daily, Weekly, Monthly.\r\nDaily means working days only, not every calendar day. Non-working days (weekends) are skipped, so a Daily reminder is never sent on a non-working day.\r\nOffsetTypeId is deprecated, use OffsetType instead.\r\nIf OffsetTypeId is also supplied it must match OffsetType (1 = Minute, 2 = Hourly, 3 = Daily, 4 = Weekly, 5 = Monthly), otherwise the request is rejected.\r\nUserIds must contain at least one user id.",
         "operationId": "UpdateReminder",
         "parameters": [
           {
@@ -3028,11 +3038,21 @@
         },
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a 'Link' object.",
+            "description": "When request is accepted. Returns a 'Link' object for the updated reminder.",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Link"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When Offset, OffsetType or UserIds is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -3048,7 +3068,7 @@
             }
           },
           "404": {
-            "description": "When event with specified id does not exist.",
+            "description": "When event with specified id does not exist, or when the reminder does not exist on the event.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11995,7 +12015,7 @@
       "put": {
         "tags": ["Subscription Payments"],
         "summary": "Set default payment method",
-        "description": "Sets or clears the default payment method on a subscription. The update is processed asynchronously.\r\n            \r\nImportant considerations:\r\n* Omitting the payment method id clears the subscription's default payment method\r\n* Usage subscriptions must always have a default payment method, so clearing is not allowed for them",
+        "description": "Sets or clears the default payment method on a subscription. The update is processed asynchronously.\r\n            \r\nImportant considerations:\r\n* Omitting the payment method id clears the subscription's default payment method\r\n* Usage subscriptions must always have a default payment method, so clearing is not allowed for them\r\n* For a usage subscription that doesn't exist yet, the payment method is kept and set as its default when it is created",
         "operationId": "UpdateSubscriptionPaymentMethodAsync",
         "parameters": [
           {
@@ -12083,7 +12103,7 @@
       "post": {
         "tags": ["Subscription Payments"],
         "summary": "Add payment method",
-        "description": "Adds a new payment method to the account and sets it for the specified subscription \r\n\r\nImportant notes:\r\n* Can optionally set as default payment method for the entire account, or the specified subscription\r\n* Can force immediate charge for overdue invoices for the specified subscription\r\n* Payment information format depends on payment system",
+        "description": "Adds a new payment method to the account and sets it for the specified subscription \r\n\r\nImportant notes:\r\n* Can optionally set as default payment method for the entire account, or the specified subscription\r\n* Can force immediate charge for overdue invoices for the specified subscription\r\n* Payment information format depends on payment system\r\n* For a usage subscription that doesn't exist yet, the payment method is kept and set as its default when it is created",
         "operationId": "AddSubscriptionPaymentMethodAsync",
         "parameters": [
           {
@@ -12233,7 +12253,7 @@
       "delete": {
         "tags": ["Subscription Payments"],
         "summary": "Remove payment method",
-        "description": "Removes a payment method from a subscription.\r\n\r\nImportant notes:\r\n* Can optionally specify a new default payment method\r\n* Removing default without replacement may cause subscription to go OVERDUE",
+        "description": "Removes a payment method from a subscription.\r\n\r\nImportant notes:\r\n* Can optionally specify a new default payment method\r\n* Removing default without replacement may cause subscription to go OVERDUE\r\n* For a usage subscription that doesn't exist yet, a payment method kept for it is no longer used when it is created",
         "operationId": "RemovePaymentMethodAsync",
         "parameters": [
           {
@@ -14819,7 +14839,7 @@
       "post": {
         "tags": ["Subscriptions"],
         "summary": "Subscribe to usage product",
-        "description": "Subscribes the account's usage subscription to a usage product. The subscription is processed asynchronously.\r\n            \r\nImportant considerations:\r\n* If the account has no usage subscription yet, one is created as part of processing the request\r\n* A default payment method can optionally be supplied; it must already exist for the customer",
+        "description": "Subscribes the account's usage subscription to a usage product. The subscription is processed asynchronously.\r\n            \r\nImportant considerations:\r\n* If the account has no usage subscription yet, one is created as part of processing the request\r\n* A default payment method can optionally be supplied; it must already exist for the customer\r\n* Without one, a payment method added for the usage subscription before it existed is used",
         "parameters": [
           {
             "name": "subscriptionId",
@@ -22317,6 +22337,10 @@
             "type": "integer",
             "format": "int32"
           },
+          "offsetType": {
+            "type": "string",
+            "nullable": true
+          },
           "isAllDayReminder": {
             "type": "boolean"
           },
@@ -26032,6 +26056,14 @@
             "description": "The individual entries (fees or expenses) included in the invoice.",
             "nullable": true
           },
+          "adjustments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InvoiceAdjustment"
+            },
+            "description": "The finalized adjustments applied to the invoice.",
+            "nullable": true
+          },
           "waived": {
             "type": "boolean",
             "description": "Indicates whether the invoice has been waived.",
@@ -26045,6 +26077,36 @@
             ],
             "description": "The calculated totals for the invoice, including billed, paid, unpaid, tax, interest, discounts, etc.",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "InvoiceAdjustment": {
+        "type": "object",
+        "properties": {
+          "issuedDate": {
+            "type": "string",
+            "description": "The date the adjustment was issued.",
+            "format": "date-time",
+            "example": "2022-09-16T00:00:00+00:00"
+          },
+          "amount": {
+            "type": "number",
+            "description": "The credit amount of the adjustment, excluding tax.",
+            "format": "double",
+            "example": 40
+          },
+          "tax": {
+            "type": "number",
+            "description": "The tax component of the adjustment credit.",
+            "format": "double",
+            "example": 4
+          },
+          "total": {
+            "type": "number",
+            "description": "The total credit amount of the adjustment, including tax.",
+            "format": "double",
+            "example": 44
           }
         },
         "additionalProperties": false
@@ -26261,6 +26323,12 @@
             "description": "The total amount of expenses that have been written off.",
             "format": "double",
             "example": 180
+          },
+          "adjustmentTotal": {
+            "type": "number",
+            "description": "The total credit amount, including tax, of all finalized adjustments applied to the invoice.",
+            "format": "double",
+            "example": 50
           }
         },
         "additionalProperties": false
