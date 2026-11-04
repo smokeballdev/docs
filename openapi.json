@@ -11902,11 +11902,11 @@
         },
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a 'Link' object.",
+            "description": "The card was added; payments describes attempted overdue payments.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Link"
+                  "$ref": "#/components/schemas/AddPaymentMethodResponse"
                 }
               }
             }
@@ -12150,11 +12150,11 @@
         },
         "responses": {
           "202": {
-            "description": "When request is accepted. Returns a 'Link' object.",
+            "description": "The card was added; payments describes attempted overdue payments.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Link"
+                  "$ref": "#/components/schemas/AddPaymentMethodResponse"
                 }
               }
             }
@@ -30659,6 +30659,38 @@
         },
         "additionalProperties": false
       },
+      "AddPaymentMethodResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relation": {
+            "type": "string",
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "payments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentRetryResponse"
+            },
+            "description": "One result per attempted payment; empty when no payment was attempted.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "The payment-method collection link and immediate overdue-payment outcomes."
+      },
       "ArchieTier": {
         "type": "object",
         "properties": {
@@ -31452,6 +31484,39 @@
         },
         "additionalProperties": false,
         "description": "A hosted page where the user enters a payment method. Redirect the user to Finance.Subscriptions.Api.Models.PaymentMethodSessionResponse.Url."
+      },
+      "PaymentRetryResponse": {
+        "type": "object",
+        "properties": {
+          "subscriptionId": {
+            "type": "string",
+            "description": "The internal subscription ID, if it can be resolved.",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "description": "One of succeeded, declined, requires_action, processing, or unknown.",
+            "nullable": true
+          },
+          "declineCode": {
+            "type": "string",
+            "description": "The issuer decline code, when available.",
+            "nullable": true
+          },
+          "amountDue": {
+            "type": "integer",
+            "description": "The invoice amount due in the currency's smallest unit.",
+            "format": "int64",
+            "nullable": true
+          },
+          "currency": {
+            "type": "string",
+            "description": "The currency code supplied by the payment provider.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "The outcome of an immediate overdue-payment attempt."
       },
       "PaymentSystem": {
         "type": "object",
