@@ -17603,12 +17603,12 @@
                 "$ref": "#/components/schemas/ActivityRateType"
               }
             ],
-            "description": "The activity rate type.\r\n            \r\nPossible values: UseDefaultStaffRate = '0', OverrideRateForAllStaff = '1', OverrideRatePerStaff = '2'",
+            "description": "The activity rate type.\r\n            \r\nPossible values: UseDefaultStaffRate = '0', OverrideRateForAllStaff = '1', OverrideRatePerStaff = '2'\r\n            \r\nA rate above zero on a 'Fixed' or 'Time' activity overrides the rate for all staff, whatever rateType is.",
             "example": 0
           },
           "rate": {
             "type": "number",
-            "description": "Rate of the activity in dollars.\r\n\r\nIf set, rateType must be OverrideRateForAllStaff",
+            "description": "Rate of the activity in dollars, or the price of an 'Expense' activity.\r\n\r\nFor 'Fixed' and 'Time' activities, a rate above zero overrides the rate for all staff, so the activity is saved\r\nwith rateType OverrideRateForAllStaff whatever rateType is sent.",
             "format": "double",
             "nullable": true,
             "example": 23.21
