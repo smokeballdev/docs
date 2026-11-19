@@ -8584,7 +8584,7 @@
       "put": {
         "tags": ["Matters"],
         "summary": "Update a matter",
-        "description": "Updates a specified matter.\r\n            \r\n`clientIds` and `otherSideIds` replace the matter's clients and other sides when they differ from the current ones.\r\nLeave them out, send them empty, or send the current ids, to keep the clients and other sides as they are.\r\n            \r\nThe following actions are currently not supported:\r\n            \r\n- `clientIds` and `otherSideIds` cannot be changed in the same request that changes `matterTypeId` or `clientRole`, or converts a `Lead` to a `Matter`\r\n            \r\n- `items` cannot be updated, use the PATCH endpoint\r\n            \r\n-  `Matter` cannot be converted back to `Lead`",
+        "description": "Updates a specified matter.\r\n            \r\nThe following actions are currently not supported:\r\n            \r\n- `clientIds` cannot be modified\r\n            \r\n- `otherSideIds` cannot be modified\r\n\r\n-  `Matter` cannot be converted back to `Lead`",
         "operationId": "UpdateMatter",
         "parameters": [
           {
