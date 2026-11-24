@@ -18559,7 +18559,7 @@
           },
           "type": {
             "type": "string",
-            "description": "Company's type.\r\n\r\nPossible values for US: 'Corporation', 'Government Agency', 'Limited Liability Company', 'Sole Proprietor', 'Partnership', 'Not-for-Profit'\r\n\r\nPossible values for AU: 'Company', 'Sole Proprietor', 'Partnership', 'Government Department'\r\n\r\nPossible values for UK: 'Company', 'Sole Trader', 'Partnership', 'Limited Liability Partnership', 'Government Department'",
+            "description": "Company's type.\r\n\r\nPossible values for US: 'Corporation', 'Government Agency', 'Limited Liability Company', 'Sole Proprietor', 'Partnership', 'Not-for-Profit'\r\n\r\nPossible values for AU: 'Company', 'Sole Proprietor', 'Partnership', 'Government Department', 'Trust'\r\n\r\nPossible values for UK: 'Company', 'Sole Trader', 'Partnership', 'Limited Liability Partnership', 'Government Department'",
             "nullable": true,
             "example": "Corporation"
           },
@@ -18737,6 +18737,24 @@
             ],
             "description": "Company's execution options for document signing and VOI details.\r\n\r\nOnly supported in AU.",
             "nullable": true
+          },
+          "linkedOrganisations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            },
+            "description": "Hypermedia links to the organisations linked to this trust (e.g. a corporate trustee).\r\n            \r\nOnly supported in AU, on a company with type 'Trust'.",
+            "nullable": true,
+            "readOnly": true
+          },
+          "trustDetails": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TrustDetails"
+              }
+            ],
+            "description": "Details of the trust, when Type is 'Trust'.\r\n            \r\nOnly supported in AU. In the US a trust is the separate 'Trust' contact.",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -18752,7 +18770,7 @@
           },
           "type": {
             "type": "string",
-            "description": "Company's type.\r\n\r\nPossible values for US: 'Corporation', 'Government Agency', 'Limited Liability Company', 'Sole Proprietor', 'Partnership', 'Not-for-Profit'\r\n\r\nPossible values for AU: 'Company', 'Sole Proprietor', 'Partnership', 'Government Department'\r\n\r\nPossible values for UK: 'Company', 'Sole Trader', 'Partnership', 'Limited Liability Partnership', 'Government Department'",
+            "description": "Company's type.\r\n\r\nPossible values for US: 'Corporation', 'Government Agency', 'Limited Liability Company', 'Sole Proprietor', 'Partnership', 'Not-for-Profit'\r\n\r\nPossible values for AU: 'Company', 'Sole Proprietor', 'Partnership', 'Government Department', 'Trust'\r\n            \r\nPossible values for UK: 'Company', 'Sole Trader', 'Partnership', 'Limited Liability Partnership', 'Government Department'",
             "nullable": true,
             "example": "Corporation"
           },
@@ -18904,7 +18922,7 @@
             "items": {
               "type": "string"
             },
-            "description": "List of Staff IDs for this company.",
+            "description": "List of Staff IDs for this company.\r\n            \r\nLeave this out to keep the stored staff. On a trust, an empty list removes everyone; on other types it is ignored.",
             "nullable": true,
             "example": [
               "73481c13-b7f8-4610-b221-aaccbf7aaade",
@@ -18930,6 +18948,24 @@
               }
             ],
             "description": "Company's execution options for document signing and VOI details.\r\n\r\nOnly supported in AU.",
+            "nullable": true
+          },
+          "linkedOrganisationIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "IDs of organisations linked to this trust (e.g. a corporate trustee).\r\n            \r\nLeave this out to keep the stored links; an empty list removes them all.\r\n            \r\nOnly supported in AU, on a company with type 'Trust'.",
+            "nullable": true,
+            "example": ["18cd6029-4a9e-4b99-bae5-710a7d79a19b"]
+          },
+          "trustDetails": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TrustDetailsDto"
+              }
+            ],
+            "description": "Details of the trust, when Type is 'Trust'.\r\n            \r\nOnly supported in AU. In the US a trust is the separate 'Trust' contact.",
             "nullable": true
           }
         },
@@ -19006,7 +19042,7 @@
                 "$ref": "#/components/schemas/Trust"
               }
             ],
-            "description": "Contact trust details (if applicable).\r\n\r\nNote that Trust is only supported in the US. It is not available in other regions.",
+            "description": "Contact trust details (if applicable).\r\n\r\nNote that Trust is only supported in the US. It is not available in other regions.\r\n            \r\nIn AU a trust is a Company with type 'Trust' and its details in Company.TrustDetails.",
             "nullable": true
           },
           "groupOfPeople": {
@@ -19111,7 +19147,7 @@
                 "$ref": "#/components/schemas/TrustDto"
               }
             ],
-            "description": "Contact trust details (if applicable).\r\n\r\nOnly supported in US.",
+            "description": "Contact trust details (if applicable).\r\n\r\nOnly supported in US.\r\n            \r\nIn AU a trust is a Company with type 'Trust' and its details in Company.TrustDetails.",
             "nullable": true
           },
           "groupOfPeople": {
@@ -20828,6 +20864,102 @@
         },
         "additionalProperties": false
       },
+      "TrustDetails": {
+        "type": "object",
+        "properties": {
+          "establishedCountry": {
+            "type": "string",
+            "description": "Country the trust was established in.",
+            "nullable": true,
+            "example": "Australia"
+          },
+          "jurisdiction": {
+            "type": "string",
+            "description": "Jurisdiction the trust was established in.",
+            "nullable": true,
+            "example": "NSW"
+          },
+          "commencementDate": {
+            "type": "string",
+            "description": "Date the trust commenced.",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2021-07-01"
+          },
+          "status": {
+            "enum": ["Active", "Inactive", "Pending establishment"],
+            "type": "string",
+            "description": "Status of the trust. Allowed values depend on the region.\r\n            \r\nPossible values for AU: 'Active', 'Inactive', 'Pending establishment'",
+            "nullable": true,
+            "example": "Active"
+          },
+          "settledSum": {
+            "type": "number",
+            "description": "Sum the trust was settled with.",
+            "format": "double",
+            "nullable": true,
+            "example": 10
+          },
+          "parties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TrustParty"
+            },
+            "description": "The trust's parties.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Details of a company whose type is 'Trust'.\r\n            \r\nOnly supported in AU, where a trust is a company with type 'Trust'. In the US a trust is the separate 'Trust' contact."
+      },
+      "TrustDetailsDto": {
+        "type": "object",
+        "properties": {
+          "establishedCountry": {
+            "type": "string",
+            "description": "Country the trust was established in.",
+            "nullable": true,
+            "example": "Australia"
+          },
+          "jurisdiction": {
+            "type": "string",
+            "description": "Jurisdiction the trust was established in.",
+            "nullable": true,
+            "example": "NSW"
+          },
+          "commencementDate": {
+            "type": "string",
+            "description": "Date the trust commenced (YYYY-MM-DD). Any time part is ignored.",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2021-07-01"
+          },
+          "status": {
+            "enum": ["Active", "Inactive", "Pending establishment"],
+            "type": "string",
+            "description": "Status of the trust. Allowed values depend on the region.\r\n            \r\nPossible values for AU: 'Active', 'Inactive', 'Pending establishment'",
+            "nullable": true,
+            "example": "Active"
+          },
+          "settledSum": {
+            "type": "number",
+            "description": "Sum the trust was settled with.",
+            "format": "double",
+            "nullable": true,
+            "example": 10
+          },
+          "parties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TrustPartyDto"
+            },
+            "description": "The trust's parties. Send the full list on every save: it replaces the stored list, and an empty list clears it.\r\n            \r\nA person party is also added to the company's staff, and an organisation party (e.g. a corporate trustee) to its linked organisations.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Details of a company whose type is 'Trust'.\r\n            \r\nOnly supported in AU, where a trust is a company with type 'Trust'. In the US a trust is the separate 'Trust' contact.\r\n            \r\nLeave this out to keep the stored details. Every field is optional."
+      },
       "TrustDto": {
         "type": "object",
         "properties": {
@@ -20903,6 +21035,63 @@
           }
         },
         "additionalProperties": false
+      },
+      "TrustParty": {
+        "type": "object",
+        "properties": {
+          "contact": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ],
+            "description": "Hypermedia link to the person or organisation holding the role.",
+            "nullable": true
+          },
+          "role": {
+            "enum": ["Trustee", "Settlor", "Appointor"],
+            "type": "string",
+            "description": "The party's role. Allowed values depend on the region.\r\n            \r\nPossible values for AU: 'Trustee', 'Settlor', 'Appointor'",
+            "nullable": true,
+            "example": "Trustee"
+          },
+          "trusteeType": {
+            "enum": ["Trustee", "Successor Trustee", "Original Trustee"],
+            "type": "string",
+            "description": "The kind of trustee, when Role is 'Trustee'. Allowed values depend on the region.\r\n            \r\nPossible values for AU: 'Trustee', 'Successor Trustee', 'Original Trustee'",
+            "nullable": true,
+            "example": "Original Trustee"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A role a contact holds on a trust. A contact can hold more than one role, as separate parties."
+      },
+      "TrustPartyDto": {
+        "type": "object",
+        "properties": {
+          "contactId": {
+            "type": "string",
+            "description": "Id of the person or organisation holding the role.",
+            "nullable": true,
+            "example": "73481c13-b7f8-4610-b221-aaccbf7aaade"
+          },
+          "role": {
+            "enum": ["Trustee", "Settlor", "Appointor"],
+            "type": "string",
+            "description": "The party's role. Required. Allowed values depend on the region.\r\n            \r\nPossible values for AU: 'Trustee', 'Settlor', 'Appointor'",
+            "nullable": true,
+            "example": "Trustee"
+          },
+          "trusteeType": {
+            "enum": ["Trustee", "Successor Trustee", "Original Trustee"],
+            "type": "string",
+            "description": "The kind of trustee. Only allowed when Role is 'Trustee'. Allowed values depend on the region.\r\n            \r\nPossible values for AU: 'Trustee', 'Successor Trustee', 'Original Trustee'",
+            "nullable": true,
+            "example": "Original Trustee"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A role a contact holds on a trust. A contact can hold more than one role, as separate parties."
       },
       "Trustee": {
         "type": "object",
