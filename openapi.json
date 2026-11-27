@@ -6991,7 +6991,7 @@
       "get": {
         "tags": ["Layout Designs"],
         "summary": "Get a layout design",
-        "description": "Retrieves a specified layout design.",
+        "description": "Retrieves a specified layout design.\r\nA client can reuse the response for the 'max-age' in its 'Cache-Control' header.\r\nAfter that, send the response's 'ETag' value in an 'If-None-Match' header, and the response is '304 Not Modified' without a body while the layout design is unchanged.",
         "operationId": "GetLayoutDesignById",
         "parameters": [
           {
@@ -7030,6 +7030,9 @@
                 }
               }
             }
+          },
+          "304": {
+            "description": "When the 'If-None-Match' header matches the 'ETag' of the current layout design."
           },
           "404": {
             "description": "When layout design with specified id does not exist.",
